@@ -1,0 +1,214 @@
+# Post Date Mapping for netjoints.github.io
+# Format: current_filename,real_date,source
+# Use this file to manually rename posts or with the fix_dates.py script
+#
+# Dates confirmed from web searches of netjoints.com and netjoints.wordpress.com
+# Posts without confirmed dates are estimated based on content/context
+
+# ============================================
+# CONFIRMED DATES (from search results)
+# ============================================
+
+# 2019
+2025-12-14_oci-initial-config.md,2019-10-16,confirmed
+2025-12-14_oci-multicloud-transit.md,2019-10-17,confirmed
+2025-12-14_aviatrix-controller-deployment-in-azure.md,2019-12-11,confirmed
+2025-12-14_azure-transit-network-design-patterns.md,2019-12-14,confirmed
+2025-12-14_azure-transit-network-with-vnet-peering-deployment.md,2019-12-19,confirmed
+
+# 2020 (estimated based on content progression)
+2025-12-14_what-is-aviatrix-cloudwan.md,2020-01-15,estimated
+2025-12-14_aviatrix-cloudwan-deployment-with-aws-global-accel.md,2020-01-20,estimated
+2025-12-14_aviatrix-user-vpn-deployment-with-aws-udb-based-nl.md,2020-02-01,estimated
+2025-12-14_gcp-transit-networking-and-routing-with-aviatrix.md,2020-03-01,estimated
+2025-12-14_gcp-shared-vpc-concepts.md,2020-03-15,estimated
+2025-12-14_gcp-shared-vpc-network-with-aviatrix-transit-hub-s.md,2020-04-01,estimated
+2025-12-14_direct-connect-gateway.md,2020-05-01,estimated
+2025-12-14_aws-direct-connect-dx.md,2020-05-15,estimated
+2025-12-14_aws-direct-connect-and-direct-connect-gateway-limi.md,2020-06-01,estimated
+2025-12-14_multi-cloud-vs-hybrid-cloud-definition.md,2020-06-15,estimated
+2025-12-14_cloud-networking-and-security-predictions-for-2021.md,2020-12-20,estimated
+
+# 2021
+2025-12-14_gcp-firenet.md,2021-01-07,confirmed
+2025-12-14_gcp-high-performance-encryption.md,2021-02-01,estimated
+2025-12-14_design-and-feature-requirement-for-a-user-vpn-solu.md,2021-03-01,estimated
+2025-12-14_cloud-network-sd-edge-design-patterns.md,2021-04-01,estimated
+2025-12-14_cloud-to-dc-active-standby-firewall-design-and-dep.md,2021-05-01,estimated
+2025-12-14_cloud-native-only-vs-isv-networking-solutions.md,2021-06-01,estimated
+2025-12-14_aviatrix-ingress-filtering-deployment-with-aws-alb.md,2021-07-01,estimated
+2025-12-14_aviatrix-threatguard-design-patterns-for-internet.md,2021-08-01,estimated
+2025-12-14_aviatrix-to-orchestrate-aws-transit-gateway-tgw-an.md,2021-09-01,estimated
+2025-12-14_aws-nwfw-network-firewall-vs-aviatrix-threatguard.md,2021-10-01,estimated
+2025-12-14_cloud-network-well-architected-framework-design-pi.md,2021-11-01,estimated
+2025-12-14_time-to-downside-on-premise-up-the-cloud-your-ente.md,2021-12-01,estimated
+
+# 2022
+2025-12-14_aviatrix-distributed-cloud-firewall-harnessing-ope.md,2022-02-01,estimated
+2025-12-14_aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp.md,2022-03-01,estimated
+2025-12-14_aviatrix-transit-in-host-project-and-workload-vms.md,2022-04-01,estimated
+2025-12-14_aviatrix-intrusion-prevention-system-ips-solution.md,2022-05-01,estimated
+2025-12-14_onboarding-gcp-project-in-aviatrix-controller-with.md,2022-06-01,estimated
+2025-12-14_diy-automation-increases-complexity-and-cost-of-ru.md,2022-07-01,estimated
+2025-12-14_saas-for-cloud-networking-aka-naas-is-not-for-ente.md,2022-08-01,estimated
+2025-12-14_saas-based-multi-cloud-solution-not-for-enterprise.md,2022-09-01,estimated
+2025-12-14_private-naas-vs-generic-saas-naas.md,2022-10-01,estimated
+2025-12-14_the-network-is-the-cloud.md,2022-11-01,estimated
+2025-12-14_what-is-cloud-network-backbone.md,2022-12-01,estimated
+
+# 2023
+2025-12-14_aviatrix-security-features.md,2023-01-03,confirmed
+2025-12-14_gcp-networking-limitations.md,2023-02-01,estimated
+2025-12-14_gcp-networking-best-practices.md,2023-03-01,estimated
+2025-12-14_gcp-native-networking-concepts-cheat-sheet.md,2023-04-01,estimated
+2025-12-14_gcp-networking-pricing-and-quota-limits.md,2023-05-01,estimated
+2025-12-14_gcp-least-privileged-service-account-for-aviatrix.md,2023-06-01,estimated
+2025-12-14_gcp-iam-and-gcp-shared-service-account-concepts.md,2023-07-01,estimated
+2025-12-14_google-private-service-connect-psc-configuration-f.md,2023-08-01,estimated
+2025-12-14_gcp-secure-network-routing-designs.md,2023-09-01,estimated
+2025-12-14_cisco-intenet-to-acquire-splunk-for-28-billion-in.md,2023-09-21,estimated
+2025-12-14_sap-on-aviatrix-platform.md,2023-10-01,estimated
+2025-12-14_sap-s4-hana-jargon-for-network-engineers.md,2023-10-15,estimated
+2025-12-14_sap-s4-hana-installation-for-lab-and-development-w.md,2023-11-01,estimated
+2025-12-14_sap-s4-hana-popular-integrations.md,2023-11-15,estimated
+2025-12-14_sap-s4-hana-msp-design-with-multicloud-backbone.md,2023-12-01,estimated
+2025-12-14_sap-s4-hana-aws-high-availability-challenges-with.md,2023-12-15,estimated
+
+# 2024
+2025-12-14_multicloud-network-architecture-mcna-and-designs.md,2024-01-15,estimated
+2025-12-14_aviatrix-value-for-customers-only-in-aws.md,2024-02-01,estimated
+2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-transit-gat.md,2024-03-01,estimated
+2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-nat-gateway.md,2024-03-15,estimated
+2025-12-14_de-buzz-review-cisco-hypershield-ai-native-securit.md,2024-04-01,estimated
+2025-12-14_insights-from-rsa-conference-2024.md,2024-05-10,estimated
+2025-12-14_aviatrix-kubernetes-innovation-kubecon-2024.md,2024-11-15,confirmed
+
+# AWS Services (estimated 2024)
+2025-12-14_aws-vpc-lattice.md,2024-01-10,estimated
+2025-12-14_aws-verified-access.md,2024-01-20,estimated
+2025-12-14_aws-global-accelerator.md,2024-02-05,estimated
+2025-12-14_aws-guard-duty.md,2024-02-15,estimated
+2025-12-14_aws-security-hub.md,2024-02-25,estimated
+2025-12-14_aws-network-firewall-nwfw.md,2024-03-05,estimated
+2025-12-14_aws-nat-gateway.md,2024-03-10,estimated
+2025-12-14_aws-private-link.md,2024-03-20,estimated
+2025-12-14_aws-gateway-load-balancer-gwlb.md,2024-04-01,estimated
+2025-12-14_aws-vpc-sharing.md,2024-04-10,estimated
+2025-12-14_aws-cloudwan.md,2024-04-20,estimated
+2025-12-14_aws-transit-gateway-tgw.md,2024-05-01,estimated
+2025-12-14_aws-site-to-site-vpn-s2s.md,2024-05-10,estimated
+2025-12-14_aws-client-vpn.md,2024-05-20,estimated
+2025-12-14_aws-local-zone.md,2024-06-01,estimated
+2025-12-14_aws-landing-zone.md,2024-06-10,estimated
+2025-12-14_aws-control-tower-vending-machine.md,2024-06-20,estimated
+2025-12-14_aws-organizations.md,2024-07-01,estimated
+2025-12-14_aws-networking-limitations.md,2024-07-15,estimated
+2025-12-14_aws-networking-services-deep-dive.md,2024-08-01,estimated
+2025-12-14_aws-core-and-essential-infrastructure-services.md,2024-08-15,estimated
+2025-12-14_aws-rds-for-oracle-db-engine.md,2024-09-01,estimated
+2025-12-14_aws-eks-role-binding-and-oidc-configuration.md,2024-09-15,estimated
+
+# Azure (estimated 2024)
+2025-12-14_azure-networking-limitations-and-constraints.md,2024-06-01,estimated
+2025-12-14_azure-vwan-design-considerations.md,2024-06-15,estimated
+2025-12-14_azure-aks-traffic-routing-between-vnet-or-cluster.md,2024-07-01,estimated
+2025-12-14_azure-resource-group-vs-specific-azure-resource-ty.md,2024-07-15,estimated
+
+# AI/ML Topics (2024-2025)
+2025-12-14_ai-for-network-engineers-core-concepts.md,2024-08-01,estimated
+2025-12-14_whats-the-difference-between-llm-and-dlrm-models.md,2024-09-01,estimated
+2025-12-14_important-ai-terms-to-remember.md,2024-10-01,estimated
+2025-12-14_what-is-network-ml.md,2024-10-15,estimated
+
+# 2025 - Britive and Agentic AI (confirmed from search results)
+2025-12-14_the-shocking-salt-typhoon-hack.md,2025-01-16,confirmed
+2025-12-14_protect-salesforce-environment-with-cost-optimizat.md,2025-01-22,confirmed
+2025-12-14_britive-new-tenant-onboarding.md,2025-01-23,confirmed
+2025-12-14_okta-identity-provider-integration-with-britive-ge.md,2025-01-24,estimated
+2025-12-14_britive-okta-application-onboarding-experience.md,2025-01-27,confirmed
+2025-12-14_britive-aws-application-onboarding-experience.md,2025-01-27,confirmed
+2025-12-14_britive-azure-onboarding-experience.md,2025-01-27,confirmed
+2025-12-14_britive-access-broker-installation.md,2025-02-10,confirmed
+2025-12-14_kubernetes-just-in-time-access.md,2025-02-15,estimated
+2025-12-14_kubernetes-access-security-and-iam.md,2025-02-20,estimated
+2025-12-14_understanding-iam-conditions-in-google-kubernetes.md,2025-02-25,estimated
+2025-12-14_gcp-just-in-time-jit-ephemeral-access-for-google-p.md,2025-03-01,estimated
+2025-12-14_microsoft-azure-access-jit-checkout.md,2025-03-10,estimated
+2025-12-14_britive-datadog-siem-integration-steps.md,2025-03-20,confirmed
+2025-12-14_britive-aurora-mysql-demo.md,2025-03-25,estimated
+2025-12-14_postgresql-just-in-time-cli-access-demo-script.md,2025-04-01,estimated
+2025-12-14_britive-dynamic-secrets-in-ci-cd-pipelines-demo-sc.md,2025-04-10,estimated
+2025-12-14_britive-api-cli-to-trigger-cloud-data-scan.md,2025-04-22,confirmed
+2025-12-14_azure-pim-vs-cpam-key-differences-you-need-to-know.md,2025-04-26,confirmed
+2025-12-14_britive-access-broker-field-option-use-case.md,2025-04-28,confirmed
+2025-12-14_britive-self-service-access-and-permission-builder.md,2025-05-01,estimated
+2025-12-14_which-one-is-better-britive-or-cyberark.md,2025-05-10,estimated
+2025-12-14_what-is-ciem-where-is-works-and-where-it-fail.md,2025-05-15,estimated
+2025-12-14_how-to-eliminate-aws-overly-permissive-iam-roles.md,2025-05-20,estimated
+2025-12-14_the-challenge-of-standing-privileges-in-snowflake.md,2025-05-25,estimated
+2025-12-14_zero-standing-privilege-for-k8s-a-must-have-for-se.md,2025-06-01,estimated
+2025-12-14_world-of-complex-security-compliance-requirement-w.md,2025-06-10,estimated
+
+# Agentic AI (2025)
+2025-12-14_amazon-bedrock-agentcore.md,2025-06-15,estimated
+2025-12-14_amazon-bedrock-agentcore-2.md,2025-06-20,estimated
+2025-12-14_troubleshooting-aws-bedrock-agentcore.md,2025-06-25,estimated
+2025-12-14_aws-bedrock-ai-agent-action-group.md,2025-07-01,estimated
+2025-12-14_aws-bedrock-agent-to-agent-communication-and-colla.md,2025-07-10,estimated
+2025-12-14_securing-agentic-ai-with-amazon-bedrock-webinar.md,2025-07-15,estimated
+2025-12-14_agentic-ai-identities-the-future-of-enterprise-acc.md,2025-08-01,estimated
+2025-12-14_agentic-ai-security-framework-and-deployment-guide.md,2025-08-15,estimated
+2025-12-14_securing-mcp-servers-for-agentic-ai-a-practical-gu.md,2025-09-01,estimated
+
+# Lab guides (2020-2021 timeframe)
+2025-12-14_google-cloud-and-aviatrix-testing-poc-lab-guide.md,2020-09-01,estimated
+2025-12-14_lab2-gcp-multi-cloud-network-transit-hub-spoke.md,2020-09-10,estimated
+2025-12-14_lab3-gcp-multi-cloud-network-segmentation-mcns.md,2020-09-20,estimated
+2025-12-14_lab4-placeholder.md,2020-10-01,estimated
+2025-12-14_lab5-placehoslder.md,2020-10-10,estimated
+2025-12-14_lab6-placehoslder.md,2020-10-20,estimated
+2025-12-14_lab7-placehoslder.md,2020-11-01,estimated
+2025-12-14_ace-backbone-lab-guide.md,2021-01-15,estimated
+2025-12-14_ace-security-secure-egress-lab.md,2021-02-01,estimated
+2025-12-14_aviatrix-ace-professional-bootcamp-requirement-and.md,2021-03-01,estimated
+
+# Miscellaneous
+2025-12-14_leadership.md,2020-01-01,estimated
+2025-12-14_cloud-leaders-and-executive.md,2021-01-01,estimated
+2025-12-14_aviatrix-gsi-mockup-landing-page.md,2022-01-01,estimated
+2025-12-14_netjoint-multicloud.md,2020-06-01,estimated
+2025-12-14_the-fatal-mistake-that-kills-startups-not-knowing.md,2024-11-01,estimated
+2025-12-14_right-network-architecture-is-more-important-than.md,2023-08-01,estimated
+2025-12-14_cloud-architecture-mistakes-losing-visibility-and.md,2023-09-01,estimated
+2025-12-14_cloud-architecture-mistakes-organizations-need-sho.md,2023-09-15,estimated
+2025-12-14_cloud-application-migration-is-slowing-down-the-di.md,2023-10-01,estimated
+2025-12-14_private-cloud-definition-discussion-again.md,2022-05-01,estimated
+2025-12-14_install-blockchain-quorum-node-on-aws-ec2-instance.md,2020-08-01,estimated
+2025-12-14_install-blockchain-quroum-on-aws-ec2-instance.md,2020-08-05,estimated
+
+# Guacamole and PAM
+2025-12-14_guacamole-deployment-models.md,2025-03-01,estimated
+2025-12-14_guacamole-url-explained.md,2025-03-15,estimated
+2025-12-14_a-pam-session-recording-architecture.md,2025-04-01,estimated
+2025-12-14_britive-access-broker-troubleshooting-tips-and-bes.md,2025-04-15,estimated
+2025-12-14_britive-access-broker-add-user-to-local-admin-grou.md,2025-04-20,estimated
+2025-12-14_amazon-alexa-architecture-powering-britive-saas.md,2025-05-05,estimated
+
+# Additional AWS services
+2025-12-14_secure-s3-bucket-access-over-direct-connect-privat.md,2021-06-01,estimated
+2025-12-14_check-point-cloudguard-iaas-in-aws-with-quick-fail.md,2021-07-01,estimated
+2025-12-14_aviatrixs-check-point-cloudguard-related-features.md,2021-08-01,estimated
+2025-12-14_connecting-aviatrix-gateway-to-cisco-csr-in-the-sa.md,2020-07-01,estimated
+2025-12-14_dns-conditional-forwarding-from-on-prem-to-cloud.md,2021-04-01,estimated
+2025-12-14_cloud-sandbox-starter-advance-mode.md,2022-03-01,estimated
+2025-12-14_netflow-l7-or-ipt-mode.md,2022-04-01,estimated
+2025-12-14_user-vpn-open-vpn-in-azure.md,2020-04-01,estimated
+2025-12-14_difference-between-rds-aws-aurora-and-mysql.md,2024-08-15,estimated
+2025-12-14_bigquery-constraint-why-is-it-a-bigdeal.md,2024-09-01,estimated
+2025-12-14_what-is-gcp-pub-sub.md,2024-09-15,estimated
+2025-12-14_gke-kubernetes-k8s-demo.md,2024-10-01,estimated
+2025-12-14_sumo-logic-inbound-https-webhook-configuration.md,2025-03-10,estimated
+2025-12-14_elevating-aws-identity-center-security-the-power-o.md,2025-05-15,estimated
+2025-12-14_enterprise-solutions-architect-role-for-career-gro.md,2024-12-01,estimated
+2025-12-14_why-is-cybersecurity-bad-and-getting-worse.md,2025-01-10,estimated
+2025-12-14_protect-internet-facing-applications-with-firewall.md,2021-09-01,estimated
