@@ -1,10 +1,10 @@
 # Jekyll Configuration for GitHub Pages
-
 # Site settings
-title: Your Blog Title
-description: Migrated from WordPress to GitHub
-author: Your Name
-email: your-email@example.com
+title: Network Joints
+description: Cloud Networking, Security, and Infrastructure Insights - Joining networks together!
+author: Shahzad Ali
+url: "https://netjoints.github.io"
+baseurl: ""
 
 # Build settings
 markdown: kramdown
@@ -35,6 +35,7 @@ exclude:
   - migrate.sh
   - wordpress_to_github.py
   - requirements.txt
+  - fix_dates.py
 
 # Include
 include:
@@ -47,15 +48,16 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      author: "Shahzad Ali"
       comments: false
 
-# Social links (optional)
-github_username: yourusername
-twitter_username: yourusername
+# Social links
+github_username: netJoints
+# twitter_username: yourusername
 
-# Google Analytics (optional)
-# google_analytics: UA-XXXXXXXX-X
+# Show excerpts on homepage
+show_excerpts: true
 
-# Disqus comments (optional)
-# disqus:
-#   shortname: your-disqus-shortname
+# Pagination (if using jekyll-paginate)
+# paginate: 10
+# paginate_path: "/page/:num/"
