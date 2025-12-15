@@ -7,6 +7,9 @@ tags: []
 original_url: https://netjoints.com/guacamole-url-explained/#respond
 ---
 
+Understanding Guacamodel RDP connection could be important if it is being called from another tool. The connection file contains some parameters that will help make the connection from browser. Guac effectively becomes and RDP proxy when RDP is initiated from a Broswer. 
+
+
 An Apache Guacamole RDP connection looks like following. This is also called **Guacamole remote desktop session launch payload**. It is used in a web-based remote access system. 
     
     
