@@ -1,0 +1,361 @@
+# Blog Backup from https://netjoints.com
+
+Generated on: 2025-12-14 23:53:11
+
+## Statistics
+- Total posts: 351
+- Total media files: 442 images, 7 videos
+
+## Posts
+
+- [Understanding IAM Conditions in Google Kubernetes Engine (GKE)](posts/2025-12-14_a-pam-session-recording-architecture.md) - 2025-12-14
+- [Understanding IAM Conditions in Google Kubernetes Engine (GKE)](posts/2025-12-14_a-pam-session-recording-architecture.md) - 2025-12-14
+- [GCP Networking Limitations](posts/2025-12-14_ace-backbone-lab-guide.md) - 2025-12-14
+- [GCP Networking Limitations](posts/2025-12-14_ace-backbone-lab-guide.md) - 2025-12-14
+- [Zero-Trust Framework for Cloud Workloads](posts/2025-12-14_ace-security-secure-egress-lab.md) - 2025-12-14
+- [Zero-Trust Framework for Cloud Workloads](posts/2025-12-14_ace-security-secure-egress-lab.md) - 2025-12-14
+- [Guacamole Deployment Models](posts/2025-12-14_agentic-ai-identities-the-future-of-enterprise-acc.md) - 2025-12-14
+- [Guacamole Deployment Models](posts/2025-12-14_agentic-ai-identities-the-future-of-enterprise-acc.md) - 2025-12-14
+- [Agentic AI Identities & the Future of Enterprise Access Control](posts/2025-12-14_agentic-ai-security-framework-and-deployment-guide.md) - 2025-12-14
+- [Agentic AI Identities & the Future of Enterprise Access Control](posts/2025-12-14_agentic-ai-security-framework-and-deployment-guide.md) - 2025-12-14
+- [What’s the difference between LLM and DLRM models?](posts/2025-12-14_ai-for-network-engineers-core-concepts.md) - 2025-12-14
+- [What’s the difference between LLM and DLRM models?](posts/2025-12-14_ai-for-network-engineers-core-concepts.md) - 2025-12-14
+- [Protect Salesforce Environment for Admin Users with Britive](posts/2025-12-14_amazon-alexa-architecture-powering-britive-saas.md) - 2025-12-14
+- [Protect Salesforce Environment for Admin Users with Britive](posts/2025-12-14_amazon-alexa-architecture-powering-britive-saas.md) - 2025-12-14
+- [Azure Resource Group vs Specific Azure Resource Type](posts/2025-12-14_amazon-bedrock-agentcore-2.md) - 2025-12-14
+- [Azure Resource Group vs Specific Azure Resource Type](posts/2025-12-14_amazon-bedrock-agentcore-2.md) - 2025-12-14
+- [OKTA Identity Provider Integration with Britive | Getting Started Guide](posts/2025-12-14_amazon-bedrock-agentcore.md) - 2025-12-14
+- [OKTA Identity Provider Integration with Britive | Getting Started Guide](posts/2025-12-14_amazon-bedrock-agentcore.md) - 2025-12-14
+- [Azure Transit Network Deployment with Native VNet Peering](posts/2025-12-14_aviatrix-ace-professional-bootcamp-requirement-and.md) - 2025-12-14
+- [Azure Transit Network Deployment with Native VNet Peering](posts/2025-12-14_aviatrix-ace-professional-bootcamp-requirement-and.md) - 2025-12-14
+- [What is Aviatrix CloudWAN?](posts/2025-12-14_aviatrix-cloudwan-deployment-with-aws-global-accel.md) - 2025-12-14
+- [What is Aviatrix CloudWAN?](posts/2025-12-14_aviatrix-cloudwan-deployment-with-aws-global-accel.md) - 2025-12-14
+- [Aviatrix CloudWAN Deployment with AWS Global Accelerator](posts/2025-12-14_aviatrix-controller-deployment-in-azure.md) - 2025-12-14
+- [Aviatrix CloudWAN Deployment with AWS Global Accelerator](posts/2025-12-14_aviatrix-controller-deployment-in-azure.md) - 2025-12-14
+- [Cisco Intenet to Acquire Splunk for $28 Billion in Cash](posts/2025-12-14_aviatrix-distributed-cloud-firewall-harnessing-ope.md) - 2025-12-14
+- [Cisco Intenet to Acquire Splunk for $28 Billion in Cash](posts/2025-12-14_aviatrix-distributed-cloud-firewall-harnessing-ope.md) - 2025-12-14
+- [SaaS for Cloud Networking (aka NaaS) is not for Enterprises](posts/2025-12-14_aviatrix-gsi-mockup-landing-page.md) - 2025-12-14
+- [SaaS for Cloud Networking (aka NaaS) is not for Enterprises](posts/2025-12-14_aviatrix-gsi-mockup-landing-page.md) - 2025-12-14
+- [Aviatrix Kickstart – Spin up Cloud Networks in Minutes – CLI Mode](posts/2025-12-14_aviatrix-ingress-filtering-deployment-with-aws-alb.md) - 2025-12-14
+- [Aviatrix Kickstart – Spin up Cloud Networks in Minutes – CLI Mode](posts/2025-12-14_aviatrix-ingress-filtering-deployment-with-aws-alb.md) - 2025-12-14
+- [GCP Networking Pricing and Quota Limits](posts/2025-12-14_aviatrix-intrusion-prevention-system-ips-solution.md) - 2025-12-14
+- [GCP Networking Pricing and Quota Limits](posts/2025-12-14_aviatrix-intrusion-prevention-system-ips-solution.md) - 2025-12-14
+- [LAB7 – Placehoslder](posts/2025-12-14_aviatrix-kickstart-spin-up-cloud-networks-in-minut.md) - 2025-12-14
+- [LAB7 – Placehoslder](posts/2025-12-14_aviatrix-kickstart-spin-up-cloud-networks-in-minut.md) - 2025-12-14
+- [LAB7 – Placehoslder](posts/2025-12-14_aviatrix-kickstart-spin-up-cloud-networks-in-minut.md) - 2025-12-14
+- [LAB7 – Placehoslder](posts/2025-12-14_aviatrix-kickstart-spin-up-cloud-networks-in-minut.md) - 2025-12-14
+- [ACE-Backbone LAB Guide](posts/2025-12-14_aviatrix-kubernetes-innovation-kubecon-2024.md) - 2025-12-14
+- [ACE-Backbone LAB Guide](posts/2025-12-14_aviatrix-kubernetes-innovation-kubecon-2024.md) - 2025-12-14
+- [Aviatrix Intrusion Prevention System (IPS) Solution for AWS FAQs](posts/2025-12-14_aviatrix-security-features.md) - 2025-12-14
+- [Aviatrix Intrusion Prevention System (IPS) Solution for AWS FAQs](posts/2025-12-14_aviatrix-security-features.md) - 2025-12-14
+- [Onboarding GCP Project in Aviatrix Controller with Restricted Access](posts/2025-12-14_aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp.md) - 2025-12-14
+- [Onboarding GCP Project in Aviatrix Controller with Restricted Access](posts/2025-12-14_aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp.md) - 2025-12-14
+- [DIY Automation Increases Complexity and Cost of Running Cloud Network](posts/2025-12-14_aviatrix-threatguard-design-patterns-for-internet.md) - 2025-12-14
+- [DIY Automation Increases Complexity and Cost of Running Cloud Network](posts/2025-12-14_aviatrix-threatguard-design-patterns-for-internet.md) - 2025-12-14
+- [Aviatrix Distributed Cloud Firewall: Harnessing open source technologies for enhanced security using eBPF and Suricata](posts/2025-12-14_aviatrix-to-orchestrate-aws-transit-gateway-tgw-an.md) - 2025-12-14
+- [Aviatrix Distributed Cloud Firewall: Harnessing open source technologies for enhanced security using eBPF and Suricata](posts/2025-12-14_aviatrix-to-orchestrate-aws-transit-gateway-tgw-an.md) - 2025-12-14
+- [Aviatrix Spoke GW and Workload VMs in Same GCP Shared VPC Subnets](posts/2025-12-14_aviatrix-transit-in-host-project-and-workload-vms.md) - 2025-12-14
+- [Aviatrix Spoke GW and Workload VMs in Same GCP Shared VPC Subnets](posts/2025-12-14_aviatrix-transit-in-host-project-and-workload-vms.md) - 2025-12-14
+- [Azure Transit Network Design Patterns](posts/2025-12-14_aviatrix-user-vpn-deployment-with-aws-udb-based-nl.md) - 2025-12-14
+- [Azure Transit Network Design Patterns](posts/2025-12-14_aviatrix-user-vpn-deployment-with-aws-udb-based-nl.md) - 2025-12-14
+- [What is Cloud Network Backbone?](posts/2025-12-14_aviatrix-value-for-customers-only-in-aws.md) - 2025-12-14
+- [What is Cloud Network Backbone?](posts/2025-12-14_aviatrix-value-for-customers-only-in-aws.md) - 2025-12-14
+- [GCP Networking Concepts and Best Practices](posts/2025-12-14_aviatrixs-check-point-cloudguard-related-features.md) - 2025-12-14
+- [GCP Networking Concepts and Best Practices](posts/2025-12-14_aviatrixs-check-point-cloudguard-related-features.md) - 2025-12-14
+- [AWS and Aviatrix Partner to Reduce AWS Transit Gateway Cost with Better Latency and Security](posts/2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-nat-gateway.md) - 2025-12-14
+- [AWS and Aviatrix Partner to Reduce AWS Transit Gateway Cost with Better Latency and Security](posts/2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-nat-gateway.md) - 2025-12-14
+- [Aviatrix Value for Customers Only in AWS](posts/2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-transit-gat.md) - 2025-12-14
+- [Aviatrix Value for Customers Only in AWS](posts/2025-12-14_aws-and-aviatrix-partner-to-reduce-aws-transit-gat.md) - 2025-12-14
+- [AWS Bedrock AI Agent Action Group](posts/2025-12-14_aws-bedrock-agent-to-agent-communication-and-colla.md) - 2025-12-14
+- [AWS Bedrock AI Agent Action Group](posts/2025-12-14_aws-bedrock-agent-to-agent-communication-and-colla.md) - 2025-12-14
+- [BigQuery Constraint | Why is it a BigDeal?](posts/2025-12-14_aws-bedrock-ai-agent-action-group.md) - 2025-12-14
+- [BigQuery Constraint | Why is it a BigDeal?](posts/2025-12-14_aws-bedrock-ai-agent-action-group.md) - 2025-12-14
+- [AWS Site to Site VPN (S2S)](posts/2025-12-14_aws-client-vpn.md) - 2025-12-14
+- [AWS Site to Site VPN (S2S)](posts/2025-12-14_aws-client-vpn.md) - 2025-12-14
+- [AWS Transit Gateway (TGW)](posts/2025-12-14_aws-cloudwan.md) - 2025-12-14
+- [AWS Transit Gateway (TGW)](posts/2025-12-14_aws-cloudwan.md) - 2025-12-14
+- [AWS Landing Zone](posts/2025-12-14_aws-control-tower-vending-machine.md) - 2025-12-14
+- [AWS Landing Zone](posts/2025-12-14_aws-control-tower-vending-machine.md) - 2025-12-14
+- [AWS Networking Services Deep Dive](posts/2025-12-14_aws-core-and-essential-infrastructure-services.md) - 2025-12-14
+- [AWS Networking Services Deep Dive](posts/2025-12-14_aws-core-and-essential-infrastructure-services.md) - 2025-12-14
+- [Multi-Cloud vs Hybrid-Cloud Definition](posts/2025-12-14_aws-direct-connect-and-direct-connect-gateway-limi.md) - 2025-12-14
+- [Multi-Cloud vs Hybrid-Cloud Definition](posts/2025-12-14_aws-direct-connect-and-direct-connect-gateway-limi.md) - 2025-12-14
+- [AWS Control Tower (Account Vending Machine)](posts/2025-12-14_aws-direct-connect-dx.md) - 2025-12-14
+- [AWS Control Tower (Account Vending Machine)](posts/2025-12-14_aws-direct-connect-dx.md) - 2025-12-14
+- [GKE Kubernetes K8S Demo](posts/2025-12-14_aws-eks-role-binding-and-oidc-configuration.md) - 2025-12-14
+- [GKE Kubernetes K8S Demo](posts/2025-12-14_aws-eks-role-binding-and-oidc-configuration.md) - 2025-12-14
+- [AWS CloudWAN](posts/2025-12-14_aws-gateway-load-balancer-gwlb.md) - 2025-12-14
+- [AWS CloudWAN](posts/2025-12-14_aws-gateway-load-balancer-gwlb.md) - 2025-12-14
+- [AWS Guard Duty](posts/2025-12-14_aws-global-accelerator.md) - 2025-12-14
+- [AWS Guard Duty](posts/2025-12-14_aws-global-accelerator.md) - 2025-12-14
+- [AWS Local Zone](posts/2025-12-14_aws-guard-duty.md) - 2025-12-14
+- [AWS Local Zone](posts/2025-12-14_aws-guard-duty.md) - 2025-12-14
+- [AWS Global Accelerator](posts/2025-12-14_aws-landing-zone.md) - 2025-12-14
+- [AWS Global Accelerator](posts/2025-12-14_aws-landing-zone.md) - 2025-12-14
+- [AWS Verified Access](posts/2025-12-14_aws-local-zone.md) - 2025-12-14
+- [AWS Verified Access](posts/2025-12-14_aws-local-zone.md) - 2025-12-14
+- [AWS VPC Peering](posts/2025-12-14_aws-nat-gateway.md) - 2025-12-14
+- [AWS VPC Peering](posts/2025-12-14_aws-nat-gateway.md) - 2025-12-14
+- [AWS Gateway Load Balancer (GWLB)](posts/2025-12-14_aws-network-firewall-nwfw.md) - 2025-12-14
+- [AWS Gateway Load Balancer (GWLB)](posts/2025-12-14_aws-network-firewall-nwfw.md) - 2025-12-14
+- [ACE-Security Secure Egress LAB](posts/2025-12-14_aws-networking-limitations.md) - 2025-12-14
+- [ACE-Security Secure Egress LAB](posts/2025-12-14_aws-networking-limitations.md) - 2025-12-14
+- [GenAI – A Network Engineer’s Perspective](posts/2025-12-14_aws-networking-services-deep-dive.md) - 2025-12-14
+- [GenAI – A Network Engineer’s Perspective](posts/2025-12-14_aws-networking-services-deep-dive.md) - 2025-12-14
+- [GCP Secure Network Routing Designs](posts/2025-12-14_aws-nwfw-network-firewall-vs-aviatrix-threatguard.md) - 2025-12-14
+- [GCP Secure Network Routing Designs](posts/2025-12-14_aws-nwfw-network-firewall-vs-aviatrix-threatguard.md) - 2025-12-14
+- [AWS Core Networking Services](posts/2025-12-14_aws-organizations.md) - 2025-12-14
+- [AWS Core Networking Services](posts/2025-12-14_aws-organizations.md) - 2025-12-14
+- [AWS VPC Lattice](posts/2025-12-14_aws-private-link.md) - 2025-12-14
+- [AWS VPC Lattice](posts/2025-12-14_aws-private-link.md) - 2025-12-14
+- [Amazon Bedrock Agentcore Deployment](posts/2025-12-14_aws-rds-for-oracle-db-engine.md) - 2025-12-14
+- [Amazon Bedrock Agentcore Deployment](posts/2025-12-14_aws-rds-for-oracle-db-engine.md) - 2025-12-14
+- [AWS Private Link](posts/2025-12-14_aws-security-hub.md) - 2025-12-14
+- [AWS Private Link](posts/2025-12-14_aws-security-hub.md) - 2025-12-14
+- [AWS Security Hub](posts/2025-12-14_aws-site-to-site-vpn-s2s.md) - 2025-12-14
+- [AWS Security Hub](posts/2025-12-14_aws-site-to-site-vpn-s2s.md) - 2025-12-14
+- [AWS NAT Gateway](posts/2025-12-14_aws-transit-gateway-tgw.md) - 2025-12-14
+- [AWS NAT Gateway](posts/2025-12-14_aws-transit-gateway-tgw.md) - 2025-12-14
+- [AWS Client VPN](posts/2025-12-14_aws-verified-access.md) - 2025-12-14
+- [AWS Client VPN](posts/2025-12-14_aws-verified-access.md) - 2025-12-14
+- [AWS Network Firewall (ANFW)](posts/2025-12-14_aws-vpc-lattice.md) - 2025-12-14
+- [AWS Network Firewall (ANFW)](posts/2025-12-14_aws-vpc-lattice.md) - 2025-12-14
+- [AWS Essential Infrastructure/Networking Services](posts/2025-12-14_aws-vpc-sharing.md) - 2025-12-14
+- [AWS Essential Infrastructure/Networking Services](posts/2025-12-14_aws-vpc-sharing.md) - 2025-12-14
+- [SAP S4/HANA MSP Design with Multicloud Backbone](posts/2025-12-14_azure-aks-traffic-routing-between-vnet-or-cluster.md) - 2025-12-14
+- [SAP S4/HANA MSP Design with Multicloud Backbone](posts/2025-12-14_azure-aks-traffic-routing-between-vnet-or-cluster.md) - 2025-12-14
+- [De-BuZz Review | Cisco HyperShield | AI Native Security](posts/2025-12-14_azure-networking-limitations-and-constraints.md) - 2025-12-14
+- [De-BuZz Review | Cisco HyperShield | AI Native Security](posts/2025-12-14_azure-networking-limitations-and-constraints.md) - 2025-12-14
+- [Britive API / CLI to Trigger Cloud Data Scan](posts/2025-12-14_azure-pim-vs-cpam-key-differences-you-need-to-know.md) - 2025-12-14
+- [Britive API / CLI to Trigger Cloud Data Scan](posts/2025-12-14_azure-pim-vs-cpam-key-differences-you-need-to-know.md) - 2025-12-14
+- [AWS Bedrock Agent to Agent Communication and Collaboration](posts/2025-12-14_azure-resource-group-vs-specific-azure-resource-ty.md) - 2025-12-14
+- [AWS Bedrock Agent to Agent Communication and Collaboration](posts/2025-12-14_azure-resource-group-vs-specific-azure-resource-ty.md) - 2025-12-14
+- [Azure Aviatrix Controller Deployment](posts/2025-12-14_azure-transit-network-design-patterns.md) - 2025-12-14
+- [Azure Aviatrix Controller Deployment](posts/2025-12-14_azure-transit-network-design-patterns.md) - 2025-12-14
+- [Aviatrix User-VPN Deployment with AWS UDP Based NLB](posts/2025-12-14_azure-transit-network-with-vnet-peering-deployment.md) - 2025-12-14
+- [Aviatrix User-VPN Deployment with AWS UDP Based NLB](posts/2025-12-14_azure-transit-network-with-vnet-peering-deployment.md) - 2025-12-14
+- [Insights from RSA Conference 2024](posts/2025-12-14_azure-vwan-design-considerations.md) - 2025-12-14
+- [Insights from RSA Conference 2024](posts/2025-12-14_azure-vwan-design-considerations.md) - 2025-12-14
+- [What is GCP Pub/Sub?](posts/2025-12-14_bigquery-constraint-why-is-it-a-bigdeal.md) - 2025-12-14
+- [What is GCP Pub/Sub?](posts/2025-12-14_bigquery-constraint-why-is-it-a-bigdeal.md) - 2025-12-14
+- [Sumo Logic Inbound HTTPS Webhook Configuration](posts/2025-12-14_britive-access-broker-add-user-to-local-admin-grou.md) - 2025-12-14
+- [Sumo Logic Inbound HTTPS Webhook Configuration](posts/2025-12-14_britive-access-broker-add-user-to-local-admin-grou.md) - 2025-12-14
+- [Azure PIM: Key Differences You Need to Know](posts/2025-12-14_britive-access-broker-field-option-use-case.md) - 2025-12-14
+- [Azure PIM: Key Differences You Need to Know](posts/2025-12-14_britive-access-broker-field-option-use-case.md) - 2025-12-14
+- [Britive | Azure Onboarding Experience](posts/2025-12-14_britive-access-broker-installation.md) - 2025-12-14
+- [Britive | Azure Onboarding Experience](posts/2025-12-14_britive-access-broker-installation.md) - 2025-12-14
+- [Difference Between RDS, AWS Aurora and MySQL](posts/2025-12-14_britive-access-broker-troubleshooting-tips-and-bes.md) - 2025-12-14
+- [Difference Between RDS, AWS Aurora and MySQL](posts/2025-12-14_britive-access-broker-troubleshooting-tips-and-bes.md) - 2025-12-14
+- [Kubernetes Access Security and IAM](posts/2025-12-14_britive-api-cli-to-trigger-cloud-data-scan.md) - 2025-12-14
+- [Kubernetes Access Security and IAM](posts/2025-12-14_britive-api-cli-to-trigger-cloud-data-scan.md) - 2025-12-14
+- [How Amazon Alexa’s Architecture Powers Britive’s Access Broker Feature](posts/2025-12-14_britive-aurora-mysql-demo.md) - 2025-12-14
+- [How Amazon Alexa’s Architecture Powers Britive’s Access Broker Feature](posts/2025-12-14_britive-aurora-mysql-demo.md) - 2025-12-14
+- [Britive | Okta Application Onboarding Experience](posts/2025-12-14_britive-aws-application-onboarding-experience.md) - 2025-12-14
+- [Britive | Okta Application Onboarding Experience](posts/2025-12-14_britive-aws-application-onboarding-experience.md) - 2025-12-14
+- [Britive AWS Application Onboarding Experience](posts/2025-12-14_britive-azure-onboarding-experience.md) - 2025-12-14
+- [Britive AWS Application Onboarding Experience](posts/2025-12-14_britive-azure-onboarding-experience.md) - 2025-12-14
+- [Britive Access Broker Getting Started Guide](posts/2025-12-14_britive-datadog-siem-integration-steps.md) - 2025-12-14
+- [Britive Access Broker Getting Started Guide](posts/2025-12-14_britive-datadog-siem-integration-steps.md) - 2025-12-14
+- [Securing Agentic AI with Amazon Bedrock | Webinar](posts/2025-12-14_britive-dynamic-secrets-in-ci-cd-pipelines-demo-sc.md) - 2025-12-14
+- [Securing Agentic AI with Amazon Bedrock | Webinar](posts/2025-12-14_britive-dynamic-secrets-in-ci-cd-pipelines-demo-sc.md) - 2025-12-14
+- [The Challenge of Standing Privileges in Snowflake for Admin Account](posts/2025-12-14_britive-new-tenant-onboarding.md) - 2025-12-14
+- [The Challenge of Standing Privileges in Snowflake for Admin Account](posts/2025-12-14_britive-new-tenant-onboarding.md) - 2025-12-14
+- [Britive Aurora MySql Demo](posts/2025-12-14_britive-okta-application-onboarding-experience.md) - 2025-12-14
+- [Britive Aurora MySql Demo](posts/2025-12-14_britive-okta-application-onboarding-experience.md) - 2025-12-14
+- [PostgreSQL Just in Time CLI Access | Demo Script](posts/2025-12-14_britive-self-service-access-and-permission-builder.md) - 2025-12-14
+- [PostgreSQL Just in Time CLI Access | Demo Script](posts/2025-12-14_britive-self-service-access-and-permission-builder.md) - 2025-12-14
+- [Secure S3 Bucket Access Over Direct Connect Private VIF](posts/2025-12-14_check-point-cloudguard-iaas-in-aws-with-quick-fail.md) - 2025-12-14
+- [Secure S3 Bucket Access Over Direct Connect Private VIF](posts/2025-12-14_check-point-cloudguard-iaas-in-aws-with-quick-fail.md) - 2025-12-14
+- [Time to Downside (On-Premise) UP (The Cloud) Your Enterprise Network](posts/2025-12-14_cisco-intenet-to-acquire-splunk-for-28-billion-in.md) - 2025-12-14
+- [Time to Downside (On-Premise) UP (The Cloud) Your Enterprise Network](posts/2025-12-14_cisco-intenet-to-acquire-splunk-for-28-billion-in.md) - 2025-12-14
+- [Aviatrix ThreatGuard Design Patterns for Internet Ingress Traffic](posts/2025-12-14_cloud-application-migration-is-slowing-down-the-di.md) - 2025-12-14
+- [Aviatrix ThreatGuard Design Patterns for Internet Ingress Traffic](posts/2025-12-14_cloud-application-migration-is-slowing-down-the-di.md) - 2025-12-14
+- [Azure AKS Traffic Routing Between VNET or Cluster](posts/2025-12-14_cloud-architecture-mistakes-losing-visibility-and.md) - 2025-12-14
+- [Azure AKS Traffic Routing Between VNET or Cluster](posts/2025-12-14_cloud-architecture-mistakes-losing-visibility-and.md) - 2025-12-14
+- [Aviatrix to Orchestrate AWS Transit Gateway (TGW) and Build VPC Segmentation](posts/2025-12-14_cloud-architecture-mistakes-organizations-need-sho.md) - 2025-12-14
+- [Aviatrix to Orchestrate AWS Transit Gateway (TGW) and Build VPC Segmentation](posts/2025-12-14_cloud-architecture-mistakes-organizations-need-sho.md) - 2025-12-14
+- [AWS NWFW (Network Firewall) vs Aviatrix ThreatGuard Solution](posts/2025-12-14_cloud-leaders-and-executive.md) - 2025-12-14
+- [AWS NWFW (Network Firewall) vs Aviatrix ThreatGuard Solution](posts/2025-12-14_cloud-leaders-and-executive.md) - 2025-12-14
+- [Save AWS NAT Gateway Cost and Improve Security](posts/2025-12-14_cloud-native-only-vs-isv-networking-solutions.md) - 2025-12-14
+- [Save AWS NAT Gateway Cost and Improve Security](posts/2025-12-14_cloud-native-only-vs-isv-networking-solutions.md) - 2025-12-14
+- [SAP S4/HANA Installation For LAB and Development Work](posts/2025-12-14_cloud-network-sd-edge-design-patterns.md) - 2025-12-14
+- [SAP S4/HANA Installation For LAB and Development Work](posts/2025-12-14_cloud-network-sd-edge-design-patterns.md) - 2025-12-14
+- [Cloud Network SD-Edge Design Patterns](posts/2025-12-14_cloud-network-well-architected-framework-design-pi.md) - 2025-12-14
+- [Cloud Network SD-Edge Design Patterns](posts/2025-12-14_cloud-network-well-architected-framework-design-pi.md) - 2025-12-14
+- [GCP FireNet](posts/2025-12-14_cloud-networking-and-security-predictions-for-2021.md) - 2025-12-14
+- [GCP FireNet](posts/2025-12-14_cloud-networking-and-security-predictions-for-2021.md) - 2025-12-14
+- [Cloud Networking and Security Predictions For 2021](posts/2025-12-14_cloud-sandbox-starter-advance-mode.md) - 2025-12-14
+- [Cloud Networking and Security Predictions For 2021](posts/2025-12-14_cloud-sandbox-starter-advance-mode.md) - 2025-12-14
+- [GCP High Performance Encryption](posts/2025-12-14_cloud-to-dc-active-standby-firewall-design-and-dep.md) - 2025-12-14
+- [GCP High Performance Encryption](posts/2025-12-14_cloud-to-dc-active-standby-firewall-design-and-dep.md) - 2025-12-14
+- [Design and Feature Requirement for a User-VPN Solution](posts/2025-12-14_connecting-aviatrix-gateway-to-cisco-csr-in-the-sa.md) - 2025-12-14
+- [Design and Feature Requirement for a User-VPN Solution](posts/2025-12-14_connecting-aviatrix-gateway-to-cisco-csr-in-the-sa.md) - 2025-12-14
+- [Kubernetes Security For Multi-Cluster Deployments](posts/2025-12-14_de-buzz-review-cisco-hypershield-ai-native-securit.md) - 2025-12-14
+- [Kubernetes Security For Multi-Cluster Deployments](posts/2025-12-14_de-buzz-review-cisco-hypershield-ai-native-securit.md) - 2025-12-14
+- [Direct Connect Gateway](posts/2025-12-14_design-and-feature-requirement-for-a-user-vpn-solu.md) - 2025-12-14
+- [Direct Connect Gateway](posts/2025-12-14_design-and-feature-requirement-for-a-user-vpn-solu.md) - 2025-12-14
+- [Britive Access Broker “Field” Option Use-Case](posts/2025-12-14_difference-between-rds-aws-aurora-and-mysql.md) - 2025-12-14
+- [Britive Access Broker “Field” Option Use-Case](posts/2025-12-14_difference-between-rds-aws-aurora-and-mysql.md) - 2025-12-14
+- [SAML Based User-VPN / Open-VPN in Public Cloud](posts/2025-12-14_direct-connect-gateway.md) - 2025-12-14
+- [SAML Based User-VPN / Open-VPN in Public Cloud](posts/2025-12-14_direct-connect-gateway.md) - 2025-12-14
+- [Cloud Network Well-Architected Framework Design Pillars](posts/2025-12-14_diy-automation-increases-complexity-and-cost-of-ru.md) - 2025-12-14
+- [Cloud Network Well-Architected Framework Design Pillars](posts/2025-12-14_diy-automation-increases-complexity-and-cost-of-ru.md) - 2025-12-14
+- [GCP Shared VPC Transit Design and Deploy For Enterprises](posts/2025-12-14_dns-conditional-forwarding-from-on-prem-to-cloud.md) - 2025-12-14
+- [GCP Shared VPC Transit Design and Deploy For Enterprises](posts/2025-12-14_dns-conditional-forwarding-from-on-prem-to-cloud.md) - 2025-12-14
+- [Securing MCP Servers for Agentic AI: A Practical Guide to MCP Security, Authorization, and Runtime Controls](posts/2025-12-14_elevating-aws-identity-center-security-the-power-o.md) - 2025-12-14
+- [Securing MCP Servers for Agentic AI: A Practical Guide to MCP Security, Authorization, and Runtime Controls](posts/2025-12-14_elevating-aws-identity-center-security-the-power-o.md) - 2025-12-14
+- [Cloud Native Only vs. ISV Networking Solutions](posts/2025-12-14_enterprise-solutions-architect-role-for-career-gro.md) - 2025-12-14
+- [Cloud Native Only vs. ISV Networking Solutions](posts/2025-12-14_enterprise-solutions-architect-role-for-career-gro.md) - 2025-12-14
+- [Aviatrix Kickstart – Spin up Cloud Networks in Minutes – UI Mode](posts/2025-12-14_gcp-firenet.md) - 2025-12-14
+- [Aviatrix Kickstart – Spin up Cloud Networks in Minutes – UI Mode](posts/2025-12-14_gcp-firenet.md) - 2025-12-14
+- [Install BlockChain Quorum Node on AWS EC2 Instance](posts/2025-12-14_gcp-high-performance-encryption.md) - 2025-12-14
+- [Install BlockChain Quorum Node on AWS EC2 Instance](posts/2025-12-14_gcp-high-performance-encryption.md) - 2025-12-14
+- [Amazon Bedrock AgentCore](posts/2025-12-14_gcp-iam-and-gcp-shared-service-account-concepts.md) - 2025-12-14
+- [Amazon Bedrock AgentCore](posts/2025-12-14_gcp-iam-and-gcp-shared-service-account-concepts.md) - 2025-12-14
+- [Do you really need a CIEM tool? I don’t think so.](posts/2025-12-14_gcp-just-in-time-jit-ephemeral-access-for-google-p.md) - 2025-12-14
+- [Do you really need a CIEM tool? I don’t think so.](posts/2025-12-14_gcp-just-in-time-jit-ephemeral-access-for-google-p.md) - 2025-12-14
+- [Aviatrix Ingress Filtering Deployment with AWS ALB (Application Load Balancer)](posts/2025-12-14_gcp-least-privileged-service-account-for-aviatrix.md) - 2025-12-14
+- [Aviatrix Ingress Filtering Deployment with AWS ALB (Application Load Balancer)](posts/2025-12-14_gcp-least-privileged-service-account-for-aviatrix.md) - 2025-12-14
+- [Cloud to On Premise Data Center Active/Standby Firewall Design and Deployment](posts/2025-12-14_gcp-native-networking-concepts-cheat-sheet.md) - 2025-12-14
+- [Cloud to On Premise Data Center Active/Standby Firewall Design and Deployment](posts/2025-12-14_gcp-native-networking-concepts-cheat-sheet.md) - 2025-12-14
+- [GCP Shared VPC Concepts](posts/2025-12-14_gcp-networking-best-practices.md) - 2025-12-14
+- [GCP Shared VPC Concepts](posts/2025-12-14_gcp-networking-best-practices.md) - 2025-12-14
+- [AWS Networking Limitations and Constraints](posts/2025-12-14_gcp-networking-limitations.md) - 2025-12-14
+- [AWS Networking Limitations and Constraints](posts/2025-12-14_gcp-networking-limitations.md) - 2025-12-14
+- [Google Private Service Connect (PSC) Configuration for Google APIs](posts/2025-12-14_gcp-networking-pricing-and-quota-limits.md) - 2025-12-14
+- [Google Private Service Connect (PSC) Configuration for Google APIs](posts/2025-12-14_gcp-networking-pricing-and-quota-limits.md) - 2025-12-14
+- [Protect Internet Facing Applications with Firewalls in Public Cloud – Ingress Traffic Design](posts/2025-12-14_gcp-secure-network-routing-designs.md) - 2025-12-14
+- [Protect Internet Facing Applications with Firewalls in Public Cloud – Ingress Traffic Design](posts/2025-12-14_gcp-secure-network-routing-designs.md) - 2025-12-14
+- [AWS Direct Connect and Direct Connect Gateway Scale Limits](posts/2025-12-14_gcp-shared-vpc-concepts.md) - 2025-12-14
+- [AWS Direct Connect and Direct Connect Gateway Scale Limits](posts/2025-12-14_gcp-shared-vpc-concepts.md) - 2025-12-14
+- [Previous Post](posts/2025-12-14_gcp-shared-vpc-network-with-aviatrix-transit-hub-s.md) - 2025-12-14
+- [Previous Post](posts/2025-12-14_gcp-shared-vpc-network-with-aviatrix-transit-hub-s.md) - 2025-12-14
+- [Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP](posts/2025-12-14_gcp-transit-networking-and-routing-with-aviatrix.md) - 2025-12-14
+- [Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP](posts/2025-12-14_gcp-transit-networking-and-routing-with-aviatrix.md) - 2025-12-14
+- [PowerShell Script | Add User to Local Admin Group | JIT](posts/2025-12-14_gke-kubernetes-k8s-demo.md) - 2025-12-14
+- [PowerShell Script | Add User to Local Admin Group | JIT](posts/2025-12-14_gke-kubernetes-k8s-demo.md) - 2025-12-14
+- [Aviatrix’s Check Point CloudGuard Related Features](posts/2025-12-14_google-cloud-and-aviatrix-testing-poc-lab-guide.md) - 2025-12-14
+- [Aviatrix’s Check Point CloudGuard Related Features](posts/2025-12-14_google-cloud-and-aviatrix-testing-poc-lab-guide.md) - 2025-12-14
+- [Cloud Sandbox Starter – Advance Mode](posts/2025-12-14_google-private-service-connect-psc-configuration-f.md) - 2025-12-14
+- [Cloud Sandbox Starter – Advance Mode](posts/2025-12-14_google-private-service-connect-psc-configuration-f.md) - 2025-12-14
+- [A PAM Session Recording Architecture](posts/2025-12-14_guacamole-deployment-models.md) - 2025-12-14
+- [A PAM Session Recording Architecture](posts/2025-12-14_guacamole-deployment-models.md) - 2025-12-14
+- [AWS RDS for Oracle DB Engine](posts/2025-12-14_guacamole-url-explained.md) - 2025-12-14
+- [AWS RDS for Oracle DB Engine](posts/2025-12-14_guacamole-url-explained.md) - 2025-12-14
+- [Reduce Standing Permission Security Risk | Lock Down GCP Project Access](posts/2025-12-14_how-to-eliminate-aws-overly-permissive-iam-roles.md) - 2025-12-14
+- [Reduce Standing Permission Security Risk | Lock Down GCP Project Access](posts/2025-12-14_how-to-eliminate-aws-overly-permissive-iam-roles.md) - 2025-12-14
+- [NETFLOW Mode Should I use L7 or IPT?](posts/2025-12-14_important-ai-terms-to-remember.md) - 2025-12-14
+- [NETFLOW Mode Should I use L7 or IPT?](posts/2025-12-14_important-ai-terms-to-remember.md) - 2025-12-14
+- [Private Cloud Definition Discussion – Again?](posts/2025-12-14_insights-from-rsa-conference-2024.md) - 2025-12-14
+- [Private Cloud Definition Discussion – Again?](posts/2025-12-14_insights-from-rsa-conference-2024.md) - 2025-12-14
+- [Deploying BlockChain Quorum on AWS EC2 Instance](posts/2025-12-14_install-blockchain-quorum-node-on-aws-ec2-instance.md) - 2025-12-14
+- [Deploying BlockChain Quorum on AWS EC2 Instance](posts/2025-12-14_install-blockchain-quorum-node-on-aws-ec2-instance.md) - 2025-12-14
+- [Selective DNS Traffic Forwarding From On-Prem to Cloud](posts/2025-12-14_install-blockchain-quroum-on-aws-ec2-instance.md) - 2025-12-14
+- [Selective DNS Traffic Forwarding From On-Prem to Cloud](posts/2025-12-14_install-blockchain-quroum-on-aws-ec2-instance.md) - 2025-12-14
+- [Britive Datadog (SIEM) Integration Steps](posts/2025-12-14_kubernetes-access-security-and-iam.md) - 2025-12-14
+- [Britive Datadog (SIEM) Integration Steps](posts/2025-12-14_kubernetes-access-security-and-iam.md) - 2025-12-14
+- [Britive Access Broker Best Practices and Troubleshooting Tips MySQL Database](posts/2025-12-14_kubernetes-just-in-time-access.md) - 2025-12-14
+- [Britive Access Broker Best Practices and Troubleshooting Tips MySQL Database](posts/2025-12-14_kubernetes-just-in-time-access.md) - 2025-12-14
+- [LAB1 – Google Cloud and Aviatrix Testing/POC LAB Guide](posts/2025-12-14_lab2-gcp-multi-cloud-network-transit-hub-spoke.md) - 2025-12-14
+- [LAB1 – Google Cloud and Aviatrix Testing/POC LAB Guide](posts/2025-12-14_lab2-gcp-multi-cloud-network-transit-hub-spoke.md) - 2025-12-14
+- [LAB2 – GCP Multi-Cloud Network Transit / Hub-Spoke](posts/2025-12-14_lab3-gcp-multi-cloud-network-segmentation-mcns.md) - 2025-12-14
+- [LAB2 – GCP Multi-Cloud Network Transit / Hub-Spoke](posts/2025-12-14_lab3-gcp-multi-cloud-network-segmentation-mcns.md) - 2025-12-14
+- [LAB3 – GCP Multi-Cloud Network Segmentation (MCNS)](posts/2025-12-14_lab4-placeholder.md) - 2025-12-14
+- [LAB3 – GCP Multi-Cloud Network Segmentation (MCNS)](posts/2025-12-14_lab4-placeholder.md) - 2025-12-14
+- [LAB4 – GCP FQDN Based Egress Security](posts/2025-12-14_lab5-placehoslder.md) - 2025-12-14
+- [LAB4 – GCP FQDN Based Egress Security](posts/2025-12-14_lab5-placehoslder.md) - 2025-12-14
+- [LAB5 – Bring Your Own IP/Subnet in GCP (Overlapping IP)](posts/2025-12-14_lab6-placehoslder.md) - 2025-12-14
+- [LAB5 – Bring Your Own IP/Subnet in GCP (Overlapping IP)](posts/2025-12-14_lab6-placehoslder.md) - 2025-12-14
+- [LAB6 – GCP Remote User VPN / Client VPN](posts/2025-12-14_lab7-placehoslder.md) - 2025-12-14
+- [LAB6 – GCP Remote User VPN / Client VPN](posts/2025-12-14_lab7-placehoslder.md) - 2025-12-14
+- [Leadership](posts/2025-12-14_leadership.md) - 2025-12-14
+- [Azure Networking Limitations and Constraints](posts/2025-12-14_microsoft-azure-access-jit-checkout.md) - 2025-12-14
+- [Azure Networking Limitations and Constraints](posts/2025-12-14_microsoft-azure-access-jit-checkout.md) - 2025-12-14
+- [Importance of Right Network Architecture vs Cost](posts/2025-12-14_multi-cloud-vs-hybrid-cloud-definition.md) - 2025-12-14
+- [Importance of Right Network Architecture vs Cost](posts/2025-12-14_multi-cloud-vs-hybrid-cloud-definition.md) - 2025-12-14
+- [SAP S4/HANA Jargon for Network Engineers](posts/2025-12-14_multicloud-network-architecture-mcna-and-designs.md) - 2025-12-14
+- [SAP S4/HANA Jargon for Network Engineers](posts/2025-12-14_multicloud-network-architecture-mcna-and-designs.md) - 2025-12-14
+- [Azure vWAN Design Considerations](posts/2025-12-14_netflow-l7-or-ipt-mode.md) - 2025-12-14
+- [Azure vWAN Design Considerations](posts/2025-12-14_netflow-l7-or-ipt-mode.md) - 2025-12-14
+- [SAML Based User-VPN / Open-VPN in Public Cloud](posts/2025-12-14_netjoint-multicloud.md) - 2025-12-14
+- [SAML Based User-VPN / Open-VPN in Public Cloud](posts/2025-12-14_netjoint-multicloud.md) - 2025-12-14
+- [Multi-Cloud Transit Design: Interworking with On-Prem and/or Cloud Devices/Services](posts/2025-12-14_oci-initial-config.md) - 2025-12-14
+- [Multi-Cloud Transit Design: Interworking with On-Prem and/or Cloud Devices/Services](posts/2025-12-14_oci-initial-config.md) - 2025-12-14
+- [Aviatrix Oracle Cloud (OCI) On-Boarding and Initial Configuration](posts/2025-12-14_oci-multicloud-transit.md) - 2025-12-14
+- [Aviatrix Oracle Cloud (OCI) On-Boarding and Initial Configuration](posts/2025-12-14_oci-multicloud-transit.md) - 2025-12-14
+- [Kubernetes Just in Time Access](posts/2025-12-14_okta-identity-provider-integration-with-britive-ge.md) - 2025-12-14
+- [Kubernetes Just in Time Access](posts/2025-12-14_okta-identity-provider-integration-with-britive-ge.md) - 2025-12-14
+- [GCP Least Privileged Service Account for Aviatrix](posts/2025-12-14_onboarding-gcp-project-in-aviatrix-controller-with.md) - 2025-12-14
+- [GCP Least Privileged Service Account for Aviatrix](posts/2025-12-14_onboarding-gcp-project-in-aviatrix-controller-with.md) - 2025-12-14
+- [Britive Dynamic Secrets in CI/CD Pipelines – Demo Script](posts/2025-12-14_postgresql-just-in-time-cli-access-demo-script.md) - 2025-12-14
+- [Britive Dynamic Secrets in CI/CD Pipelines – Demo Script](posts/2025-12-14_postgresql-just-in-time-cli-access-demo-script.md) - 2025-12-14
+- [Cloud Architecture Mistakes: Organizations Need Shorter Mean Time to RecoveryCloud Architecture Mistakes:](posts/2025-12-14_private-cloud-definition-discussion-again.md) - 2025-12-14
+- [Cloud Architecture Mistakes: Organizations Need Shorter Mean Time to RecoveryCloud Architecture Mistakes:](posts/2025-12-14_private-cloud-definition-discussion-again.md) - 2025-12-14
+- [Cloud Leaders and Executive](posts/2025-12-14_private-naas-vs-generic-saas-naas.md) - 2025-12-14
+- [Cloud Leaders and Executive](posts/2025-12-14_private-naas-vs-generic-saas-naas.md) - 2025-12-14
+- [Aviatrix GSI Mockup Landing Page](posts/2025-12-14_protect-internet-facing-applications-with-firewall.md) - 2025-12-14
+- [Aviatrix GSI Mockup Landing Page](posts/2025-12-14_protect-internet-facing-applications-with-firewall.md) - 2025-12-14
+- [The Shocking Salt Typhoon Hack | A massive Failure of Legacy Cybersecurity Approaches](posts/2025-12-14_protect-salesforce-environment-with-cost-optimizat.md) - 2025-12-14
+- [The Shocking Salt Typhoon Hack | A massive Failure of Legacy Cybersecurity Approaches](posts/2025-12-14_protect-salesforce-environment-with-cost-optimizat.md) - 2025-12-14
+- [Aviatrix ACE Professional Bootcamp Prerequisite](posts/2025-12-14_right-network-architecture-is-more-important-than.md) - 2025-12-14
+- [Aviatrix ACE Professional Bootcamp Prerequisite](posts/2025-12-14_right-network-architecture-is-more-important-than.md) - 2025-12-14
+- [GCP Networking Best Practices](posts/2025-12-14_saas-based-multi-cloud-solution-not-for-enterprise.md) - 2025-12-14
+- [GCP Networking Best Practices](posts/2025-12-14_saas-based-multi-cloud-solution-not-for-enterprise.md) - 2025-12-14
+- [Cloud Application Migration is Slowing Down the Digital Transformation](posts/2025-12-14_saas-for-cloud-networking-aka-naas-is-not-for-ente.md) - 2025-12-14
+- [Cloud Application Migration is Slowing Down the Digital Transformation](posts/2025-12-14_saas-for-cloud-networking-aka-naas-is-not-for-ente.md) - 2025-12-14
+- [Aviatrix Security Features](posts/2025-12-14_sap-on-aviatrix-platform.md) - 2025-12-14
+- [Aviatrix Security Features](posts/2025-12-14_sap-on-aviatrix-platform.md) - 2025-12-14
+- [SAP S4/HANA Popular Integrations](posts/2025-12-14_sap-s4-hana-aws-high-availability-challenges-with.md) - 2025-12-14
+- [SAP S4/HANA Popular Integrations](posts/2025-12-14_sap-s4-hana-aws-high-availability-challenges-with.md) - 2025-12-14
+- [Multicloud Network Architecture (MCNA) and Designs](posts/2025-12-14_sap-s4-hana-installation-for-lab-and-development-w.md) - 2025-12-14
+- [Multicloud Network Architecture (MCNA) and Designs](posts/2025-12-14_sap-s4-hana-installation-for-lab-and-development-w.md) - 2025-12-14
+- [SAP S4/HANA AWS High Availability Challenges with AWS Overlay IP Limitations](posts/2025-12-14_sap-s4-hana-jargon-for-network-engineers.md) - 2025-12-14
+- [SAP S4/HANA AWS High Availability Challenges with AWS Overlay IP Limitations](posts/2025-12-14_sap-s4-hana-jargon-for-network-engineers.md) - 2025-12-14
+- [What is Network ML?](posts/2025-12-14_sap-s4-hana-msp-design-with-multicloud-backbone.md) - 2025-12-14
+- [What is Network ML?](posts/2025-12-14_sap-s4-hana-msp-design-with-multicloud-backbone.md) - 2025-12-14
+- [SAP on Aviatrix](posts/2025-12-14_sap-s4-hana-popular-integrations.md) - 2025-12-14
+- [SAP on Aviatrix](posts/2025-12-14_sap-s4-hana-popular-integrations.md) - 2025-12-14
+- [Why Enterprises Don’t Like a SaaS Based Multi-Cloud Networking and Security Solution?](posts/2025-12-14_secure-s3-bucket-access-over-direct-connect-privat.md) - 2025-12-14
+- [Why Enterprises Don’t Like a SaaS Based Multi-Cloud Networking and Security Solution?](posts/2025-12-14_secure-s3-bucket-access-over-direct-connect-privat.md) - 2025-12-14
+- [The Proven Strategy Jeff Bezos Used to Beat iPad: Know Your Audience or Fail](posts/2025-12-14_securing-agentic-ai-with-amazon-bedrock-webinar.md) - 2025-12-14
+- [The Proven Strategy Jeff Bezos Used to Beat iPad: Know Your Audience or Fail](posts/2025-12-14_securing-agentic-ai-with-amazon-bedrock-webinar.md) - 2025-12-14
+- [Britive Self Service Access and Permission Builder](posts/2025-12-14_securing-mcp-servers-for-agentic-ai-a-practical-gu.md) - 2025-12-14
+- [Britive Self Service Access and Permission Builder](posts/2025-12-14_securing-mcp-servers-for-agentic-ai-a-practical-gu.md) - 2025-12-14
+- [Guacamole URL Explained](posts/2025-12-14_sumo-logic-inbound-https-webhook-configuration.md) - 2025-12-14
+- [Guacamole URL Explained](posts/2025-12-14_sumo-logic-inbound-https-webhook-configuration.md) - 2025-12-14
+- [Which one is better? Britive or CyberARK](posts/2025-12-14_the-challenge-of-standing-privileges-in-snowflake.md) - 2025-12-14
+- [Which one is better? Britive or CyberARK](posts/2025-12-14_the-challenge-of-standing-privileges-in-snowflake.md) - 2025-12-14
+- [Zero Standing Privilege for K8s: A Must-Have for Secure DevOps](posts/2025-12-14_the-fatal-mistake-that-kills-startups-not-knowing.md) - 2025-12-14
+- [Zero Standing Privilege for K8s: A Must-Have for Secure DevOps](posts/2025-12-14_the-fatal-mistake-that-kills-startups-not-knowing.md) - 2025-12-14
+- [Important AI Terms to Remember](posts/2025-12-14_the-network-is-the-cloud.md) - 2025-12-14
+- [Important AI Terms to Remember](posts/2025-12-14_the-network-is-the-cloud.md) - 2025-12-14
+- [World of Complex Security Compliance Requirement | What Can Britive do?](posts/2025-12-14_the-shocking-salt-typhoon-hack.md) - 2025-12-14
+- [World of Complex Security Compliance Requirement | What Can Britive do?](posts/2025-12-14_the-shocking-salt-typhoon-hack.md) - 2025-12-14
+- [Enterprise Solutions Architect Role for Career Growth](posts/2025-12-14_time-to-downside-on-premise-up-the-cloud-your-ente.md) - 2025-12-14
+- [Enterprise Solutions Architect Role for Career Growth](posts/2025-12-14_time-to-downside-on-premise-up-the-cloud-your-ente.md) - 2025-12-14
+- [Agentic AI Security Framework and Deployment Guide](posts/2025-12-14_troubleshooting-aws-bedrock-agentcore.md) - 2025-12-14
+- [Agentic AI Security Framework and Deployment Guide](posts/2025-12-14_troubleshooting-aws-bedrock-agentcore.md) - 2025-12-14
+- [AWS EKS Role Binding and OIDC Configuration](posts/2025-12-14_understanding-iam-conditions-in-google-kubernetes.md) - 2025-12-14
+- [AWS EKS Role Binding and OIDC Configuration](posts/2025-12-14_understanding-iam-conditions-in-google-kubernetes.md) - 2025-12-14
+- [Network Joints](posts/2025-12-14_user-vpn-open-vpn-in-azure.md) - 2025-12-14
+- [Network Joints](posts/2025-12-14_user-vpn-open-vpn-in-azure.md) - 2025-12-14
+- [GCP Transit Networking and Routing with Aviatrix](posts/2025-12-14_what-is-aviatrix-cloudwan.md) - 2025-12-14
+- [GCP Transit Networking and Routing with Aviatrix](posts/2025-12-14_what-is-aviatrix-cloudwan.md) - 2025-12-14
+- [Microsoft Azure Just-In-Time (JIT) Ephemeral Access for Administrators](posts/2025-12-14_what-is-ciem-where-is-works-and-where-it-fail.md) - 2025-12-14
+- [Microsoft Azure Just-In-Time (JIT) Ephemeral Access for Administrators](posts/2025-12-14_what-is-ciem-where-is-works-and-where-it-fail.md) - 2025-12-14
+- [Cloud Architecture Mistakes: Losing Visibility and Control](posts/2025-12-14_what-is-cloud-network-backbone.md) - 2025-12-14
+- [Cloud Architecture Mistakes: Losing Visibility and Control](posts/2025-12-14_what-is-cloud-network-backbone.md) - 2025-12-14
+- [GCP IAM and GCP Shared Service Account Concepts](posts/2025-12-14_what-is-gcp-pub-sub.md) - 2025-12-14
+- [GCP IAM and GCP Shared Service Account Concepts](posts/2025-12-14_what-is-gcp-pub-sub.md) - 2025-12-14
+- [Private NaaS vs Generic SaaS NaaS](posts/2025-12-14_what-is-network-ml.md) - 2025-12-14
+- [Private NaaS vs Generic SaaS NaaS](posts/2025-12-14_what-is-network-ml.md) - 2025-12-14
+- [The Network is the Cloud](posts/2025-12-14_whats-the-difference-between-llm-and-dlrm-models.md) - 2025-12-14
+- [The Network is the Cloud](posts/2025-12-14_whats-the-difference-between-llm-and-dlrm-models.md) - 2025-12-14
+- [How to Eliminate AWS Overly Permissive IAM Roles for S3 Buckets](posts/2025-12-14_which-one-is-better-britive-or-cyberark.md) - 2025-12-14
+- [How to Eliminate AWS Overly Permissive IAM Roles for S3 Buckets](posts/2025-12-14_which-one-is-better-britive-or-cyberark.md) - 2025-12-14
+- [AWS Direct Connect (DX)](posts/2025-12-14_why-is-cybersecurity-bad-and-getting-worse.md) - 2025-12-14
+- [AWS Direct Connect (DX)](posts/2025-12-14_why-is-cybersecurity-bad-and-getting-worse.md) - 2025-12-14
+- [Britive New Tenant Onboarding](posts/2025-12-14_world-of-complex-security-compliance-requirement-w.md) - 2025-12-14
+- [Britive New Tenant Onboarding](posts/2025-12-14_world-of-complex-security-compliance-requirement-w.md) - 2025-12-14
+- [Troubleshooting AWS Bedrock AgentCore](posts/2025-12-14_zero-standing-privilege-for-k8s-a-must-have-for-se.md) - 2025-12-14
+- [Troubleshooting AWS Bedrock AgentCore](posts/2025-12-14_zero-standing-privilege-for-k8s-a-must-have-for-se.md) - 2025-12-14
