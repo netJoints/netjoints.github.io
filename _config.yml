@@ -8,22 +8,17 @@ baseurl: ""
 
 # Build settings
 markdown: kramdown
-theme: minima
-
-# Permalink structure (WordPress-style)
-permalink: /:year/:month/:day/:title/
-
-# Collections
-collections:
-  posts:
-    output: true
-    permalink: /:year/:month/:day/:title/
+remote_theme: pages-themes/cayman@v0.2.0
 
 # Plugins
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+# Permalink structure (WordPress-style)
+permalink: /:year/:month/:day/:title/
 
 # Exclude from processing
 exclude:
@@ -36,6 +31,8 @@ exclude:
   - wordpress_to_github.py
   - requirements.txt
   - fix_dates.py
+  - rename_posts.sh
+  - post_dates.csv
 
 # Include
 include:
@@ -47,17 +44,14 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "post"
+      layout: "default"
       author: "Shahzad Ali"
-      comments: false
 
 # Social links
 github_username: netJoints
-# twitter_username: yourusername
 
 # Show excerpts on homepage
 show_excerpts: true
 
-# Pagination (if using jekyll-paginate)
-# paginate: 10
-# paginate_path: "/page/:num/"
+# Cayman theme options
+show_downloads: false
