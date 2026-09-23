@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meraki MS vs IOS XE OS Switching Gaps | Project Overview</title>
+  <meta name="description" content="Pain point, solution architecture, software stack, and AI operating model for Meraki MS vs IOS XE OS Switching Gaps.">
+  <style>
+    :root { --ink:#172033; --muted:#5c6980; --line:#dfe6ef; --panel:#fff; --bg:#f5f8fc; --accent:#0b6e99; --accent2:#6b4ce6; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif; }
+    a { color:var(--accent); }
+    .wrap { max-width:1120px; margin:auto; padding:28px 24px 64px; }
+    header { display:flex; justify-content:space-between; gap:20px; align-items:center; border-bottom:1px solid var(--line); padding-bottom:20px; }
+    .brand { color:var(--ink); font-weight:800; text-decoration:none; letter-spacing:.02em; }
+    .badge,.tag { display:inline-block; padding:4px 10px; border:1px solid #b8d8e7; border-radius:999px; color:var(--accent); background:#eef9fd; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+    .hero { padding:70px 0 46px; max-width:850px; }
+    h1 { font-size:clamp(2.2rem,6vw,4.8rem); line-height:1.02; letter-spacing:-.05em; margin:16px 0; }
+    h2 { font-size:clamp(1.45rem,3vw,2.2rem); line-height:1.15; margin:0 0 12px; }
+    h3 { margin:0 0 7px; font-size:1.08rem; }
+    .lede { color:var(--muted); font-size:1.18rem; max-width:760px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .button { border-radius:10px; padding:10px 15px; text-decoration:none; font-weight:750; border:1px solid var(--accent); }
+    .primary { color:white; background:var(--accent); }
+    .secondary { color:var(--accent); background:white; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:24px 0; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 12px 30px rgba(23,32,51,.05); }
+    .card p { color:var(--muted); margin:0; }
+    .wide { grid-column:1/-1; }
+    .diagram { width:100%; height:auto; border-radius:14px; background:linear-gradient(135deg,#f8fbff,#eef7fa); border:1px solid var(--line); padding:8px; }
+    .diagram text { font:700 14px system-ui,sans-serif; fill:var(--ink); }
+    .diagram .small { font-size:11px; font-weight:500; fill:var(--muted); }
+    .diagram .box { fill:white; stroke:#9ac8da; stroke-width:2; }
+    .diagram .ai { fill:#f1edff; stroke:#aa9aea; }
+    .diagram .guard { fill:#eef9f2; stroke:#95c7a3; }
+    .diagram .arrow { stroke:var(--accent); stroke-width:2.5; marker-end:url(#arrow); }
+    .stack { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .tag { color:#4a3ca5; border-color:#d0c7ff; background:#f6f3ff; text-transform:none; letter-spacing:0; font-size:.88rem; }
+    .steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; counter-reset:step; }
+    .step { border-left:3px solid var(--accent2); padding:4px 12px; }
+    .step strong:before { counter-increment:step; content:counter(step) ". "; color:var(--accent2); }
+    footer { color:var(--muted); border-top:1px solid var(--line); margin-top:34px; padding-top:18px; font-size:.9rem; }
+    @media (max-width:720px) { header { align-items:flex-start; flex-direction:column; } .grid,.steps { grid-template-columns:1fr; } .wide { grid-column:auto; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="brand" href="https://github.com/netjoints/meraki-ms-vs-ios-xe-os-switching-gaps">Meraki MS vs IOS XE OS Switching Gaps</a><span class="badge">Private project overview</span></header>
+    <main>
+      <section class="hero"><span class="badge">Pain point → operating model</span><h1>Meraki MS vs IOS XE OS Switching Gaps</h1><p class="lede">Operators need to understand where cloud-managed switching and IOS XE expose different controls, workflows, and automation surfaces.</p><div class="actions"><a class="button primary" href="https://github.com/netjoints/meraki-ms-vs-ios-xe-os-switching-gaps">Open private repository</a><a class="button secondary" href="#architecture">View architecture</a></div></section>
+      <section class="grid" aria-label="Project summary">
+        <article class="card"><h2>Use case</h2><p>Operators need to understand where cloud-managed switching and IOS XE expose different controls, workflows, and automation surfaces.</p></article>
+        <article class="card"><h2>How it solves it</h2><p>A source-backed comparison framework makes capability gaps, workarounds, and operational tradeoffs explicit for design and migration discussions.</p></article>
+        <article id="architecture" class="card wide"><h2>Architecture</h2><p>The design separates inputs, orchestration, AI assistance, and human verification. Secrets and environment-specific identifiers belong in runtime configuration, never in this page or source control.</p>
+          <svg class="diagram" viewBox="0 0 1080 280" role="img" aria-label="Architecture flow from problem to verified outcome"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0b6e99"/></marker></defs><rect class="box" x="25" y="92" width="145" height="88" rx="14"/><text x="97" y="124" text-anchor="middle">Pain point</text><text class="small" x="97" y="148" text-anchor="middle">question or task</text><line class="arrow" x1="170" y1="136" x2="220" y2="136"/><rect class="box" x="220" y="92" width="160" height="88" rx="14"/><text x="300" y="124" text-anchor="middle">Sources</text><text class="small" x="300" y="148" text-anchor="middle">validated inputs</text><line class="arrow" x1="380" y1="136" x2="430" y2="136"/><rect class="ai" x="430" y="80" width="190" height="112" rx="14"/><text x="525" y="116" text-anchor="middle">AgenticOps</text><text class="small" x="525" y="142" text-anchor="middle">route · retrieve · observe</text><text class="small" x="525" y="160" text-anchor="middle">retry · audit · hand off</text><line class="arrow" x1="620" y1="136" x2="670" y2="136"/><rect class="ai" x="670" y="92" width="170" height="88" rx="14"/><text x="755" y="124" text-anchor="middle">AI / RAG</text><text class="small" x="755" y="148" text-anchor="middle">grounded assistance</text><line class="arrow" x1="840" y1="136" x2="890" y2="136"/><rect class="guard" x="890" y="92" width="165" height="88" rx="14"/><text x="972" y="124" text-anchor="middle">Verified outcome</text><text class="small" x="972" y="148" text-anchor="middle">human-safe action</text></svg>
+        </article>
+        <article class="card"><h2>Software stack</h2><p>Markdown research, capability taxonomy, public reference links, evidence review workflow.</p><div class="stack"><span class="tag">Source-controlled</span><span class="tag">Testable</span><span class="tag">Observable</span><span class="tag">Least privilege</span></div></article>
+        <article class="card"><h2>AI and AgenticOps</h2><p>AI can retrieve and explain the documented gap while preserving uncertainty; AgenticOps can schedule source reviews and route disputed claims to a technical reviewer.</p></article>
+        <article class="card wide"><h2>Technical operating model</h2><div class="steps"><div class="step"><strong>Ingest</strong><br><span class="small">Accept structured inputs and normalize them.</span></div><div class="step"><strong>Reason</strong><br><span class="small">Retrieve approved context and produce a bounded plan.</span></div><div class="step"><strong>Verify</strong><br><span class="small">Apply guardrails, human review, and evidence checks.</span></div></div><p style="margin-top:18px;color:var(--muted)">Keep customer environments, internal endpoints, and non-public evidence in controlled source systems.</p></article>
+      </section>
+    </main>
+    <footer>This overview is intentionally sanitized. The repository link may require access because the project is private. Do not place credentials, tokens, private keys, customer records, or live endpoint identifiers in Pages content.</footer>
+  </div>
+</body>
+</html>
