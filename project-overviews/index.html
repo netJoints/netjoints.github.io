@@ -7,21 +7,8 @@
   <style>
     body{margin:0;background:#f5f8fc;color:#172033;font:16px/1.6 system-ui,sans-serif}.wrap{max-width:960px;margin:auto;padding:48px 24px}.hero{max-width:720px;margin-bottom:32px}h1{font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.05em;margin:12px 0}.lede{color:#5c6980;font-size:1.15rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{display:block;background:#fff;border:1px solid #dfe6ef;border-radius:14px;padding:18px;text-decoration:none;color:inherit}.card:hover{border-color:#0b6e99;box-shadow:0 10px 24px #17203312}.card strong{display:block;color:#0b6e99}.card span{color:#5c6980;font-size:.92rem}@media(max-width:650px){.grid{grid-template-columns:1fr}}
   </style>
+  <link rel="stylesheet" href="/assets/project-overviews.css">
 </head>
-<body><main class="wrap"><section class="hero"><p>NETJOINTS · PROJECT OVERVIEWS</p><h1>Technical project pages</h1><p class="lede">Sanitized pain-point, solution, architecture, software-stack, AgenticOps, and AI summaries for private project repositories. The source links require repository access.</p></section><section class="grid" aria-label="Project pages">
-  <a class="card" href="/al-lab-access/"><strong>AL Lab Access</strong><span>Secure lab access workspace</span></a>
-  <a class="card" href="/agenticops-prod-mgmt-website/"><strong>AgenticOps Product Management Website</strong><span>Reusable product-operations layout</span></a>
-  <a class="card" href="/ai-rag-search/"><strong>AI RAG Search</strong><span>Source-aware retrieval architecture</span></a>
-  <a class="card" href="/codex-catc-compliance-skil/"><strong>Codex CATC Compliance Skill</strong><span>Repeatable evidence-oriented compliance</span></a>
-  <a class="card" href="/hotel-finder/"><strong>Hotel Finder</strong><span>Protected serverless hotel search</span></a>
-  <a class="card" href="/receipt-finder/"><strong>Receipt Finder</strong><span>Local-first receipt organization</span></a>
-  <a class="card" href="/ask-campus-switching-webex-ai-agent/"><strong>Ask Campus Switching Webex AI Agent</strong><span>Human-first RAG support agent</span></a>
-  <a class="card" href="/aia-catc-to-meraki-migration-steps/"><strong>CatC to Meraki Migration Steps</strong><span>Auditable migration planning</span></a>
-  <a class="card" href="/bgp-evpn-sd-access-api-analysis/"><strong>BGP EVPN SD-Access API Analysis</strong><span>Fabric automation lifecycle mapping</span></a>
-  <a class="card" href="/catalyst-switch-vs-meraki-ms-switching-gap/"><strong>Catalyst vs Meraki Switching Gap</strong><span>Evidence-backed feature comparison</span></a>
-  <a class="card" href="/catc-to-meraki-migration-ai-assistant/"><strong>CatC to Meraki Migration AI Assistant</strong><span>Guided migration workflow</span></a>
-  <a class="card" href="/meraki-ms-vs-ios-xe-os-switching-gaps/"><strong>Meraki MS vs IOS XE Switching Gaps</strong><span>Operating-model comparison</span></a>
-  <a class="card" href="/snra-cvd-programming-playbook/"><strong>SNRA CVD Programming Playbook</strong><span>Coordinated automation planning</span></a>
-  <a class="card" href="/terraform-meraki-switching-gaps/"><strong>Terraform Meraki Switching Gaps</strong><span>Capability and automation crosswalk</span></a>
-</section></main></body>
+<body class="project-catalog" data-project-catalog data-scope="all"><main class="catalog-wrap"><section class="hero"><p class="catalog-kicker">NETJOINTS · PROJECT OVERVIEWS</p><h1>Technical project pages</h1><p class="catalog-lede">The superset portfolio: sanitized pain points, solution patterns, architecture, software stacks, AgenticOps operating models, and AI details across current and earlier projects. Source repositories may be private.</p></section><nav class="catalog-links" aria-label="Project navigation"><a href="/">Home</a><a href="/ai-projects-overview/">AI Projects</a><a href="/about/">About</a></nav>
+<section class="catalog-controls" aria-label="Filter project overviews"><label>Search<input data-filter="search" type="search" placeholder="Search projects or themes"></label><label>Category<select data-filter="category"><option value="">All categories</option></select></label><label>Status<select data-filter="status"><option value="">All status</option><option value="Current">Current</option><option value="Previous">Previous</option></select></label><label>Sort<select data-filter="sort"><option value="title-asc">Title A–Z</option><option value="title-desc">Title Z–A</option></select></label></section><p class="catalog-count" aria-live="polite"></p><section class="project-grid" aria-label="Project overview cards"></section><p class="catalog-empty" hidden>No projects match those filters. Try a broader search or category.</p></main><script src="/assets/project-overviews.js" defer></script></body>
 </html>

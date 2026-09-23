@@ -7,13 +7,16 @@
 .site-nav {
   margin-top: 20px;
   margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
 }
 
 .site-nav a {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   padding: 8px 15px;
-  margin: 0 5px;
   border-radius: 3px;
   font-size: 14px;
   transition: background-color 0.2s ease;
@@ -65,7 +68,7 @@
 @media screen and (max-width: 600px) {
   .site-nav a {
     display: block;
-    margin: 5px 0;
     text-align: center;
+    flex: 1 1 42%;
   }
 }

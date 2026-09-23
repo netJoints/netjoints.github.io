@@ -5,7 +5,12 @@ title: Network Joints
 
 # Welcome to Network Joints
 
-I'm **Shahzad Ali**, sharing insights on Cloud Networking, Security, and Infrastructure.
+I'm **Shahzad Ali**, a Cisco AgenticOps product-management leader connecting AI-assisted network operations, cloud-managed switching, automation, and customer-centered technical strategy.
+
+Explore the work:
+
+- [AI Projects]({{ "/ai-projects-overview/" | relative_url }}) – AI, AgenticOps, RAG, and automation projects.
+- [Project Overviews]({{ "/project-overviews/" | relative_url }}) – the superset portfolio across AI, networking, security, and technical leadership.
 
 ---
 
@@ -34,7 +39,9 @@ I'm **Shahzad Ali**, sharing insights on Cloud Networking, Security, and Infrast
 - **Aviatrix** – Transit Networks, FireNet, CloudWAN
 - **Britive** – JIT Access, Access Broker, Cloud PAM
 - **Kubernetes** – EKS, GKE, AKS Security
-- **Agentic AI** – Bedrock Agents, MCP Security
+- **AgenticOps Product Management** – customer pain points, technical strategy, and execution
+- **Agentic AI** – RAG, Bedrock Agents, MCP security, and operational automation
+- **Cisco Networking** – campus switching, Catalyst Center, Meraki, and secure reference architectures
 
 ---
 

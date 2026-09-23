@@ -206,12 +206,12 @@ Provisioning| Manual RBAC| Dynamic RBAC
     # Traditional static token
     users:
     - name: jdoe
-      token: "eyJhbGciOiJSUzI1NiIs..."  # All clusters!
+      token: "<short-lived-token-from-provider>"  # All clusters!
     
     # Britive JIT token
     users:
     - name: jdoe-session-123
-      token: "eyJhbGciOiJSUzI1NiIs..."  # prod/app1-editor ONLY
+      token: "<short-lived-token-from-provider>"  # prod/app1-editor ONLY
       groups: ["temp:prod-app1-editor"] # Expires in 1h
 
 ### **Evidence from K8s Reality**

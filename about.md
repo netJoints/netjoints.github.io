@@ -6,35 +6,40 @@ permalink: /about/
 
 # About Me
 
-I'm **Shahzad Ali**, a cloud networking and security professional with extensive experience in multi-cloud architectures, enterprise networking, and privileged access management.
+I'm **Shahzad Ali**, a Cisco product-management leader working at the intersection of AgenticOps, AI-assisted network operations, cloud-managed switching, and customer-centered technical strategy.
+
+I turn difficult operator and customer problems into clear product direction, reusable technical patterns, and practical automation. My work combines product judgment with hands-on architecture across networking, security, AI agents, retrieval, and infrastructure-as-code.
 
 ---
 
 ## What I Do
 
-I help organizations build secure, scalable, and efficient cloud networks across AWS, Azure, and GCP. My expertise spans:
+I help teams make complex infrastructure more understandable, secure, and operable. My current focus includes:
 
-- Multi-cloud network architecture design
-- Cloud security and Zero Trust implementation
-- Privileged Access Management (PAM)
-- Kubernetes networking and security
-- Agentic AI security frameworks
+- AgenticOps product management and customer/field feedback loops
+- AI-assisted network operations, RAG, and human-in-the-loop agents
+- Cisco campus switching, Catalyst Center, Meraki, and migration strategy
+- Multi-cloud network architecture and secure automation
+- Zero Trust, privileged access management, and non-human identity security
+- Technical enablement that turns architecture into repeatable execution
 
 ---
 
 ## Experience
 
-I've worked with leading technology companies including:
+Earlier chapters of my work include:
 - **Britive** – Cloud PAM and Just-In-Time Access
 - **Aviatrix** – Multi-Cloud Networking
 - **VMware** – Cloud Infrastructure
+
+Today, I apply that foundation to AgenticOps product management at Cisco: connecting technical excellence, product clarity, and measurable operator outcomes.
 
 ---
 
 ## Connect
 
 - **YouTube**: [intlcloud](https://www.youtube.com/@intlcloud)
-- **Udemy**: [My Courses](https://www.udemy.com/user/shahzad-ali/)
+- **Udemy**: [Courses](https://www.udemy.com/user/shahzad-ali/)
 - **GitHub**: [netJoints](https://github.com/netJoints)
 
 ---

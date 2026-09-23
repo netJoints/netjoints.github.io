@@ -111,11 +111,11 @@ I used the command with -q parameter which created the Quickstart setup in one g
     Initializing quorum…
     Done
     Tessera Node 1 public key:
-    BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=
+    <node-1-public-key>
     Tessera Node 2 public key:
-    QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+    <node-2-public-key>
     Tessera Node 3 public key:
-    1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
+    <node-3-public-key>
     
     Quorum network created
     Run the following commands to start your network:
@@ -123,7 +123,7 @@ I used the command with -q parameter which created the Quickstart setup in one g
     ./start.sh
     A sample simpleStorage contract is provided to deploy to your network
     To use run ./runscript.sh public_contract.js from the network folder
-    A private simpleStorage contract was created with privateFor set to use Node 2's public key: QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+    A private simpleStorage contract was created with privateFor set to use Node 2's public key: <node-2-public-key>
     To use run ./runscript.sh private_contract.js from the network folder
     After starting, Cakeshop will be accessible here: http://localhost:8999
     [ec2-user@ip-10-101-76-122 ~]$
@@ -167,11 +167,11 @@ I used the command with -q parameter which created the Quickstart setup in one g
     Cakeshop started at http://localhost:8999
     Successfully started Quorum network.
     Tessera Node 1 public key:
-    BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=
+    <node-1-public-key>
     Tessera Node 2 public key:
-    QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+    <node-2-public-key>
     Tessera Node 3 public key:
-    1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
+    <node-3-public-key>
     
     [ec2-user@ip-10-101-76-122 3-nodes-quickstart]$
 

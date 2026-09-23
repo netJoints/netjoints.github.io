@@ -484,8 +484,8 @@ Tessera is an open-source private transaction manager developed under the Apache
     Password:
     Repeat password:
     Your new key was generated
-    Public address of the key: 0x20355BD031Be7a73ba4F2DEaa36d8C906D196997
-    Path of the secret key file: node4/keystore/UTC--2020-10-26T14-52-43.327226532Z--20355bd031be7a73ba4f2deaa36d8c906d196997
+    Public address of the key: <redacted-public-address>
+    Path of the secret key file: <redacted-keystore-path>
     You can share your public address with anyone. Others need it to interact with you.
     You must NEVER share the secret key with anyone! The key controls access to your funds!
     You must BACKUP your key file! Without the key, it's impossible to access account funds!
