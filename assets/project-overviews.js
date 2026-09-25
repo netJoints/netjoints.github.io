@@ -16,19 +16,19 @@
     {title:"Meraki MS vs IOS XE Switching Gaps",slug:"meraki-ms-vs-ios-xe-os-switching-gaps",desc:"Operating-model comparison for teams evaluating cloud-managed and IOS XE switching.",cats:["Networking","Research"],status:"Current"},
     {title:"SNRA CVD Programming Playbook",slug:"snra-cvd-programming-playbook",desc:"Coordinated programming guidance for secure network reference architecture automation.",cats:["Automation","Networking","Leadership"],status:"Current"},
     {title:"Terraform Meraki Switching Gaps",slug:"terraform-meraki-switching-gaps",desc:"Capability and automation crosswalk for infrastructure-as-code and switching workflows.",cats:["Automation","Networking","Research"],status:"Current"},
-    {title:"Agentic AI Webex Bot",repo:"agentic-ai-webex-bot",desc:"An earlier agentic collaboration experiment connecting AI workflows with Webex operations.",cats:["AI","AgenticOps","Automation"],status:"Previous"},
-    {title:"Bedrock AgentCore Research Agent",repo:"bedrock-agentcore-research-agent",desc:"Research-agent exploration focused on tool use, grounding, and repeatable investigation.",cats:["AI","AWS","Research"],status:"Previous"},
-    {title:"Agentic AI FinOps",repo:"agentic-ai-finops-app",desc:"Agentic cost-operations exploration for turning cloud cost signals into useful actions.",cats:["AI","FinOps","Automation"],status:"Previous"},
-    {title:"Agentic AI Travel Agency",repo:"agentic-ai-travel-agency-aws-bedrock",desc:"Travel-planning experiment demonstrating orchestration, recommendation, and service integration.",cats:["AI","AWS","Travel"],status:"Previous"},
-    {title:"AI / GenAI Interview Questions",repo:"ai-genai-agentic-ai-interview-questions",desc:"A practical enablement resource for building shared AI fluency across technical teams.",cats:["AI","Leadership","Enablement"],status:"Previous"},
-    {title:"MCP with Claude",repo:"wordpress-mcp-with-claude",desc:"MCP integration experiment exploring how assistants can safely work with content systems.",cats:["AI","MCP","Automation"],status:"Previous"},
-    {title:"Vibe Studio",repo:"vibe-studio",desc:"Product-building experiment focused on fast feedback loops and AI-assisted creation.",cats:["AI","Product","Experiment"],status:"Previous"},
-    {title:"CUDA vs PyTorch MPS Inference",repo:"nvidia-cuda-vs-pytorch-mps-inference",desc:"Performance-oriented model inference comparison across local acceleration paths.",cats:["AI","Performance","Research"],status:"Previous"},
-    {title:"FinOps Agentic AI Local Agents",repo:"finops-agentic-ai-local-agents",desc:"Local-agent exploration for cost analysis, repeatability, and operational decision support.",cats:["AI","FinOps","AgenticOps"],status:"Previous"},
-    {title:"JIT PAM GitHub NHI",repo:"jit-pam-github-nhi",desc:"Just-in-time privileged access exploration for non-human identities and secure automation.",cats:["Security","Automation","Leadership"],status:"Previous"}
+    {title:"Agentic AI Webex Bot",slug:"agentic-ai-webex-bot",repo:"agentic-ai-webex-bot",desc:"An earlier agentic collaboration experiment connecting AI workflows with Webex operations.",cats:["AI","AgenticOps","Automation"]},
+    {title:"Bedrock AgentCore Research Agent",slug:"bedrock-agentcore-research-agent",repo:"bedrock-agentcore-research-agent",desc:"Research-agent exploration focused on tool use, grounding, and repeatable investigation.",cats:["AI","AWS","Research"]},
+    {title:"Agentic AI FinOps",slug:"agentic-ai-finops-app",repo:"agentic-ai-finops-app",desc:"Agentic cost-operations exploration for turning cloud cost signals into useful actions.",cats:["AI","FinOps","Automation"]},
+    {title:"Agentic AI Travel Agency",slug:"agentic-ai-travel-agency-aws-bedrock",repo:"agentic-ai-travel-agency-aws-bedrock",desc:"Travel-planning experiment demonstrating orchestration, recommendation, and service integration.",cats:["AI","AWS","Travel"]},
+    {title:"AI / GenAI Interview Questions",slug:"ai-genai-agentic-ai-interview-questions",repo:"ai-genai-agentic-ai-interview-questions",desc:"A practical enablement resource for building shared AI fluency across technical teams.",cats:["AI","Leadership","Enablement"]},
+    {title:"MCP with Claude",slug:"wordpress-mcp-with-claude",repo:"wordpress-mcp-with-claude",desc:"MCP integration experiment exploring how assistants can safely work with content systems.",cats:["AI","MCP","Automation"]},
+    {title:"Vibe Studio",slug:"vibe-studio",repo:"vibe-studio",desc:"Product-building experiment focused on fast feedback loops and AI-assisted creation.",cats:["AI","Product","Experiment"]},
+    {title:"CUDA vs PyTorch MPS Inference",slug:"nvidia-cuda-vs-pytorch-mps-inference",repo:"nvidia-cuda-vs-pytorch-mps-inference",desc:"Performance-oriented model inference comparison across local acceleration paths.",cats:["AI","Performance","Research"]},
+    {title:"FinOps Agentic AI Local Agents",slug:"finops-agentic-ai-local-agents",repo:"finops-agentic-ai-local-agents",desc:"Local-agent exploration for cost analysis, repeatability, and operational decision support.",cats:["AI","FinOps","AgenticOps"]},
+    {title:"JIT PAM GitHub NHI",slug:"jit-pam-github-nhi",repo:"jit-pam-github-nhi",desc:"Just-in-time privileged access exploration for non-human identities and secure automation.",cats:["Security","Automation","Leadership"]}
   ];
 
-  function pageUrl(project) { return project.slug ? "/" + project.slug + "/" : "https://github.com/netjoints/" + project.repo; }
+  function pageUrl(project) { return "/" + project.slug + "/"; }
   function repoUrl(project) { return "https://github.com/netjoints/" + (project.repo || project.slug); }
   function esc(value) { return String(value).replace(/[&<>\"']/g, function (c) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]; }); }
   function renderCard(project) {
