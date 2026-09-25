@@ -4,6 +4,7 @@
   var projects = [
     {title:"AL Lab Access",slug:"al-lab-access",desc:"Secure lab access workspace with explicit boundaries for identity, evidence, and safe automation.",cats:["AI","AgenticOps","Security"],status:"Current"},
     {title:"AgenticOps Product Management Website",slug:"agenticops-prod-mgmt-website",desc:"A reusable product-operations layout for turning customer pain points into roadmaps, evidence, and action.",cats:["AI","AgenticOps","Leadership"],status:"Current"},
+    {title:"Customer-Obsessed Roadmap RICE Initiative",slug:"customer-obsessed-roadmap-rice",repo:"customer-obsessed-roadmap-rice",desc:"Leadership initiative for consolidated roadmap visibility, AI-assisted evidence normalization, cross-functional collaboration, and RICE prioritization.",cats:["AI","Leadership","Roadmap","RICE","Enablement"]},
     {title:"AI RAG Search",slug:"ai-rag-search",desc:"Source-aware retrieval architecture for grounded answers, traceable citations, and operational search.",cats:["AI","RAG","Product"],status:"Current"},
     {title:"Codex CATC Compliance Skill",slug:"codex-catc-compliance-skil",desc:"Repeatable evidence-oriented compliance workflows for technical teams and AI-assisted operations.",cats:["AI","Automation","Networking"],status:"Current"},
     {title:"Even Frugality",slug:"hotel-finder",desc:"AI-assisted hotel finding framed as operational frugality: better options, less manual search, and clearer tradeoffs.",cats:["AI","Leadership","Frugality","Travel"],status:"Current",subtitle:"Hotel Finder"},
