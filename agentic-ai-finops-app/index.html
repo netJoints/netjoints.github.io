@@ -1,1 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agentic AI FinOps | Project Overview</title><meta name="description" content="Sanitized technical overview for Agentic AI FinOps."><link rel="stylesheet" href="/assets/project-detail.css"></head><body class="project-detail"><main><a class="back" href="/project-overviews/">← Project Overviews</a><p class="kicker">AI · FINOPS · AUTOMATION</p><h1>Agentic AI FinOps</h1><p class="lede">An agentic cost-operations concept for translating cloud cost signals into explanations, opportunities, and reviewable actions.</p><div class="actions"><a href="https://github.com/netjoints/agentic-ai-finops-app">Open source repository</a><a href="/ai-projects-overview/">AI Projects</a></div><section class="grid"><article><h2>Pain point</h2><p>Cost data is abundant, but teams struggle to connect anomalies and usage patterns to owners and practical next steps.</p></article><article><h2>Solution</h2><p>Normalize cost signals, explain drivers with bounded context, propose savings actions, and require approval before changes.</p></article><article class="wide"><h2>Architecture</h2><ol class="flow"><li>Billing and usage data</li><li>Normalization and rules</li><li>Agent explanation</li><li>Owner approval</li></ol></article><article><h2>Software stack</h2><div class="stack"><span>Cloud billing APIs</span><span>Python</span><span>SQL</span><span>LLM gateway</span><span>Metrics and alerts</span></div></article><article><h2>AI and AgenticOps</h2><p>AI summarizes drivers and ranks opportunities; AgenticOps enforces budgets, approvals, auditability, and safe dry-run behavior.</p></article></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agentic AI FinOps Initiative | Overview</title>
+  <meta name="description" content="Leadership and technical overview for the Agentic AI FinOps Initiative.">
+  <link rel="stylesheet" href="/assets/project-detail.css">
+</head>
+<body class="project-detail">
+<main>
+  <a class="back" href="/project-overviews/">← Project Overviews</a>
+  <p class="kicker">INITIATIVE · AI · FINOPS · JIT PAM · LEADERSHIP</p>
+  <h1>Agentic AI FinOps Initiative</h1>
+  <p class="lede">An enterprise FinOps prototype that combined multiple AI agents with just-in-time privileged access to help users obtain cost and operational insight securely and automatically.</p>
+  <div class="actions"><a href="https://github.com/netjoints/agentic-ai-finops-app">Open source repository</a><a href="/ai-projects-overview/">AI Projects</a></div>
+  <section class="grid">
+    <article><h2>Leadership context</h2><p>I initiated and led this prototype while leading the sales engineering team at a Cloud PAM startup. The work was designed for an enterprise customer and helped my team demonstrate how secure access, AI orchestration, and FinOps could become a practical customer solution.</p></article>
+    <article><h2>Business and team outcome</h2><p>The initiative focused on increasing employee productivity, improving the help provided to field and partner teams, and turning a technically differentiated prototype into customer value that supported a successful enterprise opportunity.</p></article>
+    <article><h2>Pain point</h2><p>FinOps users need timely answers about cloud cost and usage, but investigation often requires multiple systems, specialist knowledge, and privileged credentials that should not remain active.</p></article>
+    <article><h2>Solution</h2><p>A supervisor agent receives the request, understands the intent, and delegates to specialized compliance and FinOps agents. JIT PAM checks out short-lived credentials only for the approved task, then the workflow returns an explainable answer to the user.</p></article>
+    <article class="wide"><h2>Architecture and agent workflow</h2><ol class="flow"><li>User request and identity context</li><li>Supervisor agent routes the task</li><li>Compliance agent validates policy and access</li><li>FinOps agent retrieves and explains cost data</li></ol><p>The supervisor coordinates the agents; compliance constrains the action; the FinOps specialist gathers the relevant information; and the response layer presents the result with enough context for a human to review it.</p></article>
+    <article><h2>Software stack</h2><div class="stack"><span>Multi-agent orchestration</span><span>JIT PAM</span><span>Short-lived credentials</span><span>FinOps data sources</span><span>Policy and compliance checks</span><span>Audit and observability</span></div></article>
+    <article><h2>AI and AgenticOps</h2><p>AI handled request interpretation, delegation, and explanation. AgenticOps supplied the operating model: scoped access, approval boundaries, evidence capture, failure handling, and a clear human escalation path.</p></article>
+    <article class="wide"><h2>Leadership principles demonstrated</h2><p>This initiative connected technical excellence to measurable operating outcomes: less manual investigation, faster enablement for employees and field partners, safer access to enterprise data, and a stronger customer story for the sales engineering team.</p><p>Customer names, credentials, account identifiers, and implementation-specific secrets are intentionally excluded from this public overview.</p></article>
+  </section>
+</main>
+</body>
+</html>
