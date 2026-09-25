@@ -41,6 +41,20 @@
     var scope = root.dataset.scope || "all";
     var visible = projects.filter(function (p) { return scope === "all" || p.cats.indexOf("AI") >= 0 || p.cats.indexOf("AgenticOps") >= 0 || p.cats.indexOf("MCP") >= 0; });
     var grid = root.querySelector(".project-grid"), search = root.querySelector("[data-filter=search]"), category = root.querySelector("[data-filter=category]"), status = root.querySelector("[data-filter=status]"), sort = root.querySelector("[data-filter=sort]"), count = root.querySelector(".catalog-count"), empty = root.querySelector(".catalog-empty");
+    var themeButton = root.querySelector("[data-action=theme]"), viewButton = root.querySelector("[data-action=view]"), storageKey = "netjoints-project-overviews";
+    var saved = null;
+    try { saved = JSON.parse(window.localStorage.getItem(storageKey) || "null"); } catch (ignore) {}
+    var preferredTheme = saved && saved.theme ? saved.theme : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    root.dataset.theme = preferredTheme === "dark" ? "dark" : "light";
+    if (saved && saved.view === "list") { grid.classList.add("list-view"); }
+    function savePreferences() { try { window.localStorage.setItem(storageKey, JSON.stringify({theme: root.dataset.theme, view: grid.classList.contains("list-view") ? "list" : "grid"})); } catch (ignore) {} }
+    function updateButtons() {
+      if (themeButton) { var dark = root.dataset.theme === "dark"; themeButton.textContent = dark ? "Light mode" : "Dark mode"; themeButton.setAttribute("aria-pressed", String(dark)); }
+      if (viewButton) { var list = grid.classList.contains("list-view"); viewButton.textContent = list ? "Grid view" : "List view"; viewButton.setAttribute("aria-pressed", String(list)); }
+    }
+    if (themeButton) { themeButton.addEventListener("click", function () { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark"; savePreferences(); updateButtons(); }); }
+    if (viewButton) { viewButton.addEventListener("click", function () { grid.classList.toggle("list-view"); savePreferences(); updateButtons(); }); }
+    updateButtons();
     Array.from(new Set(visible.reduce(function (all, p) { return all.concat(p.cats); }, []))).sort().forEach(function (c) { category.appendChild(new Option(c, c)); });
     visible.forEach(function (p) { grid.appendChild(renderCard(p)); });
     function apply() {
