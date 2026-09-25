@@ -33,14 +33,14 @@
   function esc(value) { return String(value).replace(/[&<>\"']/g, function (c) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]; }); }
   function renderCard(project) {
     var card = document.createElement("article"); card.className = "project-card";
-    card.dataset.title = project.title.toLowerCase(); card.dataset.categories = project.cats.join(" ").toLowerCase(); card.dataset.status = project.status;
-    card.innerHTML = '<div class="eyebrow">' + esc(project.status) + (project.subtitle ? " · " + esc(project.subtitle) : "") + '</div><h2>' + esc(project.title) + '</h2><p>' + esc(project.desc) + '</p><div class="tags">' + project.cats.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join("") + '</div><div class="card-actions"><a class="overview-link" href="' + pageUrl(project) + '">Overview</a><a class="repo-link" href="' + repoUrl(project) + '" target="_blank" rel="noopener noreferrer">Source repository</a></div>';
+    card.dataset.title = project.title.toLowerCase(); card.dataset.categories = project.cats.join(" ").toLowerCase();
+    card.innerHTML = (project.subtitle ? '<div class="eyebrow">' + esc(project.subtitle) + '</div>' : '') + '<h2>' + esc(project.title) + '</h2><p>' + esc(project.desc) + '</p><div class="tags">' + project.cats.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join("") + '</div><div class="card-actions"><a class="overview-link" href="' + pageUrl(project) + '">Overview</a><a class="repo-link" href="' + repoUrl(project) + '" target="_blank" rel="noopener noreferrer">Source repository</a></div>';
     return card;
   }
   function init(root) {
     var scope = root.dataset.scope || "all";
     var visible = projects.filter(function (p) { return scope === "all" || p.cats.indexOf("AI") >= 0 || p.cats.indexOf("AgenticOps") >= 0 || p.cats.indexOf("MCP") >= 0; });
-    var grid = root.querySelector(".project-grid"), search = root.querySelector("[data-filter=search]"), category = root.querySelector("[data-filter=category]"), status = root.querySelector("[data-filter=status]"), sort = root.querySelector("[data-filter=sort]"), count = root.querySelector(".catalog-count"), empty = root.querySelector(".catalog-empty");
+    var grid = root.querySelector(".project-grid"), search = root.querySelector("[data-filter=search]"), category = root.querySelector("[data-filter=category]"), sort = root.querySelector("[data-filter=sort]"), count = root.querySelector(".catalog-count"), empty = root.querySelector(".catalog-empty");
     var themeButton = root.querySelector("[data-action=theme]"), viewButton = root.querySelector("[data-action=view]"), storageKey = "netjoints-project-overviews";
     var saved = null;
     try { saved = JSON.parse(window.localStorage.getItem(storageKey) || "null"); } catch (ignore) {}
@@ -58,11 +58,11 @@
     Array.from(new Set(visible.reduce(function (all, p) { return all.concat(p.cats); }, []))).sort().forEach(function (c) { category.appendChild(new Option(c, c)); });
     visible.forEach(function (p) { grid.appendChild(renderCard(p)); });
     function apply() {
-      var q = search.value.trim().toLowerCase(), selected = category.value, state = status.value, ordered = Array.from(grid.children).sort(function (a, b) { return sort.value === "title-desc" ? b.dataset.title.localeCompare(a.dataset.title) : a.dataset.title.localeCompare(b.dataset.title); }), shown = 0;
-      ordered.forEach(function (card) { var match = (!q || card.dataset.title.indexOf(q) >= 0 || card.dataset.categories.indexOf(q) >= 0) && (!selected || card.dataset.categories.indexOf(selected.toLowerCase()) >= 0) && (!state || card.dataset.status === state); card.hidden = !match; if (match) shown++; grid.appendChild(card); });
+      var q = search.value.trim().toLowerCase(), selected = category.options[category.selectedIndex].value.trim().toLowerCase(), ordered = Array.from(grid.children).sort(function (a, b) { return sort.value === "title-desc" ? b.dataset.title.localeCompare(a.dataset.title) : a.dataset.title.localeCompare(b.dataset.title); }), shown = 0;
+      ordered.forEach(function (card) { var match = (!q || card.dataset.title.indexOf(q) >= 0 || card.dataset.categories.indexOf(q) >= 0) && (!selected || card.dataset.categories.split(" ").indexOf(selected) >= 0); card.hidden = !match; if (match) shown++; grid.appendChild(card); });
       count.textContent = shown + " project" + (shown === 1 ? "" : "s") + " shown"; empty.hidden = shown !== 0;
     }
-    [search, category, status, sort].forEach(function (control) { control.addEventListener("input", apply); control.addEventListener("change", apply); }); apply();
+    search.addEventListener("input", apply); category.addEventListener("change", apply); sort.addEventListener("change", apply); apply();
   }
   document.querySelectorAll("[data-project-catalog]").forEach(init);
 })();

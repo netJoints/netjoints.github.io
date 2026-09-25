@@ -35,7 +35,7 @@
 .catalog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: -10px 0 26px; }
 .catalog-actions button { border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px; background: var(--panel); color: var(--ink); cursor: pointer; font: inherit; }
 .catalog-actions button:hover, .catalog-actions button:focus-visible { border-color: var(--accent); outline: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); outline-offset: 2px; }
-.catalog-controls { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+.catalog-controls { display: grid; grid-template-columns: 2fr repeat(2, 1fr); gap: 12px; margin: 18px 0; }
 .catalog-controls label { color: var(--muted); font-size: .82rem; font-weight: 700; }
 .catalog-controls input, .catalog-controls select { width: 100%; margin-top: 5px; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px; background: var(--control); color: var(--ink); font: inherit; }
 .catalog-count { color: var(--muted); margin: 10px 0 18px; }
