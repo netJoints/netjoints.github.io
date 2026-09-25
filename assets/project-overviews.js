@@ -28,7 +28,7 @@
     {title:"JIT PAM GitHub NHI",slug:"jit-pam-github-nhi",repo:"jit-pam-github-nhi",desc:"Just-in-time privileged access exploration for non-human identities and secure automation.",cats:["Security","Automation","Leadership"]}
   ];
 
-  function pageUrl(project) { return "/" + project.slug + "/"; }
+  function pageUrl(project) { return "https://netjoints.github.io/" + project.slug + "/"; }
   function repoUrl(project) { return "https://github.com/netjoints/" + (project.repo || project.slug); }
   function esc(value) { return String(value).replace(/[&<>\"']/g, function (c) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]; }); }
   function renderCard(project) {
