@@ -11,6 +11,7 @@ Explore the work:
 
 - [AI Projects]({{ "/ai-projects-overview/" | relative_url }}) – AI, AgenticOps, RAG, and automation projects.
 - [Project Overviews]({{ "/project-overviews/" | relative_url }}) – the superset portfolio across AI, networking, security, and technical leadership.
+- [Catalyst Center MCP Server]({{ "/cisco-catc-mcp-server-deployment-guide/" | relative_url }}) – Product-management-led team delivery connecting Catalyst Center capabilities to MCP-compatible AI clients, with a repeatable Podman setup guide.
 
 ---
 
