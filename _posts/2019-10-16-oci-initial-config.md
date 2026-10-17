@@ -1,6 +1,6 @@
 ---
 title: "Multi-Cloud Transit Design: Interworking with On-Prem and/or Cloud Devices/Services"
-date: 2025-12-14
+date: 2019-10-16 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "October 16, 2019", "https://docs.aviatrix.com/HowTos/oracle-aviatrix-cloud-controller-onboard.html", "cloud-networking", "multi-cloud", "aviatrix", "oci", "Previous\u00a0post Multi-Cloud Transit Design: Interworking  with On-Prem and/or Cloud  Devices/Services", "Next\u00a0post Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP"]
 tags: ["Shahzad Ali", "October 16, 2019", "https://docs.aviatrix.com/HowTos/oracle-aviatrix-cloud-controller-onboard.html", "cloud-networking", "multi-cloud", "aviatrix", "oci", "Previous\u00a0post Multi-Cloud Transit Design: Interworking  with On-Prem and/or Cloud  Devices/Services", "Next\u00a0post Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP"]

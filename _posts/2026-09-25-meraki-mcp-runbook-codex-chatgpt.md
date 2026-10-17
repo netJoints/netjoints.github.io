@@ -1,6 +1,6 @@
 ---
 title: "Meraki MCP Runbook and Configuration using Codex/ChatGPT"
-date: 2026-09-25
+date: 2026-09-25 12:00:00 +0000
 author: Shahzad Ali
 categories: ["AgenticOps", "AI", "Networking", "MCP"]
 tags: ["Meraki", "Codex", "ChatGPT", "Model Context Protocol", "network automation"]

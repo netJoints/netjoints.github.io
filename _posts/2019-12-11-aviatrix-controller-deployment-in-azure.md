@@ -1,6 +1,6 @@
 ---
 title: "Aviatrix CloudWAN Deployment with AWS Global Accelerator"
-date: 2025-12-14
+date: 2019-12-11 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "December 11, 2019", "https://portal.azure.com", "Click here for Aviatrix product documentation", "azure", "multi-cloud", "Previous\u00a0post Aviatrix CloudWAN Deployment with AWS Global Accelerator", "Next\u00a0post Azure Transit Network Design Patterns"]
 tags: []

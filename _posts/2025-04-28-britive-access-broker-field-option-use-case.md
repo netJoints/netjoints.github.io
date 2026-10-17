@@ -1,6 +1,6 @@
 ---
 title: "Azure PIM: Key Differences You Need to Know"
-date: 2025-12-14
+date: 2025-04-28 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "April 28, 2025", "https://github.com/britive/access-broker-examples/blob/main/Aurora%20MySQL/permissions/temp-user/checkout.sh", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Azure PIM: Key Differences You Need to Know", "Next\u00a0post Difference Between RDS, AWS Aurora and MySQL"]
 tags: ["Shahzad Ali", "April 28, 2025", "https://github.com/britive/access-broker-examples/blob/main/Aurora%20MySQL/permissions/temp-user/checkout.sh", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Azure PIM: Key Differences You Need to Know", "Next\u00a0post Difference Between RDS, AWS Aurora and MySQL"]

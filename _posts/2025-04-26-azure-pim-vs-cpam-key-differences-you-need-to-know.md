@@ -1,6 +1,6 @@
 ---
 title: "Britive API / CLI to Trigger Cloud Data Scan"
-date: 2025-12-14
+date: 2025-04-26 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "April 26, 2025", "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-roles", "https://www.reddit.com/r/AZURE/comments/17ha400/azure_pim_with_on_premises_server/", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive API / CLI to Trigger Cloud Data Scan", "Next\u00a0post Britive Access Broker \u201cField\u201d Option Use-Case"]
 tags: ["Shahzad Ali", "April 26, 2025", "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-roles", "https://www.reddit.com/r/AZURE/comments/17ha400/azure_pim_with_on_premises_server/", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive API / CLI to Trigger Cloud Data Scan", "Next\u00a0post Britive Access Broker \u201cField\u201d Option Use-Case"]

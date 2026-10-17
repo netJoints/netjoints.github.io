@@ -1,6 +1,6 @@
 ---
 title: "Britive Aurora MySql Demo"
-date: 2025-12-14
+date: 2025-01-27 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/docs/okta-sso", "https://dev-31162391.okta.com/app/exkmz7z8nxz0pAtSl5d7/sso/saml/metadata", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive Aurora MySql Demo", "Next\u00a0post Britive AWS Application Onboarding Experience"]
 tags: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/docs/okta-sso", "https://dev-31162391.okta.com/app/exkmz7z8nxz0pAtSl5d7/sso/saml/metadata", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive Aurora MySql Demo", "Next\u00a0post Britive AWS Application Onboarding Experience"]

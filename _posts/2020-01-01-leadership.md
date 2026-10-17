@@ -1,6 +1,6 @@
 ---
 title: "Leadership"
-date: 2025-12-14
+date: 2020-01-01 12:00:00 +0000
 author: Unknown
 categories: []
 tags: []

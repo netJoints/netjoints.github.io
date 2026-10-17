@@ -1,6 +1,6 @@
 ---
 title: "Aviatrix Intrusion Prevention System (IPS) Solution for AWS FAQs"
-date: 2025-12-14
+date: 2023-01-03 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 3, 2023", "FIPS 140-2", "Aviatrix Cryptographic Module Certificate", "SOC2", "Section 508,\u202fIT\u202fAccessibility\u202fStandards", "cloud-networking", "aviatrix", "Previous\u00a0post Aviatrix Intrusion Prevention System (IPS) Solution for AWS FAQs", "Next\u00a0post SAP on Aviatrix"]
 tags: ["Shahzad Ali", "January 3, 2023", "FIPS 140-2", "Aviatrix Cryptographic Module Certificate", "SOC2", "Section 508,\u202fIT\u202fAccessibility\u202fStandards", "cloud-networking", "aviatrix", "Previous\u00a0post Aviatrix Intrusion Prevention System (IPS) Solution for AWS FAQs", "Next\u00a0post SAP on Aviatrix"]

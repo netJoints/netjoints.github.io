@@ -1,6 +1,6 @@
 ---
 title: "Azure Aviatrix Controller Deployment"
-date: 2025-12-14
+date: 2019-12-14 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "December 14, 2019", "Refer to my blog post to deploy Aviatrix Controller from the Azure Market Place.", "In my next blog, I will discusses the Azure Transit Network deployment with native VNet peering in more details.", "multi-cloud", "azure", "Previous\u00a0post Azure Aviatrix Controller Deployment", "Next\u00a0post Aviatrix User-VPN Deployment with AWS UDP Based NLB"]
 tags: ["Shahzad Ali", "December 14, 2019", "Refer to my blog post to deploy Aviatrix Controller from the Azure Market Place.", "In my next blog, I will discusses the Azure Transit Network deployment with native VNet peering in more details.", "multi-cloud", "azure", "Previous\u00a0post Azure Aviatrix Controller Deployment", "Next\u00a0post Aviatrix User-VPN Deployment with AWS UDP Based NLB"]

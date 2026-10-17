@@ -1,6 +1,6 @@
 ---
 title: "Aviatrix User-VPN Deployment with AWS UDP Based NLB"
-date: 2025-12-14
+date: 2019-12-19 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "December 19, 2019", "Refer to my previous blog for different Azure Transit Network design options and pros/cons", "Now attach Azure ARM Spoke through Native Peering", "For more details, refer to Aviatrix documentation here.", "multi-cloud", "Previous\u00a0post Aviatrix User-VPN Deployment with AWS UDP Based NLB", "Next\u00a0post Aviatrix ACE Professional Bootcamp Prerequisite"]
 tags: []

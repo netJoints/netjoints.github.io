@@ -1,6 +1,6 @@
 ---
 title: "Britive Access Broker Getting Started Guide"
-date: 2025-12-14
+date: 2025-03-20 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "March 20, 2025", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive Access Broker Getting Started Guide", "Next\u00a0post Kubernetes Access Security and IAM"]
 tags: ["Shahzad Ali", "March 20, 2025", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive Access Broker Getting Started Guide", "Next\u00a0post Kubernetes Access Security and IAM"]

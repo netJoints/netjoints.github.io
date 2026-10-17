@@ -1,6 +1,6 @@
 ---
 title: "The Shocking Salt Typhoon Hack | A massive Failure of Legacy Cybersecurity Approaches"
-date: 2025-12-14
+date: 2025-01-22 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 22, 2025", "Reddit", "Krebs on Security", "Varonis", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post The Shocking Salt Typhoon Hack | A massive Failure of Legacy Cybersecurity Approaches", "Next\u00a0post How Amazon Alexa\u2019s Architecture Powers Britive\u2019s Access Broker Feature"]
 tags: ["Shahzad Ali", "January 22, 2025", "Reddit", "Krebs on Security", "Varonis", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post The Shocking Salt Typhoon Hack | A massive Failure of Legacy Cybersecurity Approaches", "Next\u00a0post How Amazon Alexa\u2019s Architecture Powers Britive\u2019s Access Broker Feature"]

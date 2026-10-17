@@ -1,6 +1,6 @@
 ---
 title: "Britive | Azure Onboarding Experience"
-date: 2025-12-14
+date: 2025-02-10 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "February 10, 2025", "Britive", "Britive Access Broker", "found here", "https://netJoints.britive-app.com", "britive-app.com", "netJoints.britive-app.com", "https://remote.mt1-uw2.ea2.aws.britive-app.com", "Brokers", "https://catapult.dev2.aws.britive-app.com", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive | Azure Onboarding Experience", "Next\u00a0post Britive Datadog (SIEM) Integration Steps"]
 tags: ["Shahzad Ali", "February 10, 2025", "Britive", "Britive Access Broker", "found here", "https://netJoints.britive-app.com", "britive-app.com", "netJoints.britive-app.com", "https://remote.mt1-uw2.ea2.aws.britive-app.com", "Brokers", "https://catapult.dev2.aws.britive-app.com", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive | Azure Onboarding Experience", "Next\u00a0post Britive Datadog (SIEM) Integration Steps"]

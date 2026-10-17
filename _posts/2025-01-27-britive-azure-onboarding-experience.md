@@ -1,6 +1,6 @@
 ---
 title: "Britive AWS Application Onboarding Experience"
-date: 2025-12-14
+date: 2025-01-27 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/v1/docs/assigning-azure-permissions-for-dynamic-permissioning", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive AWS Application Onboarding Experience", "Next\u00a0post Britive Access Broker Getting Started Guide"]
 tags: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/v1/docs/assigning-azure-permissions-for-dynamic-permissioning", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive AWS Application Onboarding Experience", "Next\u00a0post Britive Access Broker Getting Started Guide"]

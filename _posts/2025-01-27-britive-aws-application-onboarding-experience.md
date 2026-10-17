@@ -1,6 +1,6 @@
 ---
 title: "Britive | Okta Application Onboarding Experience"
-date: 2025-12-14
+date: 2025-01-27 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/docs/onboarding-aws-application", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive | Okta Application Onboarding Experience", "Next\u00a0post Britive | Azure Onboarding Experience"]
 tags: ["Shahzad Ali", "January 27, 2025", "https://docs.britive.com/docs/onboarding-aws-application", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Britive | Okta Application Onboarding Experience", "Next\u00a0post Britive | Azure Onboarding Experience"]

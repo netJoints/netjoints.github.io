@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Access Security and IAM"
-date: 2025-12-14
+date: 2025-04-22 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "April 22, 2025", "https://docs.britive.com/docs/manage-scans", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Kubernetes Access Security and IAM", "Next\u00a0post Azure PIM: Key Differences You Need to Know"]
 tags: ["Shahzad Ali", "April 22, 2025", "https://docs.britive.com/docs/manage-scans", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post Kubernetes Access Security and IAM", "Next\u00a0post Azure PIM: Key Differences You Need to Know"]

@@ -1,6 +1,6 @@
 ---
 title: "Aviatrix Kickstart – Spin up Cloud Networks in Minutes – UI Mode"
-date: 2025-12-14
+date: 2021-01-07 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 7, 2021", "GCP does not allow multi-NIC V", "ECMP on its routing table", "internal TCP/UDP LB IP as next hops", "GCP service insertion or NGFW insertion best practices", "cloud-networking", "gcp", "Previous\u00a0post Aviatrix Kickstart \u2013 Spin up Cloud Networks in Minutes \u2013 UI Mode", "Next\u00a0post Cloud Networking and Security Predictions For 2021"]
 tags: []

@@ -1,6 +1,6 @@
 ---
 title: "World of Complex Security Compliance Requirement | What Can Britive do?"
-date: 2025-12-14
+date: 2025-01-16 12:00:00 +0000
 author: Unknown
 categories: ["Shahzad Ali", "January 16, 2025", "Salt Typhoon\u201d APT", "targeted", "Wikipedia", "Dice.com", "Britive", "collective guidance", "See the solution in action", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post World of Complex Security Compliance Requirement | What Can Britive do?", "Next\u00a0post Protect Salesforce Environment for Admin Users with Britive"]
 tags: ["Shahzad Ali", "January 16, 2025", "Salt Typhoon\u201d APT", "targeted", "Wikipedia", "Dice.com", "Britive", "collective guidance", "See the solution in action", "Cybersecurity", "IAM", "Privileged Access Management", "britive", "Previous\u00a0post World of Complex Security Compliance Requirement | What Can Britive do?", "Next\u00a0post Protect Salesforce Environment for Admin Users with Britive"]
