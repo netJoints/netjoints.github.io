@@ -162,7 +162,7 @@
 <p>This aligns with the “zero standing privileges” posture described in Britive collateral and access broker overview materials.</p>
 <h2>Authentication Without Static Credentials (OIDC + GCP Identity)</h2>
 <p>A key requirement here is <strong>no static secrets</strong> on the VM.</p>
-<p>A common approach is to use <strong>OIDC federation</strong> where the workload presents a signed identity token (JWT) and Britive validates it. Your internal GCP PoC prerequisite checklist explicitly frames using <strong>Workload Identity Federation (WIF)</strong> to enable “secure, keyless authentication,” and calls out creating a <strong>Workload Identity Pool and Provider (OIDC)</strong> in GCP as part of the setup. <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></p>
+<p>A common approach is to use <strong>OIDC federation</strong> where the workload presents a signed identity token (JWT) and Britive validates it. Your internal GCP PoC prerequisite checklist explicitly frames using <strong>Workload Identity Federation (WIF)</strong> to enable “secure, keyless authentication,” and calls out creating a <strong>Workload Identity Pool and Provider (OIDC)</strong> in GCP as part of the setup.</p>
 <hr />
 <h2>Identity Mapping: Who Is “Calling” Britive?</h2>
 <p>In this use case, there are two identities that matter:</p>
@@ -177,7 +177,7 @@
 <li>Britive policy determines <em>which profiles that identity can check out</em>.</li>
 <li>Access is granted to the <strong>service account principal</strong> that represents that agent runtime.</li>
 </ul>
-<p>Britive positioning materials explicitly discuss supporting JIT and ephemeral authorization for non-human identities. <a href="https://britive-my.sharepoint.com/personal/nuri_rosen_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B6B79F81D-2C67-46B5-8871-8FA3FFF813EC%7D&amp;file=Britive%20-%20Enterprise%20Cloud-Native%20PAM%20Presentation%20-%202025.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive -…ion – 2025 | PowerPoint]</a>, <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a></p>
+<p>Britive positioning materials explicitly discuss supporting JIT and ephemeral authorization for non-human identities.</p>
 <hr />
 <h2>Profile Strategy (Scalable Design)</h2>
 <p>To keep configuration scalable:</p>
@@ -190,7 +190,7 @@
 <hr />
 <h1>Step-by-Step Reference Architecture (GCP + Britive + Agent Runtime)</h1>
 <p>Below is a <strong>reference architecture checklist</strong> you can include near the end of the blog. Where I reference specific steps, I anchor them to your existing PoC prerequisite guidance for GCP onboarding via WIF.<br />
-Anything beyond that is clearly labeled as “suggested implementation guidance.” <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></p>
+Anything beyond that is clearly labeled as “suggested implementation guidance.”</p>
 <hr />
 <h2>1) Establish the Per‑SRE Execution Boundary (GCP)</h2>
 <p><strong>Goal:</strong> each engineer’s automation runs in an isolated, auditable environment.</p>
@@ -220,11 +220,11 @@ Anything beyond that is clearly labeled as “suggested implementation guidance.
 <h2>3) Prepare GCP for Federated Access (Workload Identity Federation)</h2>
 <p>Your internal PoC prerequisites for WIF explicitly call out the GCP-side setup steps needed to enable keyless integration, including:</p>
 <ul>
-<li><strong>Enable required APIs</strong> (Cloud Resource Manager, IAM) <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
-<li><strong>Create a custom IAM role</strong> for the integration use case <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
-<li><strong>Create a service account for Britive</strong> and assign the custom role <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
-<li><strong>Create a Workload Identity Pool and Provider (OIDC)</strong> <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
-<li><strong>Grant permission to impersonate workload identities</strong> (so federated identities can assume the service account) <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Enable required APIs</strong> (Cloud Resource Manager, IAM)</li>
+<li><strong>Create a custom IAM role</strong> for the integration use case</li>
+<li><strong>Create a service account for Britive</strong> and assign the custom role</li>
+<li><strong>Create a Workload Identity Pool and Provider (OIDC)</strong></li>
+<li><strong>Grant permission to impersonate workload identities</strong> (so federated identities can assume the service account)</li>
 </ul>
 <p><strong>Suggested guidance (implementation):</strong></p>
 <ul>
@@ -238,7 +238,7 @@ Anything beyond that is clearly labeled as “suggested implementation guidance.
 <li>Configure Britive for an OIDC federated flow where the workload presents a signed token.</li>
 <li>Map the federated identity to an allowed principal for Profile checkout.</li>
 </ul>
-<p><strong>Related pattern note:</strong> In Britive’s OIDC design discussions (e.g., Kubernetes), the model includes using OIDC claims (like groups) to enable JIT access flows via checkout. <a href="https://britive.sharepoint.com/sites/Product/_layouts/15/Doc.aspx?sourcedoc=%7B288AA63A-299C-4982-BA56-7B388EFB8A20%7D&amp;file=Britive%20OIDC%20Design%20for%20Kubernetes.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive OI…Kubernetes | Word]</a></p>
+<p><strong>Related pattern note:</strong> In Britive’s OIDC design discussions (e.g., Kubernetes), the model includes using OIDC claims (like groups) to enable JIT access flows via checkout.</p>
 <p><strong>Suggested guidance (implementation):</strong></p>
 <ul>
 <li>Use claims that are stable and auditable (issuer, subject, audience).</li>
@@ -293,7 +293,7 @@ Anything beyond that is clearly labeled as “suggested implementation guidance.
 <li>When access started/ended</li>
 <li>Alert on anomalous behavior (unexpected targets, high frequency checkouts)</li>
 </ul>
-<p>Britive’s platform overview emphasizes visibility/audit and just-in-time ephemeral permissions as part of the “no proxy / no agent / outbound-only” operational model. <a href="https://britive.sharepoint.com/sites/SalesMarketing/_layouts/15/Doc.aspx?sourcedoc=%7BB49A304B-5381-41E8-94F4-53525A3998DB%7D&amp;file=Britive%20Access%20Broker_shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive Ac…er_shahzad | PowerPoint]</a></p>
+<p>Britive’s platform overview emphasizes visibility/audit and just-in-time ephemeral permissions as part of the “no proxy / no agent / outbound-only” operational model.</p>
 <hr />
 <h1>Conference Talk Outline (30–40 minutes)</h1>
 <p>Here’s a ready-to-use talk outline you can drop into a CFP, speaker notes, or a deck.</p>
@@ -301,14 +301,14 @@ Anything beyond that is clearly labeled as “suggested implementation guidance.
 <ul>
 <li><strong>“From Chat to Cloud: Secure Just‑in‑Time Access for AI Agents on GCP”</strong></li>
 <li><strong>“Operational AI Agents: Keyless Identity + Read‑Only JIT in Customer Projects”</strong></li>
-<li><strong>“Non‑Human Identities Done Right: AI Agents with Zero Standing Privileges”</strong> <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a></li>
+<li><strong>“Non‑Human Identities Done Right: AI Agents with Zero Standing Privileges”</strong></li>
 </ul>
 <h2>Abstract (2–3 sentences)</h2>
-<p>AI agents are starting to perform real operational work — but most teams struggle to grant them access safely. This session presents a practical GCP architecture where a VM-hosted agent uses federated identity (OIDC/WIF) to request read-only, just‑in‑time access to customer projects with strong auditability and no static credentials. <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a>, <a href="https://britive-my.sharepoint.com/personal/nuri_rosen_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B6B79F81D-2C67-46B5-8871-8FA3FFF813EC%7D&amp;file=Britive%20-%20Enterprise%20Cloud-Native%20PAM%20Presentation%20-%202025.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive -…ion – 2025 | PowerPoint]</a></p>
+<p>AI agents are starting to perform real operational work — but most teams struggle to grant them access safely. This session presents a practical GCP architecture where a VM-hosted agent uses federated identity (OIDC/WIF) to request read-only, just‑in‑time access to customer projects with strong auditability and no static credentials.</p>
 <h2>Agenda / Flow</h2>
 <ol>
 <li><strong>Why this matters (5 min)</strong>
-   * The rise of non-human identities and automation at scale <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a>
+   * The rise of non-human identities and automation at scale
    * Common failure modes: standing access, shared keys, poor audit trails</li>
 <li><strong>The use case (5 min)</strong>
    * Per‑engineer VM and service account boundary
@@ -318,7 +318,7 @@ Anything beyond that is clearly labeled as “suggested implementation guidance.
    * Where identity lives (service account), where policy lives (broker)</li>
 <li><strong>Keyless auth with OIDC/WIF (8 min)</strong>
    * What federation solves (no static secrets)
-   * GCP prerequisites: APIs, custom role, service account, WIF pool/provider <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+   * GCP prerequisites: APIs, custom role, service account, WIF pool/provider</li>
 <li><strong>Access modeling with Profiles (7 min)</strong>
    * “Profile per customer project” strategy (scales cleanly)
    * Read-only vs elevated (approval gates)</li>
