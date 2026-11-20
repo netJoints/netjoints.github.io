@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aviatrix Transit Network in GCP is a powerful use-case for customers looking to design consistent transit architecture in GCP and in other clouds. This is neede to build a unified and consistent network forming the cloud core essentially. This design also allows business to have full visibility into">
+  <title>GCP Transit Networking and Routing with Aviatrix · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/gcp-transit-networking-and-routing-with-aviatrix/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GCP Transit Networking and Routing with Aviatrix">
+  <meta property="og:description" content="Aviatrix Transit Network in GCP is a powerful use-case for customers looking to design consistent transit architecture in GCP and in other clouds. This is neede to build a unified and consistent network forming the cloud core essentially. This design also allows business to have full visibility into">
+  <meta property="og:url" content="https://netjoints.com/blog/gcp-transit-networking-and-routing-with-aviatrix/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2019-11-07">November 7, 2019</time>
+      </div>
+
+      <h1 class="blog-title">GCP Transit Networking and Routing with Aviatrix</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Aviatrix Transit Network in GCP is a powerful use-case for customers looking to design consistent transit architecture in GCP and in other clouds. This is neede to build a unified and consistent network forming the cloud core essentially.</p>
+<p>This design also allows business to have full visibility into the traffic beyond what Cloud primitive options can provide.</p>
+<h2>GCP Transit Network Topology</h2>
+<p>We will be using a simple hub and spoke transit topology as depicted below. This topology can be extended to hundreds of VPCs and across multiple clouds without any compromises.</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image.png" /></p>
+<h2>Create GCP VPCs Directly from Aviatrix Controller UI</h2>
+<p>This is very powerful deploy directly from the Aviatrix Controller UI. There is no need to learn different Cloud constructs as Aviatrix can speak all the “Cloud” languages.</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-1.png" /></p>
+<p>Following example shows the output when all necessary VPCs were created to build the transit topology we showcased earlier.</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-2.png" /></p>
+<h2>Create GCP Transit Gateway from AVX-Ctrl UI</h2>
+<p>NOTE: AVX-Ctrl –&gt; Aviatrix Controller</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-3.png" /></p>
+<h2>Create GCP Spoke Aviatrix Gateway-1</h2>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-4.png" /></p>
+<h2>Create GCP Spoke Aviatrix Gateway-2</h2>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-5.png" /></p>
+<p>Following is the output when AVX-GW is created</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-6.png" /></p>
+<h2>GCP Transit (Hub) and Spoke GWs Deployed</h2>
+<p>At this point you have your HUB and Spoke GW deployed</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-7.png" /></p>
+<h2>Attach GCP Hub to Spoke-VPC1 and VPC2</h2>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-8.png" />
+<img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-9.png" /></p>
+<h2>Attachment Process</h2>
+<p>AVX-Ctrl creates the IPSec Tunnels / Firewall rules etc. to attach Spoke-VPC to Transit-VPC as shown below</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-10.png" /></p>
+<h2>Aviatrix Encrypted Peering Section</h2>
+<p>Encrypted Peering section will also show the following outcome</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-11.png" /></p>
+<h2>GCP Transit Networking Is Deployed Now</h2>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-12.png" /></p>
+<h2>Testing GCP Transit</h2>
+<p>We deployed two test VMs in Spoke VPCs as follows</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-14.png" /></p>
+<h2>Test VM Properties</h2>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-15.png" /></p>
+<h2>Enable GCP “OS Login” Feature to Login to VMs</h2>
+<p>https://cloud.google.com/compute/docs/instances/managing-instance-access</p>
+<p><a href="https://cloud.google.com/compute/docs/oslogin">OS Login</a>
+allows you to use <a href="https://cloud.google.com/compute/docs/access/iam">Compute Engine IAM
+roles</a>
+to manage SSH access to Linux instances and is an alternative to manually
+managing instance access by <a href="https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys">adding
+and removing SSH keys in metadata</a>.</p>
+<p>To configure OS Login and connect to your instances, use the following process:</p>
+<ol>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Enable the OS Login feature</a> on your project or on individual instances.</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Grant the necessary IAM roles</a> to yourself, your project members, or your organization members.</li>
+<li>Optionally, complete any of the following steps:</li>
+<li><a href="https://cloud.google.com/compute/docs/oslogin/setup-two-factor-authentication">Set up two-factor authentication</a>.</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Add custom SSH keys to user accounts</a> for yourself, your project member, or organization members. Alternatively, Compute Engine can automatically generate these keys for you when you connect to instances.</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Modify user accounts using the Directory API</a>.</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Grant instance access to users outside of your organization</a>.</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">Connect to instances</a>.</li>
+<li>Review the <a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">expected login behaviors</a>.</li>
+</ol>
+<h2>Install important Tools on both GCP VMs</h2>
+<p><a href="https://cloud.google.com/solutions/building-high-throughput-vpns">ttps://cloud.google.com/solutions/building-high-throughput-vpns</a></p>
+<h1>sudo apt-get -y install traceroute mtr tcpdump iperf whois host dnsutils siege</h1>
+<h2>Enable Aviatrix Connected Transit Feature</h2>
+<p>This feature allows VPCs to talk to each other. By default VPCs can only talk to Transit VPC. This is meant for SaaS based apps or for Service Providers for VPC isolation.</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-16.png" /></p>
+<h2>Testing Successful</h2>
+<p>At this point it is all good and working.</p>
+<p><img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-17.png" />
+<img alt="" src="/blog/images/gcp-transit-networking-and-routing-with-aviatrix/image-18.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

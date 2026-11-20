@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kubernetes access has three layers to secure: who the user is, what they can do inside the cluster, and what the cluster's workloads can do in the cloud. This post maps them to the common cloud platforms.">
+  <title>Kubernetes Access Security and IAM · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/kubernetes-access-security-and-iam/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kubernetes Access Security and IAM">
+  <meta property="og:description" content="Kubernetes access has three layers to secure: who the user is, what they can do inside the cluster, and what the cluster's workloads can do in the cloud. This post maps them to the common cloud platforms.">
+  <meta property="og:url" content="https://netjoints.com/blog/kubernetes-access-security-and-iam/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-04-19">April 19, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Kubernetes Access Security and IAM</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>The three layers</h2>
+<ol>
+<li><strong>Authentication</strong>: how a person or workload proves who it is to the cluster.</li>
+<li><strong>Authorization</strong>: what that identity may do inside Kubernetes.</li>
+<li><strong>Workload to cloud IAM</strong>: what pods may do to cloud resources (S3 buckets, databases, queues).</li>
+</ol>
+<h2>1. Authentication</h2>
+<ul>
+<li>Kubernetes itself has <strong>no user database</strong>. It trusts <strong>client certificates, bearer tokens, OIDC, or webhook</strong> authenticators.</li>
+<li>Managed clusters connect to the cloud identity system: <strong>AWS EKS</strong> uses IAM (access entries, or the older <code>aws-auth</code> ConfigMap), <strong>GKE</strong> uses Google identities, and <strong>AKS</strong> uses <strong>Microsoft Entra ID</strong>.</li>
+<li>Prefer <strong>OIDC with your central identity provider and MFA</strong> over long-lived certificates or shared kubeconfigs.</li>
+</ul>
+<h2>2. Authorization (RBAC)</h2>
+<ul>
+<li><strong>Roles</strong> and <strong>ClusterRoles</strong> define verbs on resources. <strong>RoleBindings</strong> and <strong>ClusterRoleBindings</strong> attach them to users, groups or service accounts.</li>
+<li>Apply <strong>least privilege</strong>. Avoid <code>cluster-admin</code> for daily work and avoid wildcards.</li>
+<li>Map <strong>IdP groups</strong> to RBAC groups so that access follows team membership.</li>
+<li>Add <strong>admission controls</strong> (Pod Security Admission, OPA Gatekeeper or Kyverno) for guardrails beyond RBAC.</li>
+</ul>
+<h2>3. Workload identity (pods to cloud)</h2>
+<p>Avoid storing cloud keys in Secrets. Use a federated workload identity instead:</p>
+<ul>
+<li><strong>EKS</strong>: <strong>IAM Roles for Service Accounts (IRSA)</strong> or <strong>EKS Pod Identity</strong></li>
+<li><strong>GKE</strong>: <strong>Workload Identity Federation for GKE</strong></li>
+<li><strong>AKS</strong>: <strong>Microsoft Entra Workload ID</strong></li>
+</ul>
+<p>Each ties a <strong>Kubernetes service account</strong> to a cloud role with short-lived credentials.</p>
+<h2>Moving toward zero standing privilege</h2>
+<ul>
+<li>Grant cluster admin and production access <strong>just in time</strong>, with approval, a time limit and automatic revocation.</li>
+<li>Use <strong>session recording and audit logs</strong> (Kubernetes audit logs plus cloud audit trails) so every privileged action is attributable.</li>
+<li>Rotate or remove static credentials, and review who still holds permanent bindings.</li>
+</ul>
+<h2>Quick checklist</h2>
+<ul>
+<li>OIDC login with MFA, no shared kubeconfigs</li>
+<li>IdP group to RBAC group mapping</li>
+<li>No wildcard roles; limited <code>cluster-admin</code></li>
+<li>Workload identity instead of static cloud keys</li>
+<li>Audit logging on and shipped to a central place</li>
+<li>Time-bound elevated access</li>
+</ul>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">britive</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

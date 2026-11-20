@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Shahzad Ali across Cisco, VMware, Aviatrix, Britive and Cisco AgenticOps: networking, data center, multicloud, security and agentic AI. Search, or browse by career or category.">
+  <title>Projects · Shahzad Ali · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/projects/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects · Shahzad Ali">
+  <meta property="og:description" content="Projects across networking, data center, multicloud, security and agentic AI, by career stage or category.">
+  <meta property="og:url" content="https://netjoints.com/projects/">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/" aria-current="page">Projects</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <section class="section work-section proj-page">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Projects</span>
+        <h1 class="section-title">Everything I've built and led</h1>
+        <p class="section-sub">From service provider networks to agentic AI. Browse by career stage, switch to categories, or search. Source repositories that are private are summarized on a project overview page; access to them is available on request only.</p>
+      </div>
+
+      <div class="proj-toolbar">
+        <div class="proj-tabs" role="tablist" aria-label="Group projects">
+          <button type="button" role="tab" class="proj-tab is-active" id="tab-career" aria-selected="true" data-view="career">By career</button>
+          <button type="button" role="tab" class="proj-tab" id="tab-category" aria-selected="false" data-view="category">By category</button>
+        </div>
+        <input type="search" id="projSearch" class="proj-search" placeholder="Search projects…" autocomplete="off" aria-label="Search projects">
+      </div>
+      <div class="proj-chips" id="projChips" hidden aria-label="Filter by category">
+        <button type="button" class="proj-chip is-active" data-cat="">All</button>
+        <button type="button" class="proj-chip" data-cat="Service Provider">Service Provider</button>
+        <button type="button" class="proj-chip" data-cat="Wireless & Mobility">Wireless & Mobility</button>
+        <button type="button" class="proj-chip" data-cat="Enterprise Networking">Enterprise Networking</button>
+        <button type="button" class="proj-chip" data-cat="Unified Communications">Unified Communications</button>
+        <button type="button" class="proj-chip" data-cat="Data Center">Data Center</button>
+        <button type="button" class="proj-chip" data-cat="Cloud Automation">Cloud Automation</button>
+        <button type="button" class="proj-chip" data-cat="Network Virtualization">Network Virtualization</button>
+        <button type="button" class="proj-chip" data-cat="Multicloud">Multicloud</button>
+        <button type="button" class="proj-chip" data-cat="Kubernetes">Kubernetes</button>
+        <button type="button" class="proj-chip" data-cat="Security">Security</button>
+        <button type="button" class="proj-chip" data-cat="Agentic AI Security">Agentic AI Security</button>
+        <button type="button" class="proj-chip" data-cat="Agentic AI">Agentic AI</button>
+        <button type="button" class="proj-chip" data-cat="AgenticOps">AgenticOps</button>
+        <button type="button" class="proj-chip" data-cat="Enablement">Enablement</button>
+        <button type="button" class="proj-chip" data-cat="AI & Research">AI & Research</button>
+      </div>
+      <p class="proj-empty" id="projEmpty" hidden>No projects match. Try a broader search.</p>
+
+      <div id="projCareer">
+        <div class="work-group proj-group" data-era="before-cisco">
+          <div class="work-group-head"><h3>Before Cisco</h3><p>Service provider, wireless and mobility work, an IEEE paper, a thesis and robot control.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="Service Provider" data-text="service provider networking service provider network design and engineering projects from the late 1990s onward. service provider">
+              <h4>Service provider networking</h4>
+              <p>Service provider network design and engineering projects from the late 1990s onward.</p>
+              <div class="myapp-tags"><span>Service Provider</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Wireless & Mobility" data-text="wireless networking and ieee paper wireless networking projects, including research published as an ieee paper. wireless &amp; mobility">
+              <h4>Wireless networking and IEEE paper</h4>
+              <p>Wireless networking projects, including research published as an IEEE paper.</p>
+              <div class="myapp-tags"><span>Wireless & Mobility</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Wireless & Mobility|Enterprise Networking" data-text="mobile ip in the enterprise campus mobile ip for enterprise campus networks, the subject of a master&#39;s thesis. wireless &amp; mobility enterprise networking">
+              <h4>Mobile IP in the enterprise campus</h4>
+              <p>Mobile IP for enterprise campus networks, the subject of a master's thesis.</p>
+              <div class="myapp-tags"><span>Wireless & Mobility</span><span>Enterprise Networking</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="AI & Research" data-text="genetic programming for robots using genetic programming to generate the code that operates and runs robots. ai &amp; research">
+              <h4>Genetic programming for robots</h4>
+              <p>Using genetic programming to generate the code that operates and runs robots.</p>
+              <div class="myapp-tags"><span>AI & Research</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="cisco-1">
+          <div class="work-group-head"><h3>Cisco · first tenure</h3><p>Campus, unified communications, contact center, cloud automation and data center.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="Enterprise Networking" data-text="campus networking verification and qa campus networking solution verification and quality assurance. enterprise networking">
+              <h4>Campus networking verification and QA</h4>
+              <p>Campus networking solution verification and quality assurance.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Unified Communications" data-text="unified communications unified communications solution work. unified communications">
+              <h4>Unified communications</h4>
+              <p>Unified communications solution work.</p>
+              <div class="myapp-tags"><span>Unified Communications</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Unified Communications|Enterprise Networking" data-text="unified contact center and qos unified contact center and quality-of-service design. unified communications enterprise networking">
+              <h4>Unified contact center and QoS</h4>
+              <p>Unified contact center and quality-of-service design.</p>
+              <div class="myapp-tags"><span>Unified Communications</span><span>Enterprise Networking</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Unified Communications|Enterprise Networking|Enablement" data-text="cisco srnd design guides solution reference network design (srnd) guidance. unified communications enterprise networking enablement">
+              <h4>Cisco SRND design guides</h4>
+              <p>Solution Reference Network Design (SRND) guidance.</p>
+              <div class="myapp-tags"><span>Unified Communications</span><span>Enterprise Networking</span><span>Enablement</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Cloud Automation" data-text="cisco intelligent automation for cloud (ciac) cloud automation with the ciac stack, including newscale and tidal orchestrators. cloud automation">
+              <h4>Cisco Intelligent Automation for Cloud (CIAC)</h4>
+              <p>Cloud automation with the CIAC stack, including newScale and Tidal orchestrators.</p>
+              <div class="myapp-tags"><span>Cloud Automation</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Data Center|Security" data-text="data center security and remote expert data center security projects, including cisco remote expert. data center security">
+              <h4>Data center security and Remote Expert</h4>
+              <p>Data center security projects, including Cisco Remote Expert.</p>
+              <div class="myapp-tags"><span>Data Center</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Data Center" data-text="data center: aci and nexus data center work on cisco aci and the nexus 7000, 5000 and 2000 families. data center">
+              <h4>Data center: ACI and Nexus</h4>
+              <p>Data center work on Cisco ACI and the Nexus 7000, 5000 and 2000 families.</p>
+              <div class="myapp-tags"><span>Data Center</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="vmware">
+          <div class="work-group-head"><h3>VMware</h3><p>NSX network virtualization and security.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="Network Virtualization|Security" data-text="nsx security distributed firewalling and micro-segmentation with nsx. network virtualization security">
+              <h4>NSX security</h4>
+              <p>Distributed firewalling and micro-segmentation with NSX.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Network Virtualization|Data Center" data-text="nsx vxlan fabric overlay networking on a vxlan fabric with nsx. network virtualization data center">
+              <h4>NSX VXLAN fabric</h4>
+              <p>Overlay networking on a VXLAN fabric with NSX.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span><span>Data Center</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Network Virtualization" data-text="nsx-v and nsx-t both generations of nsx: nsx for vsphere and nsx-t. network virtualization">
+              <h4>NSX-v and NSX-T</h4>
+              <p>Both generations of NSX: NSX for vSphere and NSX-T.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Network Virtualization|Security" data-text="guest introspection guest introspection services for in-vm security. network virtualization security">
+              <h4>Guest introspection</h4>
+              <p>Guest introspection services for in-VM security.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Network Virtualization|Security" data-text="network introspection network introspection services for traffic inspection and security partners. network virtualization security">
+              <h4>Network introspection</h4>
+              <p>Network introspection services for traffic inspection and security partners.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Network Virtualization|Enablement" data-text="building vmware nsx powered clouds and data centers for smb the book, published by vmware press. network virtualization enablement">
+              <h4>Building VMware NSX Powered Clouds and Data Centers for SMB</h4>
+              <p>The book, published by VMware Press.</p>
+              <div class="myapp-tags"><span>Network Virtualization</span><span>Enablement</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">On Amazon <span class="arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="aviatrix">
+          <div class="work-group-head"><h3>Aviatrix</h3><p>Multicloud networking and security, and the ACE certification program.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="Multicloud|Security" data-text="multicloud networking and security multicloud transit networking and security across aws, azure, google cloud and oci. multicloud security">
+              <h4>Multicloud networking and security</h4>
+              <p>Multicloud transit networking and security across AWS, Azure, Google Cloud and OCI.</p>
+              <div class="myapp-tags"><span>Multicloud</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Kubernetes|Multicloud|Security" data-text="kubernetes security and networking networking and security for kubernetes workloads across clouds. kubernetes multicloud security">
+              <h4>Kubernetes security and networking</h4>
+              <p>Networking and security for Kubernetes workloads across clouds.</p>
+              <div class="myapp-tags"><span>Kubernetes</span><span>Multicloud</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Multicloud|Enablement" data-text="aviatrix certified engineer (ace) program founded the ace program, the industry&#39;s first multicloud networking certification. multicloud enablement">
+              <h4>Aviatrix Certified Engineer (ACE) program</h4>
+              <p>Founded the ACE program, the industry's first multicloud networking certification.</p>
+              <div class="myapp-tags"><span>Multicloud</span><span>Enablement</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Multicloud" data-text="multicloud network architecture (mcna) the multicloud network architecture reference model. multicloud">
+              <h4>Multicloud Network Architecture (MCNA)</h4>
+              <p>The multicloud network architecture reference model.</p>
+              <div class="myapp-tags"><span>Multicloud</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="britive">
+          <div class="work-group-head"><h3>Britive</h3><p>Identity security for people, machines and AI agents.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="Agentic AI Security|Security" data-text="agentic identity security identity security for ai agents: just-in-time, zero-standing-privilege access. agentic ai security security">
+              <h4>Agentic identity security</h4>
+              <p>Identity security for AI agents: just-in-time, zero-standing-privilege access.</p>
+              <div class="myapp-tags"><span>Agentic AI Security</span><span>Security</span></div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI Security|Security" data-text="jit pam github nhi just-in-time privileged access for non-human identities and secure automation. agentic ai security security">
+              <h4>JIT PAM GitHub NHI</h4>
+              <p>Just-in-time privileged access for non-human identities and secure automation.</p>
+              <div class="myapp-tags"><span>Agentic AI Security</span><span>Security</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/jit-pam-github-nhi/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/jit-pam-github-nhi" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI Security|Security" data-text="snowflake mcp with jit zero standing privilege agentic ai using an mcp server, with just-in-time access to snowflake. agentic ai security security">
+              <h4>Snowflake MCP with JIT zero standing privilege</h4>
+              <p>Agentic AI using an MCP server, with just-in-time access to Snowflake.</p>
+              <div class="myapp-tags"><span>Agentic AI Security</span><span>Security</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="https://github.com/netJoints/agentic-ai-snowflake-mcp-jit-zsp" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Security" data-text="rds access with pam cli access to a single rds instance or cluster using aws iam conditions. security">
+              <h4>RDS access with PAM</h4>
+              <p>CLI access to a single RDS instance or cluster using AWS IAM conditions.</p>
+              <div class="myapp-tags"><span>Security</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="https://github.com/netJoints/enterprise-database-security-for-rds-using-pam" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI|Agentic AI Security" data-text="agentic ai finops initiative supervised ai agents and jit pam for productivity, customer enablement and secure cost operations. agentic ai agentic ai security">
+              <h4>Agentic AI FinOps initiative</h4>
+              <p>Supervised AI agents and JIT PAM for productivity, customer enablement and secure cost operations.</p>
+              <div class="myapp-tags"><span>Agentic AI</span><span>Agentic AI Security</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/agentic-ai-finops-app/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/agentic-ai-finops-app" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI|AI & Research" data-text="bedrock agentcore research agent research agent exploring tool use, grounding and repeatable investigation. agentic ai ai &amp; research">
+              <h4>Bedrock AgentCore research agent</h4>
+              <p>Research agent exploring tool use, grounding and repeatable investigation.</p>
+              <div class="myapp-tags"><span>Agentic AI</span><span>AI & Research</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/bedrock-agentcore-research-agent/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/bedrock-agentcore-research-agent" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="cisco-2">
+          <div class="work-group-head"><h3>Cisco · AgenticOps</h3><p>Agentic AI for product management, field enablement and network operations.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="AgenticOps" data-text="agenticops interactive an interactive agenticops experience, hosted on this site. agenticops">
+              <h4>AgenticOps Interactive</h4>
+              <p>An interactive AgenticOps experience, hosted on this site.</p>
+              <div class="myapp-tags"><span>AgenticOps</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/agenticops/interactive/">Open <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enablement" data-text="customer-obsessed roadmap and rice prioritization consolidated roadmap visibility, ai-assisted evidence and rice prioritization. agenticops enablement">
+              <h4>Customer-obsessed roadmap and RICE prioritization</h4>
+              <p>Consolidated roadmap visibility, AI-assisted evidence and RICE prioritization.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enablement</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/customer-obsessed-roadmap-rice/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enablement" data-text="agenticops product management website a product-operations layout that turns customer pain points into roadmaps, evidence and action. agenticops enablement">
+              <h4>AgenticOps product management website</h4>
+              <p>A product-operations layout that turns customer pain points into roadmaps, evidence and action.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enablement</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/agenticops-prod-mgmt-website/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI|AgenticOps" data-text="ai rag search source-aware retrieval for grounded answers and traceable citations. agentic ai agenticops">
+              <h4>AI RAG search</h4>
+              <p>Source-aware retrieval for grounded answers and traceable citations.</p>
+              <div class="myapp-tags"><span>Agentic AI</span><span>AgenticOps</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/ai-rag-search/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enterprise Networking" data-text="ask campus switching webex ai agent human-first rag support for campus switching questions. agenticops enterprise networking">
+              <h4>Ask Campus Switching Webex AI agent</h4>
+              <p>Human-first RAG support for campus switching questions.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/ask-campus-switching-webex-ai-agent/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI|AgenticOps" data-text="agentic ai webex bot an agentic collaboration experiment connecting ai workflows with webex. agentic ai agenticops">
+              <h4>Agentic AI Webex bot</h4>
+              <p>An agentic collaboration experiment connecting AI workflows with Webex.</p>
+              <div class="myapp-tags"><span>Agentic AI</span><span>AgenticOps</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/agentic-ai-webex-bot/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/agentic-ai-webex-bot" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Agentic AI Security" data-text="al lab access secure lab access with explicit boundaries for identity, evidence and safe automation. agenticops agentic ai security">
+              <h4>AL lab access</h4>
+              <p>Secure lab access with explicit boundaries for identity, evidence and safe automation.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Agentic AI Security</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/al-lab-access/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enterprise Networking" data-text="catalyst center to meraki migration assistant a guided migration workflow that uses ai to structure decisions without hiding technical constraints. agenticops enterprise networking">
+              <h4>Catalyst Center to Meraki migration assistant</h4>
+              <p>A guided migration workflow that uses AI to structure decisions without hiding technical constraints.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/catc-to-meraki-migration-ai-assistant/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking" data-text="catalyst center to meraki migration steps auditable migration planning covering prerequisites, decisions, validation and rollback. enterprise networking">
+              <h4>Catalyst Center to Meraki migration steps</h4>
+              <p>Auditable migration planning covering prerequisites, decisions, validation and rollback.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/aia-catc-to-meraki-migration-steps/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enterprise Networking" data-text="catalyst center mcp server deployment guide how to deploy the catalyst center mcp server using podman. agenticops enterprise networking">
+              <h4>Catalyst Center MCP server deployment guide</h4>
+              <p>How to deploy the Catalyst Center MCP server using Podman.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enterprise Networking</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="https://github.com/netJoints/cisco-catc-mcp-server-deployment-guide" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AgenticOps|Enterprise Networking" data-text="codex catalyst center compliance skill repeatable, evidence-oriented compliance workflows for ai-assisted operations. agenticops enterprise networking">
+              <h4>Codex Catalyst Center compliance skill</h4>
+              <p>Repeatable, evidence-oriented compliance workflows for AI-assisted operations.</p>
+              <div class="myapp-tags"><span>AgenticOps</span><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/codex-catc-compliance-skil/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking|Data Center" data-text="bgp evpn and sd-access api analysis fabric automation lifecycle mapping: api coverage, dependencies and gaps. enterprise networking data center">
+              <h4>BGP EVPN and SD-Access API analysis</h4>
+              <p>Fabric automation lifecycle mapping: API coverage, dependencies and gaps.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span><span>Data Center</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/bgp-evpn-sd-access-api-analysis/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking" data-text="catalyst vs meraki switching gap evidence-backed comparison of switching capabilities and operating models. enterprise networking">
+              <h4>Catalyst vs Meraki switching gap</h4>
+              <p>Evidence-backed comparison of switching capabilities and operating models.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/catalyst-switch-vs-meraki-ms-switching-gap/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking" data-text="meraki ms vs ios xe switching gaps operating-model comparison for cloud-managed and ios xe switching. enterprise networking">
+              <h4>Meraki MS vs IOS XE switching gaps</h4>
+              <p>Operating-model comparison for cloud-managed and IOS XE switching.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/meraki-ms-vs-ios-xe-os-switching-gaps/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking|Cloud Automation" data-text="terraform and meraki switching gaps capability crosswalk between infrastructure-as-code and switching workflows. enterprise networking cloud automation">
+              <h4>Terraform and Meraki switching gaps</h4>
+              <p>Capability crosswalk between infrastructure-as-code and switching workflows.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span><span>Cloud Automation</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/terraform-meraki-switching-gaps/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enterprise Networking|Cloud Automation" data-text="snra cvd programming playbook coordinated programming guidance for secure network reference architecture automation. enterprise networking cloud automation">
+              <h4>SNRA CVD programming playbook</h4>
+              <p>Coordinated programming guidance for secure network reference architecture automation.</p>
+              <div class="myapp-tags"><span>Enterprise Networking</span><span>Cloud Automation</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/snra-cvd-programming-playbook/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI" data-text="event hotel finder (even frugality) ai-assisted hotel search framed as operational frugality. agentic ai">
+              <h4>Event hotel finder (Even Frugality)</h4>
+              <p>AI-assisted hotel search framed as operational frugality.</p>
+              <div class="myapp-tags"><span>Agentic AI</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/hotel-finder/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI" data-text="finops agentic ai local agents local-agent exploration for cost analysis and operational decision support. agentic ai">
+              <h4>FinOps agentic AI local agents</h4>
+              <p>Local-agent exploration for cost analysis and operational decision support.</p>
+              <div class="myapp-tags"><span>Agentic AI</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/finops-agentic-ai-local-agents/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Enablement|Agentic AI" data-text="ai and agentic ai interview questions a practical resource for building shared ai fluency across technical teams. enablement agentic ai">
+              <h4>AI and agentic AI interview questions</h4>
+              <p>A practical resource for building shared AI fluency across technical teams.</p>
+              <div class="myapp-tags"><span>Enablement</span><span>Agentic AI</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/ai-genai-agentic-ai-interview-questions/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/ai-genai-agentic-ai-interview-questions" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="Agentic AI" data-text="wordpress mcp with claude an mcp integration that lets an assistant work safely with a content system. agentic ai">
+              <h4>WordPress MCP with Claude</h4>
+              <p>An MCP integration that lets an assistant work safely with a content system.</p>
+              <div class="myapp-tags"><span>Agentic AI</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/wordpress-mcp-with-claude/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/wordpress-mcp-with-claude" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-group proj-group" data-era="side">
+          <div class="work-group-head"><h3>Side projects</h3><p>Personal tools and experiments.</p></div>
+          <div class="work-grid">
+            <div class="work-card proj-card" data-cats="AI & Research" data-text="receipt finder local-first receipt organization: find, shrink and rename receipt files. ai &amp; research">
+              <h4>Receipt finder</h4>
+              <p>Local-first receipt organization: find, shrink and rename receipt files.</p>
+              <div class="myapp-tags"><span>AI & Research</span></div>
+              <p class="proj-note">Private repository. Access available on request only.</p>
+              <div class="proj-links">
+                <a class="work-cta" href="/receipt-finder/">Project overview <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AI & Research" data-text="vibe studio video editing software for beginners. ai &amp; research">
+              <h4>Vibe Studio</h4>
+              <p>Video editing software for beginners.</p>
+              <div class="myapp-tags"><span>AI & Research</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/vibe-studio/">Project overview <span class="arrow">→</span></a>
+                <a class="work-cta" href="https://github.com/netJoints/vibe-studio" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <div class="work-card proj-card" data-cats="AI & Research" data-text="tesla tire guide, santa inez travel and more the side-project hub on this site. ai &amp; research">
+              <h4>Tesla tire guide, Santa Inez travel and more</h4>
+              <p>The side-project hub on this site.</p>
+              <div class="myapp-tags"><span>AI & Research</span></div>
+              <div class="proj-links">
+                <a class="work-cta" href="/app/">View all <span class="arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="projCategory" hidden></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/projects.js"></script>
+</body>
+</html>

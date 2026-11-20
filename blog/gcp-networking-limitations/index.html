@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Google Cloud Platform (GCP) offers various networking services, each with its own set of limitations and quota limits. These are enforced to ensure fair resource distribution and system stability. GCP Global VPC Network Latency and Performance: One of the primary challenges with global VPCs is incre">
+  <title>GCP Networking Limitations · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/gcp-networking-limitations/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GCP Networking Limitations">
+  <meta property="og:description" content="Google Cloud Platform (GCP) offers various networking services, each with its own set of limitations and quota limits. These are enforced to ensure fair resource distribution and system stability. GCP Global VPC Network Latency and Performance: One of the primary challenges with global VPCs is incre">
+  <meta property="og:url" content="https://netjoints.com/blog/gcp-networking-limitations/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/gcp-networking-limitations/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-10-16">October 16, 2024</time>
+      </div>
+
+      <h1 class="blog-title">GCP Networking Limitations</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/gcp-networking-limitations/cover.jpg" alt="GCP Networking Limitations">
+      
+
+      <div class="blog-content">
+        <p>Google Cloud Platform (GCP) offers various networking services, each with its own set of limitations and quota limits. These are enforced to ensure fair resource distribution and system stability.</p>
+<h2>GCP Global VPC</h2>
+<h3><strong>Network Latency and Performance:</strong></h3>
+<p>One of the primary challenges with global VPCs is increased network latency due to the geographical distances between different regions. This can impact the performance of latency-sensitive applications.</p>
+<p><a href="https://www.infoworld.com/article/2258014/the-pros-and-cons-of-using-a-virtual-private-cloud.html">https://www.infoworld.com/article/2258014/the-pros-and-cons-of-using-a-virtual-private-cloud.html</a></p>
+<h3>Reduced Security for Sensitive Data</h3>
+<p>GCP recommends against using Global VPC for sensitive data because it could reduce the security of sensitive workloads.</p>
+<blockquote>
+<p>“For companies that deal with compliance initiatives, sensitive data, or highly regulated data that is bound by compliance standards such as HIPAA or PCI-DSS, further security measures often make sense. One method that can improve security and make it easier to prove compliance is to isolate each of these environments into its own VPC network.”</p>
+<p><img alt="" src="/blog/images/gcp-networking-limitations/image-18.png" /></p>
+</blockquote>
+<p><a href="https://cloud.google.com/architecture/best-practices-vpc-design#isolate-data">https://cloud.google.com/architecture/best-practices-vpc-design#isolate-data</a></p>
+<h3>Large Failure Domain</h3>
+<p>A Global VPC usually has workloads across the entire globe. This could be a huge security issue if one VM or workload is attached or compromised. It could position or attach other VPCs across the globe.</p>
+<h3>3rd Part Service Insertion Challenges with Global VPC</h3>
+<p>Since Global VPC has a global hidden VPC router, the traffic is routed by that hidden GPC VPC router automatically. It will be difficult or in some cases impossible to steer traffic to 3rd party appliances sitting in the same VPC. Appliances like F5 and Palo Alto must be deployed outside of the Global VPC so that traffic can be steered to them for Firewall service insertion for example.</p>
+<h3>Data Residency and Compliance Risks</h3>
+<p>Different regions may have varying compliance and data residency requirements (European Union Mandates for data locality, GDPR, etc.). Ensuring adherence to these compliance standards can complicate the global VPC setup and operation</p>
+<h2>Aviatrix Eliminates Global VPC Realted Challenges</h2>
+<p>Aviatrix hub and spoke VPC default design do not use Global VPC. It improves the performance and latency of workloads. Reduces the large failure domain. Aviatrix FireNet feature, out of the box, deploys 3rd party Firewalls into the traffic flow with policy-based service insertion and dynamic traffic steering.</p>
+<p>Avaitrix hub and spoke VPC are by default encrypt all the traffic in transit. There is no option to even disable this. It allows peace of mind security knowing that the traffic is always encrypted.</p>
+<h2>GCP VPC Network Peering Disadvantages</h2>
+<p>VPC networks are isolated tenant spaces within Google’s <a href="https://cloudplatform.googleblog.com/2017/11/Andromeda-2-1-reduces-GCPs-intra-zone-latency-by-40-percent.html">Andromeda</a> SDN. One can use the GCP VPC peering to connect VPCs for traffic routing. However, based on GCP documentation I discourage customers from using GCP VPC peering with or without Global VPC.</p>
+<p>The following screenshot is taken from GPC VPC design best practices.</p>
+<p><img alt="" src="/blog/images/gcp-networking-limitations/image-19.png" /></p>
+<p><strong>GPC VPC Network Peering Disadvantages</strong></p>
+<ul>
+<li>Non-transitive.</li>
+<li>Scaling numbers are bound to the <em>aggregate</em> group of peered VPC networks. This includes the number of VMs, routes, and internal forwarding rules.</li>
+<li>Requires non-overlapping address space.</li>
+<li>Static and dynamic routes are not propagated.</li>
+<li>Source tags and source service accounts of the sending VM are not propagated across VPC Network Peering.</li>
+</ul>
+<p>Reference: <a href="https://cloud.google.com/architecture/best-practices-vpc-design#choose-method">https://cloud.google.com/architecture/best-practices-vpc-design#choose-method</a></p>
+<h2>Google Cloud Interconnect Limitations</h2>
+<h3>Google Cloud Interconnect Private Circuits are NOT Encrypted</h3>
+<p>Google Cloud Interconnect (Dedicated or Partner) is not IPSec encrypted by default. Refer to the following screenshot taken from Google documentation.</p>
+<p><img alt="" src="/blog/images/gcp-networking-limitations/image-20-1024x405.png" /></p>
+<p>Reference: <a href="https://cloud.google.com/architecture/best-practices-vpc-design#choose-method">https://cloud.google.com/architecture/best-practices-vpc-design#choose-method</a></p>
+<h3>Google Cloud Interconnect Private Circuits 1.25 Gbps IPSec Throughput Limitation</h3>
+<p>The throughput is limited to 1.25 Gbps. This is industry industry-wide issue not limited to GCP. AWS, Azure, and OCI have similar limitations. Aviatrix has the patented technology to overcome this limitation. Aviatrix HPE DC Edge use-case provides near-line rate IPSec encrypted throughput in hybrid cloud, single cloud, and multicloud situations.</p>
+<p>The following diagram shows AWS and Azure but the beauty is that the design is applicable if you replace Azure or AWS with GCP.</p>
+<p><img alt="" src="/blog/images/gcp-networking-limitations/image-21-1024x845.png" /></p>
+<h2>GCP Networking Limitations Summary</h2>
+<p>Evaluate the need for multicloud connectivity and consistent architecture. Keep in mind that<br />
+GCP Global VPC is a GCP-only feature.</p>
+<ul>
+<li>
+<p>Remember that GCP Global VPC features are only available in GCP. In a multicloud<br />
+  scenario, the customer would need to make additional efforts to implement a similar or<br />
+  compatible option in another cloud, which could delay the project, increase time-to-market,<br />
+  increase MTT, and increase cost due to technology and skill gap challenges.</p>
+</li>
+<li>
+<p>Understand that GCP Global VPC and standard VPC Network peering require non-overlapping address space. GCP and other CSPs do not support overlapping IP addresses natively. <br />
+  requirements are met.</p>
+</li>
+<li>
+<p>Assess the manual route management efforts required if the use case involves traffic steering<br />
+  to a 3rd party VM for service insertion/chaining use case.</p>
+</li>
+<li>
+<p>Evaluate the requirements of using tools such as packet capture, tcpdump, packet drop,<br />
+  traceroute, ping, etc. with or without GCP Global VPC.</p>
+</li>
+<li>
+<p>Understand the GCP Global VPC routing quota, BGP feature set, and advanced traffic<br />
+  engineering options. This should be reviewed for routes advertised to on-prem and the<br />
+  number of routes received from on-prem.</p>
+</li>
+<li>
+<p>Understand that line rate IPSec encryption over GCP Cloud Interconnect could pose<br />
+  challenges as it would restrict that throughput to 1.25 Gbps.</p>
+</li>
+<li>
+<p>Assess the manual route management efforts required to create segmentation and isolation<br />
+  with a policy-based approach.</p>
+</li>
+<li>
+<p>Analyze costs. If VMs are deployed in the same Global VPC, heavy inter-zone charges may<br />
+  be incurred. This would lead to designing a regional VPC.</p>
+</li>
+<li>
+<p>Review the network telemetry, VPC flow logs, firewall rules log, and cloud NAT charges for<br />
+  processing and storing the data</p>
+</li>
+</ul>
+<p>Review the following resources for the latest GCP Global VCP design considerations.</p>
+<p>https://cloud.google.com/architecture/best-practices-vpc-design#shared-common-vpc<br />
+https://cloud.google.com/vpc/docs/overview<br />
+https://cloud.google.com/vpc/docs/overview<br />
+https://cloud.google.com/vpc/pricing</p>
+<p>A simple Google Gemini search also suggest important points to consider</p>
+<p><img alt="" src="/blog/images/gcp-networking-limitations/image-22.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

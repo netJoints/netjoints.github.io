@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="It is important to provide security compliance and fulfill audit requirements by using various methods and network segmentation is one of them. Providing Network Security segmentation is a critical business requirement. Aviatrix MCNS is helping many customers who achieved this requirement. So far we">
+  <title>LAB3 – GCP Multi-Cloud Network Segmentation (MCNS) · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/lab3-gcp-multi-cloud-network-segmentation-mcns/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAB3 – GCP Multi-Cloud Network Segmentation (MCNS)">
+  <meta property="og:description" content="It is important to provide security compliance and fulfill audit requirements by using various methods and network segmentation is one of them. Providing Network Security segmentation is a critical business requirement. Aviatrix MCNS is helping many customers who achieved this requirement. So far we">
+  <meta property="og:url" content="https://netjoints.com/blog/lab3-gcp-multi-cloud-network-segmentation-mcns/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-28">November 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">LAB3 – GCP Multi-Cloud Network Segmentation (MCNS)</h1>
+
+      
+
+      <div class="blog-content">
+        <p>It is important to provide security compliance and fulfill audit requirements by using various methods and network segmentation is one of them. Providing Network Security segmentation is a critical business requirement. Aviatrix MCNS is helping many customers who achieved this requirement.</p>
+<p>So far we have built following topology</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.25.23-PM.png" /></p>
+<p>Our objective in this lab to segment VPCs in GCP based on the workload. Here are the business requirements</p>
+<ul>
+<li>There are two types of workload present in GCP called Green and Blue</li>
+<li>The workload in Blue and Green must not be allowed to communicate to each other</li>
+<li>Workloads within Blue and Green segments must be allowed to communicate with each other</li>
+<li>These segments must also extend to AWS as well.</li>
+<li>These segments should also extend to the on-prem data centers to provide segmentation for hybrid connectivity and their respective workload deployed in the on-premise DC locations.</li>
+</ul>
+<p>Following is how the final topology will look like after all the business objectives are met</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.32.00-PM.png" /></p>
+<h2>Enable MCNS on Transit gateways</h2>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; Plan –&gt; Enable for <strong>“gcp-transit”</strong></p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/image-18.png" /></p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; Plan –&gt; Enable for <strong>“aws-transit-gw-us-west-2”</strong></p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.34.36-PM-1024x256.png" /></p>
+<h2>Create Multi-Cloud Security Domains (MCSD)</h2>
+<p>Create two MCSD Green and Blue. These two domains are not connected to each other by default.</p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; Plan –&gt; Create MCSD</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.36.45-PM.png" /></p>
+<p>Repeat it again for Blue</p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; Plan –&gt; Create MCSD</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.37.12-PM.png" /></p>
+<h2>MCNS Connection Policy</h2>
+<p>The following screen shows that Green and Blue are not connected as per their Security or “Connection Policy”.</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/image-19.png" /></p>
+<h2>Assign GCP and AWS VPC to MCSD</h2>
+<p>In order to enforce the intent/policy we just created, we need to assign VPCs to their respective Security Domain based on the business policy.</p>
+<ul>
+<li>gcp-spoke-1 :: Green</li>
+<li>gcp-spoke-2 :: Blue</li>
+<li>gcp-spoke-3 :: Blue</li>
+<li>gcp-to-dc-route-1 :: Green</li>
+<li>aws-spoke-1 :: Green</li>
+<li>aws-spoke-2 :: Blue</li>
+<li>aws-to-dc-router-2 :: Green</li>
+</ul>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; Build –&gt; Associate Aviatrix Spoke to MCSD</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.47.55-PM.png" /></p>
+<p>Repeat this step as per the business requirement</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.50.23-PM.png" /></p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Segmentation –&gt; List –&gt; Domains to verify the configuration</p>
+<p><img alt="" src="/blog/images/lab3-gcp-multi-cloud-network-segmentation-mcns/Screen-Shot-2020-12-31-at-11.52.03-PM-1024x275.png" /></p>
+<p>Verify the Connectivity</p>
+<p>Now Ping from vm_gcp_private_ip_spoke1 (<strong>Green Segment</strong>) to other test machines (as listed below) and check the connectivity</p>
+<ul>
+<li>vm_gcp_private_ip_spoke2 Blue Segment (10.20.12.130) – should not work</li>
+<li>vm_gcp_private_ip_spoke3 Blue Segment (10.42.0.130) – should not work</li>
+<li>vm_aws_private_ip_spoke1 Green Segment (10.101.0.84) – <strong>should work</strong></li>
+</ul>
+<pre><code>ubuntu@vm-gcp-spoke-1:~$ ping 10.20.12.130
+PING 10.20.12.130 (10.20.12.130) 56(84) bytes of data.
+From 10.20.11.2 icmp_seq=1 Time to live exceeded
+From 10.20.11.2 icmp_seq=2 Time to live exceeded
+From 10.20.11.2 icmp_seq=3 Time to live exceeded
+^C
+--- 10.20.12.130 ping statistics ---
+3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2003ms
+
+ubuntu@vm-gcp-spoke-1:~$ ping 10.42.0.130
+PING 10.42.0.130 (10.42.0.130) 56(84) bytes of data.
+From 10.20.11.2 icmp_seq=1 Time to live exceeded
+From 10.20.11.2 icmp_seq=2 Time to live exceeded
+From 10.20.11.2 icmp_seq=3 Time to live exceeded
+From 10.20.11.2 icmp_seq=4 Time to live exceeded
+^C
+--- 10.42.0.130 ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3003ms
+
+ubuntu@vm-gcp-spoke-1:~$ ping 10.101.0.84
+PING 10.101.0.84 (10.101.0.84) 56(84) bytes of data.
+64 bytes from 10.101.0.84: icmp_seq=1 ttl=60 time=63.3 ms
+64 bytes from 10.101.0.84: icmp_seq=2 ttl=60 time=61.3 ms
+64 bytes from 10.101.0.84: icmp_seq=3 ttl=60 time=61.5 ms
+64 bytes from 10.101.0.84: icmp_seq=4 ttl=60 time=61.3 ms
+^C
+--- 10.101.0.84 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 61.376/61.914/63.303/0.806 ms
+ubuntu@vm-gcp-spoke-1:~$
+</code></pre>
+<p>Now keep the ping running from gcp-spoke-1 VM to 10.20.12.130 and change the policy to connect Green and Blue. Notice that ping starts working.</p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/P6LSuc0ziGY" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<p>Now change the policy as it was before so that Blue is not allowed to Green</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

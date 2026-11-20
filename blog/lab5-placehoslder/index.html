@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Objective ACE Enterprise in GCP wants to connect to different partners to consume SaaS services. These partners could be present in physical DC or Branches; or in VPC/VNET in cloud such as GCP/AWS/Azure/etc. ACE cannot dictate or control the IPs/Subnets/CIDR those partners have configured and must s">
+  <title>LAB5 – Bring Your Own IP/Subnet in GCP (Overlapping IP) · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/lab5-placehoslder/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAB5 – Bring Your Own IP/Subnet in GCP (Overlapping IP)">
+  <meta property="og:description" content="Objective ACE Enterprise in GCP wants to connect to different partners to consume SaaS services. These partners could be present in physical DC or Branches; or in VPC/VNET in cloud such as GCP/AWS/Azure/etc. ACE cannot dictate or control the IPs/Subnets/CIDR those partners have configured and must s">
+  <meta property="og:url" content="https://netjoints.com/blog/lab5-placehoslder/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-28">November 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">LAB5 – Bring Your Own IP/Subnet in GCP (Overlapping IP)</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Objective</h2>
+<p>ACE Enterprise in GCP wants to connect to different partners to consume SaaS services. These partners could be present in physical DC or Branches; or in VPC/VNET in cloud such as GCP/AWS/Azure/etc. ACE cannot dictate or control the IPs/Subnets/CIDR those partners have configured and must support “Bring Your own IP” which might overlap with what is already configured in GCP.</p>
+<p>In our topology GCP Spoke3 VPC subnet is overlapping with AWS Spoke2 VPC subnet (10.42.0.0). We need to make sure that VM in GCP Spoke3 VPC is able to communicate with EC2 in AWS Spoke2 VPC.</p>
+<h3>Topology Modifications</h3>
+<p>In order for this lab to work, we are simulating AWS Spoke2 VPC as a remote site/branch</p>
+<ul>
+<li>Step#1: Detach the aws-spoke2 gateway from transit</li>
+<li>Step#2: Delete the aws-spoke2-gw</li>
+<li>Step#3: Deploy a standard Aviatrix Gateway (s2c-gw) in aws-spoke2-vpc</li>
+</ul>
+<h4>Step#1</h4>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Setup –&gt; Detach AWS VPC2</p>
+<h4>Step#2</h4>
+<p>Controller –&gt; Gateway –&gt; Highlight AWS VPC2 Spoke GW –&gt; Delete</p>
+<h4>Step#3</h4>
+<p>Controller –&gt; Gateway –&gt; Add New (use the following screen)</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-13.png" /></p>
+<blockquote>
+<p>This getaway could be any router or firewall or vpn device in the on-prem or cloud location.</p>
+</blockquote>
+<h2>Topology</h2>
+<ul>
+<li>Following diagram shows the topology after the modifications are done</li>
+</ul>
+<p><img alt="" src="/blog/images/lab5-placehoslder/Screen-Shot-2021-01-02-at-3.45.50-PM.png" /></p>
+<ul>
+<li>In the topology notice that there is no path between gcp-spoke3-vpc and s2c-gw in aws-spoke2-vpc</li>
+<li>Also notice the local and remote virtual IPs allocated for the VPCs/Sites that are overlapping. This is needed so that these overlapping VPCs/Sites can communicate with each other using those virtual IPs</li>
+<li>This is possible using Aviatrix patented technology where as a an enterprise you do not need to worry about programming advanced NAT rather Aviatrix intent based “Mapped NAT” policy will automatically take care of all the background VPC/VNET route programming, Gateway Routing, Secure Tunnel Creation, Certificate Exchange, SNAT, DNAT, etc.</li>
+</ul>
+<h2>Configuration</h2>
+<p>Bi-directional setup is neede for this to work. We will create two connections in coming configuration steps.</p>
+<h3>Connection From GCP to Partner Site (AWS) – Leg1</h3>
+<p>Controller –&gt; SITE2CLOUD –&gt; Add a new connection (with following details)</p>
+<p>VPC ID / VNet Name: vpc-gcp-spoke-3<br />
+Connection Type: Mapped<br />
+Connection Name: partner1-s2c-leg1<br />
+Remote Gateway Type: Aviatrix<br />
+Tunnel Type: Policy-based<br />
+Primary Cloud Gateway: gcp-spoke-3<br />
+Remote Gateway IP Address: Check Controller’s Gateway section to find the public ip address<br />
+Remote Subnet (Real): 10.42.0.0/24<br />
+Remote Subnet (Virtual): 192.168.10.0/24<br />
+Local Subnet (Real): 10.42.0.0/24<br />
+Local Subnet (Virtual): 192.168.20.0/24</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-14.png" /><img alt="" src="/blog/images/lab5-placehoslder/image-15.png" /></p>
+<p>This will create the first leg of the connection from Cloud to Site. This will stay down until the other end is configured.</p>
+<h4>Download the Configuration</h4>
+<p>Aviatrix Controller provides a template that can be used to configure the remote router/firewall. Click on the Site-to-Cloud connection that you have just created. Click “EDIT” and then download the configuration for Aviatrix.</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-16.png" /></p>
+<pre><code>Downloaded file (vpc-vpc-gcp-spoke-3~-~cne-pod24-partner1-s2c-leg1.txt) contents just for reference purposes. We will import this file in next step.
+
+{
+  &quot;ike_ver&quot;: &quot;1&quot;,
+  &quot;name&quot;: &quot;partner1-s2c-leg1&quot;,
+  &quot;type&quot;: &quot;mapped&quot;,
+  &quot;tunnel_type&quot;: &quot;policy&quot;,
+  &quot;peer_type&quot;: &quot;avx&quot;,
+  &quot;ha_status&quot;: &quot;disabled&quot;,
+  &quot;null_enc&quot;: &quot;no&quot;,
+  &quot;private_route_enc&quot;: &quot;no&quot;,
+  &quot;PSK&quot;: &quot;Password123!&quot;,
+  &quot;ph1_enc&quot;: &quot;AES-256-CBC&quot;,
+  &quot;ph2_enc&quot;: &quot;AES-256-CBC&quot;,
+  &quot;ph1_auth&quot;: &quot;SHA-256&quot;,
+  &quot;ph2_auth&quot;: &quot;HMAC-SHA-256&quot;,
+  &quot;ph1_dh_group&quot;: &quot;14&quot;,
+  &quot;ph2_dh_group&quot;: &quot;14&quot;,
+  &quot;ph2_lifetime&quot;: &quot;3600&quot;,
+  &quot;remote_peer&quot;: &quot;34.86.77.74&quot;,
+  &quot;remote_peer_private_ip&quot;: &quot;10.42.0.2&quot;,
+  &quot;local_peer&quot;: &quot;54.71.151.196&quot;,
+  &quot;remote_subnet_real&quot;: &quot;10.42.0.0/24&quot;,
+  &quot;local_subnet_real&quot;: &quot;10.42.0.0/24&quot;,
+  &quot;remote_subnet&quot;: &quot;192.168.20.0/24&quot;,
+  &quot;local_subnet&quot;: &quot;192.168.10.0/24&quot;,
+
+  &quot;tun_name&quot;: &quot;&quot;,
+  &quot;highperf&quot;: &quot;false&quot;,
+  &quot;ovpn&quot;: &quot;&quot;,
+  &quot;enable_bgp&quot;: &quot;false&quot;,
+  &quot;bgp_local_ip&quot; : &quot;&quot;,
+  &quot;bgp_remote_ip&quot; : &quot;&quot;,
+  &quot;bgp_local_asn_number&quot;: &quot;0&quot;,
+  &quot;bgp_remote_as_num&quot;: &quot;0&quot;,
+  &quot;bgp_neighbor_ip_addr&quot;: &quot;&quot;,
+  &quot;bgp_neighbor_as_num&quot;: &quot;0&quot;,
+  &quot;tunnel_addr_local&quot;: &quot;&quot;,
+  &quot;tunnel_addr_remote&quot;: &quot;&quot;,
+  &quot;activemesh&quot;: &quot;yes&quot;
+}
+</code></pre>
+<p>Close the dialogue box now.</p>
+<h3>Connection Partner Site (AWS) to GCP AWS – Leg2</h3>
+<p>Now we need to create a new connection and import the file we just downloaded</p>
+<p>Controller –&gt; SITE2CLOUD –&gt; Add a new connection –&gt; Select “aws-west-2-spoke-2” VPC –&gt; Import</p>
+<p>VPC ID / VNet Name: <strong>aws-west-2-spoke-2</strong><br />
+Connection Type: auto-populated (Mapped)<br />
+Connection Name: <strong>partner1-s2c-leg2</strong><br />
+Remote Gateway Type: Aviatrix<br />
+Tunnel Type: auto-populated (Policy-based)<br />
+Algorithms: auto-populated (do not change these settings)<br />
+Primary Cloud Gateway: auto-populated (aws-spoke2-vpc-s2c-gw)<br />
+Remote Gateway IP Address: auto-populated<br />
+Remote Subnet (Real): auto-populated (10.42.0.0/24)<br />
+Remote Subnet (Virtual): auto-populated (192.168.20.0/24)<br />
+Local Subnet (Real): auto-populated (10.42.0.0/24)<br />
+Local Subnet (Virtual): auto-populated (192.168.10.0/24)</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-17.png" />
+<img alt="" src="/blog/images/lab5-placehoslder/image-18.png" /></p>
+<p>Now it will take about a minute for both tunnels to come up</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-19-1024x233.png" /></p>
+<p>This makes is look like following</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-21.png" /></p>
+<h2>Verification</h2>
+<p>Now you can ping the overlapping subnet VM on the AWS side from GCP. Make sure to use the virtual subnet for AWS with the last octecet of the VM being same.</p>
+<pre><code>ubuntu@vm-gcp-spoke-3:~$ ifconfig
+ens4 Link encap:Ethernet HWaddr 42:01:0a:2a:00:82
+inet addr:10.42.0.130 Bcast:10.42.0.130 Mask:255.255.255.255
+inet6 addr: fe80::4001:aff:fe2a:82/64 Scope:Link
+UP BROADCAST RUNNING MULTICAST MTU:1460 Metric:1
+RX packets:1492666 errors:0 dropped:0 overruns:0 frame:0
+TX packets:871540 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:518583431 (518.5 MB) TX bytes:111566034 (111.5 MB)
+
+ubuntu@vm-gcp-spoke-3:~$ ping 192.168.10.84
+PING 192.168.10.84 (192.168.10.84) 56(84) bytes of data.
+64 bytes from 192.168.10.84: icmp_seq=1 ttl=62 time=83.8 ms
+64 bytes from 192.168.10.84: icmp_seq=2 ttl=62 time=83.5 ms
+64 bytes from 192.168.10.84: icmp_seq=3 ttl=62 time=83.6 ms
+64 bytes from 192.168.10.84: icmp_seq=4 ttl=62 time=83.6 ms
+64 bytes from 192.168.10.84: icmp_seq=5 ttl=62 time=84.2 ms
+^C
+--- 192.168.10.84 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 83.554/83.784/84.203/0.391 ms
+ubuntu@vm-gcp-spoke-3:~$
+</code></pre>
+<p>This concludes the lab. Final topology looks like following</p>
+<p><img alt="" src="/blog/images/lab5-placehoslder/image-22.png" /></p>
+<p>Note: This lab is not depend on previous labs.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

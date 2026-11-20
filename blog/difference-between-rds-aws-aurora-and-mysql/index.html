@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The difference between Amazon Aurora, Amazon RDS, and MySQL can be understood by looking at three levels: database engine, database service, and deployment model. 🧠 1. MySQL  (Database Engine) ☁️ 2. Amazon RDS (Relational Database Service)  (Managed Service) ⚡ 3. Amazon Aurora  (Cloud-Native Databas">
+  <title>Difference Between RDS, AWS Aurora and MySQL · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/difference-between-rds-aws-aurora-and-mysql/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Difference Between RDS, AWS Aurora and MySQL">
+  <meta property="og:description" content="The difference between Amazon Aurora, Amazon RDS, and MySQL can be understood by looking at three levels: database engine, database service, and deployment model. 🧠 1. MySQL  (Database Engine) ☁️ 2. Amazon RDS (Relational Database Service)  (Managed Service) ⚡ 3. Amazon Aurora  (Cloud-Native Databas">
+  <meta property="og:url" content="https://netjoints.com/blog/difference-between-rds-aws-aurora-and-mysql/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-06-02">June 2, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Difference Between RDS, AWS Aurora and MySQL</h1>
+
+      
+
+      <div class="blog-content">
+        <p>The difference between <strong>Amazon Aurora</strong>, <strong>Amazon RDS</strong>, and <strong>MySQL</strong> can be understood by looking at three levels: <strong>database engine</strong>, <strong>database service</strong>, and <strong>deployment model</strong>.</p>
+<h3><strong>🧠 1. MySQL</strong></h3>
+<h3><strong>(Database Engine)</strong></h3>
+<ul>
+<li><strong>What it is</strong>: An open-source relational database engine.</li>
+<li><strong>Where it runs</strong>: Anywhere (on-prem, EC2, RDS, Aurora, etc.).</li>
+<li><strong>Use case</strong>: Lightweight, flexible, popular for LAMP stack apps.</li>
+<li><strong>Pros</strong>:</li>
+<li>Free and open-source.</li>
+<li>Large community support.</li>
+<li><strong>Cons</strong>:</li>
+<li>May struggle with high throughput or large-scale workloads.</li>
+<li>Needs tuning and maintenance when self-managed.</li>
+</ul>
+<hr />
+<h3><strong>☁️ 2. Amazon RDS (Relational Database Service)</strong></h3>
+<h3><strong>(Managed Service)</strong></h3>
+<ul>
+<li><strong>What it is</strong>: A fully managed database service by AWS.</li>
+<li><strong>What it supports</strong>: Multiple database engines, including:</li>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>MariaDB</li>
+<li>Oracle</li>
+<li>SQL Server</li>
+<li>Aurora</li>
+<li><strong>Use case</strong>: Managed version of databases with automated backups, patching, replication, monitoring.</li>
+<li><strong>Pros</strong>:</li>
+<li>No server maintenance.</li>
+<li>Supports replicas, backups, auto-failover.</li>
+<li>Easy scaling (storage and compute).</li>
+<li><strong>Cons</strong>:</li>
+<li>Slower write performance than Aurora.</li>
+<li>Costlier than self-managed MySQL.</li>
+</ul>
+<hr />
+<h3><strong>⚡ 3. Amazon Aurora</strong></h3>
+<h3><strong>(Cloud-Native Database Engine in RDS)</strong></h3>
+<ul>
+<li><strong>What it is</strong>: A proprietary cloud-native database engine built by AWS.</li>
+<li><strong>MySQL-Compatible</strong> or <strong>PostgreSQL-Compatible</strong>.</li>
+<li><strong>Where it runs</strong>: Only on Amazon RDS.</li>
+<li><strong>Use case</strong>: High performance, high availability MySQL/PostgreSQL-compatible workloads.</li>
+<li><strong>Pros</strong>:</li>
+<li><strong>5x faster than MySQL</strong>, <strong>3x faster than PostgreSQL</strong> (according to AWS).</li>
+<li>Distributed, fault-tolerant storage (replicates 6 copies across 3 AZs).</li>
+<li>Auto-healing and continuous backup to S3.</li>
+<li>Supports <strong>Aurora Serverless</strong> (scales automatically).</li>
+<li><strong>Cons</strong>:</li>
+<li>More expensive than standard RDS MySQL.</li>
+<li>Tied to AWS ecosystem.</li>
+</ul>
+<h2>Summary</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>MySQL (self-managed)</strong></th>
+<th><strong>RDS (MySQL)</strong></th>
+<th><strong>Aurora (MySQL-compatible)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management</td>
+<td>Manual</td>
+<td>AWS-managed</td>
+<td>AWS-managed</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Standard</td>
+<td>Standard (some tuning)</td>
+<td>High (5x MySQL performance)</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>Manual</td>
+<td>Multi-AZ (optional)</td>
+<td>Built-in multi-AZ (3 AZs)</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Manual</td>
+<td>Moderate (read replicas)</td>
+<td>High (distributed storage)</td>
+</tr>
+<tr>
+<td>Compatibility</td>
+<td>N/A</td>
+<td>MySQL engine</td>
+<td>MySQL-compatible</td>
+</tr>
+<tr>
+<td>Pricing</td>
+<td>Lowest (you manage)</td>
+<td>Moderate</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Backup/Restore</td>
+<td>Manual or tools</td>
+<td>Automated backups</td>
+<td>Continuous backup</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>🧩 Analogy</strong></h3>
+<ul>
+<li><strong>MySQL</strong> = The engine.</li>
+<li><strong>RDS</strong> = A valet service that maintains and manages your engine.</li>
+<li><strong>Aurora</strong> = A supercharged engine built by AWS, still compatible with MySQL, but running with cloud-native optimizations.</li>
+</ul>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">britive</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

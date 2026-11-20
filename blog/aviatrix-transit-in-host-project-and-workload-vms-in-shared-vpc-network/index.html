@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction GCP shared VPC allows an organization to share or extend its vpc-network (you can also call it subnet) from one project (called host) to another project (called service/tenant). When you use Shared VPC in a project call “X”, you are automatically designating this project “X” as a host p">
+  <title>GCP Shared VPC Transit Design and Deploy For Enterprises · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GCP Shared VPC Transit Design and Deploy For Enterprises">
+  <meta property="og:description" content="Introduction GCP shared VPC allows an organization to share or extend its vpc-network (you can also call it subnet) from one project (called host) to another project (called service/tenant). When you use Shared VPC in a project call “X”, you are automatically designating this project “X” as a host p">
+  <meta property="og:url" content="https://netjoints.com/blog/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-09-30">September 30, 2020</time>
+      </div>
+
+      <h1 class="blog-title">GCP Shared VPC Transit Design and Deploy For Enterprises</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Introduction</h2>
+<p>GCP shared VPC allows an <a href="https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy">organization</a> to share or extend its vpc-network (you can also call it subnet) from one project (called host) to another project (called service/tenant).</p>
+<p>When you use Shared VPC in a project call “X”, you are automatically designating this project “X” as a <strong><em>host project</em></strong>. Now you can attach one or more <em>service projects</em> to host project “X”. The VPC networks in the host project are called <em>Shared VPC networks</em>. <a href="https://cloud.google.com/vpc/docs/shared-vpc#resources_that_can_be_attached_to_shared_vpc_networks_from_a_service_project">Eligible resources</a> from service projects can use subnets you create in the Shared VPC network.</p>
+<h3>Is Shared VPC a replacement of Transit (Hub-Spoke) Network?</h3>
+<p>Shared VPC is not a replacement for transit network. Shared VPC is a management and subnet allocation concept. It does not provide enterprise grade routing or traffic engineering capabilities. Shared VPC lets <a href="https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations">organization administrators</a> delegate administrative responsibilities, such as creating and managing instances, to <a href="https://cloud.google.com/vpc/docs/shared-vpc#iam_in_shared_vpc">Service Project Admins</a> while maintaining centralized control over network resources like subnets, routes, and firewalls.</p>
+<h2>Aviatrix Transit Network Design Patterns with GCP Shared VPC</h2>
+<p>Aviatrix supports the GCP Shared VPC model and builds the single-cloud and multi-cloud transit networking architecture to provide enterprise grade routing, service insertion, hybrid connectivity and traffic engineering for the workload VMs. There are number of different deployment model possible but we will focus on one design with GCP Shared VPC network that is very popular among enterprises. Here Aviatrix Spoke GW is deployed in non-shared vpc subnet while the workload VMs are deployed in a shared vpc subnet.</p>
+<p>For the other design options please <a href="https://netjoints.com/gcp-shared-vpc-network-with-aviatrix-transit-hub-spoke-architecture/">check my previous blog</a>.</p>
+<h3>Design Highlights</h3>
+<ul>
+<li>Selected subnets (Prod and Dev) are shared with the service project</li>
+<li>Local vpcnet-transit is the VPC with only one subnet called transit-gw-subnet (10.21.4.0).</li>
+<li>This is the subnet we will use to deploy Aviatrix tranist GW</li>
+<li>As a best practice, there should not be any workload deployed inside this VPC beside Aviatrix Transit GW</li>
+<li>Shared VPC Prod contains two subnets in our example</li>
+<li>10.21.5.0/24 is for the Aviatrix Spoke GW. This subnet is not shared</li>
+<li>10.21.51.0/24 is the subnet shared with the “Prod Service Project”. This is where the workload/app VMs are deployed</li>
+<li>Similarly a Shared VPC Dev is created with two subnets</li>
+<li>10.21.6.0/24 is for Aviatrix Spoke GW. This subnet is not shared</li>
+<li>10.21.61.0/24 is the subnet shared with the “Dev Service Project”. This is where the workload/app VMs are deployed</li>
+</ul>
+<p>Following diagram shows what we described above</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/image-7.png" /></p>
+<p>Now let us take a look at the deployment aspects</p>
+<h3>GCP Shared VPC Subnet Settings</h3>
+<p>In GCP we are only sharing two subnets from the Shared VPC to the service project. This is the best practice as it gives centralized IT more control over what is shared and what is not. Another option is to share the entire VPC and all its subnets to the service project. These shared subnets are the ones where workload VMs will be deployed.</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.03.13-PM.png" /></p>
+<h3>Transit Gateway</h3>
+<p>Transit GW is deployed on the 10.21.4.0/24 subnet in the host-project VPC. This subnet is not shared and stays local to the host-project.</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/image-2.png" /></p>
+<p>Following diagram shows the GCP VPC route table where this Transit GW is being deployed</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/image-3-1024x364.png" /></p>
+<h3>Deploy Production Spoke Gateway</h3>
+<p>Use the Multi-Cloud Transit workflow to deploy spoke gateway in production VPC. This subnet is not shared with the service project.</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-2.27.18-PM.png" /></p>
+<h3>Deploy Development Spoke Gateway</h3>
+<p>Use the same workflow as before to deploy the spoke GW in development VPC. This subnet is not shared with the service project.</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-2.23.54-PM.png" /></p>
+<h3>Attach Spoke GWs to Transit GW</h3>
+<p>Now attach Prod and Dev spoke GWs to Transit GW</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-2.29.44-PM.png" />
+<img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-2.30.25-PM.png" /></p>
+<p>Now the spokes are attached to the transit gw and can be seen in the following diagram</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-2.46.03-PM.png" /></p>
+<h4>Production VPC Routing Table</h4>
+<p>Name: Global<br />
+Route Table ID: Global</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Route</th>
+<th>Target</th>
+<th>Gateway</th>
+<th>Priority</th>
+<th>Tags</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avx-12a554b6a0fc446e9562c03aff9f2ff2</td>
+<td>0.0.0.0/0</td>
+<td>default-internet-gateway</td>
+<td></td>
+<td>1000</td>
+<td>avx-host-project-shared-vpcnet-prod-gbl</td>
+<td>active</td>
+</tr>
+<tr>
+<td>avx-3e231ce7099947bca4f6f68a645731d0</td>
+<td>10.0.0.0/8</td>
+<td>Instance gcp-spk-gw-host-project-prod-spk-subnet (zone us-east4-c)</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>1000</td>
+<td></td>
+<td>active</td>
+</tr>
+<tr>
+<td>avx-95ef9a0df3f24863a6cec71e51f2732b</td>
+<td>172.16.0.0/12</td>
+<td>Instance gcp-spk-gw-host-project-prod-spk-subnet (zone us-east4-c)</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>1000</td>
+<td></td>
+<td>active</td>
+</tr>
+<tr>
+<td>avx-cf9d16a2e4ec4c98908aaabd92ff7208</td>
+<td>192.168.0.0/16</td>
+<td>Instance gcp-spk-gw-host-project-prod-spk-subnet (zone us-east4-c)</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>1000</td>
+<td></td>
+<td>active</td>
+</tr>
+<tr>
+<td>default-route-29758d3f2ac8689f</td>
+<td>10.21.51.0/24</td>
+<td>Virtual network host-project-shared-vpcnet-prod</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>active</td>
+</tr>
+<tr>
+<td>default-route-3bfe90157ff7a563</td>
+<td>0.0.0.0/0</td>
+<td>default-internet-gateway</td>
+<td></td>
+<td>1000</td>
+<td></td>
+<td>active</td>
+</tr>
+<tr>
+<td>default-route-fc0595ff4c43a6dc</td>
+<td>10.21.5.0/24</td>
+<td>Virtual network host-project-shared-vpcnet-prod</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>active</td>
+</tr>
+</tbody>
+</table>
+<h4>Production Spoke GW Routing Table</h4>
+<p>Name: gcp-spk-gw-host-project-prod-spk-subnet</p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>10.21.5.1</td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.4.0/24</td>
+<td></td>
+<td>tun-23F57229-0</td>
+<td>35.245.114.41</td>
+<td>gcp-transit-gw-host-project-local-vpcnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.4.3</td>
+<td></td>
+<td>tun-23F57229-0</td>
+<td>35.245.114.41</td>
+<td>gcp-transit-gw-host-project-local-vpcnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.5.0/24</td>
+<td>10.21.5.1</td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.5.1</td>
+<td></td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.6.0/24</td>
+<td></td>
+<td>tun-23F57229-0</td>
+<td>35.245.114.41</td>
+<td>gcp-transit-gw-host-project-local-vpcnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.51.0/24</td>
+<td>10.21.5.1</td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.61.0/24</td>
+<td></td>
+<td>tun-23F57229-0</td>
+<td>35.245.114.41</td>
+<td>gcp-transit-gw-host-project-local-vpcnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>169.254.0.0/16</td>
+<td></td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Transit Gateway Routing Table</h4>
+<p>Name: gcp-transit-gw-host-project-local-vpcnet</p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>10.21.4.1</td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.4.0/24</td>
+<td>10.21.4.1</td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.4.1</td>
+<td></td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.5.0/24</td>
+<td></td>
+<td>tun-23ECF407-0</td>
+<td>35.236.244.7</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.5.2</td>
+<td></td>
+<td>tun-23ECF407-0</td>
+<td>35.236.244.7</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.6.0/24</td>
+<td></td>
+<td>tun-2256383A-0</td>
+<td>34.86.56.58</td>
+<td>gcp-spk-gw-host-project-dev-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.6.2</td>
+<td></td>
+<td>tun-2256383A-0</td>
+<td>34.86.56.58</td>
+<td>gcp-spk-gw-host-project-dev-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.51.0/24</td>
+<td></td>
+<td>tun-23ECF407-0</td>
+<td>35.236.244.7</td>
+<td>gcp-spk-gw-host-project-prod-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>10.21.61.0/24</td>
+<td></td>
+<td>tun-2256383A-0</td>
+<td>34.86.56.58</td>
+<td>gcp-spk-gw-host-project-dev-spk-subnet</td>
+<td>up</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>169.254.0.0/16</td>
+<td></td>
+<td>eth0</td>
+<td></td>
+<td></td>
+<td>up</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Transit GW Route Info DB Details</p>
+<pre><code>{
+  &quot;gateway name&quot;: &quot;gcp-transit-gw-host-project-local-vpcnet&quot;,
+  &quot;segmentation&quot;: &quot;disabled&quot;,
+  &quot;main&quot;: {
+    &quot;Duplicated CIDRs&quot;: [],
+    &quot;Best Route DB&quot;: {
+      &quot;10.21.6.0/24&quot;: &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '34.86.56.58', 'name': 'gcp-spk-gw-host-project-dev-spk-subnet', 'cidr': '10.21.6.0/24', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.61.0/24&quot;: &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '34.86.56.58', 'name': 'gcp-spk-gw-host-project-dev-spk-subnet', 'cidr': '10.21.61.0/24', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.5.0/24&quot;: &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '35.236.244.7', 'name': 'gcp-spk-gw-host-project-prod-spk-subnet', 'cidr': '10.21.5.0/24', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.51.0/24&quot;: &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '35.236.244.7', 'name': 'gcp-spk-gw-host-project-prod-spk-subnet', 'cidr': '10.21.51.0/24', 'locprf': '0', 'community': ''}&quot;
+    },
+    &quot;Route Info DB&quot;: {
+      &quot;10.21.6.0/24&quot;: [
+        &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '34.86.56.58', 'name': 'gcp-spk-gw-host-project-dev-spk-subnet', 'cidr': '10.21.6.0/24', 'locprf': '0', 'community': ''}&quot;
+      ],
+      &quot;10.21.61.0/24&quot;: [
+        &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '34.86.56.58', 'name': 'gcp-spk-gw-host-project-dev-spk-subnet', 'cidr': '10.21.61.0/24', 'locprf': '0', 'community': ''}&quot;
+      ],
+      &quot;10.21.5.0/24&quot;: [
+        &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '35.236.244.7', 'name': 'gcp-spk-gw-host-project-prod-spk-subnet', 'cidr': '10.21.5.0/24', 'locprf': '0', 'community': ''}&quot;
+      ],
+      &quot;10.21.51.0/24&quot;: [
+        &quot;{'type': 'vpc', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '50', 'nexthop': '35.236.244.7', 'name': 'gcp-spk-gw-host-project-prod-spk-subnet', 'cidr': '10.21.51.0/24', 'locprf': '0', 'community': ''}&quot;
+      ]
+    },
+    &quot;Best Route DB (linklocal)&quot;: {
+      &quot;10.21.4.0/24&quot;: &quot;{'type': 'linklocal', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '0', 'nexthop': '', 'name': 'gcp-transit-gw-host-project-local-vpcnet', 'cidr': '10.21.4.0/24', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.4.3/32&quot;: &quot;{'type': 'linklocal', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '0', 'nexthop': '', 'name': 'gcp-transit-gw-host-project-local-vpcnet', 'cidr': '10.21.4.3/32', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.6.2/32&quot;: &quot;{'type': 'linklocal', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '0', 'nexthop': '', 'name': 'gcp-spk-gw-host-project-dev-spk-subnet', 'cidr': '10.21.6.2/32', 'locprf': '0', 'community': ''}&quot;,
+      &quot;10.21.5.2/32&quot;: &quot;{'type': 'linklocal', 'table_id': 'main', 'as_path': '', 'as_path_len': '0', 'metric': '0', 'nexthop': '', 'name': 'gcp-spk-gw-host-project-prod-spk-subnet', 'cidr': '10.21.5.2/32', 'locprf': '0', 'community': ''}&quot;
+    }
+</code></pre>
+<p>Note: Aviatrix UserConnect-6.2.1528 was used to validate this design.</p>
+<h3>Validation</h3>
+<p>Transit and spoke VMs deployed successfully in the host project</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.55.13-PM.png" /></p>
+<p>Workload VMs were deployed in their respective service projects on their respective shared subnets</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.57.14-PM.png" /><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.57.53-PM.png" /></p>
+<p>For validation ssh was enabled on the dev workload VM and ICMP was also enabled. From Prod VM both ICMP and ssh were successful</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.51.40-PM.png" /></p>
+<p>ssh was also successful as we can see from the following</p>
+<p><img alt="" src="/blog/images/aviatrix-transit-in-host-project-and-workload-vms-in-shared-vpc-network/Screen-Shot-2020-10-07-at-3.52.53-PM.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

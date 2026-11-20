@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects · Shahzad Ali · netJoints</title>
+  <link rel="canonical" href="https://netjoints.com/app/">
+  <meta name="description" content="Apps and side projects built by Shahzad Ali — multicloud network architect, builder, and educator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg0: #03070f;
+      --bg1: #07111f;
+      --bg2: #0c1a2e;
+      --glass: rgba(12, 26, 46, 0.55);
+      --glass-border: rgba(255,255,255,0.06);
+      --accent: #0ea5e9;
+      --accent2: #8b5cf6;
+      --accent-gold: #f59e0b;
+      --grad: linear-gradient(135deg, var(--accent), var(--accent2));
+      --t0: #f8fafc;
+      --t1: #e2e8f0;
+      --t2: #94a3b8;
+      --t3: #64748b;
+      --r: 14px;
+      --r-sm: 8px;
+      --tr: 0.3s ease;
+      --max-w: 1100px;
+      --px: clamp(20px, 5vw, 60px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,0.12), transparent 60%),
+        radial-gradient(900px 500px at 0% 10%, rgba(139,92,246,0.10), transparent 55%),
+        var(--bg0);
+      color: var(--t1);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(3,7,15,0.55);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 16px var(--px);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em;
+      color: var(--t0); text-decoration: none;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .brand .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--grad); box-shadow: 0 0 14px rgba(14,165,233,0.7);
+    }
+    .back {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+      color: var(--t2); text-decoration: none; padding: 8px 14px;
+      border: 1px solid var(--glass-border); border-radius: 999px;
+      transition: var(--tr);
+    }
+    .back:hover { color: var(--t0); border-color: var(--accent); }
+
+    /* ── HEADER ── */
+    header { padding: 84px 0 48px; }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+      font-size: clamp(2.4rem, 6vw, 4rem); color: var(--t0);
+      margin-bottom: 20px;
+    }
+    h1 .grad {
+      background: var(--grad); -webkit-background-clip: text;
+      background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .lede { font-size: clamp(1rem, 2vw, 1.18rem); color: var(--t2); max-width: 620px; line-height: 1.6; }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 22px; padding-bottom: 100px;
+    }
+    .card {
+      position: relative; overflow: hidden;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--r); padding: 30px;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr);
+      min-height: 240px;
+    }
+    .card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(420px 200px at 50% -20%, rgba(14,165,233,0.16), transparent 70%);
+      opacity: 0; transition: var(--tr); pointer-events: none;
+    }
+    .card:hover { transform: translateY(-5px); border-color: rgba(14,165,233,0.5); box-shadow: 0 18px 50px rgba(0,0,0,0.5); }
+    .card:hover::before { opacity: 1; }
+    .card.featured { grid-column: 1 / -1; min-height: 260px; }
+    .card.soon { cursor: default; }
+    .card.soon:hover { transform: none; border-color: var(--glass-border); box-shadow: none; }
+    .card.soon:hover::before { opacity: 0; }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .icon {
+      width: 52px; height: 52px; border-radius: 13px; flex-shrink: 0;
+      display: grid; place-items: center; font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(139,92,246,0.18));
+      border: 1px solid var(--glass-border);
+    }
+    .badge {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 11px; border-radius: 999px; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .badge .pulse { width: 7px; height: 7px; border-radius: 50%; }
+    .badge.live { color: #6ee7b7; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); }
+    .badge.live .pulse { background: #34d399; box-shadow: 0 0 0 0 rgba(52,211,153,0.7); animation: pulse 2s infinite; }
+    .badge.wip { color: var(--accent-gold); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.28); }
+    .badge.wip .pulse { background: var(--accent-gold); }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(52,211,153,0.6); } 70% { box-shadow: 0 0 0 9px rgba(52,211,153,0); } 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); } }
+
+    .card h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+      font-size: 1.4rem; letter-spacing: -0.02em; color: var(--t0); margin-bottom: 10px;
+    }
+    .featured h2 { font-size: 1.75rem; }
+    .card p { color: var(--t2); line-height: 1.6; font-size: 0.96rem; flex-grow: 1; }
+    .featured p { max-width: 560px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .chip {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      color: var(--t2); padding: 5px 10px; border-radius: 6px;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+    }
+    .cta {
+      margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+      color: var(--accent); display: inline-flex; align-items: center; gap: 8px;
+      transition: gap var(--tr);
+    }
+    .card:hover .cta { gap: 13px; }
+    .cta .arrow { transition: transform var(--tr); }
+    .card:hover .cta .arrow { transform: translateX(3px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--glass-border); padding: 40px 0 60px;
+      text-align: center; color: var(--t3); font-size: 0.85rem;
+    }
+    footer a { color: var(--t2); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+      header { padding: 56px 0 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="brand"><span class="dot"></span>netJoints</a>
+      <a href="../index.html" class="back">← Back to home</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">// Projects &amp; Apps</div>
+      <h1>Things I'm <span class="grad">building</span>.</h1>
+      <p class="lede">A growing collection of side projects and small apps — from AI-assisted travel planning to car-shopping tools. Built nights and weekends, shipped on Firebase.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+
+      <!-- Featured: Travel app -->
+      <a class="card featured" href="https://netjoints-travel.web.app" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="icon">✈️</div>
+          <span class="badge live"><span class="pulse"></span>Live</span>
+        </div>
+        <h2>Santa Inez Travel</h2>
+        <p>An AI-assisted trip planner — itineraries, flight search, and curated stays for the Santa Ynez Valley and beyond. Built on a Flask flight-search backend with a clean, fast static front end.</p>
+        <div class="chips">
+          <span class="chip">Flask</span>
+          <span class="chip">Flight API</span>
+          <span class="chip">Firebase Hosting</span>
+          <span class="chip">AI Itinerary</span>
+        </div>
+        <span class="cta">Open the app <span class="arrow">→</span></span>
+      </a>
+
+      <!-- Tesla Tire Guide -->
+      <a class="card" href="tesla-tire-guide.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="icon">🛞</div>
+          <span class="badge live"><span class="pulse"></span>Live</span>
+        </div>
+        <h2>Tesla Tire Guide</h2>
+        <p>A tire-shopping agent for the Tesla Model 3 — decode sizes, compare options, and find the right fit without the dealership markup.</p>
+        <div class="chips">
+          <span class="chip">Static App</span>
+          <span class="chip">Buyer's Tool</span>
+        </div>
+        <span class="cta">Open the guide <span class="arrow">→</span></span>
+      </a>
+
+      <!-- BMW CPO Deals -->
+      <div class="card soon">
+        <div class="card-top">
+          <div class="icon">🚗</div>
+          <span class="badge wip"><span class="pulse"></span>In progress</span>
+        </div>
+        <h2>BMW CPO Deals</h2>
+        <p>A certified-pre-owned BMW deal tracker — scrapes listings, scores value, and surfaces the best certified inventory. Firestore-backed with scheduled functions. Coming soon.</p>
+        <div class="chips">
+          <span class="chip">Cloud Functions</span>
+          <span class="chip">Firestore</span>
+          <span class="chip">Deal Scoring</span>
+        </div>
+        <span class="cta" style="color: var(--t3);">Launching soon</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Built by <a href="../index.html">Shahzad Ali</a> ·
+      <a href="https://netjoints.com" target="_blank" rel="noopener">netjoints.com</a> ·
+      <a href="https://github.com/netJoints" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

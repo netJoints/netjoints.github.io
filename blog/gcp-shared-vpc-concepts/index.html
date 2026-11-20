@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Warning: Setting up GCP Shared VPC is not easy. It requires various API rights and roles before you are allowed to create it from the UI. I had to do lots of hit and trials. The GCP documentation is not clear and not straightforward. I am the super admin for my GCP organization called netjoints.com ">
+  <title>GCP Shared VPC Concepts · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/gcp-shared-vpc-concepts/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GCP Shared VPC Concepts">
+  <meta property="og:description" content="Warning: Setting up GCP Shared VPC is not easy. It requires various API rights and roles before you are allowed to create it from the UI. I had to do lots of hit and trials. The GCP documentation is not clear and not straightforward. I am the super admin for my GCP organization called netjoints.com ">
+  <meta property="og:url" content="https://netjoints.com/blog/gcp-shared-vpc-concepts/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2020-02-14">February 14, 2020</time>
+      </div>
+
+      <h1 class="blog-title">GCP Shared VPC Concepts</h1>
+
+      
+
+      <div class="blog-content">
+        <blockquote>
+<p>Warning: Setting up GCP Shared VPC is not easy. It requires various API rights and roles before you are allowed to create it from the UI. I had to do lots of hit and trials. The GCP documentation is not clear and not straightforward. I am the super admin for my GCP organization called netjoints.com and still I had to enable many roles in different places to create a shared service VPC</p>
+</blockquote>
+<p>There are two types (host and service) of projects in GCP</p>
+<ul>
+<li>Host Project(s)</li>
+<li>Host project are created using Shared VPC option</li>
+<li>Simply put, host project shares subnets with the service projects</li>
+<li>In majority of the cases, one host project is enough</li>
+<li>Service Projects</li>
+<li>This is where actual VMs are being deployed</li>
+<li>The VM is being deployed in a subnet that is shared by “Shared VPC Host Project”</li>
+</ul>
+<p>Following diagram illustrate the concept and relation between Shared VPC host project and Service Prpject</p>
+<p><img alt="Service project to multiple VPCs" src="https://cloud.google.com/solutions/images/vpc-bps-service-project-multiple-vpcs.svg" /></p>
+<h2>Setting up Shared VPC Host Project</h2>
+<p>First step to create a standard GCP Project that will be treated as Host Project. It is good practice to name it Host Project.</p>
+<p>Then enable GCP Shared VPC</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-6-1024x695.png" /></p>
+<p>Select “Setup Shared VPC”</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-1-1024x606.png" /><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-7-1024x638.png" /></p>
+<p>Save &amp; Continue will take you to following screen.</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-9-953x1024.png" /></p>
+<p>In the above screen shot, I am sharing all my subnets. Depending on your org. policy, you might want to share few but not all.</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-10-955x1024.png" /><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-11-955x1024.png" /></p>
+<p>Following are some requirements where a shared service VPC (aka Host Project) is needed</p>
+<ul>
+<li>Use Shared VPC for administration of multiple working groups</li>
+<li>Use multiple host projects if resource requirements exceed the quota of a single project</li>
+<li>Use multiple host projects if you need separate administration policies for each VPC network</li>
+<li>Create a shared services VPC if multiple VPC networks need access to common resources but not each other</li>
+</ul>
+<p>Now create VPC in shared services</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-12-1024x1016.png" /><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-13-1024x1016.png" /></p>
+<p>Now that the Host Project owner has created the subnets, he/she can share them with the Service Project as necessary. Following screen shows members being added to the Shared VPC and their roles assigned according to your org. policy.</p>
+<blockquote>
+<p>Service Projects need to have Compute Engine API enabled to be configured as service projects.</p>
+</blockquote>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-17-300x249.png" /></p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-14-1024x723.png" /></p>
+<p>Now in the next step, we will attach the service project called “Service Project A” to the shared VPC.</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-15-1024x548.png" /></p>
+<p>Select the name of the service project from the shared VPC UI as shown below</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-16-827x1024.png" /></p>
+<p>Finally you can see in the following screen that Service Project is successfully attached with the Shared VPC and all subnets are being shared</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-18-1024x559.png" /></p>
+<p>Following screen shot shows the view from the Service Project-A side of the house. You can see the networks shared to this service project. Now the compute resources can consume these subnets.</p>
+<p><img alt="" src="/blog/images/gcp-shared-vpc-concepts/image-20-1024x567.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

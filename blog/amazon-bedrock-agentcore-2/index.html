@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Amazon Bedrock AgentCore announced in July 2025. It is designed to simplify the deployment of AI agents, and its AgentCore Runtime is a serverless, secure environment purpose-built for hosting such apps. Amazon Bedrock Agents (Original Service) Amazon Bedrock AgentCore Feature Bedrock Agents Bedrock">
+  <title>Amazon Bedrock Agentcore Deployment · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/amazon-bedrock-agentcore-2/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Amazon Bedrock Agentcore Deployment">
+  <meta property="og:description" content="Amazon Bedrock AgentCore announced in July 2025. It is designed to simplify the deployment of AI agents, and its AgentCore Runtime is a serverless, secure environment purpose-built for hosting such apps. Amazon Bedrock Agents (Original Service) Amazon Bedrock AgentCore Feature Bedrock Agents Bedrock">
+  <meta property="og:url" content="https://netjoints.com/blog/amazon-bedrock-agentcore-2/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-08-19">August 19, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Amazon Bedrock Agentcore Deployment</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Amazon Bedrock AgentCore announced in July 2025. It is designed to simplify the deployment of AI agents, and its <strong>AgentCore Runtime</strong> is a serverless, secure environment purpose-built for hosting such apps.</p>
+<h3><strong>Amazon Bedrock Agents (Original Service)</strong></h3>
+<ul>
+<li><strong>No container-level isolation</strong> was provided.</li>
+<li>It’s a <strong>fully managed, serverless service</strong> designed for rapid agent development.</li>
+<li>You didn’t need to manage infrastructure, but that also meant:</li>
+<li>No control over execution environments.</li>
+<li>No ability to isolate agents using containers or microVMs.</li>
+<li>Limited session persistence and security boundaries.</li>
+<li>Isolation was mostly logical (e.g., via tenant context injection) and not at the infrastructure level1</li>
+</ul>
+<h3><strong>Amazon Bedrock AgentCore</strong></h3>
+<ul>
+<li><strong>It uses container-like isolation via microVMs</strong>.</li>
+<li>Each agent session runs in a <strong>dedicated microVM</strong> with isolated compute, memory, and filesystem resources.</li>
+<li>This ensures:</li>
+<li><strong>Complete execution environment separation</strong>.</li>
+<li><strong>Secure session persistence</strong> for up to 8 hours.</li>
+<li><strong>No cross-session contamination</strong>.</li>
+<li><strong>Privileged tool operations</strong> are sandboxed securely2.</li>
+<li>You can deploy your own <strong>Docker container</strong> with custom logic, frameworks, and dependencies</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Bedrock Agents</th>
+<th>Bedrock AgentCore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Container</td>
+<td>❌ No</td>
+<td>✅ Yes (via microVMs or Docker)</td>
+</tr>
+<tr>
+<td>Session Isolation</td>
+<td>Logical only</td>
+<td>Full infrastructure-level</td>
+</tr>
+<tr>
+<td>Custom Runtime</td>
+<td>❌ Not supported</td>
+<td>✅ Supported</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Rapid prototyping</td>
+<td>Production-grade deployment</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Basic</td>
+<td>IAM, VPC, OAuth</td>
+</tr>
+<tr>
+<td>Too Calling</td>
+<td>Bedrock Native</td>
+<td>Any API, Lambda, MCP</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Stateless</td>
+<td>Persistent Memory</td>
+</tr>
+<tr>
+<td>Agentic AI Agents</td>
+<td>Native Option</td>
+<td>LangChain LangGraph CrewAI Strands Agents OpenAI Adent SDK Google ADK Microsoft AutoGen</td>
+</tr>
+<tr>
+<td>LLM Model Option</td>
+<td>Bedrock Only</td>
+<td>Any provider</td>
+</tr>
+<tr>
+<td>Tool protocols</td>
+<td>M</td>
+<td>MCP, A2A</td>
+</tr>
+</tbody>
+</table>
+<h2>Quick | How to Deploy Agentic AI Agent</h2>
+<p>You will be running following commands over and over again during your testing and building the Agentic AI App.</p>
+<pre><code># Make sure following works without errors
+$ python agentic-ai-agent-test.py
+# Following command creates docker and bedrock_agentcore.yaml files 
+$ agentcore configure --entrypoint agentic-ai-agent_test.py 
+# Following command will upload the docker and yaml file to AWS ECR (Elastic Container Registry)
+$ agentcore launch
+</code></pre>
+<h2>Detailed | <strong>How to Deploy</strong> Agentic AI Agent</h2>
+<p><a href="https://github.com/aws/bedrock-agentcore-starter-toolkit">https://github.com/aws/bedrock-agentcore-starter-toolkit</a></p>
+<p>$ python3 -m venv venv<br />
+$ source venv/bin/activate<br />
+$ python –version<br />
+$ which python<br />
+/Users/shahzadali/Github/AgentCore_Strands_Support_Desk/venv/bin/python<br />
+$ pip install<br />
+$ pip install –upgrade pip<br />
+$ pip install boto3<br />
+$ pip install unicorn<br />
+$ pip install fastapi<br />
+$ pip install strands-agents<br />
+$ pip install bedrock-agentcore<br />
+$ pip install bedrock-agentcore-starter-toolkit</p>
+<p>$ docker –version<br />
+$ docker run hello-world</p>
+<p>$ aws configure<br />
+$ aws sts get-caller-identity (this should show ARN and the role)<br />
+$ aws configure set region us-west-2</p>
+<p><strong>IAM Permissions</strong>: Confirm your AWS user has permissions for:</p>
+<ul>
+<li>Amazon Bedrock (bedrock:*)</li>
+<li>Amazon ECR (ecr:*)</li>
+<li>AWS CloudWatch (logs:*)</li>
+<li>In the AWS Management Console, attach policies like AmazonBedrockFullAccess and AmazonEC2ContainerRegistryFullAccess to your IAM user or role if you encounter permission errors</li>
+</ul>
+<h2>Agentic AI Python Code</h2>
+<p>This Python code is key. You need to keep it simple in the beginning and then add to it later. The modelId is important because this is what the AI agent will use under the hood. So you need permissions to access it too.</p>
+<pre><code>from bedrock_agentcore.runtime import BedrockAgentCoreApp
+from fastapi import FastAPI
+import boto3
+import json
+
+# Initialize FastAPI and AgentCore
+fastapi_app = FastAPI()
+agentcore_app = BedrockAgentCoreApp()
+bedrock_client = boto3.client('bedrock', region_name='us-east-1')
+
+@agentcore_app.entrypoint
+def invoke(payload):
+    user_message = payload.get(&quot;prompt&quot;, &quot;Hello&quot;)
+    try:
+        response = bedrock_client.invoke_model(
+            modelId=&quot;anthropic.claude-3-sonnet-20240229-v1:0&quot;,
+            body=json.dumps({
+                &quot;prompt&quot;: user_message,
+                &quot;max_tokens_to_sample&quot;: 300
+            })
+        )
+        bedrock_result = json.loads(response['body'].read())['completion']
+    except Exception as e:
+        bedrock_result = f&quot;Bedrock error: {str(e)}&quot;
+    return f&quot;Bedrock: {bedrock_result}&quot;
+
+@fastapi_app.post(&quot;/invoke&quot;)
+async def invoke_agent(payload: dict):
+    return {&quot;result&quot;: invoke(payload)}
+
+if __name__ == &quot;__main__&quot;:
+    import uvicorn
+    uvicorn.run(fastapi_app, host=&quot;0.0.0.0&quot;, port=8000)
+</code></pre>
+<h2>Output</h2>
+<p><img alt="" src="/blog/images/amazon-bedrock-agentcore-2/image.png" /><img alt="" src="/blog/images/amazon-bedrock-agentcore-2/image-1.png" /></p>
+<h2>Generate AgentCore Yaml File</h2>
+<p>$ agentcore configure –entrypoint agentic_ai_agent_hello_world.py</p>
+<pre><code>aws sts get-caller-identity
+❯ agentcore configure --entrypoint agentic_ai_agent_hello_world.py
+Configuring Bedrock AgentCore...
+Entrypoint parsed: file=/Users/shahzadali/Library/CloudStorage/AgentCore_Strands_Support_Desk/agentic_ai_agent_hello_world.py, bedrock_agentcore_name=agentic_ai_agent_hello_world
+Agent name: agentic_ai_agent_hello_world
+
+🔐 Execution Role
+Press Enter to auto-create execution role, or provide execution role ARN/name to use existing
+Execution role ARN/name (or press Enter to auto-create):
+✓ Will auto-create execution role
+
+🏗️  ECR Repository
+Press Enter to auto-create ECR repository, or provide ECR Repository URI to use existing
+ECR Repository URI (or press Enter to auto-create):
+✓ Will auto-create ECR repository
+
+🔍 Detected dependency file: requirements.txt
+Press Enter to use this file, or type a different path (use Tab for autocomplete):
+Path or Press Enter to use detected dependency file:
+✓ Using detected file: requirements.txt
+
+🔐 Authorization Configuration
+By default, Bedrock AgentCore uses IAM authorization.
+Configure OAuth authorizer instead? (yes/no) [no]: yes
+
+📋 OAuth Configuration
+Enter OAuth discovery URL: https://trial-3508361.okta.com/oauth2/default/.well-known/openid-configuration
+Enter allowed OAuth client IDs (comma-separated): &lt;Clinet-ID&gt;
+Enter allowed OAuth audience (comma-separated): &lt;Same as Client-ID&gt;
+✓ OAuth authorizer configuration created
+Configuring BedrockAgentCore agent: agentic_ai_agent_hello_world
+Generated .dockerignore
+Generated Dockerfile: /Users/shahzadali/Library/CloudStorage/AgentCore_Strands_Support_Desk/Dockerfile
+Generated .dockerignore: /Users/shahzadali/Library/CloudStorage/AgentCore_Strands_Support_Desk/.dockerignore
+Setting 'agentic_ai_agent_hello_world' as default agent
+╭─────────────────────────────────────────────────────── Bedrock AgentCore Configured 
+│ Configuration Summary                                                                                                                       │
+│                                                                                                                           | Name: agentic_ai_agent_hello_world                                                                                                          │ Runtime: Docker                                                                                                                             │ Region: us-west-2                                                                                                                           │ Account: 513826297540                                                                                                                       │ Execution Role: None                                                                                                                        │ ECR: Auto-create                                                                                                                            │ Authorization: OAuth (customJWTAuthorizer)                                                                                                  
+│                                                                                                                                             
+│ Configuration saved to:                                                                                                                     │
+│ /Users/shahzadali/Library/CloudStorage/AgentCore_Strands_Support_Desk/.bedrock_agentcore.yaml
+╰────────────────────────────────────────────────────────────────────────────────────────────
+</code></pre>
+<h2>Launch Bedrock AgentCore</h2>
+<pre><code>$ agentcore launch
+🚀 Launching Bedrock AgentCore (codebuild mode - RECOMMENDED)...
+   • Build ARM64 containers in the cloud with CodeBuild
+   • No local Docker required (DEFAULT behavior)
+   • Production-ready deployment
+
+💡 Deployment options:
+   • agentcore launch                → CodeBuild (current)
+   • agentcore launch --local        → Local development
+   • agentcore launch --local-build  → Local build + cloud deploy
+
+Starting CodeBuild ARM64 deployment for agent 'agentic_ai_agent_hello_world' to account 513826297540 (us-west-2)
+Starting CodeBuild ARM64 deployment for agent 'agentic_ai_agent_hello_world' to account 513826297540 (us-west-2)
+Setting up AWS resources (ECR repository, execution roles)...
+Getting or creating ECR repository for agent: agentic_ai_agent_hello_world
+Repository doesn't exist, creating new ECR repository: bedrock-agentcore-agentic_ai_agent_hello_world
+⠦ Launching Bedrock AgentCore...✅ ECR repository available: 513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-agentic_ai_agent_hello_world
+⠧ Launching Bedrock AgentCore...Getting or creating execution role for agent: agentic_ai_agent_hello_world
+Using AWS region: us-west-2, account ID: 513826297540
+Role name: AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+⠹ Launching Bedrock AgentCore...Role doesn't exist, creating new execution role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+Starting execution role creation process for agent: agentic_ai_agent_hello_world
+✓ Role creating: AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+Creating IAM role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+⠼ Launching Bedrock AgentCore...✓ Role created: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+⠧ Launching Bedrock AgentCore...✓ Execution policy attached: BedrockAgentCoreRuntimeExecutionPolicy-agentic_ai_agent_hello_world
+Role creation complete and ready for use with Bedrock AgentCore
+✅ Execution role available: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-24d0081865
+Preparing CodeBuild project and uploading source...
+⠏ Launching Bedrock AgentCore...Getting or creating CodeBuild execution role for agent: agentic_ai_agent_hello_world
+Role name: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+⠸ Launching Bedrock AgentCore...CodeBuild role doesn't exist, creating new role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+Creating IAM role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+⠧ Launching Bedrock AgentCore...✓ Role created: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+Attaching inline policy: CodeBuildExecutionPolicy to role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+⠏ Launching Bedrock AgentCore...✓ Policy attached: CodeBuildExecutionPolicy
+Waiting for IAM role propagation...
+⠧ Launching Bedrock AgentCore...CodeBuild execution role creation complete: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-24d0081865
+⠙ Launching Bedrock AgentCore...Using .dockerignore with 44 patterns
+⠸ Launching Bedrock AgentCore...Uploaded source to S3: agentic_ai_agent_hello_world/20250820-051241.zip
+⠧ Launching Bedrock AgentCore...Created CodeBuild project: bedrock-agentcore-agentic_ai_agent_hello_world-builder
+Starting CodeBuild build (this may take several minutes)...
+⠙ Launching Bedrock AgentCore...Starting CodeBuild monitoring...
+⠹ Launching Bedrock AgentCore...🔄 QUEUED started (total: 0s)
+⠴ Launching Bedrock AgentCore...✅ QUEUED completed in 5.1s
+🔄 PROVISIONING started (total: 5s)
+⠹ Launching Bedrock AgentCore...✅ PROVISIONING completed in 10.1s
+🔄 PRE_BUILD started (total: 15s)
+⠏ Launching Bedrock AgentCore...✅ PRE_BUILD completed in 10.1s
+🔄 BUILD started (total: 25s)
+⠹ Launching Bedrock AgentCore...✅ BUILD completed in 35.5s
+🔄 POST_BUILD started (total: 61s)
+⠏ Launching Bedrock AgentCore...✅ POST_BUILD completed in 10.1s
+🔄 COMPLETED started (total: 71s)
+✅ COMPLETED completed in 0.0s
+🎉 CodeBuild completed successfully in 1m 11s
+CodeBuild completed successfully
+✅ CodeBuild project configuration saved
+Deploying to Bedrock AgentCore...
+⠼ Launching Bedrock AgentCore...⚠️ Session ID will be reset to connect to the updated agent. The previous agent remains accessible via the original session ID: c168addd-d20f-4c2e-9c37-71485ef4b2e3
+✅ Agent created/updated: arn:aws:bedrock-agentcore:us-west-2:513826297540:runtime/agentic_ai_agent_hello_world-7V9ZDUDxXY
+Polling for endpoint to be ready...
+⠋ Launching Bedrock AgentCore...Agent endpoint: arn:aws:bedrock-agentcore:us-west-2:513826297540:runtime/agentic_ai_agent_hello_world-7V9ZDUDxXY/runtime-endpoint/DEFAULT
+Deployment completed successfully - Agent: arn:aws:bedrock-agentcore:us-west-2:513826297540:runtime/agentic_ai_agent_hello_world-7V9ZDUDxXY
+✓ CodeBuild completed: bedrock-agentcore-agentic_ai_agent_hello_world-builder:38965aa6-f260-4208-88c4-435db1260d92
+✓ ARM64 image pushed to ECR: 513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-agentic_ai_agent_hello_world:latest
+╭─────────────────────────────────────── CodeBuild ARM64 Deployment Successful ────────────────
+│                                                                                                                                             │ Agent Name: agentic_ai_agent_hello_world                                                                                                    │ CodeBuild ID: bedrock-agentcore-agentic_ai_agent_hello_world-builder:38965aa6-f260-4208-88c4-435db1260d92                                   │ Agent ARN: arn:aws:bedrock-agentcore:us-west-2:513826297540:runtime/agentic_ai_agent_hello_world-7V9ZDUDxXY                                 │
+│ ECR URI: 513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-agentic_ai_agent_hello_world:latest                                 │
+│                                                                                                                                             │ARM64 container deployed to Bedrock AgentCore.                                                                                              │
+│                                                                                                                             
+│ You can now check the status of your Bedrock AgentCore endpoint with:                                                                       │
+│ agentcore status                                                                                                                            │                                                                                                                                         
+│ You can now invoke your Bedrock AgentCore endpoint with:                                                                                    │
+│ agentcore invoke '{&quot;prompt&quot;: &quot;Hello&quot;}'                                                                                                      │
+│                                                                                                                                            
+│ 📋 Agent logs available at:                                                                                                                 │
+│    /aws/bedrock-agentcore/runtimes/agentic_ai_agent_hello_world-7V9ZDUDxXY-DEFAULT                                                          
+│    /aws/bedrock-agentcore/runtimes/agentic_ai_agent_hello_world-7V9ZDUDxXY-DEFAULT/runtime-logs                                             │                                                                                                                                     
+│ 💡 Tail logs with:                                                                                                                          │
+│    aws logs tail /aws/bedrock-agentcore/runtimes/agentic_ai_agent_hello_world-7V9ZDUDxXY-DEFAULT --follow                                   
+│    aws logs tail /aws/bedrock-agentcore/runtimes/agentic_ai_agent_hello_world-7V9ZDUDxXY-DEFAULT --since 1h
+</code></pre>
+<h2>Get the OAuth Bearer Token</h2>
+<p>Following is only needed if you are NOT using IAM for inbound auth and using Okta or other IDP.</p>
+<p>curl –request POST \<br />
+–url https://trial-3508361.okta.com/oauth2/default/v1/token \<br />
+–header “Accept: application/json” \<br />
+–header “Content-Type: application/x-www-form-urlencoded” \<br />
+–user “Okta ClientID:Okta Client Secret Value”<br />
+–data “grant_type=client_credentials&amp;scope=agent.invoke”</p>
+<p>You will get a bearer token from Okta.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

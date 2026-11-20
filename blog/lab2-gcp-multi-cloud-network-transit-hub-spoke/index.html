@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In this lab, we will build the hub and spoke network in GCP. All the GCP VPCs and their respective subnets are already created for you to save time. GCP Spoke-2 GW VPC Network/Subnet Creation This step is already done for you so please do not attempt. Controller can create those subnets using API/Te">
+  <title>LAB2 – GCP Multi-Cloud Network Transit / Hub-Spoke · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/lab2-gcp-multi-cloud-network-transit-hub-spoke/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAB2 – GCP Multi-Cloud Network Transit / Hub-Spoke">
+  <meta property="og:description" content="In this lab, we will build the hub and spoke network in GCP. All the GCP VPCs and their respective subnets are already created for you to save time. GCP Spoke-2 GW VPC Network/Subnet Creation This step is already done for you so please do not attempt. Controller can create those subnets using API/Te">
+  <meta property="og:url" content="https://netjoints.com/blog/lab2-gcp-multi-cloud-network-transit-hub-spoke/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-28">November 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">LAB2 – GCP Multi-Cloud Network Transit / Hub-Spoke</h1>
+
+      
+
+      <div class="blog-content">
+        <p>In this lab, we will build the hub and spoke network in GCP. All the GCP VPCs and their respective subnets are already created for you to save time.</p>
+<h2>GCP Spoke-2 GW VPC Network/Subnet Creation</h2>
+<p><strong>This step is already done for you so please do not attempt.</strong></p>
+<p>Controller can create those subnets using API/Terraform as well. It makes it easy to make it part of your CI/CD pipleline.</p>
+<p>Controller –&gt; Useful Tools –&gt; Create A VPC –&gt; Add New<br />
+Controller –&gt; Useful Tools –&gt; Create A VPC –&gt; Add New Row</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.14.39-PM.png" /></p>
+<p>You should view the VPCs created for you already.</p>
+<p>Controller –&gt; Useful Tools –&gt; VPC Tracker</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.20.14-PM.png" /></p>
+<p>Now click “VIEW GCLOUD SUBNET” to see further details</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.22.24-PM.png" /></p>
+<h2>Deploy GCP Spoke-2 Gateway</h2>
+<p>Since we have all the subnets created properly, it is time to deploy the GCP Spoke-2 GW using the Controller.</p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Setup</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.26.20-PM.png" /></p>
+<h3>Connect GCP Spokes to GCP Transit</h3>
+<p>At this stage we have 4 spokes in GCP</p>
+<ul>
+<li>gcp-spoke1 –&gt; connected to gcp transit gw</li>
+<li>gpc-spoke2 –&gt; not connected to gcp transit gw</li>
+<li>gcp-spoke3 –&gt; connected to gpc transit gw (this will be use for user-vpn later in the lab)</li>
+<li>gcp-spoke4 –&gt; not connected to gcp transit gw</li>
+</ul>
+<p>Login to CoPilot (user: Copilot / pass: Copilot123!) now to see the connectivity in real-time</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.48.25-PM.png" /><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.53.59-PM.png" /></p>
+<p>In this part of the lab, we will connect the remaining spoke gateway to aviatrix transit-gw</p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Setup –&gt; Attach Spoke Gateway to Transit Network</p>
+<h4>Spoke#2</h4>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-1.54.46-PM.png" /></p>
+<h4>Spoke#3</h4>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-2.11.50-PM.png" /></p>
+<p>Now notice the topology changed and all GCP spokes are connected now</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-7.24.31-PM.png" /></p>
+<h3>Veryify GCP Spoke Connectivity</h3>
+<p>Now Ping from vm_gcp_private_ip_spoke1 (user: ubuntu / pass: Password123!) to other test machines (as listed below) and check the connectivity</p>
+<ul>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – <strong>should work</strong></li>
+<li>using Aviatrix hub/spoke</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – <strong>should work</strong></li>
+<li>using Aviatrix hub/spoke</li>
+</ul>
+<h3>Connect AWS Spoke to AWS-Transit</h3>
+<p>If we look at the AWS side, we have aws-spoke1 connected to aws-transit but the spoke2 is not yet connected as shown in the topology below</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-8.00.17-PM.png" /></p>
+<p>Now we will use Aviatrix Controller to establishe this connection. The aws-spoke2 gateway is already deployed for you</p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; Setup –&gt; Attach Spoke Gateway to Transit Network</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-8.02.11-PM.png" /></p>
+<p>After this setup, following is the topology</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/image-3.png" /></p>
+<h3>Veryify AWS Spoke Connectivity</h3>
+<p>Now Ping from vm_gcp_private_ip_spoke1 (user: ubuntu / pass: Password123!) to AWS test EC2s (as listed below) and check the connectivity</p>
+<ul>
+<li>vm_aws_private_ip_spoke1 (10.101.0.84) – <strong>should work</strong></li>
+<li>This works because the traffic is routed via the dc-router-1. There is a private link between dc-router-1 and dc-router-2 connecting GCP and AWS using services like Equinix/Megaport/Pureport/Epsilon/etc.</li>
+<li>Use tracepath or traceroute (<strong>$sudo apt install traceroute</strong>) to confirm</li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – <strong>should not work</strong></li>
+<li>Because this subnet overlaps with the gcp spoke-vpc3 subnet</li>
+<li>We will fix this issue later in the lab</li>
+</ul>
+<p>Following output shows a traffic route from gcp-spoke-1 test VM to AWS test EC2 in aws-spoke1</p>
+<pre><code>ubuntu@vm-gcp-spoke-1:~$ tracepath 10.101.0.84
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  gcp-spoke-1.c.cne-pod24.internal                      1.563ms 
+ 1:  gcp-spoke-1.c.cne-pod24.internal                      0.260ms 
+ 2:  gcp-spoke-1.c.cne-pod24.internal                      0.256ms pmtu 1396
+ 2:  10.20.3.2                                             1.846ms 
+ 3:  10.20.3.2                                             0.775ms pmtu 1390
+ 3:  169.254.100.2                                        51.410ms 
+ 4:  172.16.0.2                                           55.184ms 
+ 5:  10.10.0.93                                           75.906ms 
+ 6:  10.101.0.70                                          77.206ms
+</code></pre>
+<h2>Multi-Cloud Transit Peering (Connection GCP and AWS)</h2>
+<p>Now we have setup all the gateway and build the hub-spoke (transit) in GCP, it is time to connect GCP with AWS now. This peering is secure and encrypted and takes care of number of configuration options and best practices that are needed for such a complex connectivity. You will appreciate the simplicity of doing that.</p>
+<p>Select Multi-Cloud Transit –&gt; Transit Peering –&gt; ADD NEW</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-7.50.22-PM-1.png" /></p>
+<blockquote>
+<p>Note that the order of cloud selection does not matter here. After few seconds, the status will be green as shown in the screen shot below.</p>
+</blockquote>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-7.52.46-PM.png" /></p>
+<h2>Verify Transit Connectivity</h2>
+<p>Ping from vm_gcp_private_ip_spoke1 (user: ubuntu / pass: Password123!) to GCP and AWS VMs (as listed below) and make sure connectivity works</p>
+<ul>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – <strong>should work</strong></li>
+<li>using Aviatrix hub/spoke</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – <strong>should work</strong></li>
+<li>using Aviatrix hub/spoke</li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – <strong>should not work</strong></li>
+<li>Because this subnet overlaps with the gcp spoke-vpc3 subnet</li>
+<li>We will fix this issue later in the lab</li>
+<li>vm_aws_private_ip_spoke1 (10.101.0.84) – <strong>should work</strong></li>
+<li>This time the packet will use gcp to aws aviatrix transit gateway route for connectivity</li>
+<li>Use tracepath or traceroute (<strong>$sudo apt install traceroute</strong>) to confirm</li>
+<li>In case this link goes down, the connectivity will be provided using the DC router DCI link as backup. This setup is important for Business Continuity and Disaster Recover</li>
+</ul>
+<pre><code>ubuntu@vm-gcp-spoke-1:~$ traceroute 10.101.0.84
+traceroute to 10.101.0.84 (10.101.0.84), 30 hops max, 60 byte packets
+1 gcp-spoke-1.c.cne-pod24.internal (10.20.11.2) 1.322 ms 1.354 ms 1.413 ms
+2 10.20.3.2 (10.20.3.2) 2.684 ms 2.708 ms 2.710 ms
+3 10.10.0.93 (10.10.0.93) 62.072 ms 62.032 ms 62.032 ms
+4 10.101.0.70 (10.101.0.70) 61.975 ms 61.981 ms 61.895 ms
+</code></pre>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; List –&gt; Transit Gateway –&gt; gcp-transit –&gt; Show Details</p>
+<p>Following screen shows the best path available to reach 10.101.0.84</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-11.03.59-PM-1024x779.png" /></p>
+<p>Controller –&gt; Multi-Cloud Transit –&gt; List –&gt; Transit Gateway –&gt; gcp-transit –&gt; Show Details –&gt; Route Info DB Details</p>
+<p>Following screen shows that 10.101.0.0/24 was received from two paths and transit peering was selected as the best path</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-11.06.37-PM-1024x535.png" /></p>
+<p>This completes the transit topology and testing. You can verify it in CoPilot as well.</p>
+<p><img alt="" src="/blog/images/lab2-gcp-multi-cloud-network-transit-hub-spoke/Screen-Shot-2020-12-31-at-11.11.48-PM.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

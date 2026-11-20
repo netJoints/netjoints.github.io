@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Problem Statement The AWS recommended and native solution to access S3 buckets (via Direct Connect (DX) from on-prem location) is to use Public VIF Accessing S3 bucket over DX Public VIF can pose serious security threats to enterprises AWS advertises the entire S3 Public subnet range (one or all the">
+  <title>Secure S3 Bucket Access Over Direct Connect Private VIF · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/secure-s3-bucket-access-over-direct-connect-private-vif/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Secure S3 Bucket Access Over Direct Connect Private VIF">
+  <meta property="og:description" content="Problem Statement The AWS recommended and native solution to access S3 buckets (via Direct Connect (DX) from on-prem location) is to use Public VIF Accessing S3 bucket over DX Public VIF can pose serious security threats to enterprises AWS advertises the entire S3 Public subnet range (one or all the">
+  <meta property="og:url" content="https://netjoints.com/blog/secure-s3-bucket-access-over-direct-connect-private-vif/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2020-03-17">March 17, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Secure S3 Bucket Access Over Direct Connect Private VIF</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Problem Statement</h2>
+<ul>
+<li>The AWS recommended and native solution to access S3 buckets (via Direct Connect (DX) from on-prem location) is to use Public VIF</li>
+<li>Accessing S3 bucket over DX Public VIF can pose serious security threats to enterprises</li>
+<li>AWS advertises the entire S3 Public subnet range (one or all the regions) to on-prem which implies that …</li>
+<li>All on-prem users can upload to any S3 bucket, including to their personal S3 buckets on their own personal accounts, leading to confidential data leakage</li>
+<li>Potentially higher utilization of DX circuit (non-compliant data) that could choke the DX and may incur higher charges ($$$)</li>
+</ul>
+<h2>Solution</h2>
+<p>The solution proposed here not only works for the traffic coming from on-prem location but also allows secure connectivity to S3 traffic coming from other AWS VPCs or other public clouds as well (Multi-Cloud scenario)</p>
+<p>Following are the high level steps to implement this solution</p>
+<ul>
+<li>Create a dedicated S3 VPC (as spoke)</li>
+<li>Create S3 end-point in the S3 VPC</li>
+<li>Deploy Aviatrix Global Transit and attach the S3 VPC (as spoke) to it</li>
+<li>Deploy Aviatrix S3 Gateway in dedicated S3 VPC</li>
+<li>Enable private S3 feature in Aviatrix Controller</li>
+<li>The Controller automatically configures the AWS NLB and load balances multiple AVX S3 GW for high availability, redundancy and performance</li>
+<li>Apply the security policy to allow S3 access from specific CIDRS</li>
+<li>Controller enforce zero-trust S3 security policy</li>
+<li>The CIDRs specified in the policy are allowed to access S3 (rest are blocked by default)</li>
+<li>Create on-prem DNS private zone to point the S3 bucket FQDN to private IP</li>
+</ul>
+<h2>Production Topology</h2>
+<p>Following is the enterprise topology to solve the this business challenge</p>
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-8-840x1024.png" /></p>
+<h3>Traffic Flow</h3>
+<ul>
+<li>Business requirement is that on-prem corporate resources, such as laptop/desktop, can access the S3 Bucket in AWS</li>
+<li>This access must be encrypted over DX link at line rate</li>
+<li>The encryption should allow maximum utilization of 10G DX cuircuit</li>
+<li>There is an optional Aviatrix CloudN hardware appliance in the topology</li>
+<li>CloudN HPE (High Performance Encryption appliance) provide end-to-end and line-rate encryption of all the traffic crossing over the AWS DX link</li>
+<li>The traffic over DX link is not encrypted by default device that is why it is important to use CloudN appliance without compromising the throughput (Cloud Native IPSec encyrption is limited to 1.25 Gbps only)</li>
+<li>S3 bucket traffic goes from on-prem DX link to Aviatrix Transit GW (AVX-TR-GW)</li>
+<li>This is possible because the on-prem DNS server is configured to send S3 bucket traffic towards S3 VPC</li>
+<li>The S3 VPC (AVX-SPK-GW) is attached to AVX-TR-GW as a spoke</li>
+<li>S3 bucket traffic goes to AVX-S3-GW (AVX-SPK-GW)</li>
+<li>AVX-S3-GW inspect the traffic and if the policy allows it, then it forwards the traffic to S3 end-point configured inside the S3 VPC</li>
+</ul>
+<h2>Deployment Details</h2>
+<p>In this deployment</p>
+<ul>
+<li>Aviatrix Transit and Spoke gateways are already deployed in their respective VPCs</li>
+<li>Aviatrix Transit and Spoke peering is already configured</li>
+<li>On-Prem to direct connect connectivity is already established</li>
+</ul>
+<blockquote>
+<p>Tip: You can test this solution even if you do not have a DX circuit. What you can do is to deploy another Aviatrix Transit GW in another Cloud or region. This second Transit could be treated as on-prem location. Now peer both Aviatrix Transit gateways together to establish connectivity.</p>
+</blockquote>
+<h3>1 – Create AWS S3 Endpoint</h3>
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-7.png" /></p>
+<p>S3 endpoint created in AWS</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-8.png" /></p>
+<p>AWS S3 Endpoint details</p>
+<h3>2- Deploy Aviatrix S3 Gateway</h3>
+<p>Deploy two Aviatrix generic or standard gateway from the “Gateway” left navigation tab in the S3-Spoke-VPC.</p>
+<p><img alt="S3 Gateways" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-12-1024x393.png" /></p>
+<p>Aviatrix GWs designated for s3 traffic</p>
+<h3>3- Configure S3 Bucket Access Parameter</h3>
+<p>Under Security –&gt; Private S3 configure the S3 bucket access parameters.</p>
+<ul>
+<li>Select the gateway name first</li>
+<li>The select the source CIDR</li>
+<li>This creates access policy such that only CIDRs mentioned here are allowed to access certain S3 buckets</li>
+<li>Now specify the bucket name. In my case I am using “shahzad-public-s3.s3.amazonaws.com as my bucket name</li>
+<li>You can find this name by loggin into your AWS console</li>
+</ul>
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-3.png" /></p>
+<p>Aviatrix S3 private access parameters</p>
+<p>You have to repeat the same steps for second S3 gateway (this second gateway is optional and for high availability). You can specify more than two gateway as well, depending on your load requirement</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-13-966x1024.png" /></p>
+<p>aws console to find out s3 bucket name</p>
+<pre><code>Tip: The S3 object URL is only visible after upload a file to S3 bucket
+</code></pre>
+<h3>4- AWS ELB Created</h3>
+<p>In the background, an AWS ELB –&gt; NLB is created and two S3 gateways are being load balanced. Following screens show the NLB configuration in AWS console done by Aviatrix Controller</p>
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-15-1024x915.png" /></p>
+<p>NLB Created by aviatrix controller</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-16-1024x594.png" /></p>
+<p>The listener is listening on https:443 for s3 bucket</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-17-1024x716.png" /></p>
+<p>NLB is load balancing between two s3 gateway</p>
+<hr />
+<h3>Testing and Validation</h3>
+<p>Following screen is taken from the on-prem laptop. Notice that a ping to my S3 bucket is returning the private IP address of AWS NLB IP address. Which basically takes the request to one of the Aviatrix S3 gateways.</p>
+<p><code>C:\&gt;ping shahzad-public-s3.s3.amazonaws.com  
+Pinging shahzad-public-s3.s3.amazonaws.com [10.11.144.163] with 32 bytes of data:  
+Request timed out.  
+Request timed out.  
+Request timed out.</code></p>
+<hr />
+<pre><code>Ping to show public s3 fqdn returns the private nlb ip address
+
+The &quot;S3 Bucket FQDN Name Resolution IP: 10.11.144.163&quot; is actually the IP address of the private interface of AWS NLB. This is the IP address that should be resolved to in your on-prem DNS for S3 bucket FQDN (i.e shahzad-public-s3.s3.amazonaws.com&quot;)
+</code></pre>
+<p>Now type the S3 Bucket FQDN in the browser on your on-prem laptop/desktop/server</p>
+<p><a href="https://shahzad-public-s3.s3.amazonaws.com/S3_Bucket_Over_Private_VIF.txt">https://shahzad-public-s3.s3.amazonaws.com/S3_Bucket_Over_Private_VIF.txt</a></p>
+<p>Following screen shows that we can successfully access the S3 public FQDN using the private VIF</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-20.png" /></p>
+<h3>S3 Bucket FQDN Access Visibility</h3>
+<p>You can also check the stats of the FQDN access because in the background the S3 private access feature is using the Egress FQDN URL.</p>
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-18-1024x457.png" /></p>
+<p>s3 fqdn stats for entire deployment</p>
+<hr />
+<p><img alt="" src="/blog/images/secure-s3-bucket-access-over-direct-connect-private-vif/image-19-1024x552.png" /></p>
+<p>s3 fqdn stats for one specific gateway</p>
+<h2>Design Notes</h2>
+<ul>
+<li>Aviatrix Controller will automatically deploy the AWS-NLB per region</li>
+<li>There is no limit to the number of Aviatrix-S3-GW you can deploy. These gateways are Active/Active and being load balanced by the AWS-NLB</li>
+<li>Even if you deploy one S3-GW, you will notice an AWS-NLB deployed. This is default behavior and cannot be changed. Because for production, our recommendation is to deploy at least two S3-GWs in two different AZs within the same region</li>
+<li>It is customer’s responsibility to pick the right size of S3-GW depending on the traffic needs</li>
+<li>Aviatrix Controller does not create or manage auto-scaling group</li>
+<li>Adding new gateway of different size is just a matter of one click in the Controller</li>
+<li>Using the source CIDR security policy model, the rest of the access is zero-trust for S3 FQDN.</li>
+<li>Different on-prem teams could segment the traffic based on VLAN or Account they own in the AWS</li>
+<li>Aviatrix strongly recommends to use additional S3 security provided by AWS</li>
+<li>Remember it is a shared security model</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

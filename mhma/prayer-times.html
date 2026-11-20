@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayer Times — MHMA</title>
+  <link rel="canonical" href="https://netjoints.com/mhma/prayer-times.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<main id="main">
+
+  <!-- Page Hero -->
+  <section class="page-hero pattern-teal">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Prayer Times</div>
+      <h1>Prayer Times</h1>
+      <p id="pt-hero-date">Mountain House, California</p>
+    </div>
+  </section>
+
+  <!-- Today's times (large cards) -->
+  <section class="section" style="background:var(--warm-white);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px;">
+        <span class="label">Salah Times</span>
+        <h2>Today's Prayer Times</h2>
+        <div id="prayer-widget-date" class="prayer-date" style="color:#666;font-size:15px;margin-top:6px;"></div>
+        <div class="gold-rule centered"></div>
+      </div>
+      <div id="prayer-cards-grid" style="max-width:var(--max-w);margin:0 auto 32px;">
+        <div class="ptime-card" style="grid-column:1/-1;text-align:center;padding:20px;background:var(--sage);border:none;border-radius:12px;">
+          <div class="ptime-name" style="color:#999;">Loading prayer times…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jumu'ah info -->
+  <section class="section reveal pattern-teal" style="padding:48px var(--pad-x);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:800px;margin:0 auto;text-align:center;">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:28px;border:1px solid rgba(255,255,255,.15);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Jumu'ah — 1st Session</div>
+          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:white;">1:00 PM</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;">Khutbah begins at 12:45 PM</div>
+        </div>
+        <div style="background:rgba(201,168,76,.18);border-radius:12px;padding:28px;border:2px solid var(--gold);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Jumu'ah — 2nd Session</div>
+          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:white;">2:00 PM</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;">Khutbah begins at 1:45 PM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly table placeholder -->
+  <section class="section reveal" style="background:var(--sage);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px;">
+        <span class="label">Monthly Schedule</span>
+        <h2>Prayer Times Calendar</h2>
+        <div class="gold-rule centered"></div>
+        <p style="font-size:16px;color:#555;max-width:520px;margin:16px auto 0;">Times are calculated for Mountain House, CA using the ISNA method.</p>
+      </div>
+      <div style="max-width:var(--max-w);margin:0 auto;overflow-x:auto;">
+        <table class="prayer-table">
+          <thead>
+            <tr>
+              <th>Date</th><th>Fajr</th><th>Sunrise</th><th>Dhuhr</th><th>Asr</th><th>Maghrib</th><th>Isha</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-prayer-table">
+            <tr><td colspan="7" style="text-align:center;color:#999;padding:24px;">Loading monthly schedule…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="_nav.js"></script>
+<script>
+/* Override the prayer-widget-date color for this page (not on teal background) */
+(function() {
+  const el = document.getElementById('prayer-widget-date');
+  if (el) { el.style.color = '#666'; el.style.marginTop = '6px'; }
+
+  /* Also update hero date */
+  const hero = document.getElementById('pt-hero-date');
+  if (hero) {
+    const d = new Date();
+    hero.textContent = d.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' · Mountain House, CA';
+  }
+
+  /* Fix ptime-card styles for light background */
+  const style = document.createElement('style');
+  style.textContent = `
+    #prayer-cards-grid .ptime-card { background: white; border: 1px solid #e8e4da; }
+    #prayer-cards-grid .ptime-name { color: #999; }
+    #prayer-cards-grid .ptime-time { color: var(--teal); }
+    #prayer-cards-grid .ptime-card.next-prayer { background: var(--gold-light) !important; border-color: var(--gold) !important; }
+    #prayer-cards-grid .ptime-card.next-prayer .ptime-time { color: var(--teal); }
+  `;
+  document.head.appendChild(style);
+
+  /* The monthly table is built from aladhan.com's response, so every value is
+     either HTML-escaped (esc) or reduced to parsed numbers (fmt). Kept local:
+     in the WordPress build nav.js is enqueued in the footer, after this. */
+  const esc = v => String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  const fmt = s => {
+    const p = String(s || '').split(' ')[0].split(':');
+    const h = Number(p[0]), m = Number(p[1]);
+    if (!Number.isFinite(h) || !Number.isFinite(m)) return '—';
+    const ap = h >= 12 ? 'PM' : 'AM', hr = h > 12 ? h - 12 : h === 0 ? 12 : h;
+    return `${hr}:${String(m).padStart(2,'0')} ${ap}`;
+  };
+
+  /* Build monthly table from aladhan */
+  const now = new Date();
+  const year = now.getFullYear(), month = now.getMonth() + 1;
+  fetch(`https://api.aladhan.com/v1/calendar/${year}/${month}?latitude=37.7784&longitude=-121.5388&method=2`)
+    .then(r => r.json())
+    .then(({ data }) => {
+      if (!Array.isArray(data)) throw new Error('unexpected response');
+      const tbody = document.getElementById('monthly-prayer-table');
+      const today = now.getDate();
+      tbody.innerHTML = data.map(day => {
+        const d = (day.date && day.date.gregorian) || {};
+        const t = day.timings || {};
+        const isToday = parseInt(d.day, 10) === today;
+        return `<tr${isToday ? ' class="today"' : ''}>
+          <td><strong>${esc(d.day)} ${esc(String(d.month && d.month.en || '').slice(0,3))}</strong>${isToday ? ' <span style="font-size:11px;background:var(--gold);color:white;padding:1px 6px;border-radius:4px;">Today</span>' : ''}</td>
+          <td>${fmt(t.Fajr)}</td><td>${fmt(t.Sunrise)}</td><td>${fmt(t.Dhuhr)}</td>
+          <td>${fmt(t.Asr)}</td><td>${fmt(t.Maghrib)}</td><td>${fmt(t.Isha)}</td>
+        </tr>`;
+      }).join('');
+    })
+    .catch(() => {
+      document.getElementById('monthly-prayer-table').innerHTML =
+        '<tr><td colspan="7" style="text-align:center;color:#999;padding:24px;">Monthly schedule unavailable. Please check back later.</td></tr>';
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business-critical applications require business-critical infrastructure. Aviatrix Intelligent Cloud Networking™ delivers business-critical cloud networking that supports business-critical applications such as SAP S/4HANA. This post enlightens you with everything you want to know about running a busi">
+  <title>SAP on Aviatrix · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/sap-on-aviatrix-platform/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SAP on Aviatrix">
+  <meta property="og:description" content="Business-critical applications require business-critical infrastructure. Aviatrix Intelligent Cloud Networking™ delivers business-critical cloud networking that supports business-critical applications such as SAP S/4HANA. This post enlightens you with everything you want to know about running a busi">
+  <meta property="og:url" content="https://netjoints.com/blog/sap-on-aviatrix-platform/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2023-01-03">January 3, 2023</time>
+      </div>
+
+      <h1 class="blog-title">SAP on Aviatrix</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Business-critical applications require business-critical infrastructure. Aviatrix Intelligent Cloud Networking™ delivers business-critical cloud networking that supports business-critical applications such as SAP S/4HANA.</p>
+<p>This post enlightens you with everything you want to know about running a business-critical application on a business-critical infrastructure provided by Aviatrix.</p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/7IiV-HRp8G8" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<h3>Aviatrix Solution Brief for SAP S4/HANA Enterprises</h3>
+<p><a href="https://aviatrix.com/resources/solution-briefs/aviatrix-cloudmigrations-sb2022010">https://aviatrix.com/resources/solution-briefs/aviatrix-cloudmigrations-sb2022010</a></p>
+<p><a href="https://aviatrix.com/resources/solution-briefs/upgrade-your-cloud-networking-for-sap-migrations">https://aviatrix.com/resources/solution-briefs/upgrade-your-cloud-networking-for-sap-migrations</a></p>
+<h3>Aviatrix Solution for SAP S4/HANA for MSP (Managed Service Providers)</h3>
+<p><a href="https://aviatrix.com/resources/i/1492074-managed-service-providers-run-sap-better-on-aviatrix/">https://aviatrix.com/resources/i/1492074-managed-service-providers-run-sap-better-on-aviatrix/</a></p>
+<h2><strong>Optimize Infrastructure for SAP S4/HANA in AWS</strong></h2>
+<p>According to Enterprise Strategy Group, 88% of organizations are now running production workloads in public clouds, including mission-critical business applications such as SAP or Oracle. The migration of SAP to public cloud provider Amazon Web Services (AWS) is one example of a business-critical application that can be run in a public cloud environment and can benefit significantly from leveraging advanced network and security capabilities. For example, how do organizations plan to handle:</p>
+<ul>
+<li>The requirement for overlay IPs for initial deployment</li>
+<li>The need to ensure that the environment remains highly available and secure</li>
+<li>A resilient network environment across all AWS availability zones.</li>
+</ul>
+<p>Want to learn more, check out the discussion with Enterprise Strategy Group</p>
+<p><em>“If your organization is planning to migrate business-critical applications like SAP to AWS, it would be worth exploring how an intelligent cloud networking solution could benefit not only the migration but also the ongoing operations.”</em></p>
+<p>Bob Laliberte<br />
+Principal Analyst<br />
+Enterprise Strategy Group</p>
+<h2>SAP S4/HANA MSP and Single Tenant Designs</h2>
+<p><a href="/blog/files/sap-on-aviatrix-platform/S4-HANA-MSP-Design_Public.pptx">S4-HANA-MSP-Design_Public</a><a href="/blog/files/sap-on-aviatrix-platform/S4-HANA-MSP-Design_Public.pptx">Download</a></p>
+<h2>SAP S4/HANA Hineken Case-Study</h2>
+<p>Global brewing enterprise, HEINEKEN International, faced several challenges, including the need to reduce the complexity and staff required to deploy, operate, and troubleshoot the multicloud network their global SAP applications require to support multiple global business units. Cloud networking complexity and skills gap created a real risk of project delays that would directly impact business critical applications Heineken depends on. Hosted by Aviatrix’s Rod Stuhlmuller and Dennis Hagens, this webinar will feature special guest Henk Giesbertz, 15-year cloud network consultant at HEINEKEN International.  Learn how Heineken’s team leveraged an intelligent cloud networking platform to deliver consistent networking, security, automation, and operational visibility that simplifies both initial deployments and ongoing day-two operations to both maximize SAP application uptime and minimize SAP project costs.   </p>
+<p>Learn more: <a href="https://aviatrix.com/">https://aviatrix.com/</a></p>
+<h2>NTT Data Business Solutions Partnership with Aviatrix for SAP Services</h2>
+<p><img alt="" src="/blog/images/sap-on-aviatrix-platform/image-2-300x169.png" /></p>
+<p><a href="https://aviatrix.com/ntt-data-business-solutions-partners-with-aviatrix/">https://aviatrix.com/ntt-data-business-solutions-partners-with-aviatrix/</a></p>
+<p>NTT DATA Business Solutions has deployed the Aviatrix Cloud Networking Platform as the technology underlying the Cloud Network-as-a-Service (NaaS). NTT DATA Business Solutions leverages Aviatrix to deliver business-critical SAP application services for enterprise customers and to overcome the networking, security, visibility, and multicloud limitations of native Amazon Web Services (AWS), Azure, and/or Google Cloud services.</p>
+<p><a href="/blog/files/sap-on-aviatrix-platform/aviatrix-cloudmigrations-sb2022010.pdf">aviatrix-cloudmigrations-sb2022010</a><a href="/blog/files/sap-on-aviatrix-platform/aviatrix-cloudmigrations-sb2022010.pdf">Download</a></p>
+<h2>Aviatrix Training SAP S4/HANA for SAP Basis and Networking Architects</h2>
+<p><a href="https://aviatrix.com/resources/ace-course-comprehensive-guides-3/ace-multicloud-network-associate-sap-specialty-overview-2">https://aviatrix.com/resources/ace-course-comprehensive-guides-3/ace-multicloud-network-associate-sap-specialty-overview-2</a></p>
+<p><a href="/blog/files/sap-on-aviatrix-platform/ace-multicloud-network-associate-sap-specialty-overview.pdf">ace-multicloud-network-associate-sap-specialty-overview</a><a href="/blog/files/sap-on-aviatrix-platform/ace-multicloud-network-associate-sap-specialty-overview.pdf">Download</a></p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/_EaChka5cpQ" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">aviatrix</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

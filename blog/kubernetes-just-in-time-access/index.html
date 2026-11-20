@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The output of the kubectl config get-contexts command shows the available Kubernetes contexts configured in your kubeconfig file. The CURRENT column is empty for all rows, which means no context is currently active. You have four contexts configured, each representing a different role or permission ">
+  <title>Kubernetes Just in Time Access · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/kubernetes-just-in-time-access/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kubernetes Just in Time Access">
+  <meta property="og:description" content="The output of the kubectl config get-contexts command shows the available Kubernetes contexts configured in your kubeconfig file. The CURRENT column is empty for all rows, which means no context is currently active. You have four contexts configured, each representing a different role or permission ">
+  <meta property="og:url" content="https://netjoints.com/blog/kubernetes-just-in-time-access/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-06-24">June 24, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Kubernetes Just in Time Access</h1>
+
+      
+
+      <div class="blog-content">
+        <p>The output of the <code>kubectl config get-contexts</code> command shows the available Kubernetes contexts configured in your kubeconfig file.</p>
+<p><img alt="" src="/blog/images/kubernetes-just-in-time-access/image.png" /></p>
+<ul>
+<li>The <code>CURRENT</code> column is empty for all rows, which means <strong>no context is currently active</strong>.</li>
+<li>You have <strong>four contexts</strong> configured, each representing a different role or permission level within the same EKS (Elastic Kubernetes Service) cluster.</li>
+<li>All contexts use the same <code>AUTHINFO</code> (user identity): <code>demo-shahzad.ali@britive.com</code>.</li>
+<li>Here <strong>role-based access control (RBAC)</strong> is being used with <strong>Just-In-Time (JIT)</strong> access provisioning.</li>
+<li>The names (<code>cluster-admin</code>, <code>eks-ns-manager</code>, <code>jit-adm</code>, <code>jit-dev</code>) imply different levels of access:</li>
+<li><code>cluster-admin</code>: full cluster admin access.</li>
+<li><code>eks-ns-manager</code>: AWS EKS namespace-level manager.</li>
+<li><code>jit-adm</code>: JIT admin access.</li>
+<li><code>jit-dev</code>: JIT developer access.</li>
+<li>The <code>NAMESPACE</code> column is empty, meaning these contexts will default to the <code>default</code> namespace unless overridden.</li>
+</ul>
+<h3><strong>Switch the Active Kubernetes Context</strong></h3>
+<pre><code>Run this command: $ kubectl config use-context jit-dev
+</code></pre>
+<ul>
+<li>It sets the <strong>current context</strong> in your kubeconfig to <code>jit-dev</code>.</li>
+<li>This means <strong>all subsequent <code>kubectl</code> commands</strong> will now:</li>
+<li>Connect to the <strong>cluster</strong> associated with <code>jit-dev</code>.</li>
+<li>Use the <strong>authentication credentials</strong> (<code>demo-shahzad.ali@britive.com</code>).</li>
+<li>Operate in the <strong>default namespace</strong> (unless overridden).</li>
+</ul>
+<p>Kubernetes contexts are like profiles. Switching context is like saying: “<strong>From now on, I want to interact with this specific cluster, using this specific identity and namespace.</strong>”</p>
+<p>Now run the command kubectl get pods, but you will get an error</p>
+<blockquote>
+<p><img alt="" src="/blog/images/kubernetes-just-in-time-access/image-1.png" /></p>
+</blockquote>
+<h3>Pod is Forbidden Error</h3>
+<p>The error message you&rsquo;re seeing:</p>
+<pre><code>Error from server (Forbidden): pods is forbidden: User &quot;https://demo.britive-app.com/oidc/rtdygaz2jvwe0m00#shahzad.ali@britive.com&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
+</code></pre>
+<p>means that the <strong>current user does not have permission to list pods</strong> in the <code>default</code> namespace.</p>
+<h2>Automatic Britive Profile Checkout</h2>
+<p>Now switch the context using &ldquo;kubectl config use-context jit-adm&rdquo; command</p>
+<pre><code>$ kubectl config use-context jit-adm
+Switched to context &quot;jit-adm&quot;.
+$ kubectl get pods -n jit
+
+NAME                              READY STATUS  RESTARTS AGE
+nginx-deployment-86dcfdf4c6-b8v4r 1/1   Running 0        341d 
+nginx-deployment-86dcfdf4c6-ftxck 1/1   Running 0        341d
+</code></pre>
+<p>Following command automatically checkout a Britive profile called &ldquo;<strong>EKS JIT Admin”</strong> and list the pods</p>
+<pre><code>$ kubectl get pods -n jit
+</code></pre>
+<h3>🔐 <strong>Behind the Scenes: Britive + Kubernetes + JIT Access</strong></h3>
+<ol>
+<li><strong>Britive is managing Kubernetes access</strong>:
+   * We are using <strong>OIDC (OpenID Connect)</strong> to authenticate via Britive.
+   * kubeconfig is configured to use a <strong>Britive-issued identity token</strong>.</li>
+<li><strong>JIT (Just-In-Time) Access</strong>:
+   * When I run a <code>kubectl</code> get get pods -n jit command, my kubeconfig is set up to <strong>dynamically request a token</strong> from Britive.
+   * This token is tied to a <strong>specific role or profile</strong>, like <code>EKS JIT Admin</code>.</li>
+<li><strong>Namespace Triggers Role Activation</strong>:
+   * Accessing the <code>jit</code> namespace is  <strong>mapped to a specific Britive profile</strong> (e.g., “EKS JIT Admin”).
+   * Britive sees the request and <strong>automatically activates the appropriate JIT role</strong> for that namespace or action.</li>
+<li><strong>Token Injection</strong>:
+   * Britive injects a short-lived token into your kubeconfig or session.
+   * This token grants temporary permissions (e.g., to list pods in <code>jit</code>).</li>
+</ol>
+<h3>🔍 Where Is the Mapping Between Namespace and Britive Profile?</h3>
+<p>This mapping is <strong>not stored in local kubeconfig</strong> or in any Kubernetes-native file. Instead, it is dynamically managed by <strong>Britive’s access policies and automation rules</strong>. Here&rsquo;s how it works:</p>
+<h3>🔐 <strong>How the Mapping Works (Conceptually)</strong></h3>
+<ol>
+<li><strong>Britive Admin Configuration</strong>:
+   * In the <strong>Britive platform</strong>, administrators define <strong>JIT access profiles</strong> (like “EKS JIT Admin”).
+   * These profiles are mapped to specific <strong>Kubernetes roles or ClusterRoles</strong>.
+   * Access policies may include conditions like:<ul>
+<li>Namespace = <code>jit</code> → assign <code>EKS JIT Admin</code></li>
+<li>Namespace = <code>dev</code> → assign <code>EKS JIT Developer</code></li>
+</ul>
+</li>
+<li><strong>Access Request Flow</strong>:
+   * When I run <code>kubectl get pods -n jit</code>, my kubeconfig (via OIDC) triggers a token request to Britive.
+   * Britive evaluates the request and <strong>dynamically issues a token</strong> tied to the appropriate profile (e.g., “EKS JIT Admin”).</li>
+<li><strong>Token Injection</strong>:
+   * The token is injected into your kubeconfig or session.
+   * This token has permissions defined by the role associated with the Britive profile.</li>
+</ol>
+<h3>📁 Files Involved (Locally)</h3>
+<ul>
+<li><strong><code>~/.kube/config</code></strong>:</li>
+<li>Contains the context, cluster, and user info.</li>
+<li>May reference an <strong>OIDC provider</strong> (Britive).</li>
+<li>Does <strong>not</strong> contain the namespace-to-profile mapping.</li>
+<li><strong>Britive CLI or Plugin Config (if used)</strong>:</li>
+<li>If you&rsquo;re using a CLI tool or plugin from Britive, it may have a config file (e.g., <code>.britive/config.json</code>) that defines how profiles are requested or cached.</li>
+</ul>
+<h3>🔍 Key Observations from Your Kubeconfig</h3>
+<h4>✅ <strong>1. Britive Integration via <code>exec</code> Plugin</strong></h4>
+<p>Your user section looks like this:</p>
+<pre><code>users:
+- name: demo-shahzad.ali@britive.com
+  user:
+    exec:
+      command: /Users/shahzadali/.pyenv/versions/3.13.2/bin/pybritive-kube-exec
+      args:
+        - -t
+        - demo
+</code></pre>
+<ul>
+<li>This means <code>kubectl</code> uses the <strong><code>pybritive-kube-exec</code></strong> command to fetch a token <strong>on demand</strong>.</li>
+<li>The <code>-t demo</code> argument refers to a <strong>Britive demo.britive-app.com tenant</strong>.</li>
+</ul>
+<h4>✅ <strong>2. Britive Profiles Mapped via Cluster Extensions</strong></h4>
+<p>Each cluster entry includes a <code>britive-profile</code> extension, like:</p>
+<pre><code>extensions:
+- extension:
+    britive-profile: jit-dev
+  name: client.authentication.k8s.io/exec
+</code></pre>
+<p>This is <strong>how the mapping happens</strong>:</p>
+<ul>
+<li>When you switch to a context (e.g., <code>jit-dev</code>), it uses the cluster <code>demo-dev cluster a - eks-eks jit developer</code>.</li>
+<li>That cluster has a <code>britive-profile</code> of <code>jit-dev</code>.</li>
+<li>So, <strong>when you run a command</strong>, <code>pybritive-kube-exec</code> uses that profile to request a JIT token from Britive.</li>
+</ul>
+<h3>🧠 Summary: How Namespace Access Triggers Britive Profile</h3>
+<ul>
+<li>The <strong>context</strong> you use (e.g., <code>jit-dev</code>) determines the <strong>cluster</strong>.</li>
+<li>The <strong>cluster</strong> has a <code>britive-profile</code> extension (e.g., <code>jit-dev</code>, <code>jit-adm</code>, etc.).</li>
+<li>The <strong><code>pybritive-kube-exec</code></strong> tool uses that profile to request a token from Britive.</li>
+<li>That token grants access to specific <strong>namespaces and actions</strong>, as defined in <strong>Britive’s access policies</strong>.</li>
+</ul>
+<h2>🔗 <strong>Relationship Between <code>pybritive.config</code> and <code>kubeconfig</code></strong></h2>
+<p>My setup uses <strong>Britive&rsquo;s Just-In-Time (JIT) access</strong> model, and the two files play complementary roles:  </p>
+<h3>🧩 1. <code>kubeconfig</code> File</h3>
+<ul>
+<li>This is the standard Kubernetes configuration file used by <code>kubectl</code>.</li>
+<li>It defines:</li>
+<li><strong>Clusters</strong> (where your Kubernetes API servers live)</li>
+<li><strong>Users</strong> (how you authenticate)</li>
+<li><strong>Contexts</strong> (which cluster + user + namespace to use)</li>
+<li>In your case, the <code>user</code> section uses an <code>exec</code> plugin:</li>
+</ul>
+<pre><code>exec:
+  command: /Users/shahzadali/.pyenv/versions/3.13.2/bin/pybritive-kube-exec
+  args:
+    - -t
+    - demo
+</code></pre>
+<p>This tells <code>kubectl</code> to run the <code>pybritive-kube-exec</code> command to get a token <strong>from Britive</strong>.  </p>
+<p>🧩 2. <strong><code>pybritive.config</code> File</strong></p>
+<p>This is the <strong>configuration file for the <code>pybritive</code> CLI tool</strong>.</p>
+<p>It defines:</p>
+<ul>
+<li><strong>Tenants</strong> (e.g., <code>demo</code>, <code>corp</code>, <code>labs</code>, etc.)</li>
+<li><strong>Profile aliases</strong> (short names like <code>jit-dev</code>, <code>cluster-admin</code>, etc.)</li>
+<li><strong>Settings</strong> like auto-refresh and output format.</li>
+</ul>
+<h4>🔑 Key Section: <code>[profile-aliases]</code></h4>
+<p>This maps short names (like <code>jit-dev</code>) to full Britive profile paths:</p>
+<pre><code>jit-dev.       =aws - eks demo/dev cluster a - eks/eks jit developer
+jit-adm.       =aws - eks demo/dev cluster a - eks/eks jit admin
+cluster-admin  =aws - eks demo/dev cluster a - eks/cluster admin
+</code></pre>
+<p>So when your <code>kubeconfig</code> references a cluster with:</p>
+<pre><code>extensions:
+  - extension:
+      britive-profile: jit-dev
+</code></pre>
+<p>The <code>pybritive-kube-exec</code> tool looks up <code>jit-dev</code> in <code>pybritive.config</code>, finds the full profile path, and requests a token for that profile from the <code>demo</code> tenant.</p>
+<h3>🔄 How It All Works Together</h3>
+<ol>
+<li>You run a <code>kubectl</code> command.</li>
+<li><code>kubectl</code> sees that the user is configured to use <code>exec</code> with <code>pybritive-kube-exec</code>.</li>
+<li><code>pybritive-kube-exec</code>:
+   * Reads the <code>britive-profile</code> from the cluster extension in <code>kubeconfig</code>.
+   * Looks up the full profile path in <code>pybritive.config</code>.
+   * Contacts the Britive tenant (<code>demo</code>) to get a JIT token for that profile.</li>
+<li>The token is returned to <code>kubectl</code>, which uses it to authenticate with the Kubernetes API.</li>
+</ol>
+<h3>✅ Summary</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Key Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~/.kube/config</code></td>
+<td>Kubernetes config</td>
+<td>Defines clusters, users, and contexts. Uses <code>pybritive-kube-exec</code> to get tokens.</td>
+</tr>
+<tr>
+<td><code>~/.pybritive.config</code></td>
+<td>Britive CLI config</td>
+<td>Maps profile aliases to full Britive profiles and defines tenant URLs.</td>
+</tr>
+</tbody>
+</table>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

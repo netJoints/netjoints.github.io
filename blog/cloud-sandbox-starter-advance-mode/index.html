@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="​Advance mode is for users who want to change the region, naming convention, and subnet scheme.  ​  Provide AWS Credentials ​ Before launching the controller, you can change the region and subnet details as shown in the following screenshot. ​ Notes Launch Global Transit (Hub) and two Spokes in AWS ">
+  <title>Cloud Sandbox Starter – Advance Mode · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/cloud-sandbox-starter-advance-mode/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cloud Sandbox Starter – Advance Mode">
+  <meta property="og:description" content="​Advance mode is for users who want to change the region, naming convention, and subnet scheme.  ​  Provide AWS Credentials ​ Before launching the controller, you can change the region and subnet details as shown in the following screenshot. ​ Notes Launch Global Transit (Hub) and two Spokes in AWS ">
+  <meta property="og:url" content="https://netjoints.com/blog/cloud-sandbox-starter-advance-mode/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2022-12-28">December 28, 2022</time>
+      </div>
+
+      <h1 class="blog-title">Cloud Sandbox Starter – Advance Mode</h1>
+
+      
+
+      <div class="blog-content">
+        <p>​Advance mode is for users who want to change the region, naming convention, and subnet scheme.</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" /><img alt="" src="blob:https://netjoints.com/282d0152-966e-40f0-8c94-17cab41f2ba5" />​</p>
+<h3>Provide AWS Credentials</h3>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/a63556dd-9765-45e0-aca5-add37ce412b8" /></p>
+<p>Before launching the controller, you can change the region and subnet details as shown in the following screenshot.</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/b9e33350-f873-43d5-a059-57eb2f55a196" /></p>
+<h4>Notes</h4>
+<ul>
+<li>Be sure to subscribe to the AWS marketplace offerings mentioned in the <a href="/t/g9hx9jh/aviatrix-sandbox-starter-tool-spin-up-cloud-networks-in-minutes#before-you-begin">Before You Begin</a> section above and set up your account to generate the Controller License required as input.</li>
+<li>In the future, we might add the option to launch Controller in other Clouds</li>
+</ul>
+<h3>Launch Global Transit (Hub) and two Spokes in AWS</h3>
+<p>Launch Aviatrix Global Transit (Hub) and two Spokes in the AWS region as per your requirement.</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/9be19d57-0be1-4c88-a623-6101b0f6fc70" /></p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/dec448e3-0e16-4c59-a297-e564a43a1738" /></p>
+<h3>Launch Test EC2 instances</h3>
+<p>Test EC2 (Amazon Linux VMs) will be launched in their respective Spoke VPCs</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/46c0983f-fecb-42d2-b9ee-4cc74ad4c566" /></p>
+<p><strong>Provide an Existing Key Pair Name</strong></p>
+<p>This must be configured in your AWS account in <strong>us-east-2</strong> (Ohio) region as per-requisite. You will need this Key Pair to login to test EC2 instances to verify the end-to-end connectivity.</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/20739449-3c34-4b30-9e9a-0bdb244f9977" /></p>
+<p>This concludes the deployment in AWS. Optionally you can also deploy Aviatrix Transit network in Azure and provide connectivity between AWS and Azure clouds.</p>
+<h3>Launch Aviatrix Transit in Azure</h3>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/90dcb763-b1b5-4d4c-b94b-933c1130c1ad" /></p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/7dd6993d-bf4e-46c8-8e19-888d92760391" /></p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/358c0af2-93f6-43de-aa7a-d3ee49aba8d6" /></p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/67893d3e-66e4-4aea-98e9-585ede108712" /></p>
+<h3>Connect AWS and Azure with a Single Click</h3>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/7dc2255c-aeef-43c4-8e8e-dff0b9e7dbb8" /></p>
+<h3>Success Screen</h3>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/4f0cb620-6e4b-40fe-a5df-0d615e89e4bb" /></p>
+<h2>Lock Inbound Access to Controller</h2>
+<p>After the Controller is deployed, you must do the following to lock the inbound access so that no one has access to it.</p>
+<p>1- Enable the <a href="https://docs.aviatrix.com/HowTos/FAQ.html#enable-controller-security-group-management">security group management feature</a> so all of the gateways’ IP addresses are allowed to reach the controller on HTTPS/port 443</p>
+<p>2- Lock all inbound access to Controller except your IP address ​</p>
+<p>​</p>
+<h2>Destroy / Delete the entire Sanbox LAB</h2>
+<p>Once you are done testing and validating Cloud Networks, you may destroy or delete the entire lab. First, turn off AWS access security on the controller by logging into the controller and clicking on “Settings” in the left-hand nav. Click on “Controller,” then “Access Security” in the top tabs. Under “Controller Security Group Management,” click “Disable”.</p>
+<p><img alt="" src="/blog/images/cloud-sandbox-starter-advance-mode/547.png" />​ <img alt="" src="blob:https://netjoints.com/b2484db3-9a35-40bc-b52f-1134155b60cd" /></p>
+<p>Back in the sandbox starter, use the “Destroy” option on the top right of the browser UI.</p>
+<p>If you destroyed SST before getting a chance to destroy your environment, you will need to manually delete these resources in order (always check you are in the appropriate region first):</p>
+<ol>
+<li>Terminate the Spoke and Transit gateways in AWS (if applicable)</li>
+<li>Remove the Resource Groups in Azure (if applicable)</li>
+<li>Disable Termination Protection on the EC2 instance for the Controller</li>
+<li>Terminate the Controller EC2 instance</li>
+<li>Remove the SSH keypair</li>
+<li>Delete the Security Groups</li>
+<li>Delete the VPC where the Gateways and Controller was deployed</li>
+<li>Delete the IAM Roles and Policies starting with ‘aviatrix’</li>
+</ol>
+<p>Note that if you deployed CoPilot, it must be deleted manually by logging into AWS/Azure Console.</p>
+<h2>Support Model</h2>
+<p>This community-based and open-source tool is <strong>NOT</strong> supported by the Aviatrix Enterprise support team. For any questions or issues related to this tool, please use the Aviatrix Community platform.</p>
+<h3>Open Source</h3>
+<ol>
+<li>Code for this open-source tool is available at <a href="https://github.com/AviatrixSystems/sandbox-starter">https://github.com/AviatrixSystems/sandbox-starter</a></li>
+<li>Terraform module for Sandbox Starter launch is available here at <a href="https://github.com/terraform-aviatrix-modules/terraform-aviatrix-aws-sandbox-starter">https://github.com/terraform-aviatrix-modules/terraform-aviatrix-aws-sandbox-starter</a></li>
+<li>The <a href="https://github.com/AviatrixSystems/sandbox-starter/blob/main/Dockerfile">container code is available here</a></li>
+</ol>
+<p>​</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

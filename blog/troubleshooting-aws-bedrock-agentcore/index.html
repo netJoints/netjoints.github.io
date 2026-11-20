@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="If you get above error, you must view the CloudWatch logs to know exactly the issue. Or you can use following CLI command to see it on terminal In my case I was getting this error The resolution was to run the following command Get the Agent Status Command">
+  <title>Troubleshooting AWS Bedrock AgentCore · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/troubleshooting-aws-bedrock-agentcore/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Troubleshooting AWS Bedrock AgentCore">
+  <meta property="og:description" content="If you get above error, you must view the CloudWatch logs to know exactly the issue. Or you can use following CLI command to see it on terminal In my case I was getting this error The resolution was to run the following command Get the Agent Status Command">
+  <meta property="og:url" content="https://netjoints.com/blog/troubleshooting-aws-bedrock-agentcore/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-10-17">October 17, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Troubleshooting AWS Bedrock AgentCore</h1>
+
+      
+
+      <div class="blog-content">
+        <pre><code>🚀 Launching Bedrock AgentCore (codebuild mode - RECOMMENDED)...
+   • Build ARM64 containers in the cloud with CodeBuild
+   • No local Docker required (DEFAULT behavior)
+   • Production-ready deployment
+
+💡 Deployment options:
+   • agentcore launch                → CodeBuild (current)
+   • agentcore launch --local        → Local development
+   • agentcore launch --local-build  → Local build + cloud deploy
+
+Starting CodeBuild ARM64 deployment for agent 'finops-supervisor-ai-agent' to account 513826297540 (us-west-2)
+Starting CodeBuild ARM64 deployment for agent 'finops-supervisor-ai-agent' to account 513826297540 (us-west-2)
+Setting up AWS resources (ECR repository, execution roles)...
+Using ECR repository from config: finops-supervisor-ai-agent
+Using execution role from config: arn:aws:iam::513826297540:role/service-role/AmazonBedrockAgentCoreRuntimeServiceRole-shahzad
+⠸ Launching Bedrock AgentCore...✅ Execution role validation passed: arn:aws:iam::513826297540:role/service-role/AmazonBedrockAgentCoreRuntimeServiceRole-shahzad
+Preparing CodeBuild project and uploading source...
+⠼ Launching Bedrock AgentCore...Getting or creating CodeBuild execution role for agent: finops-supervisor-ai-agent
+Role name: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+⠏ Launching Bedrock AgentCore...CodeBuild role doesn't exist, creating new role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+Creating IAM role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+⠸ Launching Bedrock AgentCore...✓ Role created: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+Attaching inline policy: CodeBuildExecutionPolicy to role: AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+⠴ Launching Bedrock AgentCore...✓ Policy attached: CodeBuildExecutionPolicy
+Waiting for IAM role propagation...
+⠼ Launching Bedrock AgentCore...CodeBuild execution role creation complete: arn:aws:iam::513826297540:role/AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-005a5ff7d6
+⠇ Launching Bedrock AgentCore...No .dockerignore found, using default exclude patterns
+⠋ Launching Bedrock AgentCore...Uploaded source to S3: finops-supervisor-ai-agent/20251017-193210.zip
+⠼ Launching Bedrock AgentCore...Created CodeBuild project: bedrock-agentcore-finops-supervisor-ai-agent-builder
+Starting CodeBuild build (this may take several minutes)...
+⠇ Launching Bedrock AgentCore...Starting CodeBuild monitoring...
+⠏ Launching Bedrock AgentCore...🔄 QUEUED started (total: 0s)
+⠋ Launching Bedrock AgentCore...✅ QUEUED completed in 60.9s
+🔄 PROVISIONING started (total: 61s)
+⠋ Launching Bedrock AgentCore...✅ PROVISIONING completed in 15.2s
+🔄 PRE_BUILD started (total: 76s)
+⠧ Launching Bedrock AgentCore...✅ PRE_BUILD completed in 10.2s
+🔄 COMPLETED started (total: 86s)
+❌ Build failed during COMPLETED phase
+❌ CodeBuild failed with status: FAILED
+</code></pre>
+<hr />
+<p>If you get above error, you must view the CloudWatch logs to know exactly the issue.</p>
+<p>Or you can use following CLI command to see it on terminal</p>
+<p>aws logs tail /aws/codebuild/bedrock-agentcore-finops_supervisor_ai_agent-builder –follow<br />
+–format short –profile=agentic-ai</p>
+<p>In my case I was getting this error</p>
+<pre><code>2025-10-18T06:08:04 The push refers to repository [513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-finops_supervisor_ai_agent]
+2025-10-18T06:08:04 136c310d0a77: Preparing
+2025-10-18T06:08:04 40fe41b4a47c: Preparing
+2025-10-18T06:08:04 4ad7ee5bc643: Preparing
+2025-10-18T06:08:04 c12eec818033: Preparing
+2025-10-18T06:08:04 5b5131e57dda: Preparing
+2025-10-18T06:08:04 1e836a41dad6: Preparing
+2025-10-18T06:08:04 6f8e62651a1f: Preparing
+2025-10-18T06:08:04 1cc1e7304163: Preparing
+2025-10-18T06:08:04 f0306340f8b1: Preparing
+2025-10-18T06:08:04 090e9c58f474: Preparing
+2025-10-18T06:08:04 1e836a41dad6: Waiting
+2025-10-18T06:08:04 6f8e62651a1f: Waiting
+2025-10-18T06:08:04 1cc1e7304163: Waiting
+2025-10-18T06:08:04 f0306340f8b1: Waiting
+2025-10-18T06:08:04 090e9c58f474: Waiting
+2025-10-18T06:08:04 denied: User: arn:aws:sts::513826297540:assumed-role/AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-4e93752fa7/AWSCodeBuild-ca05ab28-a5c3-4a1c-86e7-01c4ec684710 is not authorized to perform: ecr:InitiateLayerUpload on resource: arn:aws:ecr:us-west-2:513826297540:repository/bedrock-agentcore-finops_supervisor_ai_agent because no identity-based policy allows the ecr:InitiateLayerUpload action
+2025-10-18T06:08:04
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.121336 Command did not exit successfully docker push 513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-finops_supervisor_ai_agent:latest exit status 1
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.126997 Phase complete: POST_BUILD State: FAILED
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.127015 Phase context status code: COMMAND_EXECUTION_ERROR Message: Error while executing command: docker push 513826297540.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-finops_supervisor_ai_agent:latest. Reason: exit status 1
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.171211 Set report auto-discover timeout to 5 seconds
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.171263 Expanding base directory path:  .
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.174009 Assembling file list
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.174024 Expanding .
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.176861 Expanding file paths for base directory .
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.176874 Assembling file list
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.176877 Expanding **/*
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.179732 No matching auto-discover report paths found
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.179749 Report auto-discover file discovery took 0.008538 seconds
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.179758 Phase complete: UPLOAD_ARTIFACTS State: SUCCEEDED
+2025-10-18T06:08:04 [Container] 2025/10/18 06:08:04.179765 Phase context status code:  Message:
+</code></pre>
+<p>The resolution was to run the following command</p>
+<pre><code># Attach AWS managed ECR policy
+aws iam attach-role-policy \
+  --role-name AmazonBedrockAgentCoreSDKCodeBuild-us-west-2-4e93752fa7 \
+  --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser
+</code></pre>
+<h2>Get the Agent Status Command</h2>
+<pre><code># List all agent runtimes
+aws bedrock-agentcore-control list-agent-runtimes --profile agentic-ai
+
+# Get details for a specific agent runtime
+aws bedrock-agentcore-control get-agent-runtime \
+  --agent-runtime-id finops_supervisor_ai_agent \
+  --profile agentic-ai
+</code></pre>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

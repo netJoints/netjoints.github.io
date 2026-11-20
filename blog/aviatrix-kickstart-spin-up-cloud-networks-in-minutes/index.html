@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kickstart deploys cloud and multi-cloud networks in minutes without any efforts. Once the hub/spoke transit network is built in the cloud, it will act as core networking layer on which one can add more use-cases as needed later. The light weight automation script deploys Aviatrix controller and an A">
+  <title>Aviatrix Kickstart – Spin up Cloud Networks in Minutes – CLI Mode · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aviatrix-kickstart-spin-up-cloud-networks-in-minutes/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aviatrix Kickstart – Spin up Cloud Networks in Minutes – CLI Mode">
+  <meta property="og:description" content="Kickstart deploys cloud and multi-cloud networks in minutes without any efforts. Once the hub/spoke transit network is built in the cloud, it will act as core networking layer on which one can add more use-cases as needed later. The light weight automation script deploys Aviatrix controller and an A">
+  <meta property="og:url" content="https://netjoints.com/blog/aviatrix-kickstart-spin-up-cloud-networks-in-minutes/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-09-17">September 17, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Aviatrix Kickstart – Spin up Cloud Networks in Minutes – CLI Mode</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Kickstart deploys cloud and multi-cloud networks in minutes without any efforts. Once the hub/spoke transit network is built in the cloud, it will act as core networking layer on which one can add more use-cases as needed later.</p>
+<p>The light weight automation script deploys Aviatrix controller and an Aviatrix transit architecture in AWS (and optionally in Azure). Everything is self contained in a docker image. <strong>You do not need to install anything beside docker run time on your laptop/desktop/VM/instance</strong>.</p>
+<h3><strong>Cost</strong></h3>
+<p>Customer/students are responsible for paying all the cost for running the instances in the Cloud (AWS/Azure/GCP/OCI/etc) and Aviatrix tunnel cost</p>
+<p>The estimated cost for introductory lab is USD $1 per hour. Additional use-cases/labs would require additional cost depending on the instances deployed and Aviatrix tunnel build. Aviatrix cost breakdown is listed on AWS marketplace when you subscribe to the Aviatrix Controller</p>
+<h2><a href="https://community.aviatrix.com/t/g9hx9jh#opensource">OpenSource</a></h2>
+<p><a href="https://github.com/AviatrixSystems/terraform-solutions/tree/master/kickstart/">Code is OpenSource and available to public at https://github.com/AviatrixSystems/terraform-solutions/tree/master/kickstart/</a></p>
+<h2><a href="https://community.aviatrix.com/t/g9hx9jh#important-note">Important Note</a></h2>
+<ul>
+<li>This procedure works the best for brand new Aviatrix Controller deployment</li>
+<li>It is not recommended to launch the controller if one deployed already</li>
+<li>If you have previously deployed Aviatrix Controller under the AWS account, you will receive following errors. You need to manually remove those roles and policies before moving forward</li>
+</ul>
+<pre><code>Error: Error creating IAM Role aviatrix-role-ec2: EntityAlreadyExists: Role with name aviatrix-role-ec2 already exists.
+
+Error: Error creating IAM Role aviatrix-role-app: EntityAlreadyExists: Role with name aviatrix-role-app already exists.
+
+Error: Error creating IAM policy aviatrix-assume-role-policy: EntityAlreadyExists: A policy called aviatrix-assume-role-policy already exists. Duplicate names are not allowed.
+
+Error: Error creating IAM policy aviatrix-app-policy: EntityAlreadyExists: A policy called aviatrix-app-policy already exists. Duplicate names are not allowed.
+</code></pre>
+<h2><a href="https://community.aviatrix.com/t/g9hx9jh#brief-deployment-instructions">Brief Deployment Instructions</a></h2>
+<p>Before you start the deployment process, you need to have following</p>
+<ol>
+<li>AWS accounts with root access</li>
+<li>AWS Access Key ID</li>
+<li>AWS Secret Access Key</li>
+<li>Subscribe to Aviatrix Controller software in AWS marketplace</li>
+<li>Install Dockers and make sure Docker Desktop is running in your Mac / Linux or Windows / VM / EC2 during the deployment process</li>
+<li>Run the CLI command <strong>% docker run -it aviatrix/kickstart:latest bash</strong> on your laptop/desktop/VM/EC2</li>
+<li>Follow the prompt to deploy the Aviatrix Controller and hub-spoke transit network</li>
+</ol>
+<h2><a href="https://community.aviatrix.com/t/g9hx9jh#detailed-deployment-instructions">Detailed Deployment Instructions</a></h2>
+<h3><a href="https://community.aviatrix.com/t/g9hx9jh#step1-install-docker">Step#1: Install Docker</a></h3>
+<pre><code>If you already have dockers running, then skip this step.
+</code></pre>
+<p><a href="https://www.docker.com/products/docker-desktop">Install docker desktop on your laptop/desktop/VM/EC2/etc.</a></p>
+<h3><a href="https://community.aviatrix.com/t/g9hx9jh#step2-run-the-docker-container">Step#2: Run the Docker Container</a></h3>
+<p>Run this command on your machine <strong>% docker run -it aviatrix/kickstart:latest bash</strong></p>
+<pre><code>shahzadali@shahzad-ali ~ % docker run -it aviatrix/kickstart:latest bash
+Unable to find image 'aviatrix/kickstart:latest' locally
+latest: Pulling from aviatrix/kickstart
+
+18ffc243a628: Pull complete
+9736576402f3: Pull complete
+cb464b6dee45: Pull complete
+
+Digest: sha256:11f3.........
+Status: Downloaded newer image for aviatrix/kickstart:latest
+   #
+  # #    #    #     #      ##     #####  #####      #    #    #
+ #   #   #    #     #     #  #      #    #    #     #     #  #
+#     #  #    #     #    #    #     #    #    #     #      ##
+#######  #    #     #    ######     #    #####      #      ##
+#     #   #  #      #    #    #     #    #   #      #     #  #
+#     #    ##       #    #    #     #    #    #     #    #    #
+#    #
+#   #       #     ####   #    #   ####    #####    ##    #####    #####
+#  #        #    #    #  #   #   #          #     #  #   #    #     #
+###         #    #       ####     ####      #    #    #  #    #     #
+#  #        #    #       #  #         #     #    ######  #####      #
+#   #       #    #    #  #   #   #    #     #    #    #  #   #      #
+#    #      #     ####   #    #   ####      #    #    #  #    #     #
+                                                             ___.----.____
+                                                     __,--(_,-'       ,-'
+                                                 _,-'               ,-'
+                                             _,-'                ,-'
+                                          ,-'    ()           ,-'
+                                       ,-'    ()           ,-'
+                                    ,-'  __..--&quot;&quot;       ,-'
+                                 ,-'.--&quot;&quot;   ,-'      ,-'
+              |\         __..--&quot;&quot;        ,-'      ,-':
+              | \__..--&quot;&quot;     ______  ,-'     _,-'   :
+         __..--&quot;&quot;         ,-'\_____/-'    _,-'       :
+ __..--&quot;&quot;              ,-' ,-'  ,-'   _,-'____/      :
+   `---...___       ,-' ,-'  ,-'  _,-'    _,-'       :
+             ```-,-' ,-'  ,-' _,-'    _,-'           :
+              |--\,-'___,-'--&quot;&quot; ___,-'-...___        :
+              |_..--&quot;&quot;                       ```---..:
+--&gt; Going to get your AWS API access keys. They are required to launch the Aviatrix controller in AWS. They stay local to this container and are not shared. Access keys can be created in AWS console under Account -&gt; My Security Credentials -&gt; Access keys for CLI, SDK, &amp; API access.
+--&gt; Enter AWS access key ID: REDACTED
+--&gt; Enter AWS secret access key: REDACTED
+--&gt; Do you want to launch the controller? (y/n)? y
+--&gt; Generating SSH key for the controller...
+--&gt; Done.
+--&gt; OK.
+</code></pre>
+<pre><code>--&gt; Go to https://aws.amazon.com/marketplace/pp?sku=b03hn7ck7yp392plmk8bet56k and subscribe to the Aviatrix platform. Click on &quot;Continue to subscribe&quot;, and accept the terms. Do NOT click on &quot;Continue to Configuration&quot;. Press any key once you have subscribed.
+--&gt; Now opening the settings file for the controller. You can leave the defaults or change to your preferences. Press any key to continue. In the text editor, press :wq when done.
+--&gt; The controller user configuration is now complete. Now going to launch the controller instance in AWS. The public IP of the controller will be shared with Aviatrix for tracking purposes. Press any key to continue. Close the window, or press Ctrl-C to abort.
+Initializing modules...
+- avtx_controller_instance in aviatrix-controller-build
+- avtx_iam_role in aviatrix-controller-iam-roles
+Initializing the backend...
+Initializing provider plugins...
+- Checking for available provider plugins...
+- Downloading plugin for provider &quot;http&quot; (hashicorp/http) 1.2.0...
+- Downloading plugin for provider &quot;aws&quot; (hashicorp/aws) 3.6.0...
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = &quot;...&quot; constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+* provider.aws: version = &quot;~&gt; 3.6&quot;
+* provider.http: version = &quot;~&gt; 1.2&quot;
+Terraform has been successfully initialized!
+You may now begin working with Terraform. Try running &quot;terraform plan&quot; to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+</code></pre>
+<pre><code>module.avtx_iam_role.data.http.iam_policy_assume_role: Refreshing state...
+module.avtx_iam_role.data.http.iam_policy_ec2_role: Refreshing state...
+module.avtx_controller_instance.data.http.avx_iam_id: Refreshing state...
+data.aws_caller_identity.aws_account: Refreshing state...
+module.avtx_controller_instance.data.aws_region.current: Refreshing state...
+module.avtx_iam_role.data.aws_caller_identity.current: Refreshing state...
+module.avtx_iam_role.aws_iam_role.aviatrix-role-ec2: Creating...
+module.avtx_iam_role.aws_iam_policy.aviatrix-assume-role-policy: Creating...
+module.avtx_iam_role.aws_iam_policy.aviatrix-app-policy: Creating...
+aws_key_pair.avtx_ctrl_key: Creating...
+aws_vpc.avtx_ctrl_vpc: Creating...
+module.avtx_controller_instance.aws_eip.controller_eip[0]: Creating...
+module.avtx_iam_role.aws_iam_role.aviatrix-role-app: Creating...
+aws_key_pair.avtx_ctrl_key: Creation complete after 1s [id=avtx-ctrl-key]
+module.avtx_controller_instance.aws_eip.controller_eip[0]: Creation complete after 2s [id=eipalloc-07d733f600622dbb9]
+module.avtx_iam_role.aws_iam_role.aviatrix-role-ec2: Creation complete after 3s [id=aviatrix-role-ec2]
+module.avtx_iam_role.aws_iam_instance_profile.aviatrix-role-ec2_profile: Creating...
+module.avtx_iam_role.aws_iam_policy.aviatrix-app-policy: Creation complete after 4s [id=arn:aws:iam::972532942650:policy/aviatrix-app-policy]
+aws_vpc.avtx_ctrl_vpc: Creation complete after 5s [id=vpc-013d2e5ec7c72d056]
+aws_internet_gateway.gw: Creating...
+module.avtx_controller_instance.aws_security_group.AviatrixSecurityGroup: Creating...
+aws_subnet.avtx_ctrl_subnet: Creating...
+module.avtx_iam_role.aws_iam_role.aviatrix-role-app: Creation complete after 5s [id=aviatrix-role-app]
+module.avtx_iam_role.aws_iam_role_policy_attachment.aviatrix-role-app-attach: Creating...
+aws_subnet.avtx_ctrl_subnet: Creation complete after 2s [id=subnet-05fd444e1ae8befad]
+module.avtx_iam_role.aws_iam_policy.aviatrix-assume-role-policy: Creation complete after 7s [id=arn:aws:iam::972532942650:policy/aviatrix-assume-role-policy]
+module.avtx_iam_role.aws_iam_role_policy_attachment.aviatrix-role-ec2-attach: Creating...
+module.avtx_iam_role.aws_iam_role_policy_attachment.aviatrix-role-app-attach: Creation complete after 2s [id=aviatrix-role-app-20200913020110879300000001]
+module.avtx_iam_role.aws_iam_instance_profile.aviatrix-role-ec2_profile: Creation complete after 4s [id=aviatrix-role-ec2]
+aws_internet_gateway.gw: Creation complete after 3s [id=igw-01c58c44031894c8e]
+aws_default_route_table.default: Creating...
+module.avtx_controller_instance.aws_security_group.AviatrixSecurityGroup: Creation complete after 3s [id=sg-050f2a2e9ed5df58b]
+module.avtx_controller_instance.aws_security_group_rule.ingress_rule: Creating...
+module.avtx_controller_instance.aws_security_group_rule.egress_rule: Creating...
+module.avtx_controller_instance.aws_network_interface.eni-controller[0]: Creating...
+module.avtx_iam_role.aws_iam_role_policy_attachment.aviatrix-role-ec2-attach: Creation complete after 1s [id=aviatrix-role-ec2-20200913020112299200000002]
+module.avtx_controller_instance.aws_security_group_rule.ingress_rule: Creation complete after 1s [id=sgrule-2634938991]
+aws_default_route_table.default: Creation complete after 1s [id=rtb-02df83a8f605d6690]
+module.avtx_controller_instance.aws_security_group_rule.egress_rule: Creation complete after 2s [id=sgrule-2822486500]
+module.avtx_controller_instance.aws_network_interface.eni-controller[0]: Creation complete after 2s [id=eni-0498ad1bd3a12ebc3]
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Creating...
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Still creating... [9s elapsed]
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Still creating... [19s elapsed]
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Still creating... [29s elapsed]
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Still creating... [39s elapsed]
+module.avtx_controller_instance.aws_instance.aviatrixcontroller[0]: Creation complete after 47s [id=i-080e2edfe63019a4d]
+module.avtx_controller_instance.aws_eip_association.eip_assoc[0]: Creating...
+module.avtx_controller_instance.aws_eip_association.eip_assoc[0]: Creation complete after 3s [id=eipassoc-071ace306b7a1c0bd]
+Apply complete! Resources: 19 added, 0 changed, 0 destroyed.
+</code></pre>
+<pre><code>Outputs:
+aws_account = 912345678912
+controller_private_ip = 10.255.0.10
+controller_public_ip = 3.231.68.241
+--&gt; Controller successfully launched.
+AWS_ACCOUNT: 912345678912
+CONTROLLER_PRIVATE_IP: 10.255.0.10
+CONTROLLER_PUBLIC_IP: 3.231.68.241
+{&quot;controllerIP&quot;:&quot;3.231.68.241&quot;}
+{}
+--&gt; Waiting 5 minutes for the controller to come up... Do not access the controller yet.
+ 1 second(s))
+--&gt; Enter recovery email: shahzad@aviatrix.com
+--&gt; Enter new password:
+--&gt; Confirm new password:
+{'results': 'User login:admin in account:admin has been authorized successfully on controller 3.231.68.241. - Please check email confirmation.', 'return': True, 'CID': 'zWUI1XBEEF7iUy5BRINr'}
+Connecting to Controller
+b'{&quot;return&quot;:true,&quot;results&quot;:&quot;User login:admin password has been changed successfully on controller 3.231.68.241.&quot;}'
+{'results': 'User login:admin in account:admin has been authorized successfully on controller 3.231.68.241. - Please check email confirmation.', 'return': True, 'CID': '6VywJCnncq7zdhG5TeZO'}
+b'{&quot;return&quot;:true,&quot;results&quot;:&quot;admin email address has been successfully added&quot;}'
+b'{&quot;return&quot;:true,&quot;results&quot;:&quot;true&quot;}'
+Created AWS Access Account:  b'{&quot;return&quot;:true,&quot;results&quot;:&quot;An email confirmation has been sent to shahzad@aviatrix.com&quot;}'
+Upgrading controller. It can take several minutes
+b'{&quot;return&quot;:true,&quot;results&quot;:&quot;userConnect has been upgraded to version UserConnect-6.0.2483. Please log out and login again for the new changes to take effect.&quot;}'
+--&gt; Controller is ready. Do not manually change the controller version while Kickstart is running.
+--&gt; Do you want to launch the Aviatrix transit in AWS? (y/n)?
+</code></pre>
+<pre><code>--&gt; Now opening the settings file for the AWS deployment. You can leave the defaults or change to your preferences. You only need to complete the AWS settings. Go to https://raw.githubusercontent.com/AviatrixSystems/terraform-solutions/master/solutions/img/kickstart.png to view what is going to be launched. In the text editor, press :wq when done.
+
+--&gt; Now going to launch gateways in AWS. Press any key to continue.
+Initializing the backend...
+Initializing provider plugins...
+- Checking for available provider plugins...
+- Downloading plugin for provider &quot;aws&quot; (hashicorp/aws) 3.6.0...
+- Downloading plugin for provider &quot;aviatrix&quot; (terraform-providers/aviatrix) 2.15.1...
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = &quot;...&quot; constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+* provider.aws: version = &quot;~&gt; 3.6&quot;
+Warning: registry.terraform.io: For users on Terraform 0.13 or greater, this provider has moved to AviatrixSystems/aviatrix. Please update your source in required_providers.
+</code></pre>
+<pre><code>Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running &quot;terraform plan&quot; to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+data.aws_availability_zones.az_available: Refreshing state...
+aviatrix_vpc.aws_transit_vpcs[&quot;aws_transit_vpc&quot;]: Creating...
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Creating...
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Creating...
+aviatrix_vpc.aws_transit_vpcs[&quot;aws_transit_vpc&quot;]: Still creating... [10s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Still creating... [10s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Still creating... [10s elapsed]
+aviatrix_vpc.aws_transit_vpcs[&quot;aws_transit_vpc&quot;]: Creation complete after 12s [id=AWS-EW1-Transit-VPC]
+aviatrix_transit_gateway.aws_transit_gw: Creating...
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Still creating... [20s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Still creating... [20s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Creation complete after 22s [id=AWS-EW1-Spoke1-VPC]
+aviatrix_transit_gateway.aws_transit_gw: Still creating... [10s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Still creating... [30s elapsed]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Creation complete after 32s [id=AWS-EW1-Spoke2-VPC]
+aviatrix_transit_gateway.aws_transit_gw: Still creating... [20s elapsed]
+aviatrix_transit_gateway.aws_transit_gw: Creation complete after 2m22s [id=AWS-EW1-Transit-GW]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Creating...
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Creating...
+d]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Creation complete after 4m13s [id=AWS-EW1-Spoke1-GW]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Still creating... [4m20s elapsed]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Creation complete after 4m22s [id=AWS-EW1-Spoke2-GW]
+</code></pre>
+<pre><code>Warning: Resource targeting is in effect
+
+You are creating a plan with the -target option, which means that the result
+of this plan may not represent all of the changes requested by the current
+configuration.
+
+The -target option is not for routine use, and is provided only for
+exceptional situations such as recovering from errors or mistakes, or when
+Terraform specifically suggests to use it as part of an error message.
+Warning: Applied changes may be incomplete
+The plan was created with the -target option in effect, so some changes
+requested in the configuration may have been ignored and the output values may
+not be fully updated. Run the following command to verify that no other
+changes are pending:
+    terraform plan
+
+Note that the -target option is not suitable for routine use, and is provided
+only for exceptional situations such as recovering from errors or mistakes, or
+when Terraform specifically suggests to use it as part of an error message.
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+--&gt; Do you want to launch test EC2 instances in the AWS Spoke VPCs? (y/n)? y
+--&gt; Re-opening the settings file. Make sure your key pair name is correct under aws_ec2_key_name. This is your own key pair, not Aviatrix keys for controller or gateways. Also make sure you are in the region where you launched the Spoke gateways. Press any key to continue.
+</code></pre>
+<pre><code>--&gt; Make sure that your AWS quota allows us to have more that 5 Elastic IPs. You can check your quota and request an increase at https://console.aws.amazon.com/servicequotas if needed. Press any key to continue.
+--&gt; Launching instances now
+data.aws_availability_zones.az_available: Refreshing state...
+data.aws_ami.amazon-linux-2: Refreshing state...
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Refreshing state... [id=AWS-EW1-Spoke1-VPC]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Refreshing state... [id=AWS-EW1-Spoke2-VPC]
+aws_security_group.icmp_ssh[&quot;aws_spoke1_vpc&quot;]: Creating...
+aws_security_group.icmp_ssh[&quot;aws_spoke2_vpc&quot;]: Creating...
+aws_security_group.icmp_ssh[&quot;aws_spoke1_vpc&quot;]: Creation complete after 7s [id=sg-02313afee80050388]
+aws_security_group.icmp_ssh[&quot;aws_spoke2_vpc&quot;]: Creation complete after 7s [id=sg-091514a4744f83eaf]
+aws_instance.test_instances[&quot;spoke2_vm&quot;]: Creating...
+aws_instance.test_instances[&quot;spoke1_vm&quot;]: Creating...
+
+Warning: Resource targeting is in effect
+You are creating a plan with the -target option, which means that the result
+of this plan may not represent all of the changes requested by the current
+configuration.
+
+The -target option is not for routine use, and is provided only for
+exceptional situations such as recovering from errors or mistakes, or when
+Terraform specifically suggests to use it as part of an error message.
+Warning: Applied changes may be incomplete
+The plan was created with the -target option in effect, so some changes
+requested in the configuration may have been ignored and the output values may
+not be fully updated. Run the following command to verify that no other
+changes are pending:
+    terraform plan
+
+Note that the -target option is not suitable for routine use, and is provided
+only for exceptional situations such as recovering from errors or mistakes, or
+when Terraform specifically suggests to use it as part of an error message.
+
+--&gt; Do you want to launch the Aviatrix transit in Azure? (y/n)? n
+--&gt; Aviatrix Kickstart is done. Your controller IP is 3.231.68.241.
+root@c6de98c3284e:~#
+</code></pre>
+<h2><a href="https://community.aviatrix.com/t/g9hx9jh#destroying-the-aws-transit-lab">Destroying the AWS Transit LAB</a></h2>
+<h3>Step#1</h3>
+<p>Inside the docker image, go inside the mana folder and terraform destroy</p>
+<pre><code>root@fe60ea0b0ed2:~/mcna# terraform destroy
+
+data.aws_availability_zones.az_available: Refreshing state...
+data.aws_ami.amazon-linux-2: Refreshing state...
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke2_vpc&quot;]: Refreshing state... [id=AWS-EW1-Spoke2-VPC]
+aviatrix_vpc.aws_spoke_vpcs[&quot;aws_spoke1_vpc&quot;]: Refreshing state... [id=AWS-EW1-Spoke1-VPC]
+aviatrix_vpc.aws_transit_vpcs[&quot;aws_transit_vpc&quot;]: Refreshing state... [id=AWS-EW1-Transit-VPC]
+aws_security_group.icmp_ssh[&quot;aws_spoke2_vpc&quot;]: Refreshing state... [id=sg-08cfa3c48064d464d]
+aws_security_group.icmp_ssh[&quot;aws_spoke1_vpc&quot;]: Refreshing state... [id=sg-02c9ec75bbab8990d]
+aviatrix_transit_gateway.aws_transit_gw: Refreshing state... [id=AWS-EW1-Transit-GW]
+aws_instance.test_instances[&quot;spoke2_vm&quot;]: Refreshing state... [id=i-0c285bede90cd3428]
+aws_instance.test_instances[&quot;spoke1_vm&quot;]: Refreshing state... [id=i-0fafa7e8959faa1c9]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Refreshing state... [id=AWS-EW1-Spoke1-GW]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Refreshing state... [id=AWS-EW1-Spoke2-GW]
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+  Enter a value: yes
+
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Destroying... [id=AWS-EW1-Spoke1-GW]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Destroying... [id=AWS-EW1-Spoke2-GW]
+aws_security_group.icmp_ssh[&quot;aws_spoke1_vpc&quot;]: Destroying... [id=sg-02313afee80050388]
+aws_security_group.icmp_ssh[&quot;aws_spoke2_vpc&quot;]: Destroying... [id=sg-091514a4744f83eaf]
+aws_security_group.icmp_ssh[&quot;aws_spoke2_vpc&quot;]: Destruction complete after 2s
+aws_security_group.icmp_ssh[&quot;aws_spoke1_vpc&quot;]: Destruction complete after 2s
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Still destroying... [id=AWS-EW1-Spoke2-GW, 10s elapsed]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Still destroying... [id=AWS-EW1-Spoke1-GW, 10s elapsed]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke2&quot;]: Still destroying... [id=AWS-EW1-Spoke2-GW, 20s elapsed]
+aviatrix_spoke_gateway.aws_spoke_gws[&quot;spoke1&quot;]: Still destroying... [id=AWS-EW1-Spoke1-GW, 20s elapsed]
+
+Destroy complete! Resources: 8 destroyed.
+root@c6de98c3284e:~/mcna#
+</code></pre>
+<h3>Step#2</h3>
+<p>In the controller folder use terraform destroy</p>
+<pre><code>root@c6de98c3284e:~/mcna# cd ../controller/
+root@c6de98c3284e:~/controller# terraform destroy
+module.avtx_iam_role.data.http.iam_policy_assume_role: Refreshing state...
+module.avtx_iam_role.data.http.iam_policy_ec2_role: Refreshing state...
+module.avtx_controller_instance.data.http.avx_iam_id: Refreshing state...
+module.avtx_iam_role.data.aws_caller_identity.current: Refreshing state...
+</code></pre>
+<pre><code>Plan: 0 to add, 0 to change, 19 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+  Enter a value: yes
+
+aws_default_route_table.default: Destroying... [id=rtb-02df83a8f605d6690]
+aws_default_route_table.default: Destruction complete after 0s
+Destroy complete! Resources: 19 destroyed.
+root@c6de98c3284e:~/controller#
+</code></pre>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

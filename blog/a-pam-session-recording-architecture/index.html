@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Challenges with the Legacy PAM Recording Options Legacy session recording solutions are cumbersome and expensive. Organizations accumulate recordings, but few have the time to review them. These recordings are stored on vendor hard drives or storage locations, raising GDPR and data locality concerns">
+  <title>A PAM Session Recording Architecture · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/a-pam-session-recording-architecture/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A PAM Session Recording Architecture">
+  <meta property="og:description" content="Challenges with the Legacy PAM Recording Options Legacy session recording solutions are cumbersome and expensive. Organizations accumulate recordings, but few have the time to review them. These recordings are stored on vendor hard drives or storage locations, raising GDPR and data locality concerns">
+  <meta property="og:url" content="https://netjoints.com/blog/a-pam-session-recording-architecture/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-09-16">September 16, 2025</time>
+      </div>
+
+      <h1 class="blog-title">A PAM Session Recording Architecture</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Challenges with the Legacy PAM Recording Options</h2>
+<p>Legacy session recording solutions are cumbersome and expensive. Organizations accumulate recordings, but few have the time to review them. These recordings are stored on vendor hard drives or storage locations, raising GDPR and data locality concerns.</p>
+<p>Customers lack control over these recordings. Often, customers are not allowed to download or save recordings to their own storage, whether in the cloud or on-premises.</p>
+<h1>Modern PAM Session Recording Approach</h1>
+<p>Britive’s session recording implementation through Apache Guacamole utilizes a modern stateless architecture. It grants customers full control over their recordings while being cost-effective. The recorded sessions operate without a persistent server state, which facilitates horizontal scaling and minimizes the attack surface.</p>
+<p>Recording policies allow for selective session recording. For instance enabling the recording of admin sessions while excluding developer sessions. This enhances operational flexibility and reduces unnecessary data retention.</p>
+<p>To reduce cost, meet compliance and data sovereignty requirements, Britive allows customers to define their own storage locations. This ensures data remains within chosen jurisdictions and aligns with governance policies.</p>
+<p>The modular architecture ensures secure, adaptable, and compliant session recording that meets specific enterprise access control and audit requirements.</p>
+<h1>Architectural Details</h1>
+<p>The Britive session recording architecture and communication flow consists of two parts:</p>
+<ol>
+<li>The control plane and</li>
+<li>The data plane.</li>
+</ol>
+<h3>Control Plane (Britive SaaS + Britive Access Broker + Target Machine)</h3>
+<p>Following is the control plane communication from an RDP example. Same flow is applicable to the SSH session.</p>
+<ul>
+<li>A user performs a profile checkout to RDP into a Windows host via the Britive UI.</li>
+<li>The Britive Access Broker runs a PowerShell script on the target Windows host.</li>
+<li>The Britive Access Broker PowerShell script does not actively communicate with the Guacamole server over the network or via an API.</li>
+</ul>
+<p>The PowerShell script:</p>
+<ul>
+<li>Creates or resets a local admin account.</li>
+<li>Generates a secure password.</li>
+<li>Prepares a Guacamole-compatible JSON with RDP connection details.</li>
+<li>Signs and encrypts the JSON to produce a secure token.</li>
+<li>Returns a Guacamole access URL embedded with the token to Britive UI</li>
+</ul>
+<p><img alt="" src="/blog/images/a-pam-session-recording-architecture/image-17.png" /></p>
+<h2>Data Plane (User + Guacamole + Target Machine)</h2>
+<p>Following is the data plane communication from an RDP example. Same flow is applicable to the SSH session.</p>
+<ul>
+<li>The user clicks the URL in Britive UI, which opens a new browser tab.</li>
+<li>The tab connects to the Guacamole server, which uses the token to:</li>
+<li>Decrypt the session details.</li>
+<li>Establish an RDP session to the target Windows host using the temporary credentials.</li>
+<li>The user is now inside the RDP session via the browser, with no need for local RDP/SSH clients.</li>
+<li>Guacamole records the session capturing keystrokes, mouse movements, screen activity, and optionally clipboard.</li>
+<li>Recordings are stored either locally on the Guacamole server (/home/guacd/recordings), or in a customer-defined storage location (e.g., S3, NAS, etc.) based on compliance needs.</li>
+</ul>
+<p><img alt="" src="/blog/images/a-pam-session-recording-architecture/image-16.png" /></p>
+<p>So, in essence, the Britive Access Broker script only prepares the encrypted message for Guacamole. Guacamole only reads it when the user clicks the URL in the Britive Access Broker UI.</p>
+<h1>Communication Channels</h1>
+<p>Britive&rsquo;s recording architecture consists of two components that utilize standard protocols. This approach sharply contrasts with legacy vendors, which require multiple VMs, servers, complex firewall rules, routing requirements, and proprietary protocols.</p>
+<p>1- Britive Access Broker</p>
+<p>2- Apache Guacamole Server</p>
+<h2><strong>1- Britive Access Broker</strong></h2>
+<p>Britive offers a clean, lightweight process. The access broker operates solely from the control plane, facilitating connections without being part of the data plane. Once the system provides an encrypted session to the end user, they connect directly to the destination system.</p>
+<p>The Britive Access Broker requires only an outbound connection to the Britive tenant. This method enhances security compared to legacy solutions that necessitate inbound/outbound connections on multiple ports, reliance on vendor-hosted proxies or recording servers. With Britive, organizations maintain full control, simplifying compliance and audits.</p>
+<p>To enable communication between the Britive Access Broker and the Britive SaaS platform, you need to allow:</p>
+<p>Protocol: HTTPS<br />
+Port: TCP 443<br />
+Direction: Outbound (Egress)<br />
+Destination:<code>Following four destinations</code></p>
+<p>o   <a href="http://remote.mt1-uw2.ea2.aws.britive-app.com/">remote.mt1-uw2.ea2.aws.britive-app.com</a></p>
+<p>o   <a href="https://remote.mt1-ue1.ea2.aws.britive-app.com/">remote.mt1-ue1.ea2.aws.britive-app.com</a></p>
+<p>o   <a href="https://mt1-ue1-ea2-resource-permission-data-bucket.s3.us-east-1.amazonaws.com/">mt1-ue1-ea2-resource-permission-data-bucket.s3.us-east-1.amazonaws.com</a></p>
+<p>o   <a href="http://mt1-uw2-ea2-resource-permission-data-bucket.s3.us-west-2.amazonaws.com/">mt1-uw2-ea2-resource-permission-data-bucket.s3.us-west-2.amazonaws.com</a></p>
+<p>This is the only required port. The broker connects to the Britive platform using HTTPS and MQTT over TLS, but all of it is encapsulated in outbound HTTPS traffic. No inbound ports need to be opened.</p>
+<h2><strong>2- Apache Guacamole</strong></h2>
+<p>Apache Guacamole is a clientless remote desktop gateway. The ports you need to open depend on the protocols and services you&rsquo;re using:</p>
+<p><strong>End User Accessible</strong></p>
+<ul>
+<li>TCP 8080 (default): For accessing the Guacamole web interface.</li>
+<li>It&rsquo;s recommended to place Guacamole behind a reverse proxy to handle SSL termination.</li>
+</ul>
+<p><strong>Backend Guacamole Services</strong></p>
+<ul>
+<li>TCP 4822 (default): For communication between the Guacamole web application and the guacd proxy daemon.</li>
+</ul>
+<p><strong>Typical Remote Server Protocols</strong></p>
+<ul>
+<li>TCP 3389: RDP (Remote Desktop Protocol)</li>
+<li>TCP 22: SSH (Secure Shell)</li>
+</ul>
+<h1>Summary</h1>
+<p>Britive&rsquo;s session recording uses Apache Guacamole with a stateless architecture that separates control and data planes for enhanced security and scalability. The system supports selective recording policies and flexible storage options to meet compliance requirements.</p>
+<p>The Britive Access Broker creates encrypted tokens containing connection details, which Guacamole decrypts to establish browser-based RDP/SSH sessions. All session activity including keystrokes, mouse movements, and screen activity is recorded without requiring local clients.</p>
+<p>The Britive Access Broker only needs outbound HTTPS connectivity. Guacamole requires standard ports and protocols. This modular approach delivers secure, scalable session recording tailored to enterprise access control and audit needs.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

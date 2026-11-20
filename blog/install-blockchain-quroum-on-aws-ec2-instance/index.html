@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction Quorum is an enterprise blockchain platform. Quorum is a privacy-centric fork of Ethereum client “geth” with several protocol level enhancements to support enterprise business needs. Quorum is an open-source project. The very nature of blockchain or distrubuted ledger provides a secure,">
+  <title>Deploying BlockChain Quorum on AWS EC2 Instance · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/install-blockchain-quroum-on-aws-ec2-instance/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Deploying BlockChain Quorum on AWS EC2 Instance">
+  <meta property="og:description" content="Introduction Quorum is an enterprise blockchain platform. Quorum is a privacy-centric fork of Ethereum client “geth” with several protocol level enhancements to support enterprise business needs. Quorum is an open-source project. The very nature of blockchain or distrubuted ledger provides a secure,">
+  <meta property="og:url" content="https://netjoints.com/blog/install-blockchain-quroum-on-aws-ec2-instance/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-10-23">October 23, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Deploying BlockChain Quorum on AWS EC2 Instance</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Introduction</h2>
+<p>Quorum is an enterprise blockchain platform. Quorum is a privacy-centric fork of Ethereum client “geth” with several protocol level enhancements to support enterprise business needs. Quorum is an open-source project. The very nature of blockchain or distrubuted ledger provides a secure, shardd platform for decentralized applications (DAPPs) and data. It is cryptographically secure, auditable and immutable.</p>
+<h3>Quorum Architecture</h3>
+<p>Quorum provides several enterprise features such as</p>
+<ul>
+<li>Transaction Privatcy</li>
+<li>Multiple pluggable consensus mechanism suitable for enterprise use-cases</li>
+<li>Enterprise grade permission management (access control) for network nodes and participants</li>
+<li>Enterprise grade performance</li>
+</ul>
+<p><img alt="Quorum - A blockchain Platform for the Enterprise" src="https://static.blockgeeks.com/wp-content/uploads/2020/05/image14.jpg" /></p>
+<p>Quorum node is a lightweight fork of geth. For more details check the resources provided by JPMorgan Blockchain Center of Excellence and ConSensys. Notice that JPMorgan’s BlockChain platform Quorum is now acquired by ConsenSys.</p>
+<p>This article assume that readers would have basic understanding of how BlockChain works. The main purpose of this article to teach how to deploy the Quorum on AWS EC2 instance for testing purposes.</p>
+<h2>Technical Pre-Requisite</h2>
+<ul>
+<li>The Quroum needs Java version 11</li>
+<li>Requires Amazon Linux VM 2 (at least t3.xarge – blockchain requires this much)</li>
+</ul>
+<h3>Java Version Mapping</h3>
+<p>49 = Java 5<br />
+50 = Java 6<br />
+51 = Java 7<br />
+52 = Java 8<br />
+53 = Java 9<br />
+54 = Java 10<br />
+55 = Java 11<br />
+56 = Java 12<br />
+57 = Java 13<br />
+58 = Java 14</p>
+<h2>Block Chain Installation Steps on AWS EC2 Instance</h2>
+<ol>
+<li>Deploy AWS EC2 instance</li>
+<li>Must use at least Linux VM 2 (to get amazon-linux-extras)</li>
+<li>Size must be at least t3.xlarge for BlockChain proper operations</li>
+<li><a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html">Install node-js</a> on the EC2 instance</li>
+<li>$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash</li>
+<li>$ . ~/.nvm/nvm.sh</li>
+<li>$ nvm install node</li>
+<li>$ node -e “console.log(‘Running Node.js ‘ + process.version)”</li>
+<li>$ sudo yum update</li>
+<li>$ sudo amazon-linux-extras install java-openjdk11</li>
+<li>$ curl -o- -L https://yarnpkg.com/install.sh | bash <strong>(optional)</strong></li>
+<li><a href="https://docs.goquorum.consensys.net/en/latest/HowTo/GetStarted/Wizard/GettingStarted/">Install BlockChain Quorum using this URL</a></li>
+<li>$ npm install -g quorum-wizard</li>
+<li>$ quorum-wizard -q -v</li>
+</ol>
+<h2>BlockChain Quorum Installation Output</h2>
+<p>The Quorum wizard automatically created 3-node raft network with tessera and cakeshop on a single EC2 instance. Following is the output</p>
+<pre><code>[ec2-user@ip-10-101-76-122 ~]$ quorum-wizard -v
+debug: Showing debug logs
+?
+Welcome to Quorum Wizard!
+This tool allows you to easily create bash, docker, and kubernetes files to start up a quorum network.
+You can control consensus, privacy, network details and more for a customized setup.
+Additionally you can choose to deploy our chain explorer, Cakeshop, to easily view and monitor your network.
+We have 3 options to help you start exploring Quorum:
+Quickstart - our 1 click option to create a 3 node raft network with tessera and cakeshop
+Simple Network - using pregenerated keys from quorum 7nodes example,
+this option allows you to choose the number of nodes (7 max), consensus mechanism, transaction manager, and the option to deploy cakeshop
+Custom Network - In addition to the options available in #2, this selection allows for further customization of your network.
+Choose to generate keys, customize ports for both bash and docker, or change the network id
+Quorum Wizard will generate your startup files and everything required to bring up your network.
+All you need to do is go to the specified location and run start.sh
+❯ Quickstart (3-node raft network with tessera and cakeshop)
+Simple Network
+Custom Network
+Exit
+</code></pre>
+<p>I used the command with -q parameter which created the Quickstart setup in one go.</p>
+<pre><code>[ec2-user@ip-10-101-76-122 ~]$ quorum-wizard -q -v
+debug: Showing debug logs
+Downloading dependencies…
+Downloading quorum 2.7.0 from https://bintray.com/quorumengineering/quorum/download_file?file_path=v2.7.0/geth_v2.7.0_linux_amd64.tar.gz…
+Downloading tessera 0.10.5 from https://oss.sonatype.org/service/local/repositories/releases/content/com/jpmorgan/quorum/tessera-app/0.10.5/tessera-app-0.10.5-app.jar…
+Downloading cakeshop 0.11.0 from https://github.com/jpmorganchase/cakeshop/releases/download/v0.11.0/cakeshop-0.11.0.war…
+Unpacking to /home/ec2-user/.quorum-wizard/bin/quorum/2.7.0/geth
+Unpacking to /home/ec2-user/.quorum-wizard/bin/tessera/0.10.5/tessera-app.jar
+Unpacking to /home/ec2-user/.quorum-wizard/bin/cakeshop/0.11.0/cakeshop.war
+Saved to /home/ec2-user/.quorum-wizard/bin/quorum/2.7.0/geth
+Saved to /home/ec2-user/.quorum-wizard/bin/tessera/0.10.5/tessera-app.jar
+Saved to /home/ec2-user/.quorum-wizard/bin/cakeshop/0.11.0/cakeshop.war
+Building network directory…
+Generating network resources locally…
+Building qdata directory…
+Initializing quorum…
+Done
+Tessera Node 1 public key:
+BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=
+Tessera Node 2 public key:
+QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+Tessera Node 3 public key:
+1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
+
+Quorum network created
+Run the following commands to start your network:
+cd network/3-nodes-quickstart
+./start.sh
+A sample simpleStorage contract is provided to deploy to your network
+To use run ./runscript.sh public_contract.js from the network folder
+A private simpleStorage contract was created with privateFor set to use Node 2's public key: QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+To use run ./runscript.sh private_contract.js from the network folder
+After starting, Cakeshop will be accessible here: http://localhost:8999
+[ec2-user@ip-10-101-76-122 ~]$
+</code></pre>
+<h2>Start Quorum Now</h2>
+<pre><code>[ec2-user@ip-10-101-76-122 ~]$ cd network/3-nodes-quickstart/
+[ec2-user@ip-10-101-76-122 3-nodes-quickstart]$
+[ec2-user@ip-10-101-76-122 3-nodes-quickstart]$ pwd
+/home/ec2-user/network/3-nodes-quickstart
+
+[ec2-user@ip-10-101-76-122 3-nodes-quickstart]$ ./start.sh
+Starting Quorum network…
+Waiting until all Tessera nodes are running…
+Node 1 is not yet listening on tm.ipc
+Node 2 is not yet listening on tm.ipc
+Node 3 is not yet listening on tm.ipc
+Node 1 is not yet listening on http
+Node 2 is not yet listening on http
+Node 3 is not yet listening on http
+Waiting until all Tessera nodes are running…
+Node 1 is not yet listening on tm.ipc
+Node 2 is not yet listening on tm.ipc
+Node 3 is not yet listening on tm.ipc
+Node 1 is not yet listening on http
+Node 2 is not yet listening on http
+Node 3 is not yet listening on http
+Waiting until all Tessera nodes are running…
+Waiting until all Tessera nodes are running…
+All Tessera nodes started
+Starting Quorum nodes
+Starting Cakeshop
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+
+Cakeshop started at http://localhost:8999
+Successfully started Quorum network.
+Tessera Node 1 public key:
+BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=
+Tessera Node 2 public key:
+QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
+Tessera Node 3 public key:
+1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
+
+[ec2-user@ip-10-101-76-122 3-nodes-quickstart]$
+</code></pre>
+<h2>Cakeshop Validation</h2>
+<p>I installed the CLI brower called Lynx with the following command on the same EC2 instance for quick validation</p>
+<pre><code>[ec2-user@ip-10-101-76-122 ~]$ sudo yum install lynx
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core | 3.7 kB 00:00:00
+amzn2extra-docker | 3.0 kB 00:00:00
+amzn2extra-java-openjdk11 | 3.0 kB 00:00:00
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package lynx.x86_64 0:2.8.8-0.3.dev15.amzn2.0.2 will be installed
+--&gt; Processing Dependency: redhat-indexhtml for package: lynx-2.8.8-0.3.dev15.amzn2.0.2.x86_64
+--&gt; Running transaction check
+---&gt; Package amazonlinux-indexhtml.noarch 0:1-1.amzn2 will be installed
+--&gt; Finished Dependency Resolution
+Dependencies Resolved
+======================================================================================================================================================================================================================
+Package Arch Version Repository Size
+Installing:
+lynx x86_64 2.8.8-0.3.dev15.amzn2.0.2 amzn2-core 1.4 M
+Installing for dependencies:
+amazonlinux-indexhtml noarch 1-1.amzn2 amzn2-core 4.1 k
+Transaction Summary
+Install 1 Package (+1 Dependent package)
+Total download size: 1.5 M
+Installed size: 5.4 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): amazonlinux-indexhtml-1-1.amzn2.noarch.rpm | 4.1 kB 00:00:00
+(2/2): lynx-2.8.8-0.3.dev15.amzn2.0.2.x86_64.rpm | 1.4 MB 00:00:00
+Total 10 MB/s | 1.5 MB 00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Installing : amazonlinux-indexhtml-1-1.amzn2.noarch 1/2
+Installing : lynx-2.8.8-0.3.dev15.amzn2.0.2.x86_64 2/2
+Verifying : amazonlinux-indexhtml-1-1.amzn2.noarch 1/2
+Verifying : lynx-2.8.8-0.3.dev15.amzn2.0.2.x86_64 2/2
+Installed:
+lynx.x86_64 0:2.8.8-0.3.dev15.amzn2.0.2
+Dependency Installed:
+amazonlinux-indexhtml.noarch 0:1-1.amzn2
+Complete!
+[ec2-user@ip-10-101-76-122 ~]$
+[ec2-user@ip-10-101-76-122 ~]$
+[ec2-user@ip-10-101-76-122 ~]$
+[ec2-user@ip-10-101-76-122 ~]$ lynx http://localhost:8999
+</code></pre>
+<p>Following is the output from the successful cakeshop installation</p>
+<p><img alt="" src="/blog/images/install-blockchain-quroum-on-aws-ec2-instance/image-9.png" /></p>
+<h2>Quorum Screen Shots</h2>
+<p><img alt="" src="/blog/images/install-blockchain-quroum-on-aws-ec2-instance/Screen-Shot-2020-10-25-at-4.30.44-PM-1024x456.png" /></p>
+<h2>Interacting with BlockChain Quorum Netowrk</h2>
+<p>After following the instructions here, you should have a fully generated local Quorum network. Here are some ways you can interact with the network to try out the features of Quorum.</p>
+<p><a href="https://docs.goquorum.consensys.net/en/latest/HowTo/GetStarted/Wizard/GettingStarted/">Instructions are mentioned here in the official Getting Started guide</a></p>
+<h2>Troubleshooting</h2>
+<h2>JNI Error</h2>
+<p>During this process I encountered various errors some were very obvious. Following is the message that was not very clear. If you are getting this error then it means tha JRE or Java version is not correct and you need to upgrade it to latest version. In my case the the error was gone once I upgraded it to Java version 11.</p>
+<pre><code>Error: A JNI error has occurred, please check your installation and try again
+Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/quorum/tessera/launcher/Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+</code></pre>
+<h2>strat.sh Killed Error</h2>
+<p>If you are receiving following error then most likely it is because the instance size is too small. Increase the instance size</p>
+<pre><code>Cakeshop is not yet listening on http
+./start.sh: line 84: 14715 Killed java -Xms128M -Xmx128M -jar $BIN_TESSERA -configfile qdata/c2/tessera-config-09-2.json &gt;&gt; qdata/logs/tessera2.log 2&gt;&amp;1
+./start.sh: line 84: 14898 Killed PRIVATE_CONFIG=qdata/c1/tm.ipc nohup $BIN_GETH --datadir qdata/dd1 --nodiscover --rpc --rpccorsdomain=* --rpcvhosts=* --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft,quorumPermission --ws --wsaddr 0.0.0.0 --wsorigins=* --emitcheckpoints --unlock 0 --password qdata/dd1/keystore/password.txt --allow-insecure-unlock --graphql --graphql.port 24000 --graphql.corsdomain=* --graphql.addr 0.0.0.0 --raft --raftport 50401 --permissioned --verbosity 5 --networkid 10 --rpcport 22000 --wsport 23000 --port 21000 2&gt;&gt; qdata/logs/1.log
+Waiting until Cakeshop is running…
+
+Cakeshop is taking a long time to start. Look at logs
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+Cakeshop is taking a long time to start. Look at logs
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+Cakeshop is taking a long time to start. Look at logs
+Waiting until Cakeshop is running…
+Cakeshop is not yet listening on http
+Cakeshop is taking a long time to start. Look at logs
+Waiting until Cakeshop is running…
+</code></pre>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

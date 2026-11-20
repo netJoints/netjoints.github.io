@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Scenario ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security so">
+  <title>ACE-Security Secure Egress LAB · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/ace-security-secure-egress-lab/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ACE-Security Secure Egress LAB">
+  <meta property="og:description" content="Scenario ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security so">
+  <meta property="og:url" content="https://netjoints.com/blog/ace-security-secure-egress-lab/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-10-13">October 13, 2024</time>
+      </div>
+
+      <h1 class="blog-title">ACE-Security Secure Egress LAB</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Scenario</h2>
+<p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security solution. This lack of dedicated security has raised concerns about data privacy and HIPAA compliance among ABC Healthcare’s management.</p>
+<h3>Expensive and Limited CSP Native NAT Gateway</h3>
+<p>The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.</p>
+<p>The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.</p>
+<h4>Data Charges Reference:</h4>
+<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws">https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws</a></p>
+<p><a href="https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures">https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures</a></p>
+<p><a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB.">https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB.</a></p>
+<h3>Damaged Reputation and Employee Fired</h3>
+<p>To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, leading to significant disruptions, reputational damage, and a negative impact on their stock value. This incident resulted in the dismissal of the previous cloud network architects.</p>
+<h3>You are the Newly Hired Cloud Networking Architect</h3>
+<p>You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.</p>
+<h2>LAB Objective</h2>
+<p>Your job to do a POC/POV in your lab and demonstrate how your company can leverage <strong>Aviatrix Cloud Perimeter Solution</strong> to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than with the native AWS NAT Gateway.</p>
+<p>The Zero Trust policy should only allow following websites and block all other FQDNs.</p>
+<p>The lab intentionally does not provide all the steps to you to complete this lab. You should leverage <a href="https://docs.aviatrix.com">https://docs.aviatrix.com</a> if you are stuck.</p>
+<ul>
+<li>allowed-internet-http domains</li>
+<li>*.ubuntu.com</li>
+<li>allowed-internet-https domains</li>
+<li>*.alibabacloud.com</li>
+<li>azure.microsoft.com</li>
+<li>aws.amazon.com</li>
+<li>*.amazonaws.com</li>
+<li>*.aviatrix.com</li>
+<li>aviatrix.com</li>
+<li>cloud.google.com</li>
+<li>*.docker.com</li>
+<li>*.docker.io</li>
+<li>www.oracle.com</li>
+</ul>
+<h3>Listen to the following recording</h3>
+<p>Listen carefully there will be quiz questions based on this 4 min video too.</p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/cNx51ZJhxek" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<h2>LAB Pre-Req</h2>
+<p>Before starting the lab, change the following timers to their lowest value</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-10-1024x621.png" /></p>
+<blockquote>
+<p><strong>DO NOT ATTEMPT TO CHANGE THE FREQUENCY IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.</strong></p>
+</blockquote>
+<p>It should look like the following</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-11-1024x529.png" /></p>
+<p>Do not change these frequencies in the production setup</p>
+<ul>
+<li>Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”</li>
+<li>GW Instance Size should be t3a.small</li>
+</ul>
+<h4>Successful Completion of LAB</h4>
+<p>After completing the lab, your screen more or less should look like the following. The IP addresses and UUIDs could be different.</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-17.png" />
+<img alt="" src="/blog/images/ace-security-secure-egress-lab/image-16.png" />
+<img alt="" src="/blog/images/ace-security-secure-egress-lab/image-13.png" /><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-14.png" /><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-15.png" /></p>
+<h1>LAB HINTS</h1>
+<h4>Create Secure Egress DCF Rules</h4>
+<ul>
+<li>Create three rules</li>
+<li>The last DCF rule is a zero-trust rule</li>
+<li>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the “allowed-internet-https” web group</li>
+<li>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the “allowed-internet-http” web group</li>
+</ul>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image.png" /></p>
+<h3>Create rfc1918 SmartGroup</h3>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-1.png" /><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-2.png" /></p>
+<h3>Create WebGroup to Define FQDN Allowed to Access Internet</h3>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-3.png" /><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-4.png" /><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-5.png" /></p>
+<h4>Deploy Aviatrix Spoke GW</h4>
+<ul>
+<li>The public IP address will be different (Public EIP automatically allocated by CSP)</li>
+<li>The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)</li>
+<li>Region: us-east-1</li>
+</ul>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-6.png" /></p>
+<p>Check the Egress setting. The Egress traffic is going using the native NAT GW.</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-7.png" /></p>
+<h4>Enable spoke GW to become the Egress GW</h4>
+<ol>
+<li>Click <strong>+Local Egress on VPC/VNets</strong>.</li>
+<li>In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.</li>
+<li>Click <strong>Add</strong>.</li>
+</ol>
+<p><a href="https://docs.aviatrix.com/copilot/latest/network-security/index.html">Read more at Aviatrix Documentation</a></p>
+<h3>Add Local Egress on VPC/VNets</h3>
+<p>Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-8.png" /></p>
+<p>Now the diagram should look the following</p>
+<p><img alt="" src="/blog/images/ace-security-secure-egress-lab/image-9.png" /></p>
+<h2>Conclusion</h2>
+<p>By bringing Aviatrix Secure Egress into play, our healthcare provider shored up their defenses, dropped the high costs, and eliminated the visibility black hole courtesy of the AWS NAT Gateway. Sensitive patient data is safe, and the provider’s reputation will be secured.</p>
+<p>Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solution for managing internet-bound traffic. Need more help? Our support team’s got your back.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

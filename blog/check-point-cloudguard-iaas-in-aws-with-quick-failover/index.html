@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction Aviatrix release 6.0 introduced Firewall Instances Health Check Enhancement. This enhancement checks a firewall instance’s health by pinging its LAN interface from the connecting Aviatrix FireNet gateway. An alternative option to check health through firewall’s management interface. ICM">
+  <title>Check Point CloudGuard IaaS in AWS with Quick Failover · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/check-point-cloudguard-iaas-in-aws-with-quick-failover/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Check Point CloudGuard IaaS in AWS with Quick Failover">
+  <meta property="og:description" content="Introduction Aviatrix release 6.0 introduced Firewall Instances Health Check Enhancement. This enhancement checks a firewall instance’s health by pinging its LAN interface from the connecting Aviatrix FireNet gateway. An alternative option to check health through firewall’s management interface. ICM">
+  <meta property="og:url" content="https://netjoints.com/blog/check-point-cloudguard-iaas-in-aws-with-quick-failover/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-07-17">July 17, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Check Point CloudGuard IaaS in AWS with Quick Failover</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Introduction</h2>
+<p><a href="https://docs.aviatrix.com/HowTos/UCC_Release_Notes.html#firewall-network-firenet">Aviatrix release 6.0</a> introduced <strong><a href="https://docs.aviatrix.com/HowTos/UCC_Release_Notes.html#firewall-network-firenet">Firewall Instances Health Check Enhancement</a></strong>. This enhancement checks a firewall instance’s health by pinging its LAN interface from the connecting Aviatrix FireNet gateway. An alternative option to check health through firewall’s management interface. ICMP health check to the Firewall LAN interface improves firewall failure detection time and detection accuracy.</p>
+<p>This enhancement is available for Aviatrix FireNet deployment with Aviatrix Multi-Cloud Global Transit both in AWS and Azure. This enhancement is also available for AWS-TGW based designs as well.</p>
+<p>In this article we will take a look at this enhancement in details with Check Point CloudGuard Firewall.</p>
+<h2>Aviatrix Transit FireNet Design Pattern and Toplogy</h2>
+<p>Following is the Aviatrix Transit FireNet design pattern used to demonstrate the functionality.</p>
+<ul>
+<li>Aviatrix Controller – version 6.0</li>
+<li>Check Point CloudGuard Security Manager deployed using <a href="https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&amp;solutionid=sk111013">Cloud Formation template in AWS – version R8040</a></li>
+<li>Check Point Smart Console – version R80.40</li>
+<li>Check Point CloudGuard IaaS Firewall with Threat Prevention – R80.40-294.595</li>
+<li>Check Point Cloud Guard IaaS Security Gateways (Firewalls) were deployed directly from the Aviatrix Controller</li>
+</ul>
+<p><img alt="" src="/blog/images/check-point-cloudguard-iaas-in-aws-with-quick-failover/547.png" /></p>
+<h2>Aviatrix Controller Controls and Manages the Life Cycle of Firewall Instances</h2>
+<p>Aviatrix controller manages the complete life cycle of Check Point firewall from infrastructure perspective. Aviatrix controller</p>
+<ul>
+<li>Deploy/Delete firewall instances</li>
+<li>Inspect and sync routes with the Firewall instances</li>
+<li>Propagates and install the routes in Check Point CloudGuard IaaS firewalls.</li>
+<li>Enable/Disable Fail Open or Fail Close policy</li>
+<li>Enable/Disable inspection</li>
+<li>Enable/Disable Egress traffic via Firewall instances</li>
+<li>Here you can see option to enable or disable the Health Check option for firewalls</li>
+<li>Excludes certain subnets/CIDS from firewall inspection</li>
+<li>Enable/Disable LAN side ICMP Health Check</li>
+</ul>
+<h3>Enable LAN Side ICMP Health Check in Aviatrix Controller</h3>
+<p>Following screen shots shows how to enable the LAN side ICMP health Check.</p>
+<p>Firewall Network –&gt; Advance –&gt; Click the 3 vertical dots</p>
+<p><img alt="" src="/blog/images/check-point-cloudguard-iaas-in-aws-with-quick-failover/547.png" /></p>
+<p>The expanded view shows the firewall deployed by the Aviatrix controller and towards the end of screen shot, one can enable/disable LAN side Health Check.</p>
+<p><img alt="" src="/blog/images/check-point-cloudguard-iaas-in-aws-with-quick-failover/547.png" /></p>
+<h2>Verify LAN Side ICMP Health Check via Smart Console</h2>
+<p>From Check Point logs and Monitoring section, notice that the ICMP health check is initiated every 5 second from the Aviatrix Transit FireNet gateways. The 5 second setting is the default and cannot be changed.</p>
+<p><img alt="" src="/blog/images/check-point-cloudguard-iaas-in-aws-with-quick-failover/547.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

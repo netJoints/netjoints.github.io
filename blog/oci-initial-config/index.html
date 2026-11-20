@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction Aviatrix controller makes it extremely simple to on-board Oracle OCI. Take a look at the screen shots here and follow along. If you are new to OCI and OCI terminologies, it is strongly recommended to read this article before moving forward. https://docs.aviatrix.com/StartUpGuides/oracle">
+  <title>Aviatrix Oracle Cloud (OCI) On-Boarding and Initial Configuration · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/oci-initial-config/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aviatrix Oracle Cloud (OCI) On-Boarding and Initial Configuration">
+  <meta property="og:description" content="Introduction Aviatrix controller makes it extremely simple to on-board Oracle OCI. Take a look at the screen shots here and follow along. If you are new to OCI and OCI terminologies, it is strongly recommended to read this article before moving forward. https://docs.aviatrix.com/StartUpGuides/oracle">
+  <meta property="og:url" content="https://netjoints.com/blog/oci-initial-config/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2019-10-16">October 16, 2019</time>
+      </div>
+
+      <h1 class="blog-title">Aviatrix Oracle Cloud (OCI) On-Boarding and Initial Configuration</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Introduction</h2>
+<p>Aviatrix controller makes it extremely simple to on-board Oracle OCI. Take a look at the screen shots here and follow along.</p>
+<blockquote>
+<p>If you are new to OCI and OCI terminologies, it is strongly recommended to read this article before moving forward. <br />
+https://docs.aviatrix.com/StartUpGuides/oracle-aviatrix-cloud-controller-startup-guide.html</p>
+</blockquote>
+<p>The Aviatrix Controller is multi cloud, multi subscription, multi account and multi region capable appliance/VM/instance. Launching the Controller in any public cloud will also enable you to deploy and manage networking and security in any other public cloud.</p>
+<p>In our setup, Aviatrix Controller is already deployed and running in AWS. Bill for using Aviatrix services will still be billed to AWS billing account. One has to pay for the utilization of OCI resources in the OCI billing system.</p>
+<p>On the controller UI</p>
+<p>1- Click on-boarding option<br />
+2- Select Oracle Cloud Infrastructure (OCI) option</p>
+<p><img alt="" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-10.04.17-am.png" /></p>
+<p>Oralce Cloud Onboarding Process</p>
+<p>After step#2, you are presented with the following screen.</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-8.png" /></p>
+<h3>OCI Account , Tenancy and Compartment Details</h3>
+<p>The purpose of on-boarding is to help you setup an account on the Aviatrix Controller (AVX-CTRL) that corresponds to an OCI account with compartment policies, so that the Aviatrix Controller can launch Aviatrix GWs using OCI APIs. For on-boarding the OCI account in the AVX-CTRL, we need following four pieces of information from OCI console.</p>
+<ul>
+<li>User OCID</li>
+<li>Tenancy OCID</li>
+<li>Compartment OCID</li>
+<li>API Private Key File</li>
+</ul>
+<h3>User OCID</h3>
+<p>User OCID information is collected from Identity section.</p>
+<p><img alt="" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-11.26.46-am-1.png" /></p>
+<h3>Tenancy OCID</h3>
+<p>Tenancy OCID information is collected by navigating in the OCI Console’s Administration section (OCI Console –&gt; Administration –&gt;Tenancy Details)</p>
+<p><img alt="" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-12.31.22-pm-1.png" /></p>
+<h3>Compartment OCID</h3>
+<p>Compartment or department OCID can be gathered by navigating in the Identity section of OCI console ( OCI Console –&gt; Identity –&gt;Compartments)</p>
+<p><img alt="" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-12.37.22-pm-1.png" /></p>
+<h3>Generate Public and Private Keys</h3>
+<p>The commands here are valid for Mac and Linux OS. For Windows, you need to install “Git bash for Windows”</p>
+<p>$ openssl genrsa -out oci_api_private_key.pem 2048<br />
+$ chmod go-rwx oci_api_private_key.pem<br />
+$ openssl rsa -pubout -in oci_api_private_key.pem -out oci_api_public_key.pem<br />
+$ cat oci_api_private_key.pem | pbcopy</p>
+<p>Refer to following doc for detailed steps</p>
+<p><a href="https://docs.aviatrix.com/HowTos/oracle-aviatrix-cloud-controller-onboard.html">https://docs.aviatrix.com/HowTos/oracle-aviatrix-cloud-controller-onboard.html</a></p>
+<h2>OCI Onboarded</h2>
+<p>At this point OCI is on-boarded. Notice that beside OCI, we have AWS, Azure and GCP on-boarded under the same controller as well.</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-9.png" /></p>
+<p>OCI Account Onboarded</p>
+<h3>Create Transit VPC</h3>
+<p>To make sure the connectivity is established between Aviatrix Controller and OCI, we will create a OCI Transit VCN (VCN is equivalent to VPC in AWS) directly from Aviatrix Controller UI. This Transit VCN will also be used in the subsequent testing.</p>
+<p><img alt="OCI VCN Created From Aviatrix Controller" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-6.24.25-pm-1.png" /></p>
+<p>OCI VCN Created From Aviatrix Controller</p>
+<p>Following screen shot taken from OCI console shows that VCN was successfully created from Aviatrix Controller.</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-10.png" /></p>
+<p>VCN Created in Finance Compartment. This is the one we provided during account on-boarding</p>
+<p>Also notice that beside creating the simple VCN, Aviatrix Controller also creates following</p>
+<ul>
+<li>Public and Private subnets inside the VCN</li>
+<li>These subnets are created and managed for private and public routing tables</li>
+<li>Private and Public Routing tables</li>
+<li>Internet Gateway</li>
+</ul>
+<p><img alt="" src="/blog/images/oci-initial-config/image-11.png" /></p>
+<p>VCN details show that AVX-CTRL created the VCN and Public and Private Subnets as well</p>
+<p>Following screen shot shows the routing tables created by Aviatrix Controller.</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-12.png" /></p>
+<p>Route Tables created by AVX-CTRL automation</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-13.png" /></p>
+<p>Internet Gateway (IGW) was also created by AVX-CTRL at the time of VCN creation</p>
+<p><img alt="AVX-CTRL associates Public subnet to a Public Route Table" src="/blog/images/oci-initial-config/screen-shot-2019-10-16-at-6.35.18-pm-1.png" /></p>
+<p>AVX-CTRL associates Public subnet to a Public Route Table</p>
+<p><img alt="" src="/blog/images/oci-initial-config/image-14.png" /></p>
+<p>This public route table has a default route that points to OCI IGW for Internet Traffic</p>
+<h2>Conclusion</h2>
+<p>This initial configuration shows the OCI account on-boarding and deployment of one Transit VPC with associated subnets and route table. The AVX-CTRL makes it easy and seamless to deploy multi-clouds with the same look and feel and without worrying about underneath constructs.</p>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">aviatrix</span><span class="tag-pill">oci</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

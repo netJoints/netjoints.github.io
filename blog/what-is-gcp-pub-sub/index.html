@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Today, we’re discussing GCP’s super useful tools called Pub/Sub. Now, that might sound a little complicated, so let’s start with a simple picture. Imagine you’re building an awesome LEGO castle with your friends, but you don’t have all the special LEGO bricks you need. So, just like our magical LEGO">
+  <title>What is GCP Pub/Sub? · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/what-is-gcp-pub-sub/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What is GCP Pub/Sub?">
+  <meta property="og:description" content="Today, we’re discussing GCP’s super useful tools called Pub/Sub. Now, that might sound a little complicated, so let’s start with a simple picture. Imagine you’re building an awesome LEGO castle with your friends, but you don’t have all the special LEGO bricks you need. So, just like our magical LEGO">
+  <meta property="og:url" content="https://netjoints.com/blog/what-is-gcp-pub-sub/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-08-07">August 7, 2025</time>
+      </div>
+
+      <h1 class="blog-title">What is GCP Pub/Sub?</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Today, we’re discussing GCP’s super useful tools called Pub/Sub. Now, that might sound a little complicated, so let’s start with a simple picture.</p>
+<p>Imagine you’re building an awesome LEGO castle with your friends, but you don’t have all the special LEGO bricks you need.</p>
+<ul>
+<li><strong>Google Cloud Platform (GCP)</strong> is like a giant, magical LEGO bin filled with every single brick imaginable – from the basic blocks to the super rare and cool pieces! Instead of buying huge boxes of LEGO yourself, you can just borrow the exact bricks you need from this giant bin to build your amazing castle.</li>
+<li>Now, imagine you and your friends are building different parts of the castle and need to tell each other when certain sections are ready.</li>
+<li><strong>Google Cloud Pub/Sub</strong> is like a special walkie-talkie system for your LEGO project. You have a special channel, let’s call it “Castle Updates.” When you finish building a tower, you just say into your walkie-talkie, “Tower complete!” That message goes onto the “Castle Updates” channel.</li>
+<li>Your friend working on the gate is also listening to this channel. They hear “Tower complete!” and know they can now connect the gate to the tower. You don’t need to call them directly; the message just goes to everyone who’s interested. That’s how different parts of your LEGO castle project can communicate easily!</li>
+</ul>
+<p>So, just like our magical LEGO bin and walkie-talkie system help with building, GCP and Pub/Sub help developers build powerful digital applications. Now, let’s peek under the hood a bit.</p>
+<p><strong>Google Cloud Platform (GCP)</strong> is a comprehensive suite of cloud computing services. Think of it as Google’s massive infrastructure – the same one that powers Search and YouTube – made available to developers and businesses. You get access to things like:</p>
+<ul>
+<li><strong>Powerful computing resources:</strong> Virtual machines to run your applications.</li>
+<li><strong>Scalable storage:</strong> To store all your data.</li>
+<li><strong>Advanced data analytics and machine learning tools:</strong> To understand and work with your data.</li>
+</ul>
+<p>And <strong>Google Cloud Pub/Sub</strong> is a messaging service within GCP. It allows different parts of an application, or even completely separate applications, to communicate asynchronously. This means that the sender of a message (the publisher) doesn’t need to wait for the receiver (the subscriber) to be ready.</p>
+<ul>
+<li>Publishers send messages about events to <strong>topics</strong>, which are like those special channels we talked about.</li>
+<li>Subscribers can then subscribe to these topics to receive the messages they’re interested in.</li>
+</ul>
+<p>This “publish and subscribe” model is fantastic for building applications that need to handle lots of events in real-time, like processing user actions on a website or coordinating different microservices. It makes systems more reliable and easier to scale because different components aren’t tightly coupled.</p>
+<h2>Recap</h2>
+<p>So, to recap, GCP is your giant toolbox of cloud services, and Pub/Sub is a clever way for different parts of your digital projects to talk to each other without getting tangled up. I hope this simple explanation helped you understand these powerful tools.</p>
+<p><a href="https://cloud.google.com/pubsub">https://cloud.google.com/pubsub</a></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

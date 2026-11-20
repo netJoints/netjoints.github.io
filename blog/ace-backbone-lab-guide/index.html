@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Objective The objective of this scenario is to guide you through the steps necessary to extend an existing Aviatrix backbone from an Azure-based infrastructure to AWS while integrating on-premises manufacturing facilities. In doing so, you’ll leverage Aviatrix’s capabilities to ensure seamless opera">
+  <title>ACE-Backbone LAB Guide · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/ace-backbone-lab-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ACE-Backbone LAB Guide">
+  <meta property="og:description" content="Objective The objective of this scenario is to guide you through the steps necessary to extend an existing Aviatrix backbone from an Azure-based infrastructure to AWS while integrating on-premises manufacturing facilities. In doing so, you’ll leverage Aviatrix’s capabilities to ensure seamless opera">
+  <meta property="og:url" content="https://netjoints.com/blog/ace-backbone-lab-guide/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/ace-backbone-lab-guide/cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-10-21">October 21, 2024</time>
+      </div>
+
+      <h1 class="blog-title">ACE-Backbone LAB Guide</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/ace-backbone-lab-guide/cover.png" alt="ACE-Backbone LAB Guide">
+      
+
+      <div class="blog-content">
+        <h2>Objective</h2>
+<p>The objective of this scenario is to guide you through the steps necessary to extend an existing Aviatrix backbone from an Azure-based infrastructure to AWS while integrating on-premises manufacturing facilities. In doing so, you’ll leverage Aviatrix’s capabilities to ensure seamless operations, even amid compliance and regulatory constraints.</p>
+<h2>Business Scenario and Requirement</h2>
+<p>Your company ACE-Automotive is a key player in the automotive manufacturing industry in the USA and Europe. You currently run a 100% Azure-based operation with hybrid connectivity to the data center on-prem edge. Recently, your company has established strategic partnerships with new component and parts suppliers.</p>
+<p>The majority of these suppliers are utilizing AWS including suppliers like <a href="https://aws.amazon.com/automotive/">BMW Group, RIVIAN, and Volkswagon Groups</a>. Some automotive parts and infotainment system suppliers in Europe cannot connect directly with the Azure VNET, vWAN, or Azure Route Service (ARS) due to their strict compliance restrictions.</p>
+<p>Your job as head of cloud networking is to extend the already deployed Aviatrix Cloud Backbone in Azure to AWS. Your CIO and CTO are also demanding to connect the AWS backbone to On-Prem using Direct Connect with the least costly option.</p>
+<p>Another business objective is to provide high availability between the Azure and AWS environments so that if the Azure to AWS Internet link is down, the traffic can be routed between these clouds using the on-prem Data Center.</p>
+<h2>Current State Analysis</h2>
+<ul>
+<li>Aviatrix Transit backbone is already deployed in Azure</li>
+<li>Aviatrix Edge is already deployed in Data Center</li>
+</ul>
+<p>By deploying Aviatrix in both Azure and AWS, the cloud networking complexities are significantly reduced. Our proven solutions allow you to bridge the cloud environments swiftly, bypassing potential skill gap challenges and maintaining compliance with regulatory standards. The scenarios outlined here will detail the steps to construct an AWS infrastructure, integrate it with the existing Azure environment, and ensure connectivity back to the on-premises infrastructure.</p>
+<p>Using the Aviatrix product, you will establish a highly available (HA) network that dynamically reroutes traffic through on-premises resources when inter-cloud links falter.</p>
+<h3>Current Topology</h3>
+<h2>LAB Implementation Steps</h2>
+<p>Following is what is expected from you to make your company successful and secure your job. Time to market and cost-effective solution is very important</p>
+<pre><code>AWS Infrastructure Setup
+    Begin by deploying necessary AWS resources to support your networking needs. This includes setting up an AWS VPC, subnets, and the required instances.
+
+Extend Aviatrix Backbone
+    Utilize the Aviatrix Controller to extend the backbone from Azure to AWS. This involves setting up Aviatrix Gateways in the AWS environment to establish connectivity with the existing Azure deployment.
+
+Connect On-Premises Manufacturing Facility
+    Integrate your on-premises network with the Aviatrix backbone. Configure Site-to-Cloud connections ensuring secure and optimized traffic flow between your cloud environments and physical facilities.
+
+Enhance Network High Availability
+    Leverage Aviatrix’s embedded traffic engineering features to create a fault-tolerant system. In the event of a cloud-based link failure, configure policies to seamlessly reroute traffic through the on-premises infrastructure, thereby maintaining network continuity.
+</code></pre>
+<p>Support and Enhancement</p>
+<p>Our approach offers unmatched support quality, underpinned by practical experience, insights from over 500 global customers, and a continuous drive to reduce complexity. We ensure your automotive operations not only leverage cloud technology but thrive through its transformative potential.</p>
+<p>By following the above guidance, you’ll establish a comprehensive interconnected cloud networking framework, fostering both innovation in your automotive processes and resilience in your network structure.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

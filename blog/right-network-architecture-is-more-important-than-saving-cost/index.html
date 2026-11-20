@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An Architect, CTO or any technical decision maker has a huge responsibility to approve and adopt the “right network architecture” that is aligned with the business requirement. We have seen enterprises who picked the wrong or compromised network architecture and then paid the price, way more than th">
+  <title>Importance of Right Network Architecture vs Cost · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/right-network-architecture-is-more-important-than-saving-cost/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Importance of Right Network Architecture vs Cost">
+  <meta property="og:description" content="An Architect, CTO or any technical decision maker has a huge responsibility to approve and adopt the “right network architecture” that is aligned with the business requirement. We have seen enterprises who picked the wrong or compromised network architecture and then paid the price, way more than th">
+  <meta property="og:url" content="https://netjoints.com/blog/right-network-architecture-is-more-important-than-saving-cost/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2020-01-17">January 17, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Importance of Right Network Architecture vs Cost</h1>
+
+      
+
+      <div class="blog-content">
+        <p>An Architect, CTO or any technical decision maker has a huge responsibility to approve and adopt the “right network architecture” that is aligned with the business requirement.</p>
+<p>We have seen enterprises who picked the wrong or compromised network architecture and then paid the price, way more than the initial cost to build and run the network, in the long run.</p>
+<p>Here we are sharing some nuggets for the technical decision makers</p>
+<ul>
+<li>A bad architecture can cost you a lot in the long run. A lot more than what you have spent on building and running it</li>
+<li>Don’t make long term architecture decisions based on short-term problems</li>
+<li>Right architecture is more important than feature set</li>
+<li>Simple architecture is the best architecture</li>
+</ul>
+<p>Building an architecture and putting a design is one time deal, but you end up running that design for years to come. As an architect if you don’t make smart choices to build the correct architecture, your enterprise will be paying a lot more.</p>
+<p>Also think about support. You need a trusted and seasoned support partner working side by side, when problem arises.</p>
+<h2>Real World Customer Example</h2>
+<p>Let me give you an example. Here is an architecture a customer wanted to go with.</p>
+<p><img alt="" src="/blog/images/right-network-architecture-is-more-important-than-saving-cost/image-33.png" /></p>
+<p>This customer wanted to …</p>
+<ul>
+<li>Build the Aviatrix transit peering within an AWS region</li>
+<li>Build the Aviatrix transit peering across multiple AWS regions and clouds (GCP)</li>
+<li>Deploy AWS-TGW using Aviatrix Controller but just to attach the AWS-TGW with the AVX-Transit-GW</li>
+</ul>
+<p>Essentially all the red-lines in the topology above were to be controlled and managed by Aviatrix. <br />
+For VPC1, VPC2 and so on, this customer wanted to do it manually. Thinking that it was just one time job.</p>
+<p>In order to save few $$$, they wanted to make <strong><em>just one comprises</em></strong> in the architecture and I will explain how costly that one compromise could be in the long run</p>
+<blockquote>
+<p>Customer did not want to use Aviatrix’s AWS-TGW Orchestration/Control to attach the Spoke VPCs with AWS-TGW</p>
+</blockquote>
+<h2>Ripple Effect of a Single Compromise</h2>
+<p>I will break it down into different section and the ripple effect a single compromise can make</p>
+<ul>
+<li>Aviatrix Controller won’t be able to monitor and propagate existing and new routes</li>
+<li>Application VPC routes must be updated manually</li>
+<li>AWS-TGW route tables must be updates manually</li>
+<li>Transit VPC route table must be updated manually</li>
+<li>Customer will loose the Aviatrix Controller’s TGW Audit functionality</li>
+<li>Aviatrix has a feature called “TGW Audit” that monitors all the routing tables and updates in the Spoke, Transit and from On-Prem to make sure the intent matches with realized state (for example if someone by mistake add or remove a route manually from the VPCs or no overlapping IP issues etc.)</li>
+<li>This could be huge operational burden on the team</li>
+<li>Customer will not be providing proper alerts about the route updates and warnings about incorrect or duplicate routes</li>
+<li>No network correctness</li>
+<li>Customer will not be able to use new route approval feature (Aviatrix has this unique feature where any new route learned from on-prem requires admin approval before it can be propagated into the Cloud Network)</li>
+<li>Beside that there are other functionalities that Aviatrix is planning to build for AWS-TGW and Aviatrix-TGW that probably won’t work in such a network design</li>
+<li>No way to do network segmentation for workloads in different VPCs</li>
+<li>No Security Domain functionality available</li>
+<li>Potential of AWS-TGW sprawl</li>
+<li>Multiple AWS-TGW might be needed for traffic separation</li>
+<li>Huge management overhead</li>
+<li>Some of the Aviatrix Flight-Path functionality might be broken in future</li>
+<li>In future if Aviatrix releases, capacity planning and monitoring tools, that might not work in this type of architecture</li>
+<li>Adding the Firewall in the architecture will not be possible. This could be a huge compliance and security risk a customer would be taking for security sensitive data</li>
+<li>For User-VPN use-case, customer must accommodate VPN subnets manually on TGW and Aviatrix Transit</li>
+<li>Aviatrix support won’t be able to solve and troubleshoot end-to-end because the VPCs were not attached by Aviatrix Controller</li>
+<li>Customer is taking the risk of not having end-to-end Encryption</li>
+<li>AWS-TGW does not provide encryption for Spoke VPCs</li>
+<li>This could be moot point in this architecture, because customer decided to use AWS-TGW as attachment but it is important to call out for compliance, audit, GDPR and security reasons</li>
+</ul>
+<h3>Credits</h3>
+<p>Wanted to say thanks to the following people for providing input to this post  </p>
+<p>Tomasz Klimczyk<br />
+Don Leone<br />
+Mark Cunningham<br />
+Hammad Alam<br />
+Nauman Mustafa<br />
+Saad Mirza</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="You can use Britive Terraform to manage Okta as an identity provider and to provision SCIM users, but with some important clarifications: ✅ Okta Integration with Britive Britive supports integration with Okta for both: SSO via SAML (Okta as an identity provider) User provisioning via SCIM (Okta to B">
+  <title>OKTA Identity Provider Integration with Britive | Getting Started Guide · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/okta-identity-provider-integration-with-britive-getting-started-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="OKTA Identity Provider Integration with Britive | Getting Started Guide">
+  <meta property="og:description" content="You can use Britive Terraform to manage Okta as an identity provider and to provision SCIM users, but with some important clarifications: ✅ Okta Integration with Britive Britive supports integration with Okta for both: SSO via SAML (Okta as an identity provider) User provisioning via SCIM (Okta to B">
+  <meta property="og:url" content="https://netjoints.com/blog/okta-identity-provider-integration-with-britive-getting-started-guide/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-07-08">July 8, 2025</time>
+      </div>
+
+      <h1 class="blog-title">OKTA Identity Provider Integration with Britive | Getting Started Guide</h1>
+
+      
+
+      <div class="blog-content">
+        <p>You can use <strong>Britive Terraform</strong> to manage <strong>Okta as an identity provider</strong> and to <strong>provision SCIM users</strong>, but with some important clarifications:</p>
+<h3>✅ Okta Integration with Britive</h3>
+<p>Britive supports integration with Okta for both:</p>
+<ul>
+<li><strong>SSO via SAML</strong> (Okta as an identity provider)</li>
+<li><strong>User provisioning via SCIM</strong> (Okta to Britive)</li>
+</ul>
+<p>To set this up:</p>
+<ol>
+<li><strong>Create an Identity Provider in Britive</strong>:
+   * Go to <strong>Admin → Identity Management → Identity Providers</strong>.
+   * Add a new provider with type <strong>SAML</strong> for Okta.</li>
+<li><strong>Enable SCIM Provisioning</strong>:
+   * In Britive, go to the <strong>SCIM tab</strong> and configure a <strong>Generic SCIM provider</strong>.
+   * Generate a <strong>SCIM URL</strong> and <strong>Bearer Token</strong>.
+   * Use these in Okta to configure SCIM provisioning.</li>
+<li><strong>Map User Attributes</strong>:
+   * Britive requires attributes like <code>Email</code>, <code>First Name</code>, <code>Last Name</code>, <code>Username</code>, and <code>Status</code>.
+   * You can also map additional attributes 1.</li>
+</ol>
+<p>&ndash;&gt; Add Identity Provider</p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-1.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-2.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-3.png" /></p>
+<p>Now click on &ldquo;CREATE TOKEN&rdquo; with 90 days rotation option. Now it will look like following</p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-4.png" /></p>
+<h2>OKTA Side Setting for SCIM</h2>
+<h2>Step 1: Create a SAML Application in Okta</h2>
+<ol>
+<li><strong>Log in to Okta Admin Console</strong>.</li>
+<li>Navigate to <strong>Applications → Applications</strong>.</li>
+<li>Click <strong>Create App Integration</strong>.</li>
+<li>Choose <strong>SAML 2.0</strong> and click <strong>Next</strong>.</li>
+<li>Fill in the <strong>General Settings</strong>:
+   * App name: <code>Britive</code>
+   * App logo (optional)</li>
+</ol>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-5.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-6.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-7.png" /></p>
+<h2>Step 2: Configure OKTA SAML Settings</h2>
+<p>In the <strong>SAML Settings</strong> section:</p>
+<ul>
+<li><strong>Single sign-on URL</strong>:<br />
+  Get this from Britive (e.g., <code>https://&lt;your-tenant&gt;.britive-app.com/sso/saml/acs</code>)</li>
+<li><strong>Audience URI (SP Entity ID)</strong>:<br />
+  Also from Britive (e.g., <code>https://&lt;your-tenant&gt;.britive-app.com/sso/saml/metadata</code>)</li>
+<li><strong>Name ID format</strong>: <code>EmailAddress</code></li>
+<li><strong>Application username</strong>: <code>Email</code></li>
+</ul>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-8.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-9.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-10.png" /></p>
+<h2>Step 3: Assign OKTA Users to the App</h2>
+<ul>
+<li>Go to the <strong>Assignments</strong> tab.</li>
+<li>Assign users or groups who should have access to Britive.</li>
+</ul>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-11.png" /></p>
+<p>We will use group assignment option.</p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-12.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-13.png" /></p>
+<h2>Step 4: Download Metadata</h2>
+<ul>
+<li>In the app settings, click <strong>Sign On</strong> tab.</li>
+<li>Click <strong>View SAML setup instructions</strong>.</li>
+<li>Copy the <strong>Metadata URL</strong> or download the <strong>XML file</strong>.</li>
+<li>Use this in your Terraform config or Britive UI.</li>
+</ul>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-14.png" /></p>
+<h2>Step 5: Configure SCIM</h2>
+<ol>
+<li>In Okta, go to the <strong>Britive app</strong> → <strong>Provisioning</strong> tab.</li>
+<li>Click <strong>Configure API Integration</strong>.</li>
+<li>Enable SCIM and enter:
+   * <strong>SCIM Base URL</strong>: From Britive SCIM settings
+   * <strong>Bearer Token</strong>: From Britive SCIM settings</li>
+<li>Test the connection.</li>
+<li>Enable provisioning features:
+   * Create Users
+   * Update User Attributes
+   * Deactivate Users</li>
+</ol>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-15.png" /></p>
+<p><img alt="" src="/blog/images/okta-identity-provider-integration-with-britive-getting-started-guide/image-16.png" /></p>
+<h3>Terraform Support</h3>
+<p>The <a href="https://github.com/britive/terraform-provider-britive">Britive Terraform provider</a> allows you to manage many Britive resources, including:</p>
+<ul>
+<li>Identity providers</li>
+<li>Permission sets</li>
+<li>Groups</li>
+<li>Roles</li>
+</ul>
+<p>However, <strong>SCIM provisioning and user management via Okta</strong> is typically configured <strong>outside of Terraform</strong>, directly in the Okta and Britive admin consoles. The Terraform provider is more focused on managing Britive-native configurations and policies</p>
+<h3>Summary</h3>
+<ul>
+<li><strong>Yes</strong>, you can integrate Okta as an identity provider and use SCIM for user provisioning in Britive.</li>
+<li><strong>Terraform</strong> can manage Britive configurations, but <strong>SCIM setup is manual</strong> via the Britive and Okta UIs.</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

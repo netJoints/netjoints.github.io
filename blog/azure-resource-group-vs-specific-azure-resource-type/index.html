@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="🔹Resource Group 🔹 Specific Resource Types (e.g., Microsoft.Sql/servers/databases) 🔐 1. Resource Group (e.g., sql_demo_rg, Win-Servers) 🗄️ 2. Microsoft.Sql/servers/databases 3. Microsoft.Network/networkWatchers 🧠 4. Microsoft.Compute/disks 🔌 5. Microsoft.Network/networkInterfaces 🔒 6. Microsoft.Netwo">
+  <title>Azure Resource Group vs Specific Azure Resource Type · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/azure-resource-group-vs-specific-azure-resource-type/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Azure Resource Group vs Specific Azure Resource Type">
+  <meta property="og:description" content="🔹Resource Group 🔹 Specific Resource Types (e.g., Microsoft.Sql/servers/databases) 🔐 1. Resource Group (e.g., sql_demo_rg, Win-Servers) 🗄️ 2. Microsoft.Sql/servers/databases 3. Microsoft.Network/networkWatchers 🧠 4. Microsoft.Compute/disks 🔌 5. Microsoft.Network/networkInterfaces 🔒 6. Microsoft.Netwo">
+  <meta property="og:url" content="https://netjoints.com/blog/azure-resource-group-vs-specific-azure-resource-type/">
+  <meta property="og:image" content="https://netjoints.comhttps://netjoints.github.io/_posts/azure-resource-group-vs-specific-azure-resource-type/Azure-Resource-Group-to-Individual-Resource-Mapping.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-08-11">August 11, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Azure Resource Group vs Specific Azure Resource Type</h1>
+
+      
+      <img class="blog-cover" src="https://netjoints.github.io/_posts/azure-resource-group-vs-specific-azure-resource-type/Azure-Resource-Group-to-Individual-Resource-Mapping.png" alt="Azure Resource Group vs Specific Azure Resource Type">
+      
+
+      <div class="blog-content">
+        <h3>🔹<strong>Resource Group</strong></h3>
+<ul>
+<li><strong>Meaning</strong>: A <strong>resource group</strong> is a logical container in Azure that holds related resources for a solution. It helps organize and manage resources like databases, virtual machines, and networking components.</li>
+<li><strong>Example from your screenshot</strong>:</li>
+<li><code>sql_demo_rg</code></li>
+<li><code>CosmoDB</code></li>
+<li><code>Win-Servers</code></li>
+<li><code>NetworkWatcherRG</code><br />
+    These are all resource groups that contain other Azure resources.</li>
+</ul>
+<h3>🔹 <strong>Specific Resource Types (e.g., Microsoft.Sql/servers/databases)</strong></h3>
+<ul>
+<li><strong>Meaning</strong>: These are <strong>actual Azure services or components</strong> deployed within a resource group. The format follows Azure’s resource provider namespace.</li>
+<li><strong>Examples</strong>:</li>
+<li><code>Microsoft.Sql/servers/databases</code>: A SQL database inside a SQL server.</li>
+<li><code>Microsoft.Network/networkWatchers</code>: A network monitoring tool.</li>
+<li><code>Microsoft.Network/virtualNetworks</code>: A virtual network.</li>
+<li><code>Microsoft.Compute/disks</code>: A managed disk (often used for VM storage).</li>
+<li><code>Microsoft.Network/networkSecurityGroups</code>: A security group controlling inbound/outbound traffic.</li>
+</ul>
+<p><img alt="" src="https://netjoints.github.io/_posts/azure-resource-group-vs-specific-azure-resource-type/Azure-Resource-Group-to-Individual-Resource-Mapping.png" /></p>
+<h3>🔐 <strong>1. Resource Group (e.g., <code>sql_demo_rg</code>, <code>Win-Servers</code>)</strong></h3>
+<ul>
+<li><strong>Role in Architecture</strong>: Logical containers for organizing resources by lifecycle, environment (dev/test/prod), or application.</li>
+<li><strong>Access Control</strong>: You can assign <strong>RBAC (Role-Based Access Control)</strong> at the resource group level. This means users can be granted access to all resources within the group without needing individual permissions for each resource.</li>
+</ul>
+<h3>🗄️ <strong>2. Microsoft.Sql/servers/databases</strong></h3>
+<ul>
+<li><strong>Role</strong>: Represents SQL databases hosted on Azure SQL servers.</li>
+<li><strong>Access Control</strong>:</li>
+<li>You can assign roles like <strong>SQL DB Contributor</strong> or <strong>Reader</strong>.</li>
+<li>Fine-grained access can be managed using <strong>SQL authentication</strong> or <strong>Azure AD authentication</strong>.</li>
+</ul>
+<h3><strong>3. Microsoft.Network/networkWatchers</strong></h3>
+<ul>
+<li><strong>Role</strong>: Tools for monitoring and diagnosing network issues.</li>
+<li><strong>Access Control</strong>:</li>
+<li>Typically accessed by network admins.</li>
+<li>Roles like <strong>Network Contributor</strong> or <strong>Reader</strong> apply.</li>
+</ul>
+<hr />
+<h3>🧠 <strong>4. Microsoft.Compute/disks</strong></h3>
+<ul>
+<li><strong>Role</strong>: Managed disks used by virtual machines.</li>
+<li><strong>Access Control</strong>:</li>
+<li>Roles like <strong>Virtual Machine Contributor</strong> or <strong>Disk Contributor</strong>.</li>
+<li>Important for backup, restore, and performance tuning.</li>
+</ul>
+<hr />
+<h3>🔌 <strong>5. Microsoft.Network/networkInterfaces</strong></h3>
+<ul>
+<li><strong>Role</strong>: Network adapters for VMs.</li>
+<li><strong>Access Control</strong>:</li>
+<li>Managed under <strong>Network Contributor</strong> role.</li>
+<li>Critical for configuring IPs, DNS, and connectivity.</li>
+</ul>
+<hr />
+<h3>🔒 <strong>6. Microsoft.Network/networkSecurityGroups</strong></h3>
+<ul>
+<li><strong>Role</strong>: Firewall-like rules for controlling traffic to/from resources.</li>
+<li><strong>Access Control</strong>:</li>
+<li>Managed by <strong>Network Security Group Contributor</strong>.</li>
+<li>Essential for enforcing security policies.</li>
+</ul>
+<hr />
+<h3>🕸️ <strong>7. Microsoft.Network/virtualNetworks</strong></h3>
+<ul>
+<li><strong>Role</strong>: Defines the private network space for Azure resources.</li>
+<li><strong>Access Control</strong>:</li>
+<li>Managed by <strong>Network Contributor</strong>.</li>
+<li>Used for subnetting, peering, and isolation.</li>
+</ul>
+<h3>How a PAM Uses This:</h3>
+<p>A PAM product maps these resource types to <strong>fine-grained access policies</strong>. Instead of giving broad access, it allows <strong>just-in-time (JIT)</strong> and <strong>least privilege</strong> access to specific resource types, improving security and compliance.</p>
+<h3>Summary:</h3>
+<ul>
+<li><strong>Resource Group</strong> = container for resources.</li>
+<li><em>Microsoft. types</em>* = actual deployed services/components inside those containers.</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

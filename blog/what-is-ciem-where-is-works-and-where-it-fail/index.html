@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What is CIEM? Cloud infrastructure entitlement management (CIEM) tools manage identities and privileges in cloud environments. CIEM tools scans cloud access control policies, rules and configurations. CIEM then present a report listing Which entitlement exist What each human or non-human (machine/se">
+  <title>Do you really need a CIEM tool? I don't think so. · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/what-is-ciem-where-is-works-and-where-it-fail/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Do you really need a CIEM tool? I don't think so.">
+  <meta property="og:description" content="What is CIEM? Cloud infrastructure entitlement management (CIEM) tools manage identities and privileges in cloud environments. CIEM tools scans cloud access control policies, rules and configurations. CIEM then present a report listing Which entitlement exist What each human or non-human (machine/se">
+  <meta property="og:url" content="https://netjoints.com/blog/what-is-ciem-where-is-works-and-where-it-fail/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/what-is-ciem-where-is-works-and-where-it-fail/cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-01-09">January 9, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Do you really need a CIEM tool? I don't think so.</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/cover.png" alt="Do you really need a CIEM tool? I don't think so.">
+      
+
+      <div class="blog-content">
+        <h2>What is CIEM?</h2>
+<p>Cloud infrastructure entitlement management (CIEM) tools manage identities and privileges in cloud environments. CIEM tools scans cloud access control policies, rules and configurations. CIEM then present a report listing</p>
+<ul>
+<li>Which entitlement exist</li>
+<li>What each human or non-human (machine/service account) can do based on entitlements</li>
+<li>Which human and non-human users can access cloud resources based on entitlements</li>
+</ul>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/Screenshot-2025-01-09-at-11.45.10-AM.png" /></p>
+<h2><strong>Rise of Multicloud and Associated Complexities</strong></h2>
+<p>Legacy IAM tools provide access control to static self-hosted or on-premise infrastructure. These legacy tools don&rsquo;t work in the cloud. The cloud infrastructure, services and applications are ephemeral and dynamic. So managing entitlements and access in single cloud itself is a challenge.</p>
+<p>To further complicate the issues, lets add multi cloud in the mix. According to Gartner, 81% of organizations report working with<strong><a href="https://www.gartner.com/smarterwithgartner/why-organizations-choose-a-multicloud-strategy">two or more public cloud providers</a></strong>. Because public cloud providers don’t natively integrate, a multicloud strategy can find managing entitlements for each cloud environment broken.</p>
+<p>CIEM tools gained popularity during 2020-2022 time frame as they, at least, provided reporting capabilities to help understand access and entitlements risks, across multi cloud environment.</p>
+<h2><strong>Where CIEM Falls Short</strong></h2>
+<p><strong>CIEM reports the symptoms but Is NOT the Complete Solution</strong></p>
+<p>CIEM tools can identifying symptoms—they can generate reports on over-provisioned entitlements and flag outdated identities. However, CIEM tools cannot enforce the policy or cannot fix the problem.</p>
+<p>CIEM tools are primarily focused on monitoring access activity and identifying issues, but they still require manual intervention to remediate problems. The underlying issue—the presence of standing permissions and excessive entitlements—remains unaddressed.</p>
+<h2><strong>The Next Frontier: Ephemeral JIT CPAM</strong></h2>
+<p>To truly solve the problem at its root, organizations need to move beyond CIEM. The next step is a <strong>Just-in-Time Ephemeral Multi-Cloud Privileged Access Management (JIT CPAM)</strong> solution. By eliminating standing entitlements and providing time-bound, dynamic access, JIT CPAM fixes the root cause and delivers secure, scalable access management across cloud environments.</p>
+<h2>Britive: The leader in Ephemeral JIT CPAM Category</h2>
+<p><a href="https://www.britive.com/">Britive</a> is leading the charge in addressing these challenges by going beyond traditional CIEM solutions. Britive offer fundamental and critical features expected from a CIEM tool. Lets explore those features one by one</p>
+<h3>Extensive Reporting</h3>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/image-36-1024x991.png" /></p>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/image-37.png" /></p>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/image-38.png" /></p>
+<ul>
+<li><strong>Accounts Last Access</strong>: Provides information of last sign-in date of accounts.</li>
+<li><strong>Accounts with Delete Access:</strong> Provides information on accounts with permissions having delete privileges.</li>
+<li><strong>Application Access</strong>: Provides information on application level access permissions.</li>
+<li><strong>Failed Integrity Checks:</strong> Provides information of all profiles with failed integrity checks.</li>
+<li><strong>Group Permission Access:</strong> Provides information of groups to permissions mappings.</li>
+<li><strong>High Risk Accounts</strong>: Provides information on “High Risk” accounts.</li>
+<li><strong>High Risk Permissions:</strong> Provides information on “High Risk” permissions.</li>
+<li><strong>Inactive User Secret Access:</strong> Provides information on secrets accessed by inactive users.</li>
+<li><strong>Permission Details</strong>: Provides granular details of application permissions.</li>
+<li><strong>Permissions in Profile:</strong> Provides information on permissions contained within profiles.</li>
+<li><strong>Profile Historical Access</strong>: Provides information on profiles checked out by users in last 90 days.</li>
+<li><strong>Profile Last Access</strong>: Provides information on when a profile was used.</li>
+<li><strong>Profiles Assigned to Users:</strong> Provides information on profiles assigned to users.</li>
+<li><strong>Secret Last Access</strong>: Provides information on secret last accessed.</li>
+<li><strong>Secret Last Rotation</strong>: Provides information on secret last rotation.</li>
+<li><strong>Service Identities Details:</strong> Provides information on service identities and their expiration.</li>
+<li><strong>Tag Membership</strong>: Provides information on Tag Membership.</li>
+<li><strong>Token Details</strong>: Provides information on all API tokens and static service identity tokens.</li>
+<li><strong>User Profile Last Access:</strong> Provides information on when a profile was used by users.</li>
+<li><strong>User Secret Access</strong>: Provides information on user access to secrets.</li>
+<li><strong>User Secret Last Access:</strong> Provides information on when a secret was last used by users.</li>
+</ul>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/image-39.png" /></p>
+<p>+++</p>
+<p><img alt="" src="/blog/images/what-is-ciem-where-is-works-and-where-it-fail/image-40-edited.png" /></p>
+<p><strong>However, Britive does not stop at just showing the issues like a CIEM would. Britive tackles the root cause of privilege management issues by the enforcement of Zero Standing Privilege (ZSP) policies.</strong></p>
+<h2>Britive Advantages are far better than CIEM Tool</h2>
+<p>Britive&rsquo;s cloud-native, multi-cloud Privileged Access Management (CPAM) platform introduces an innovative approach with ephemeral, time-bound entitlements and permissions for both human and non-human identities. The platform seamlessly operates across cloud, hybrid, and on-premises environments, making it a comprehensive solution for modern access management needs.</p>
+<video controls preload="metadata" playsinline src="/blog/videos/what-is-ciem-where-is-works-and-where-it-fail/Screen-Recording-2025-01-09-at-12.33.49-PM.mp4"></video>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">britive</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

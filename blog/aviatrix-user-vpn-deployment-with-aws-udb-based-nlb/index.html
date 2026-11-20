@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The steps mentioned here are not supported yet. It should be treated as a workaround only. Introduction Aviatrix supports both TCP and UDP for User-VPN By default the Aviatrix User-VPN GW (AGW) is deployed with UDP AGW listens at UDP:1194 for incoming connection requests Aviatrix also integrates wit">
+  <title>Aviatrix User-VPN Deployment with AWS UDP Based NLB · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aviatrix User-VPN Deployment with AWS UDP Based NLB">
+  <meta property="og:description" content="The steps mentioned here are not supported yet. It should be treated as a workaround only. Introduction Aviatrix supports both TCP and UDP for User-VPN By default the Aviatrix User-VPN GW (AGW) is deployed with UDP AGW listens at UDP:1194 for incoming connection requests Aviatrix also integrates wit">
+  <meta property="og:url" content="https://netjoints.com/blog/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2019-12-16">December 16, 2019</time>
+      </div>
+
+      <h1 class="blog-title">Aviatrix User-VPN Deployment with AWS UDP Based NLB</h1>
+
+      
+
+      <div class="blog-content">
+        <blockquote>
+<p>The steps mentioned here are not supported yet. It should be treated as a workaround only.</p>
+</blockquote>
+<h2>Introduction</h2>
+<ul>
+<li>Aviatrix supports both TCP and UDP for User-VPN</li>
+<li>By default the Aviatrix User-VPN GW (AGW) is deployed with UDP</li>
+<li>AGW listens at UDP:1194 for incoming connection requests</li>
+<li>Aviatrix also integrates with cloud-native LB otions to support load balancing AGWs for both UDP and TCP protocols</li>
+<li><a href="https://docs.aviatrix.com/HowTos/gateway.html#vpn-access">Aviatrix provides workflow for cloud native TCP based NLB (Network Load Balancer)</a></li>
+<li>AGW listens at TCP:943 for incoming connection requests</li>
+<li><a href="https://docs.aviatrix.com/HowTos/DNSVPN.html">Aviatrix provides workflow for cloud native UDP based LB using the DNS</a></li>
+<li>AGW listens at UDP:1194 for incoming connection requests</li>
+</ul>
+<h3>AWS LBN Supports UDP</h3>
+<p><a href="https://aws.amazon.com/blogs/aws/new-udp-load-balancing-for-network-load-balancer/">AWS recently started supporting UDP protocol for its NLB (Network Load Balancer)</a>. Customers are looking to add support for UDP based NLB now. While this support will shortly be available in the product, there is a workaround to deploy such a topology.</p>
+<p>Note: Aviatrix User-VPN GW uses TCP:443 for incoming heath-check probes</p>
+<h2>Deployment Overview</h2>
+<ul>
+<li>Create an Aviatrix GW (AGW) with VPN Access option but without enabling cloud-native ELB integration</li>
+<li>This will create the AGW and by default it listens on UDP 1194 port</li>
+<li>Manually create AWS NLB in the AWS console with the UDP option and port 1194</li>
+<li>Manually create the target group with user-VPN AGW(s) in it</li>
+<li>Make sure to override the health-check port and use TCP 443 for it</li>
+</ul>
+<h2>Deployment Details</h2>
+<p>Following screen shots shows a working deployment</p>
+<h3>Topology</h3>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-32.png" /></p>
+<h3>Deploy Aviatrix User-VPN GW</h3>
+<p>Deploy an Aviatrix User-VPN GW with “VPN Access” checked and without enabling ELB using Aviatrix Controller.</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-16.png" /></p>
+<p>Gateway config shows following in the Aviatrix diagnostics section. Notice the port 1194 here.</p>
+<pre><code>&quot;VPN Service&quot;: {
+&quot;port&quot;: {
+&quot;1194&quot;: [
+&quot;up&quot;,
+&quot;reachable&quot;
+]
+},
+</code></pre>
+<p>Create a new user and assign this user to the Aviatrix User-VPN GW</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-17.png" /></p>
+<h4>Create NLB in AWS Console</h4>
+<p>Create a UDP based NLB using the AWS console. Once the NLB is created, you will notice following config in the AWS console. Notice the DNS name for this NLB. This is the name we will use later in the config.</p>
+<pre><code>Name: shahzad-udp-nlb
+arn:aws:elasticloadbalancing:ap-southeast-1:481151252831:loadbalancer/net/shahzad-udp-nlb/a2e01e8690702d00
+DNS name: shahzad-udp-nlb-a2e01e8690702d00.elb.ap-southeast-1.amazonaws.com
+(A Record)
+</code></pre>
+<h4>AWS Network Load Balancer</h4>
+<p>Following screen also shows the name of the NLB and the DNS name associated with it.</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-18.png" /></p>
+<h4>NLB Listner</h4>
+<p>By default the AWS UDP based NLB listen at UDP port 1194 which is the port Aviatrix GW also listen at. You can observe it in the following screen</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-19.png" /></p>
+<h4>NLB Listener Details</h4>
+<p>Now we nee to create target group that will point to the Aviatrix User-VPN GW.</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-20.png" /></p>
+<h4>Health Check Configuration for Aviatrix GW</h4>
+<p>Make sure to modify the health-check port to 443 (by default it will be configured with 1194)</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-21.png" /></p>
+<h2>Modify User-VPN Certificate File</h2>
+<p>Download the User-VPN certificate file and replace the IP address with the DNS name of the AWS NLB.</p>
+<pre><code>client  
+comp-lzo  
+nobind  
+persist-key  
+persist-tun  
+auth-nocache  
+tun-mtu 1500  
+remote shahzad-udp-nlb-a2e01e8690702d00.elb.ap-southeast-1.amazonaws.com 1194  
+proto udp  
+mssfix  
+route-method exe  
+verb 3  
+route-delay 2  
+mute 20  
+reneg-sec 0  
+cipher AES-256-CBC  
+auth SHA512  
+key-direction 1  
+explicit-exit-notify  
+dev-type tun  
+dev tun
+</code></pre>
+<h4>Connect VPN User</h4>
+<p>Now we connect using this profile. I am using OpenVPN connect client version 2.7.1.100.</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-22.png" /></p>
+<p>User will be connected and will show in the Aviatrix Controller UI as well</p>
+<p><img alt="" src="/blog/images/aviatrix-user-vpn-deployment-with-aws-udb-based-nlb/image-23.png" /></p>
+<h4>Credits</h4>
+<p>Thank you Liming Xiang and Felipe Vasconcellos for reviewing and making adjustments to this post.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

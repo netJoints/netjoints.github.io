@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Problem Statement By default GCP Compute Service Account permissions are wide open with the Editor role. Here is how you can see the problem yourself. Create a new GCP Project Notice the “Service Accounts” area and notice that there is no account there yet. Enable Compute API for PCI Service Project">
+  <title>Onboarding GCP Project in Aviatrix Controller with Restricted Access · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Onboarding GCP Project in Aviatrix Controller with Restricted Access">
+  <meta property="og:description" content="Problem Statement By default GCP Compute Service Account permissions are wide open with the Editor role. Here is how you can see the problem yourself. Create a new GCP Project Notice the “Service Accounts” area and notice that there is no account there yet. Enable Compute API for PCI Service Project">
+  <meta property="og:url" content="https://netjoints.com/blog/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-09-28">September 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Onboarding GCP Project in Aviatrix Controller with Restricted Access</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Problem Statement</h2>
+<p>By default GCP Compute Service Account permissions are wide open with the Editor role. Here is how you can see the problem yourself.</p>
+<h3><strong>Create a new GCP Project</strong></h3>
+<p>Notice the “Service Accounts” area and notice that there is no account there yet.</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-42.png" /></p>
+<h3>Enable Compute API for PCI Service Project</h3>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-43.png" /></p>
+<h3>Default GCP Service Account</h3>
+<p>A default Compute Engine GCP service account (845482233226-compute@developer.gserviceaccount.com) is created as you can see from the following diagram</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-44-1024x407.png" /></p>
+<p>More details about this default compute engine service account can be seen in the following diagram</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-45.png" /></p>
+<h3>IAM Permissions For Default Compute Account</h3>
+<p>If you go back to IAM area, notice the the default compute account is there. By default it comes with “Editor” permission. Editor is a wide open permission and should not be used in production for a service account</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-47.png" /></p>
+<h2>How to Fix this Problem?</h2>
+<p>The fix is not difficult. There is an automated way and a manual way. I will explain the manual method and have provided URL for the automated way as well.</p>
+<h3>Change the permission on GCP Default Compute Service Account</h3>
+<p>When a VM (such as Aviatrix Egress FDQN, User-VPN, Transit, Spoke GW etc.) is deployed in the GCP Project, the GCP project automatically associates a <strong>Default Service Account</strong> with it. It is the default GCP behavior and cannot be changed. <strong>Notice that this account is different than the account we created to on-board the GCP project into Aviatrix Controller</strong></p>
+<p>There are two methods to restrict the permission for the default service account</p>
+<p>1- Automated Method: Global IAM setting to disable automatic role grant for Default Service Account</p>
+<p>2- Manual Method: Change the permission for Default Service Account</p>
+<h4>1- Automated Method: Global IAM Setting to disable automatic role grant</h4>
+<p>GCP recommends production customers to disable automatic role grant to default service accounts</p>
+<p><a href="https://cloud.google.com/iam/docs/service-accounts">https://cloud.google.com/iam/docs/service-accounts</a></p>
+<p><em>“When a default service account is created, it is automatically granted the Editor role (roles/editor) on your project. This role includes a very large number of permissions. To follow the principle of least privilege, we strongly recommend that you disable the automatic role grant by <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants">adding a constraint to your organization policy</a>, or by revoking the Editor role manually.”</em></p>
+<p><a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants">https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants</a></p>
+<p>Some Google Cloud services automatically create <a href="https://cloud.google.com/iam/docs/service-accounts#default">default service accounts</a>. When a default service account is created, it is automatically granted the Editor role (<code>roles/editor</code>) on your project.</p>
+<p>To improve security, we strongly recommend that you disable the automatic role grant. Use the <code>iam.automaticIamGrantsForDefaultServiceAccounts</code> boolean constraint to disable the automatic role grant.</p>
+<h3>2- Manual Method: Change the permission for Default Service Account</h3>
+<p>In my setup I used the manual method to change the permission for default service account. I assigned the least possible access role to this new member PCI. Aviatrix at minimum would need</p>
+<ul>
+<li>Compute Admin</li>
+<li>Service Account User</li>
+<li>Organization Admin and</li>
+<li>Project IAM Admin role.</li>
+</ul>
+<blockquote>
+<p>Note: Organization Admin and Project IAM Admin roles are only needed for “Shared VPC”. Skip those roles if you are not planning to use “Shared VPC”</p>
+</blockquote>
+<p>Following screen shows the example of editing the permission for a memeber</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-59.png" /></p>
+<p>After you save, it should look like following</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-33-1024x343.png" /></p>
+<p><strong>Now select/click this “Service Account” area under “IAM &amp; Admin”</strong></p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-34-1024x338.png" /></p>
+<p>Now “Create new key” key for this service account.</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-35.png" /></p>
+<p>The type must be Json</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-36.png" /></p>
+<p>The new key is created and downloaded on your machine now</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-37.png" /></p>
+<p>This Jason key is what we will use to on-board the GCP account in the Aviatrix Controller</p>
+<p>Following is the sample of how it looks like</p>
+<pre><code>{
+  &quot;type&quot;: &quot;service_account&quot;,
+  &quot;project_id&quot;: &quot;service-project-pci&quot;,
+  &quot;private_key_id&quot;: &quot;REDACTED&quot;,
+  &quot;private_key&quot;: &quot;REDACTED&quot;,
+
+  &quot;client_email&quot;: &quot;pciserviceaccount@service-project-pci.iam.gserviceaccount.com&quot;,
+  &quot;client_id&quot;: &quot;106577340982754556535&quot;,
+  &quot;auth_uri&quot;: &quot;https://accounts.google.com/o/oauth2/auth&quot;,
+  &quot;token_uri&quot;: &quot;https://oauth2.googleapis.com/token&quot;,
+  &quot;auth_provider_x509_cert_url&quot;: &quot;https://www.googleapis.com/oauth2/v1/certs&quot;,
+  &quot;client_x509_cert_url&quot;: &quot;https://www.googleapis.com/robot/v1/metadata/x509/pciserviceaccount%40service-project-pci.iam.gserviceaccount.com&quot;
+}
+</code></pre>
+<p>Now under Aviatrix Controller –&gt; Access Account, onboard the GCP Project as shown in the following diagram. Leave the Project ID filed blank. Controller will automatically pick the name</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-39.png" /></p>
+<p>Following diagram shows that on-boarding GCP project was a success</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-41.png" /></p>
+<h2>Deploy Aviatrix Gateway For GCP Project</h2>
+<p>Now when I deploy the Aviatrix GW, it will be using the restricted permission to connect to GCP and then when the GW is deployed.</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-4-946x1024.png" /></p>
+<h3>GW Deployment Progress on GCP</h3>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-50-1024x762.png" /></p>
+<p>Controller shows the following output</p>
+<p>[12:39:07] Starting to create GW gcp-spk-gw1-pci.<br />
+[12:39:08] Connected to GCE.<br />
+[12:39:13] Project check complete.<br />
+[12:39:14] License check is complete.<br />
+[12:39:23] Updating IGW for new gateway…<br />
+[12:39:31] Launching compute instance in GCE….<br />
+[12:40:34] GCE compute instance created successfully.<br />
+[12:40:34] Updating DB.<br />
+[12:40:34] Added GW info to Database.<br />
+[12:40:36] AVX SQS Queue created.<br />
+[12:40:36] Creating Keys.<br />
+[12:41:03] Initializing GW…..<br />
+[12:41:03] Copy configuration to GW gcp-spk-gw1-pci done.<br />
+[12:41:04] Copy new software to GW gcp-spk-gw1-pci done.<br />
+[12:41:05] Copy misc new software to GW gcp-spk-gw1-pci done.<br />
+[12:41:05] Copy scripts to GW gcp-spk-gw1-pci done.<br />
+[12:41:05] Copy sdk to GW gcp-spk-gw1-pci done.<br />
+[12:41:10] Copy libraries to GW gcp-spk-gw1-pci done.<br />
+[12:41:10] Installing software ….<br />
+[12:41:11] Issuing certificates …<br />
+[12:41:27] Issue certificates done</p>
+<p>Instance creation can now show you following</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-52.png" /></p>
+<p>On the GCP VM Instance notice that Aviatrix does not assign any service account or allow access to any GCP Cloud API for additional security.</p>
+<p><img alt="" src="/blog/images/onboarding-gcp-project-in-aviatrix-controller-with-restricted-access/image-5.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

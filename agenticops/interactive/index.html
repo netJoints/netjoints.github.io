@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AgenticOps Interactive</title>
+<link rel="canonical" href="https://netjoints.com/agenticops/interactive/">
+<style>
+  :root {
+    --ink: #111827;
+    --muted: #4b5563;
+    --line: #d8dee8;
+    --panel: #f6f8fb;
+    --panel-2: #edf5fb;
+    --cisco: #00a0d2;
+    --navy: #10243f;
+    --green: #65b741;
+    --amber: #f5a524;
+    --magenta: #c14f93;
+    --red: #d64b4b;
+    --white: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    min-height: 100%;
+    color: var(--ink);
+    background: var(--white);
+    font-family: "CiscoSans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+      linear-gradient(90deg, var(--white) 0 49.9%, var(--panel) 50% 100%);
+  }
+
+  .topbar {
+    height: 96px;
+    display: grid;
+    grid-template-columns: 156px 1fr;
+    align-items: stretch;
+    border-bottom: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+  }
+
+  .logo svg {
+    width: 116px;
+    height: auto;
+    display: block;
+  }
+
+  .primary-nav {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(104px, 1fr));
+    align-items: stretch;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border: 0;
+    border-left: 1px solid transparent;
+    background: transparent;
+    color: #111827;
+    line-height: 1.35;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .nav-item[aria-current="page"] {
+    font-weight: 700;
+  }
+
+  .nav-item[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    height: 4px;
+    background: var(--cisco);
+  }
+
+  .nav-item:focus-visible {
+    outline: 3px solid rgba(0, 160, 210, 0.35);
+    outline-offset: -3px;
+  }
+
+  .subnav {
+    height: 72px;
+    display: flex;
+    align-items: stretch;
+    padding-left: 48px;
+    border-bottom: 1px solid var(--line);
+    background: #f7f9fc;
+  }
+
+  .subnav button {
+    border: 0;
+    background: transparent;
+    padding: 0 28px;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .subnav button[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 0;
+    height: 4px;
+    background: var(--cisco);
+  }
+
+  .experience {
+    flex: 1;
+    min-height: calc(100vh - 168px);
+    display: grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(520px, 1fr);
+  }
+
+  .copy-pane {
+    padding: clamp(28px, 5vw, 56px) clamp(32px, 6vw, 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .eyebrow {
+    color: var(--cisco);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(30px, 3.3vw, 48px);
+    line-height: 1.06;
+    font-weight: 500;
+  }
+
+  .summary {
+    margin: 0;
+    max-width: 680px;
+    color: #1f2937;
+    font-size: clamp(17px, 1.45vw, 21px);
+    line-height: 1.45;
+  }
+
+  .detail-list {
+    display: grid;
+    gap: 12px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .detail-list li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .detail-list li::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: var(--cisco);
+    box-shadow: 0 0 0 4px rgba(0, 160, 210, 0.12);
+  }
+
+  .visual-pane {
+    border-left: 1px solid var(--line);
+    padding: clamp(20px, 3vw, 34px) 32px;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: center;
+    align-content: center;
+    gap: 26px;
+    background:
+      radial-gradient(circle at 75% 28%, rgba(0, 160, 210, 0.12), transparent 34%),
+      var(--panel);
+  }
+
+  .scene-wrap {
+    width: min(100%, 560px);
+    aspect-ratio: 1.42;
+    justify-self: center;
+    position: relative;
+  }
+
+  .scene {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 22px 36px rgba(16, 36, 63, 0.08));
+  }
+
+  .scene text {
+    font-family: inherit;
+  }
+
+  .line {
+    fill: none;
+    stroke: #6f7d8d;
+    stroke-width: 2;
+    stroke-dasharray: 5 7;
+    opacity: 0.72;
+  }
+
+  .packet {
+    offset-path: path("M 110 252 C 190 160 282 160 362 252 C 442 344 534 344 614 252 C 654 206 688 205 728 252");
+    animation: packetFlow 4.2s linear infinite;
+  }
+
+  .packet.two {
+    animation-delay: -1.4s;
+  }
+
+  .packet.three {
+    animation-delay: -2.8s;
+  }
+
+  @keyframes packetFlow {
+    from { offset-distance: 0%; }
+    to { offset-distance: 100%; }
+  }
+
+  .orbit {
+    transform-origin: 408px 252px;
+    animation: orbit 13s linear infinite;
+  }
+
+  @keyframes orbit {
+    to { transform: rotate(360deg); }
+  }
+
+  .pulse {
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.045); opacity: 0.88; }
+  }
+
+  .state-define .sense,
+  .state-define .reason,
+  .state-define .security,
+  .state-define .govern,
+  .state-define .learn {
+    opacity: 0.78;
+  }
+
+  .state-visibility .reason,
+  .state-visibility .security,
+  .state-visibility .govern,
+  .state-visibility .learn {
+    opacity: 0.38;
+  }
+
+  .state-reason .sense,
+  .state-reason .security,
+  .state-reason .govern,
+  .state-reason .learn {
+    opacity: 0.38;
+  }
+
+  .state-security .sense,
+  .state-security .reason,
+  .state-security .govern,
+  .state-security .learn {
+    opacity: 0.38;
+  }
+
+  .state-govern .sense,
+  .state-govern .reason,
+  .state-govern .security,
+  .state-govern .learn {
+    opacity: 0.38;
+  }
+
+  .state-learn .sense,
+  .state-learn .reason,
+  .state-learn .security,
+  .state-learn .govern {
+    opacity: 0.38;
+  }
+
+  .state-define .node-ring,
+  .state-visibility .sense .node-ring,
+  .state-reason .reason .node-ring,
+  .state-security .security .node-ring,
+  .state-govern .govern .node-ring,
+  .state-learn .learn .node-ring {
+    stroke-width: 5;
+    stroke: var(--cisco);
+    animation: nodeGlow 1.8s ease-in-out infinite;
+  }
+
+  .state-security .security .node-ring {
+    stroke: var(--red);
+  }
+
+  .state-learn .learn .node-ring {
+    stroke: var(--amber);
+  }
+
+  .insight-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 2px;
+    max-width: 680px;
+  }
+
+  .insight-card {
+    min-height: 74px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .insight-card strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--navy);
+    font-size: 14px;
+  }
+
+  .insight-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  @keyframes nodeGlow {
+    0%, 100% { filter: drop-shadow(0 0 0 rgba(0, 160, 210, 0)); }
+    50% { filter: drop-shadow(0 0 12px rgba(0, 160, 210, 0.6)); }
+  }
+
+  .mode-controls {
+    width: min(100%, 640px);
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .mode-btn {
+    min-height: 52px;
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 18px;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease, border-color 180ms ease;
+  }
+
+  .mode-btn:hover,
+  .mode-btn:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--cisco);
+    outline: none;
+  }
+
+  .mode-btn[aria-pressed="true"] {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--navy);
+  }
+
+  .motion-toggle {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(16, 36, 63, 0.28);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--navy);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+
+  .motion-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .paused .packet,
+  .paused .orbit,
+  .paused .pulse {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 980px) {
+    .shell {
+      background: var(--white);
+    }
+
+    .topbar {
+      height: auto;
+      grid-template-columns: 1fr;
+    }
+
+    .logo {
+      min-height: 82px;
+      justify-content: flex-start;
+      padding-left: 24px;
+    }
+
+    .primary-nav {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .nav-item {
+      min-height: 64px;
+      border-top: 1px solid var(--line);
+    }
+
+    .subnav {
+      height: auto;
+      padding-left: 0;
+      overflow-x: auto;
+    }
+
+    .subnav button {
+      min-height: 64px;
+      white-space: nowrap;
+    }
+
+    .experience {
+      min-height: auto;
+      grid-template-columns: 1fr;
+    }
+
+    .visual-pane {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      grid-template-rows: auto auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .copy-pane {
+      padding: 34px 22px;
+    }
+
+    .visual-pane {
+      padding: 24px 16px 34px;
+    }
+
+    .mode-controls {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .insight-cards {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="logo" href="#" aria-label="Cisco AgenticOps">
+        <svg viewBox="0 0 180 90" role="img" aria-labelledby="logoTitle">
+          <title id="logoTitle">Cisco</title>
+          <g fill="currentColor">
+            <text x="18" y="58" font-size="34" font-weight="700" letter-spacing="0">CISCO</text>
+          </g>
+        </svg>
+      </a>
+      <nav class="primary-nav" aria-label="AgenticOps sections">
+        <button class="nav-item" data-state="define" data-default-for="define" aria-current="page">What is<br />AgenticOps?</button>
+        <button class="nav-item" data-state="visibility">Operational<br />visibility</button>
+        <button class="nav-item" data-state="reason">AI-assisted<br />triage</button>
+        <button class="nav-item" data-state="security">Security<br />operations</button>
+        <button class="nav-item" data-state="govern">Governed<br />automation</button>
+        <button class="nav-item" data-state="learn">Continuous<br />learning</button>
+      </nav>
+    </header>
+
+    <nav class="subnav" aria-label="AgenticOps focus">
+      <button>From DevOps to AgenticOps</button>
+      <button aria-current="page">Programmable operations</button>
+    </nav>
+
+    <section class="experience">
+      <article class="copy-pane" aria-live="polite">
+        <div class="eyebrow">Cisco AgenticOps</div>
+        <h1 id="state-title">AgenticOps turns AI from advice into governed action</h1>
+        <p class="summary" id="state-summary">
+          AgenticOps uses AI agents that understand goals, reason through problems, coordinate tasks, and act through approved workflows while humans stay in control.
+        </p>
+        <ul class="detail-list" id="state-details">
+          <li>Moves beyond alerts and recommendations toward end-to-end operational workflows.</li>
+          <li>Combines telemetry, reasoning, orchestration, policy, and audit trails in one shared workspace.</li>
+          <li>Supports NetOps and SecOps teams with supervised autonomy instead of unchecked automation.</li>
+        </ul>
+        <div class="insight-cards" id="insightCards"></div>
+      </article>
+
+      <aside class="visual-pane" aria-label="AgenticOps interactive animation">
+        <div class="scene-wrap state-define" id="sceneWrap">
+          <button class="motion-toggle" id="motionToggle" type="button" aria-label="Pause animation" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            </svg>
+          </button>
+          <svg class="scene" viewBox="0 0 816 576" aria-labelledby="sceneTitle sceneDesc">
+            <title id="sceneTitle">AgenticOps workflow animation</title>
+            <desc id="sceneDesc">Signals flow from telemetry into AI reasoning and then into governed automation.</desc>
+            <rect x="24" y="28" width="768" height="500" rx="24" fill="#fff" stroke="#d8dee8" />
+            <path class="line" d="M110 252 C190 160 282 160 362 252 C442 344 534 344 614 252 C654 206 688 205 728 252" />
+            <path class="line" d="M110 252 C204 354 268 356 362 252 C456 148 520 146 614 252 C654 298 688 298 728 252" opacity="0.44" />
+
+            <g class="orbit" opacity="0.52">
+              <ellipse cx="408" cy="252" rx="244" ry="136" fill="none" stroke="#aeb8c5" stroke-width="2" stroke-dasharray="4 8" />
+              <circle cx="652" cy="252" r="7" fill="#c14f93" />
+            </g>
+
+            <circle class="packet" r="8" fill="#00a0d2" />
+            <circle class="packet two" r="7" fill="#65b741" />
+            <circle class="packet three" r="6" fill="#f5a524" />
+
+            <g class="sense pulse">
+              <circle class="node-ring" cx="110" cy="252" r="58" fill="#edf5fb" stroke="#10243f" stroke-width="3" />
+              <rect x="78" y="229" width="64" height="46" rx="9" fill="#fff" stroke="#10243f" stroke-width="2" />
+              <path d="M90 260h11l7-19 10 31 8-15h12" fill="none" stroke="#00a0d2" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+              <text x="110" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">Sense</text>
+              <text x="110" y="352" text-anchor="middle" font-size="13" fill="#4b5563">shared context</text>
+            </g>
+
+            <g class="reason pulse">
+              <circle class="node-ring" cx="280" cy="252" r="64" fill="#f7f2fb" stroke="#10243f" stroke-width="3" />
+              <circle cx="280" cy="252" r="30" fill="#fff" stroke="#10243f" stroke-width="2" />
+              <path d="M280 222v60M250 252h60M260 232l40 40M300 232l-40 40" stroke="#c14f93" stroke-width="3" stroke-linecap="round" />
+              <circle cx="280" cy="252" r="10" fill="#c14f93" />
+              <text x="280" y="336" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">Reason</text>
+              <text x="280" y="358" text-anchor="middle" font-size="13" fill="#4b5563">agentic triage</text>
+            </g>
+
+            <g class="security pulse">
+              <circle class="node-ring" cx="450" cy="252" r="64" fill="#fff2f2" stroke="#10243f" stroke-width="3" />
+              <path d="M420 245l30-31 30 31v45c0 15-12 25-30 33-18-8-30-18-30-33z" fill="#fff" stroke="#10243f" stroke-width="2.3" />
+              <path d="M433 270h34M439 286h22M450 236v70" stroke="#d64b4b" stroke-width="4" stroke-linecap="round" />
+              <text x="450" y="336" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">Secure</text>
+              <text x="450" y="358" text-anchor="middle" font-size="13" fill="#4b5563">validate policy</text>
+            </g>
+
+            <g class="govern pulse">
+              <circle class="node-ring" cx="620" cy="252" r="58" fill="#f3faef" stroke="#10243f" stroke-width="3" />
+              <path d="M592 247l28-30 28 30v43c0 14-12 23-28 30-16-7-28-16-28-30z" fill="#fff" stroke="#10243f" stroke-width="2.3" />
+              <path d="M606 271l11 11 25-32" fill="none" stroke="#65b741" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+              <text x="620" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">Govern</text>
+              <text x="620" y="352" text-anchor="middle" font-size="13" fill="#4b5563">approve action</text>
+            </g>
+
+            <g class="learn pulse">
+              <circle class="node-ring" cx="728" cy="252" r="48" fill="#fff8ec" stroke="#10243f" stroke-width="3" />
+              <path d="M706 260c8-25 36-25 44 0M708 278h40M716 230h24" fill="none" stroke="#f5a524" stroke-width="4" stroke-linecap="round" />
+              <circle cx="728" cy="252" r="8" fill="#f5a524" />
+              <text x="728" y="318" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">Learn</text>
+              <text x="728" y="340" text-anchor="middle" font-size="13" fill="#4b5563">retain memory</text>
+            </g>
+
+            <g aria-hidden="true">
+              <rect x="96" y="452" width="624" height="14" rx="7" fill="#e3e9f1" />
+              <rect id="progressBar" x="96" y="452" width="178" height="14" rx="7" fill="#00a0d2" />
+              <text id="sceneCaption" x="408" y="500" text-anchor="middle" font-size="18" font-weight="700" fill="#10243f">
+                AgenticOps links context, reasoning, security, governance, and learning.
+              </text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="mode-controls" role="group" aria-label="Choose animation state">
+          <button class="mode-btn" type="button" data-state="define" aria-pressed="true">Definition</button>
+          <button class="mode-btn" type="button" data-state="visibility" aria-pressed="false">Visibility</button>
+          <button class="mode-btn" type="button" data-state="reason" aria-pressed="false">Agentic reasoning</button>
+          <button class="mode-btn" type="button" data-state="security" aria-pressed="false">Security</button>
+          <button class="mode-btn" type="button" data-state="govern" aria-pressed="false">Governance</button>
+          <button class="mode-btn" type="button" data-state="learn" aria-pressed="false">Learning</button>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script>
+    const states = {
+      define: {
+        className: "state-define",
+        title: "AgenticOps turns AI from advice into governed action",
+        summary: "AgenticOps uses AI agents that understand goals, reason through problems, coordinate tasks, and act through approved workflows while humans stay in control.",
+        details: [
+          "Moves beyond alerts and recommendations toward end-to-end operational workflows.",
+          "Combines telemetry, reasoning, orchestration, policy, and audit trails in one shared workspace.",
+          "Supports NetOps and SecOps teams with supervised autonomy instead of unchecked automation."
+        ],
+        cards: [
+          ["Sense", "Collect shared context across domains."],
+          ["Reason", "Break problems into explainable steps."],
+          ["Act", "Execute only through governed workflows."]
+        ],
+        caption: "AgenticOps links context, reasoning, security, governance, and learning.",
+        progress: 104
+      },
+      visibility: {
+        className: "state-visibility",
+        title: "Programmable operations for trusted AI action",
+        summary: "AgenticOps starts with observable, API-driven infrastructure that gives AI systems the context and control they need to help operations teams move from signals to governed action.",
+        details: [
+          "Correlate network, security, application, and user-experience telemetry into one operational view.",
+          "Normalize state from Catalyst Center, IOS XE programmability, Meraki APIs, and operational tools.",
+          "Turn fragmented alerts into a trusted context layer for AI-assisted workflows."
+        ],
+        cards: [
+          ["One view", "Network, security, app, and experience signals."],
+          ["Context", "Topology, policy, device state, and change history."],
+          ["Workspace", "A shared place for humans and agents."]
+        ],
+        caption: "Visibility gives agents trusted context.",
+        progress: 208
+      },
+      reason: {
+        className: "state-reason",
+        title: "Agentic reasoning that keeps operators in control",
+        summary: "Domain-aware AI helps teams reason across topology, symptoms, policy, and recent changes, then explains why a recommendation is the next best step.",
+        details: [
+          "Compare telemetry against topology, configuration intent, and recent operational events.",
+          "Summarize evidence so operators can review the recommendation instead of chasing every signal manually.",
+          "Prepare workflow options while preserving human judgment for production-impacting decisions."
+        ],
+        cards: [
+          ["Plan", "Agents sequence work instead of answering once."],
+          ["Coordinate", "Specialized agents share tasks and results."],
+          ["Explain", "Reasoning traces make decisions reviewable."]
+        ],
+        caption: "Reasoning connects symptoms to likely causes.",
+        progress: 312
+      },
+      security: {
+        className: "state-security",
+        title: "Security agents bring policy, validation, and memory into the workflow",
+        summary: "The security angle is natural-language management with guardrails: agents can investigate, explain, validate, and prepare policy actions for review before changes go live.",
+        details: [
+          "Translate security intent into ready-to-review policy while preserving approval boundaries.",
+          "Simulate and validate changes against risk, traffic patterns, and compliance needs.",
+          "Detect broad access, shadow rules, drift, and risky policy before they become exposure."
+        ],
+        cards: [
+          ["Policy agent", "Turns intent into reviewable firewall policy."],
+          ["Zero trust", "Finds overly broad access across users and apps."],
+          ["Memory", "Preserves why rules exist as teams change."]
+        ],
+        caption: "Security agents validate intent before policy changes go live.",
+        progress: 416
+      },
+      govern: {
+        className: "state-govern",
+        title: "Governed automation for production networks",
+        summary: "The goal is not AI acting alone. The goal is supervised autonomy: approved changes executed through programmable interfaces with audit, policy, and rollback in the workflow.",
+        details: [
+          "Route production-impacting actions through approval, validation, and change-control boundaries.",
+          "Use APIs and infrastructure-as-code practices to make execution repeatable and auditable.",
+          "Capture outcomes so future workflows become faster without weakening operational trust."
+        ],
+        cards: [
+          ["Validate", "Check blast radius before execution."],
+          ["Approve", "Operators can accept, customize, or override."],
+          ["Audit", "Evidence and actions stay traceable."]
+        ],
+        caption: "Governance turns recommendations into trusted action.",
+        progress: 520
+      },
+      learn: {
+        className: "state-learn",
+        title: "Continuous learning turns every workflow into reusable operational knowledge",
+        summary: "AgenticOps improves when outcomes are captured: what was observed, why a recommendation was made, what was approved, and how the environment changed.",
+        details: [
+          "Persistent memory preserves context so teams do not rely only on tribal knowledge.",
+          "Learning agents record outcomes and update future workflows with reasoning traces.",
+          "Operations move from reactive firefighting toward proactive prevention over time."
+        ],
+        cards: [
+          ["Memory", "Keep the why behind rules and fixes."],
+          ["Drift", "Detect changes away from desired state."],
+          ["Prevention", "Use past outcomes to reduce repeat issues."]
+        ],
+        caption: "Learning keeps operational knowledge alive after the incident ends.",
+        progress: 624
+      }
+    };
+
+    const sceneWrap = document.getElementById("sceneWrap");
+    const title = document.getElementById("state-title");
+    const summary = document.getElementById("state-summary");
+    const details = document.getElementById("state-details");
+    const insightCards = document.getElementById("insightCards");
+    const caption = document.getElementById("sceneCaption");
+    const progress = document.getElementById("progressBar");
+    const buttons = [...document.querySelectorAll(".mode-btn")];
+    const navButtons = [...document.querySelectorAll(".nav-item[data-state]")];
+    const motionToggle = document.getElementById("motionToggle");
+
+    function setState(key, activeNavButton = null) {
+      const state = states[key];
+      sceneWrap.classList.remove("state-define", "state-visibility", "state-reason", "state-security", "state-govern", "state-learn");
+      sceneWrap.classList.add(state.className);
+      title.textContent = state.title;
+      summary.textContent = state.summary;
+      details.replaceChildren(...state.details.map((text) => {
+        const item = document.createElement("li");
+        item.textContent = text;
+        return item;
+      }));
+      insightCards.replaceChildren(...state.cards.map(([label, text]) => {
+        const card = document.createElement("div");
+        card.className = "insight-card";
+        const strong = document.createElement("strong");
+        strong.textContent = label;
+        const span = document.createElement("span");
+        span.textContent = text;
+        card.append(strong, span);
+        return card;
+      }));
+      caption.textContent = state.caption;
+      progress.setAttribute("width", state.progress);
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.state === key));
+      });
+      const currentNav = activeNavButton || navButtons.find((button) => button.dataset.defaultFor === key) || navButtons.find((button) => button.dataset.state === key);
+      navButtons.forEach((button) => {
+        if (button === currentNav) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setState(button.dataset.state));
+    });
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => setState(button.dataset.state, button));
+    });
+
+    motionToggle.addEventListener("click", () => {
+      const paused = sceneWrap.classList.toggle("paused");
+      motionToggle.setAttribute("aria-pressed", String(paused));
+      motionToggle.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
+      motionToggle.innerHTML = paused
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" /></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>';
+    });
+
+    setState("define");
+  </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Azure Cloud native Azure Route Server is designed to simplify dynamic routing between network virtual appliances (NVAs) and ExpressRoute or VPN Gateways. However, it has several limitations: Azure Route Server Limitations Reference: https://learn.microsoft.com/en-us/azure/route-server/route-server-f">
+  <title>Azure Networking Limitations and Constraints · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/azure-networking-limitations-and-constraints/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Azure Networking Limitations and Constraints">
+  <meta property="og:description" content="Azure Cloud native Azure Route Server is designed to simplify dynamic routing between network virtual appliances (NVAs) and ExpressRoute or VPN Gateways. However, it has several limitations: Azure Route Server Limitations Reference: https://learn.microsoft.com/en-us/azure/route-server/route-server-f">
+  <meta property="og:url" content="https://netjoints.com/blog/azure-networking-limitations-and-constraints/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/azure-networking-limitations-and-constraints/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-11-27">November 27, 2024</time>
+      </div>
+
+      <h1 class="blog-title">Azure Networking Limitations and Constraints</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/azure-networking-limitations-and-constraints/cover.jpg" alt="Azure Networking Limitations and Constraints">
+      
+
+      <div class="blog-content">
+        <p>Azure Cloud native Azure Route Server is designed to simplify dynamic routing between network virtual appliances (NVAs) and ExpressRoute or VPN Gateways. However, it has several limitations:</p>
+<h2>Azure Route Server Limitations</h2>
+<p>Reference: <a href="https://learn.microsoft.com/en-us/azure/route-server/route-server-faq#limitations">https://learn.microsoft.com/en-us/azure/route-server/route-server-faq#limitations</a></p>
+<p>Azure Route Server, while providing significant capabilities for route management within a virtual network, exhibits several limitations that can impact network efficiency and functionality. Contrastingly, the Aviatrix solution offers enhanced features and capabilities that eliminate these limitations and deliver additional benefits.</p>
+<h3>Control Plane Only:</h3>
+<p>Azure Route Server does not forward data traffic. It operates strictly in the control plane, dealing solely with route exchanges.</p>
+<p>Aviatrix has both control and data-plane.</p>
+<h3></h3>
+<h3>BGP Protocol Support:</h3>
+<p>Route Server supports only the Border Gateway Protocol (BGP). Your NVA must support multi-hop external BGP as the Route Server is deployed in a dedicated subnet within your virtual network.</p>
+<p>ARS and NVA cannot be on same subnet but Aviatrix does not have such a restriction. We have multiple interfaces and we can connect to multiple NVAs.  .</p>
+<h3>ASN Handling:</h3>
+<p>When ExpressRoute advertises routes to on-premises, it strips the private BGP ASN information. The on-premises network receives the prefix with AS 12076.</p>
+<p>Aviatrix is not stripping any BGP ASN. Aviatrix advertise the whole path.</p>
+<h3>Route Limit from BGP Peer:</h3>
+<p>Route Server can accept a maximum of 1,000 routes from a single BGP peer. This limit considers the current routes learned plus new routes in a BGP update. Exceeding this number results in the session being terminated.</p>
+<p>Aviatrix has not route limitation.</p>
+<h3>16-bit ASN Support:</h3>
+<p>Only 16-bit (2 bytes) ASNs are supported by Azure Route Server.</p>
+<p>Aviatrix support both 4 byte and 2 byte.</p>
+<h3>No Data Traffic Routing:</h3>
+<p>Azure Route Server does not route any data traffic directly between NVAs and VMs.</p>
+<p>Aviatrix is also in data plane and can provide both control and data plane functionality.</p>
+<h3>Condition for  Route Advertisement and High Availability</h3>
+<p>To ensure routes are successfully advertised to the Route Server and to configure high availability, each Network Virtual Appliance (NVA) instance must be peered with both instances of the Route Server.</p>
+<p>Aviatrix don’t have such limitations. Our design options are flexible.</p>
+<h3></h3>
+<h3>Additional Route Server Limitations</h3>
+<p>Azure Route Server has the following limits (per deployment).</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Azure ARS Limit</th>
+<th>Aviatrix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control Plane Only</td>
+<td>Does not forward data traffic; operates strictly in the control plane.</td>
+<td>Has both control and data plane.</td>
+</tr>
+<tr>
+<td>BGP Protocol Support</td>
+<td>Supports only the Border Gateway Protocol (BGP). NVA must support multi-hop external BGP as it is deployed in a dedicated subnet.</td>
+<td>Supports both BGP and static routes. No subnet restrictions; has multiple interfaces and connections to NVAs.</td>
+</tr>
+<tr>
+<td>ASN Handling</td>
+<td>Private BGP ASN information is stripped when ExpressRoute advertises routes to on-premises. The on-premises network receives the prefix with AS 12076.</td>
+<td>Does not strip BGP ASN information; advertises the whole path.</td>
+</tr>
+<tr>
+<td>No Data Traffic Routing</td>
+<td>Does not route any data traffic directly between NVAs and VMs.</td>
+<td>Provides both control and data plane functionality.</td>
+</tr>
+<tr>
+<td>16/32 Bit ASN Support</td>
+<td>Only supports 16-bit (2 bytes) ASNs.</td>
+<td>Supports both 16-bit (2 bytes) and 32-bit (4 bytes) ASNs.</td>
+</tr>
+<tr>
+<td>Condition for Route Advertisement &amp; HA</td>
+<td>Requires each NVA instance to be peered with both instances of the Route Server for route advertisement and high availability.</td>
+<td>No such limitations; offers flexible design options.</td>
+</tr>
+<tr>
+<td>Number of BGP peers</td>
+<td>8</td>
+<td>No limitation</td>
+</tr>
+<tr>
+<td>Number of routes each BGP peer can advertise to Azure Route Server. Exceeding this number results in the session being terminated.</td>
+<td>1,000</td>
+<td>No limitation</td>
+</tr>
+<tr>
+<td>Number of VMs in the virtual network (including peered virtual networks) that Azure Route Server can support</td>
+<td>4,000</td>
+<td>No limitation</td>
+</tr>
+<tr>
+<td>Number of virtual networks that Azure Route Server can support</td>
+<td>500</td>
+<td>No limitation</td>
+</tr>
+<tr>
+<td>Number of total on-premises and Azure Virtual Network prefixes that Azure Route Server can support</td>
+<td>10,000</td>
+<td>No limitation</td>
+</tr>
+</tbody>
+</table>
+<p>In summary, while Azure Route Server provides essential functionalities for route management, its limitations in control plane-only operations, strict BGP protocol support, ASN handling, route limits, and absence of data traffic routing present significant challenges. Aviatrix offers a superior solution that not only addresses these limitations but also provides enhanced routing capabilities, improved network flexibility, and superior performance.</p>
+<h2>Azure ExpressRoute Limitations</h2>
+<p>Reference: <a href="https://learn.microsoft.com/en-us/azure/expressroute/expressroute-faqs">https://learn.microsoft.com/en-us/azure/expressroute/expressroute-faqs</a></p>
+<p>Azure ExpressRoute, a crucial service for extending on-premises networks into Microsoft’s cloud via private circuits, comes with specific limitations that might impact network management and operational efficiency. Aviatrix offers advanced functionalities that mitigate these limitations while delivering additional benefits.</p>
+<h3>IPv4 Prefix Limit:</h3>
+<p>There is a maximum of 1,000 IPv4 prefixes advertised on a single ExpressRoute connection.</p>
+<p>Aviatrix has no limit. Aviatrix overlay has no such limits.</p>
+<h3>Prefix Limit Exceeding Consequences:</h3>
+<p>Exceeding the maximum prefix limit on an ExpressRoute connection will disconnect the circuit and gateway connection, including peered VNets using gateway transit. Connectivity is re-established once the prefix limit is corrected.</p>
+<p>Aviatrix does not run into such issues.</p>
+<h3>Route Capacity:</h3>
+<p>ExpressRoute supports up to 11,000 routes across virtual networks.</p>
+<p>Aviatrix has no max limits.</p>
+<h3>Issue with On Premise Route filtering</h3>
+<p>In the context of Azure ExpressRoute, filtering or including routes must be performed exclusively on the on-premises edge router. While user-defined routes (UDRs) can be implemented within the Virtual Network (VNet) to influence specific routing behaviors, it is crucial to note that these routes are static. They do not participate in the Border Gateway Protocol (BGP) advertisement and, therefore, do not dynamically adjust based on BGP announcements. This limitation necessitates careful consideration and strategic planning on the part of network administrators to ensure robust and resilient routing configurations.</p>
+<p>Aviatrix has route filtering option to stop unwanted route. In Azure, you have to program UDR in each and every VNET to stop the propagation. At scale it is not possible to do in Azure.</p>
+<h3>Traffic Collection and Handling ExpressRoute Traffic Collector Sampling Rate and Capacity</h3>
+<p>Azure ExpressRoute Traffic Collector operates with a sampling rate of 1:4096, signifying that merely one out of every 4,096 packets is captured. Additionally, it is designed to handle a maximum of 300,000 flows per minute. Once this limit is reached, any additional flows are dropped. This constraint can significantly affect network performance analysis and troubleshooting, particularly in high-traffic environments.<br />
+The limitations in Azure ExpressRoute’s Traffic Collector—both in terms of sampling rate and flow capacity—pose significant challenges for network professionals tasked with maintaining high-performance and resilient networks.</p>
+<p>Aviatrix sampling rate is 1:1.</p>
+<table>
+<thead>
+<tr>
+<th>Limitation</th>
+<th>Azure ExpressRoute Details</th>
+<th>Aviatrix Advanatage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPv4 Prefix Limit</td>
+<td>Maximum of 1,000 IPv4 prefixes advertised on a single connection.</td>
+<td>No prefix limit. Aviatrix overlay has no such limitations.</td>
+</tr>
+<tr>
+<td>Prefix Limit Exceeding Consequences</td>
+<td>Exceeding the prefix limit disconnects the circuit and gateway connection, including peered VNets using gateway transit. Connectivity is restored once the prefix limit is corrected.</td>
+<td>No such issues with Aviatrix.</td>
+</tr>
+<tr>
+<td>Route Capacity</td>
+<td>Supports up to 11,000 routes across virtual networks.</td>
+<td>No maximum route limit.</td>
+</tr>
+<tr>
+<td>On-Premise Route Filtering</td>
+<td>Filtering or including routes must be performed on the on-premises edge router. User-defined routes in Azure VNets are static and do not adjust dynamically with BGP announcements, requiring careful planning require programming UDRs in each VNet.</td>
+<td>Provides route filtering option to stop unwanted routes. Dynamic and does not</td>
+</tr>
+<tr>
+<td>Traffic Collection and Handling</td>
+<td>Traffic Collector samples at a rate of 1:4096 and handles a maximum of 300,000 flows per minute. Additional flows beyond this limit are dropped.</td>
+<td>Sampling rate is 1:1, offering more comprehensive traffic analysis.</td>
+</tr>
+</tbody>
+</table>
+<h1>Azure vWAN Limitations</h1>
+<p>Azure Virtual WAN is a powerful networking solution that addresses the challenges of managing and connecting on-premises and cloud environments. It offers a range of use cases to simplify network management and enhance connectivity:</p>
+<ol>
+<li><strong>Branch Connectivity</strong>: Streamline connectivity for branch locations by automating setup and configuration.</li>
+<li><strong>Remote User VPN Connectivity</strong>: Securely connect remote users to Azure resources with point-to-site VPN connectivity.</li>
+<li><strong>Private Connectivity</strong>: Establish high-performance and secure connections with Azure using ExpressRoute.</li>
+<li><strong>Intra-Cloud Connectivity</strong>: Enable seamless communication between different Azure resources with transitive connectivity for virtual networks.</li>
+<li><strong>Routing and Security</strong>: Leverage Virtual WAN’s routing capabilities, Azure Firewall or any of the major firewall vendors (Palo Alto, Fortinet and Checkpoint) to enhance network security and control.</li>
+</ol>
+<h2>Limitations of Azure vWAN:</h2>
+<h3>Network Address Translation (NAT) Support:</h3>
+<p><strong>Limitation:</strong> Azure vWAN does not offer native Network Address Translation (NAT) capabilities. This restricts its ability to modify network address information in packet headers, which is essential for certain network configurations and security policies.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix provides robust NAT functionality, allowing fine-grained control over address translation for both inbound and outbound traffic, thereby enhancing security and network management flexibility.</p>
+<h3>Multi-Cloud Connectivity:</h3>
+<p><strong>Limitation:</strong> Azure vWAN is primarily designed to operate within the Azure ecosystem. It lacks inherent capabilities to manage and connect resources across different cloud providers.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix excels in multi-cloud networking, enabling seamless integration and consistent network policies across various public cloud platforms. This functionality is critical for enterprises adopting a multi-cloud strategy to avoid vendor lock-in and leverage the best services from different providers.</p>
+<h3>Operational Visibility and Troubleshooting:</h3>
+<p><strong>Limitation:</strong> While Azure vWAN offers basic monitoring and management tools, its operational visibility and troubleshooting capabilities are limited compared to more advanced solutions.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix provides comprehensive operational visibility, with robust monitoring, analytics, and troubleshooting tools. These features facilitate proactive network management and rapid resolution of network issues, ensuring high availability and performance.</p>
+<h3>Centralized Policy Management:</h3>
+<p><strong>Limitation:</strong> Azure vWAN’s policy management is primarily scoped within the Azure environment. It may not provide the level of centralized and granular control needed for complex, hybrid, or multi-cloud architectures.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix delivers centralized policy management across multi-cloud environments, ensuring consistent security and network policies while simplifying administrative overhead.</p>
+<h3>Azure vWAN Firewall Sharing Limitations:</h3>
+<p><strong>Limitation:</strong> Inability to Share Firewalls Across Virtual Hubs.<br />
+Azure vWAN does not permit the sharing of firewalls between protected hubs. Each Azure Virtual Hub is required to have its own dedicated firewall instance. Attempts to deploy custom routes that direct traffic to the firewall of another secured hub will result in unsuccessful deployment. Consequently, this necessitates that all hubs be individually secured with their own firewalls, thereby increasing complexity and administrative overhead.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix FireNet allow for a centralized and streamlined approach to firewall deployment and management. Unlike Azure vWAN, Aviatrix solutions enable the sharing of firewall resources across multiple regions within same cloud or across multi cloud. This capability not only reduces the need for redundant firewall instances but also simplifies network architecture, enhances resource efficiency, and reduces overall management complexity. Aviatrix provides a highly scalable and flexible network security framework that is ideally suited for modern, dynamic multi-cloud environments</p>
+<h3>Advanced Security Features:</h3>
+<p><strong>Limitation:</strong> Azure vWAN’s security capabilities, although integrated with Azure Firewall, may not be sufficient for complex security requirements in multi-cloud or hybrid environments.<br />
+<strong>Aviatrix Advantage:</strong> Aviatrix offers advanced security features, including end-to-end encryption, secure segmentation, and advanced threat detection, which are essential for maintaining robust security postures across diverse cloud infrastructures.</p>
+<table>
+<thead>
+<tr>
+<th>Limitation</th>
+<th>Azure vWAN Details</th>
+<th>Aviatrix Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Address Translation (NAT) Support</td>
+<td>Does not offer native NAT capabilities, limiting modifications to network address information in packet headers, crucial for certain configurations and security policies.</td>
+<td>Aviatrix provides robust NAT functionality, allowing fine-grained control over address translation for both inbound and outbound traffic, thereby enhancing security and network management flexibility.</td>
+</tr>
+<tr>
+<td>Multi-Cloud Connectivity</td>
+<td>Primarily designed to operate within the Azure ecosystem, lacking capabilities to manage and connect resources across different cloud providers.</td>
+<td>Aviatrix excels in multi-cloud networking, enabling seamless integration and consistent network policies across various public cloud platforms. This is critical for enterprises adopting a multi-cloud strategy to avoid vendor lock-in and leverage the best services from different providers.</td>
+</tr>
+<tr>
+<td>Operational Visibility and Troubleshooting</td>
+<td>Offers basic monitoring and management tools, but limited operational visibility and troubleshooting capabilities.</td>
+<td>Aviatrix provides comprehensive operational visibility, with robust monitoring, analytics, and troubleshooting tools. These features facilitate proactive network management and rapid issue resolution, ensuring high availability and performance.</td>
+</tr>
+<tr>
+<td>Centralized Policy Management</td>
+<td>Policy management is primarily scoped within the Azure environment, potentially lacking the level of centralized and granular control needed for complex, hybrid, or multi-cloud architectures.</td>
+<td>Aviatrix delivers centralized policy management across multi-cloud environments, ensuring consistent security and network policies while simplifying administrative overhead.</td>
+</tr>
+<tr>
+<td>Firewall Sharing Limitations</td>
+<td>Azure vWAN does not permit sharing of firewalls between protected hubs, requiring each Virtual Hub to have its own dedicated firewall instance. This increases complexity and administrative overhead.</td>
+<td>Aviatrix FireNet enables centralized and streamlined firewall deployment and management, permitting the sharing of firewall resources across multiple regions within the same cloud or across multi-cloud environments. This reduces the need for redundant firewall instances, simplifies network architecture, and enhances resource efficiency.</td>
+</tr>
+<tr>
+<td>Advanced Security Features</td>
+<td>Integrated with Azure Firewall, but may not suffice for complex security requirements in multi-cloud or hybrid environments.</td>
+<td>Aviatrix offers advanced security features, including end-to-end encryption, secure segmentation, and advanced threat detection. These are essential for maintaining a robust security posture across diverse cloud infrastructures.</td>
+</tr>
+</tbody>
+</table>
+<h3>Conclusion:</h3>
+<p>Azure Virtual WAN (vWAN) provides competent networking capabilities within the Azure ecosystem, facilitating global connectivity, security integration, and site-to-site VPNs. However, limitations such as lack of NAT support, absence of multi-cloud connectivity, restricted operational visibility, and centralized policy management underscore the need for more advanced solutions in complex network environments.</p>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">azure</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

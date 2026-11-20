@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Some customers start their Cloud implementation or adoption with a single CSP (Cloud Service Providers such as GCP, Azure, AWS, etc.). Soon they realize that the world is already Multi-Cloud, and there is no going back.  The majority of the enterprises know for a fact that they must adopt a multi-cl">
+  <title>DIY Automation Increases Complexity and Cost of Running Cloud Network · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/diy-automation-increases-complexity-and-cost-of-running-cloud-network/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DIY Automation Increases Complexity and Cost of Running Cloud Network">
+  <meta property="og:description" content="Some customers start their Cloud implementation or adoption with a single CSP (Cloud Service Providers such as GCP, Azure, AWS, etc.). Soon they realize that the world is already Multi-Cloud, and there is no going back.  The majority of the enterprises know for a fact that they must adopt a multi-cl">
+  <meta property="og:url" content="https://netjoints.com/blog/diy-automation-increases-complexity-and-cost-of-running-cloud-network/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2023-01-03">January 3, 2023</time>
+      </div>
+
+      <h1 class="blog-title">DIY Automation Increases Complexity and Cost of Running Cloud Network</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Some customers start their Cloud implementation or adoption with a single CSP (Cloud Service Providers such as GCP, Azure, AWS, etc.). Soon they realize that the world is already Multi-Cloud, and there is no going back.</p>
+<p>The majority of the enterprises know for a fact that they must adopt a multi-cloud strategy, but due to skill gaps, fear of the unknown, etc., they opt for a single CSP to begin with. They rely heavily on native CSP networking services. They also rely heavily on writing automation and scripting code that is too tied to a specific cloud provider. This reliance creates CSP vendor-lock-in problems.</p>
+<p>What is needed is an enterprise-scale, self-managed cloud networking platform that could eliminate CSP reliance with cost savings, simple architecture with world-class visibility, control, and day2 operations.</p>
+<p><a href="https://www-infoworld-com.cdn.ampproject.org/c/s/www.infoworld.com/article/3670728/complex-cloud-architecture-is-finally-causing-budgetary-pain.amp.html">This article from Infoworld.com</a> backs my arguments by explaining how a complex (or no) cloud architecture is causing budgetary pain for many enterprises.</p>
+<h2><strong>Is your focus productivity or a science project?</strong></h2>
+<p>Many cloud teams mistake turning into a software house instead of focusing on driving business. Maybe that’s what they have, a software house with an army of people doing their coding with native constructs. Their pain also seems to be just visibility. Have they seen all other advanced capabilities Aviatrix can provide with networking and security?</p>
+<p><a href="https://www.linkedin.com/in/steven-ward-bb8a634/">Steven Ward</a>, Corporate Infra leader at Siemens MAS, <a href="https://podcasts.apple.com/de/podcast/ep31-utility-industry-is-critical-national-infrastructure/id1557680186?i=1000553922679">articulated it well in this podcast</a></p>
+<p>Enterprises are NOT a “software house,” and DIY scripting at scale across different environments is like a “square peg in a round hole.”</p>
+<h2><strong>Learn from Leading Cloud Enterprises</strong></h2>
+<p>A large retailed reason to go with Aviatrix is as follows (BTW, they were also DIY in the beginning)</p>
+<ul>
+<li>Speed of deployment</li>
+<li>Developing advanced capabilities using DIY will likely take years, even if initial capabilities will be rolled out in months.</li>
+<li>Support and Day2 Operations</li>
+<li>A company like Aviatrix maintains a dedicated team to support the software. An enterprise cannot afford this model.</li>
+<li>Upgrades and Modernization</li>
+<li>Aviatrix can maintain a continuous development pace for networking and security. Aviatrix can provide development of new features as CSP evolve. Enterprise static script/code will quickly become stale.</li>
+<li>Open Architecture</li>
+<li>Aviatrix comes with full API support. Single API/Terraform for building all cloud networking infrastructure (Azure/GCP/AWS/etc.)</li>
+</ul>
+<h2><strong>Aviatrix Gateways Brings Simplicity, Openness, Visibility, and Automation</strong></h2>
+<p>Aviatrix virtual Gateway EC2/VMs are similar to an underlying fleet of EC2 instances or VMs used in VGW, IGW, NAT GW, etc. Aviatrix is built natively for the cloud, understands the native constructs, and is all managed by the controller with no manual intervention.</p>
+<p>Instead of hiding these gateways behind some SaaS or NaaS black walls, Aviatrix decided to expose these Gateways to enterprises. This allows enterprises to chart their journey without any strings attached. Aviatrix puts the power in the hands of enterprise IT instead of running on a shared SaaS or NaaS infrastructure that is potentially shared across thousands of customers.</p>
+<h2><strong>Conclusion</strong></h2>
+<p>There are still enterprises that would try to adopt DIY networking infra. DIY quickly turns into a science project. Do not make the costly mistake of DIY. Give Aviatrix a try in a sandbox; if it does not solve the requirement, pivot to DIY later, not the other way around.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

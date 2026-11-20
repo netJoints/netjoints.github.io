@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This content presented in this blog is originally published here –> https://docs.britive.com/docs/prerequisites-aws-onboarding. For the latest information visit vendors documentation page. This guide is a summary of the steps outlined. Step1: Configuring Britive Identity Provider in AWS https://docs">
+  <title>CPAM AWS Integration and Onbaording Guide · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/cpam-aws-integration-and-onbaording-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CPAM AWS Integration and Onbaording Guide">
+  <meta property="og:description" content="This content presented in this blog is originally published here –> https://docs.britive.com/docs/prerequisites-aws-onboarding. For the latest information visit vendors documentation page. This guide is a summary of the steps outlined. Step1: Configuring Britive Identity Provider in AWS https://docs">
+  <meta property="og:url" content="https://netjoints.com/blog/cpam-aws-integration-and-onbaording-guide/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/cpam-aws-integration-and-onbaording-guide/cover.gif">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-12-16">December 16, 2025</time>
+      </div>
+
+      <h1 class="blog-title">CPAM AWS Integration and Onbaording Guide</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/cpam-aws-integration-and-onbaording-guide/cover.gif" alt="CPAM AWS Integration and Onbaording Guide">
+      
+
+      <div class="blog-content">
+        <p>This content presented in this blog is originally published here –&gt; <a href="https://docs.britive.com/docs/prerequisites-aws-onboarding">https://docs.britive.com/docs/prerequisites-aws-onboarding</a>. For the latest information visit vendors documentation page. This guide is a summary of the steps outlined.</p>
+<h2>Step1: Configuring Britive Identity Provider in AWS</h2>
+<p><a href="https://docs.britive.com/docs/configuring-identity-provider">https://docs.britive.com/docs/configuring-identity-provider</a></p>
+<p>Download SAML metadata from Britive</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-9.png" /></p>
+<ul>
+<li>Add Britive as Identity Provider in AWS</li>
+</ul>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-10.png" /></p>
+<h2>Step2: Configured AWS IAM Roles in AWS</h2>
+<p>Britive integration only needs AWS IAM <strong>“ReadOnly Access”</strong> and “<strong>AWSOrganization ReadOnly”</strong> least privileged permissions. Britive also needs a Permission-Policy for AWS Session Invalidation patented feature to work.</p>
+<h3>Create Session Invalidation Permission-Policy in AWS IAM</h3>
+<p><a href="https://docs.britive.com/v1/docs/configuring-for-session-invalidation">https://docs.britive.com/v1/docs/configuring-for-session-invalidation</a></p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-5.png" /></p>
+<h3>Create Britive Access Builder Feature Permission-Policy in AWS IAM</h3>
+<p><a href="https://docs.britive.com/docs/configuring-iam-roles">https://docs.britive.com/docs/configuring-iam-roles</a></p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-6.png" /></p>
+<pre><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;iam:DetachRolePolicy&quot;,
+                &quot;iam:UntagRole&quot;,
+                &quot;iam:DeleteRolePolicy&quot;,
+                &quot;iam:TagRole&quot;,
+                &quot;iam:CreateRole&quot;,
+                &quot;iam:DeleteRole&quot;,
+                &quot;iam:AttachRolePolicy&quot;,
+                &quot;iam:UpdateRole&quot;,
+                &quot;iam:PutRolePolicy&quot;
+            ],
+            &quot;Resource&quot;: &quot;arn:aws:iam::513826297540:role/britive/managed/*&quot;
+        }
+    ]
+}
+</code></pre>
+<h3>Create Britive Integration Role in AWS IAM</h3>
+<p>Add AWS out of the box (called AWS Managed) and customer inline <strong>“Permission’s Policies”</strong> to this Britive Integration Role.</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-7.png" /></p>
+<h3>Configure the Trust Relationship</h3>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-8.png" /></p>
+<h2>Step3: Configure AWS Roles and Trust Relationship for Britive IdP</h2>
+<p>Full Admin Role</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-11.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-12.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-13.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-14.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-15.png" /></p>
+<p>Similarly create one more for testing</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-16.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-17.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-18.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-19.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-20.png" /></p>
+<h2>Step4: Configure and Scan Britive Side for AWS Integration</h2>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-21.png" />
+<img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-22.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-23.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-24.png" /></p>
+<p>Now Scan the AWS App</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-25.png" /></p>
+<p>It will detect the new roles and now you can start creating the JIT profiles.</p>
+<p><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-26.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-27.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/image-28.png" /><img alt="" src="/blog/images/cpam-aws-integration-and-onbaording-guide/Digital-transformation.gif" /></p>
+<p><a href="https://storyset.com/online">Online illustrations by Storyset</a></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

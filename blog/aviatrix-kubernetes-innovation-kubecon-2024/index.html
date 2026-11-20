@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I attended Kubecon 2024 last week in Salt Lake City. It was a great show, with a lot of Platform Engineers and developers in attendance. Reflecting on my initial encounter with Containers and Kubernetes when I was part of VMware in 2017, when Containerization and Kubernetes was just beginning to gai">
+  <title>Kubernetes Security For Multi-Cluster Deployments · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aviatrix-kubernetes-innovation-kubecon-2024/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kubernetes Security For Multi-Cluster Deployments">
+  <meta property="og:description" content="I attended Kubecon 2024 last week in Salt Lake City. It was a great show, with a lot of Platform Engineers and developers in attendance. Reflecting on my initial encounter with Containers and Kubernetes when I was part of VMware in 2017, when Containerization and Kubernetes was just beginning to gai">
+  <meta property="og:url" content="https://netjoints.com/blog/aviatrix-kubernetes-innovation-kubecon-2024/">
+  <meta property="og:image" content="https://netjoints.com/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/cover.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-11-12">November 12, 2024</time>
+      </div>
+
+      <h1 class="blog-title">Kubernetes Security For Multi-Cluster Deployments</h1>
+
+      
+      <img class="blog-cover" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/cover.jpeg" alt="Kubernetes Security For Multi-Cluster Deployments">
+      
+
+      <div class="blog-content">
+        <p>I attended Kubecon 2024 last week in Salt Lake City. It was a great show, with a lot of Platform Engineers and developers in attendance.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5205-Large-edited.jpeg" /></p>
+<p>Reflecting on my initial encounter with Containers and Kubernetes when I was part of VMware in 2017, when Containerization and Kubernetes was just beginning to gain traction. The challenge of container orchestration alongside security was the main talk with my customer interaction back then.</p>
+<p>Fast forward today, November 2024, the discussions I had customers, during the session I attended, the Kubernetes orchestration complexity and security is still top of the mind for many enterprises.   </p>
+<p>The keynote I attended also highlighted an ironic yet recurring theme – you guessed it right, the security and Kubernetes complexity remain significant challenges.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5209-Large-1024x768.jpeg" /></p>
+<p>Notice “Traditional security approaches no longer work in a complex (meaning multi-cluster Kubernetes or multicloud) environment. This is exactly where I want you to focus on.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5210-Large-1024x768.jpeg" /></p>
+<p>So despite rapid adoption, security and complexity are still major concerns. I had the opportunity to engage with many customers at our booth, and it became clear that the understanding of security requirements is still lacking.</p>
+<h2>Kubernetes Burning Security Concerns</h2>
+<p>Kubernetes was originally designed for a flat topology, excelling in pod-to-pod communication within the same flat structure. Kubernetes allows efficient communication between pods in this flat network structure, reducing the overhead compared to more complex network setups.<br />
+<a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/eks-to-aks/governance">https://learn.microsoft.com/en-us/azure/architecture/aws-professional/eks-to-aks/governance</a></p>
+<p>Kubernetes clusters scaling up is directly proportional to the rise in security risks. As Kubernetes environments grow, the complexity and potential attack surfaces also increase, necessitating more robust security measures.<br />
+<a href="https://www.redhat.com/en/blog/most-common-kubernetes-security-issues-and-concerns-to-address">https://www.redhat.com/en/blog/most-common-kubernetes-security-issues-and-concerns-to-address</a></p>
+<p>However, Kubernetes doesn’t inherently provide governance from the infrastructure perspective. While Kubernetes includes several security features, it lacks comprehensive governance tools at the infrastructure level, often requiring additional solutions and frameworks to achieve a secure and compliant deployment.<br />
+<a href="https://www.redhat.com/en/resources/considerations-governance-risk-compliance-overview">https://www.redhat.com/en/resources/considerations-governance-risk-compliance-overview</a></p>
+<p>From an infrastructure or platform admin’s viewpoint, securing nodes, pods, and services requires a dual focus: security and governance.</p>
+<p>There are numerous projects under the CNCF umbrella, but #Aviatrix approaches securing Kubernetes from a unique infrastructure and network security perspective.</p>
+<h2>Aviatrix Approach: Securing Kubernetes Egress Traffic</h2>
+<p>One standout Aviatrix feature is securing Kubernetes workloads when they connect to the Internet, also known as Egress Security.</p>
+<p>A natural question is that why should I use Aviatrix for secure egress? I have service mesh, it can protect my applications. Well the answer is that it is not the best practice and good approach.</p>
+<p>The best practice is to follow a layered security approach. My recommendation isn’t to replace service meshes but to enhance them. Aviatrix offers the initial layer of security and governance from the platform side, while the application owner can integrate service meshes within their specific application or service domains.</p>
+<p>By adopting this approach, you can ensure robust security and effective governance across your Kubernetes environment.</p>
+<p>Aviatrix CoPilot can now show the existing Kubernetes EKS and AKS clusters. It also shows the associated Namespaces, Services and Kubernetes Pods within those clusters.</p>
+<h2><strong>Key Observations</strong></h2>
+<p>The gathering was primarily attended by Platform Engineers and Developers, with a few key individuals from networking, security, and infrastructure roles. Notably, those present were the decision-makers deeply invested in Kubernetes security.</p>
+<h4>1. Misconceptions about Service Mesh Security:</h4>
+<p>Several attendees were under the impression that “Service Mesh” provides comprehensive security. I clarified that Service Mesh predominantly handles application-level security (like HTTPS or TLS) and emphasized the necessity of a “layered security” approach.</p>
+<h4>2. Lack of Awareness Around Egress Security:</h4>
+<p>It’s apparent there’s a significant knowledge gap regarding Egress Security among DevOps, Developers, and Platform Engineers. Many were unaware of their implementations or falsely assumed that utilizing a NAT Gateway was enough. This highlights a pressing need for education in this area</p>
+<h4>3. Challenges with Last Generation Firewall:</h4>
+<p>A recurrent theme was the frustration around the dependency on firewall teams for implementing minor changes. Several attendees expressed a desire for greater autonomy, like applying security policies at the cluster or namespace level.</p>
+<h2><strong>Product Reception and Feedback:</strong></h2>
+<p>The live demonstration of Aviatrix solutions was exceptionally well-received. <br />
+The audience appreciated our agentless approach, avoiding the traditional sidecar or proxy models, which are often cumbersome. Attendees acknowledged the limitations of CNI-based solutions and valued our API integration approach with EKS and AKS clusters,  which doesn’t require installing additional components on pods or clusters.</p>
+<p><em>Mentioning that our DCF leverages eBPF captured attention. eBPF is increasingly popular in the Kubernetes ecosystem, as evidenced by its prominence at several booths, such as Cisco Isovalent.</em></p>
+<p>Three core topics deeply resonated with our audience:</p>
+<p>1.       Egress Security<br />
+2.       Addressing IP Exhaustion and Designing Island VPCs for Multicluster Deployments<br />
+3.       Dynamic Policy Implementation and SmartGroup Concepts aligned with Kubernetes principles like namespaces, clusters, and pods</p>
+<h2>My Final Take</h2>
+<p>” <em>KubeCon was a great opportunity to connect with customers, demo the latest Aviatrix innovations, and learn how key decision-makers are approaching security in this space. Demos of Aviatrix capabilities such as Kubernetes Egress Security, IP address exhaustion, dynamic security policy enforcement for multicluster Kubernetes deployments, and Aviatrix Kubernetes SmartGroups were well-received.</em></p>
+<p><em>Many attendees I talked to expressed frustrations around the fractured security model with last-generation firewalls. Customers showed great interest in Aviatrix’s unified policy model, which caters to the needs of monolithic and micro-services-based application requirements with one security framework. They like the fact that the Aviatrix model apply security policies at the cluster, pods, or namespace level, without using any Sidecar, Agent, or Proxies. As the head of the Aviatrix Certified Engineer (ACE) Program, I also noticed a lack of awareness and skill gap in understanding the limitations of “Kubernetes Service Mesh” as a security option.</em> “</p>
+<h2>Want to learn more?</h2>
+<p>Checkout my AI generated Podcast on the topic of Kubernetes Security.</p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/LwqH6MtdhVQ" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<p>Also checkout Anirban’s Recording and analyst interviews for in depth analysis and where we are heading in future.</p>
+<div class="yt-embed" style="position:relative;aspect-ratio:16/9;max-width:720px;margin:1.5em 0"><iframe src="https://www.youtube-nocookie.com/embed/UVCB1V6pe-w" title="YouTube video" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<p>Also checkout my demo where I covered Aviatrix Secure Egress, Network Segmentation and Visibility feature for containarized workloads orchestrated by Kubernetes.</p>
+<h2>Scree Shots:</h2>
+<p>Following are some screen shots of this intgration.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-1024x405.png" /></p>
+<p>Following screen shows the namespaces</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-1-1024x456.png" /></p>
+<p>Following shows the services inside the cluster</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-2-1024x428.png" /></p>
+<p>Following shows the POD inside the dev-us-east1-eks cluster.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-3-1024x405.png" /></p>
+<p>One can also onboard a cluster manually using the config file.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-4-787x1024.png" /></p>
+<p>The Aviatrix SmartGroup can also gorup K8S resources and then use them to create firewall rules.</p>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/image-5-1024x1005.png" /></p>
+<h2>Call to Action</h2>
+<p>Take the Aviatrix ACE Security training to learn more about Cloud Perimeter Security and securing the egress traffic with hands on labs where you can deploy it yourself.</p>
+<blockquote>
+<p><a href="https://aviatrix.com/ace/">ACE</a></p>
+</blockquote>
+<h3>Event Pictures</h3>
+<p><img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5200-Large-1024x769.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5196-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5200-Large-1-1024x769.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_9199-Large-1024x851.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5205-Large-1-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5206-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5207-Large-768x1024.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5209-Large-1-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5210-Large-1-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5215-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5217-Large-768x1024.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5218-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5219-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5221-Large-1024x768.jpeg" />
+<img alt="" src="/blog/images/aviatrix-kubernetes-innovation-kubecon-2024/IMG_5224-Large-1024x768.jpeg" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

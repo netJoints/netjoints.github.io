@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business Objective An important security requirement for GCP VPCs is to effectively control remote user access in a policy based manner. The cloud and the COVID-19 pandemic makes most users “remote.” Not only for employees who are out of the office, the “remote” label can be applied to developers, c">
+  <title>LAB6 – GCP Remote User VPN / Client VPN · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/lab6-placehoslder/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAB6 – GCP Remote User VPN / Client VPN">
+  <meta property="og:description" content="Business Objective An important security requirement for GCP VPCs is to effectively control remote user access in a policy based manner. The cloud and the COVID-19 pandemic makes most users “remote.” Not only for employees who are out of the office, the “remote” label can be applied to developers, c">
+  <meta property="og:url" content="https://netjoints.com/blog/lab6-placehoslder/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-28">November 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">LAB6 – GCP Remote User VPN / Client VPN</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Business Objective</h2>
+<p>An important security requirement for GCP VPCs is to effectively control remote user access in a policy based manner. The cloud and the COVID-19 pandemic makes most users “remote.” Not only for employees who are out of the office, the “remote” label can be applied to developers, contractors, and partners whether they’re in the office or around the globe.</p>
+<blockquote>
+<p>Note: User VPN, Client VPN or OpenVPN are interchangeable terms.</p>
+</blockquote>
+<h2>Remote User VPN / Client VPN Overview</h2>
+<p>While a bastion host using an SSH tunnel is an easy way to encrypt network traffic and provide direct access, most companies looking for more robust networking will want to invest in a SMAL based VPN solution. Because …</p>
+<ul>
+<li>Single instance VPN servers in each VPC results in tedious certificate management</li>
+<li>No centralized enforcement give rise to questions like “who can access what VPC?”</li>
+<li>With more than dozen users and more than a few VPCs, management and auditing of the user access can become a major challenge</li>
+</ul>
+<p>What’s needed is an easily managed, secure, cost-effective solution. Aviatrix provides a cloud-native and feature-rich client VPN solution.</p>
+<ul>
+<li>The solution is based on OpenVPN® and is compatible with all OpenVPN® clients</li>
+<li>In addition, Aviatrix provides its own client that supports <strong>SAML authentication</strong> directly from the client</li>
+<li>Each VPN user can be assigned to a profile with access privileges – down to hosts, protocols and ports</li>
+<li>Any Identity provider auth for LDAP/AD, Duo, Okta, Centrify, MFA, Client SAML and other integrations</li>
+<li>Centralized visibility of all users, connection history and all certificates across your network.</li>
+</ul>
+<h2>LAB Topology and Objective</h2>
+<ul>
+<li>This LAB is not dependent on any previous labs.</li>
+<li>This LAB will build on the topology we have deployed already in the previous LABs. Following is what we have deployed already.</li>
+<li>A GCP Spoke gateway (gcp-spoke-vpn) is already deployed in the gcp-spoke-vpn-vpc.</li>
+<li>This is needed to make sure remote users, employees, developers or partners have a clear demarcation point (called Cloud Access layer in MCNA architecture) before they access the enterprise or corporate resources/workloads/VMs/etc.</li>
+</ul>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-24.png" /></p>
+<h3>Objective</h3>
+<ul>
+<li>Students will use their laptops to connect to this lap topology using an Aviatrix SAML client VPN and will become part of this topology. This will allow them to access any resources using the private IP address</li>
+</ul>
+<h2>Deploy Smart SAML Remote User VPN Solution</h2>
+<h3>Deploy User VPN</h3>
+<p>Controller –&gt; Gateway –&gt; Create New (with the following information)</p>
+<blockquote>
+<p>While creating this gateway, you must select “VPN Access” checkbox. This will make this gateway as OPENVPN Gateway for Aviatrix User VPN Solution</p>
+<p>Common Mistake</p>
+</blockquote>
+<hr />
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-38.png" />
+<img alt="" src="/blog/images/lab6-placehoslder/image-39.png" /></p>
+<pre><code>The process could take upto ~10 minute to complete. It is hard to predict the deployment time even when you are deploying it in the same region and same cloud all the time.
+</code></pre>
+<p>Once the gateway is deployed, you can see the status and the GCP LB address that was created as part of the automation.</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-26.png" /></p>
+<p>After the gateway deployment, the topology looks like following</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-42.png" /></p>
+<h4>GCP TCP LB Configuration (Reference Only)</h4>
+<p>Following screen shots show the TCP LB details in GCP that was created by Aviatrix automation. LB helps in scaling out the solution without any disruption to the user profile or certificates.</p>
+<blockquote>
+<p>Notice: Students do not have access to this details. It is shared here fro reference purposes only.</p>
+</blockquote>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-27.png" />
+<img alt="" src="/blog/images/lab6-placehoslder/image-28.png" />
+<img alt="" src="/blog/images/lab6-placehoslder/image-29.png" />
+<img alt="" src="/blog/images/lab6-placehoslder/image-30.png" /></p>
+<h3>Profile Based Zero-Trust Access Control</h3>
+<p>Each VPN user can be assigned to a profile that is defined by access privileges to network, host, protocol and ports. The access control is dynamically enforced when a VPN user connects to the public cloud via an Aviatrix VPN gateway.</p>
+<p>Create a new profile: Controller –&gt; OpenVPN –&gt; Profile</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-36.png" /></p>
+<p>Create a policy to allow users access to only VMs in gcp-spoke-vpc1.</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-37-1024x393.png" /></p>
+<p>Now add a remote uswr and assign profile to it. Make sure to provide correct email address here.</p>
+<h3>Add a New VPN User</h3>
+<p>Controller –&gt; OPENVPN –&gt; Add a New VPN User</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-32.png" /></p>
+<hr />
+<p>Download the .ovpn profile file from the Aviatrix Controller</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-40.png" />
+<img alt="" src="/blog/images/lab6-placehoslder/image-41.png" /></p>
+<p>Now download the Aviatrix OpenVPN Client: <a href="https://docs.aviatrix.com/Downloads/samlclient.html">https://docs.aviatrix.com/Downloads/samlclient.html</a></p>
+<p>MAC: <a href="https://s3-us-west-2.amazonaws.com/aviatrix-download/AviatrixVPNClient/AVPNC_mac.pkg">https://s3-us-west-2.amazonaws.com/aviatrix-download/AviatrixVPNClient/AVPNC_mac.pkg</a><br />
+Windows: <a href="https://s3-us-west-2.amazonaws.com/aviatrix-download/AviatrixVPNClient/AVPNC_win_x64.exe">https://s3-us-west-2.amazonaws.com/aviatrix-download/AviatrixVPNClient/AVPNC_win_x64.exe</a><br />
+Linux: <a href="https://docs.aviatrix.com/Downloads/samlclient.html">Check the Download link here</a></p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-33.png" /><img alt="" src="/blog/images/lab6-placehoslder/image-34.png" /></p>
+<p>Now Open VPN client is connected to your network.</p>
+<h3>Testing and Verification</h3>
+<ul>
+<li>Ping VM in the gcp-spoke-vpc-2</li>
+<li>This should not ping because as per the zero-trust profile, the remote users are not allowed to access any resources expect in gcp-spoke-vpc-1</li>
+<li>Ping the VM in the gcp-spoke-vpc-1</li>
+<li>Most likely it will not ping because the <strong>“gcp-spoke-vpn” VPC</strong> is not assigned to any MCNS Domain yet</li>
+</ul>
+<pre><code>shahzadali@shahzad-ali ~ % ping 10.20.11.130
+PING 10.20.11.130 (10.20.11.130): 56 data bytes
+92 bytes from gcp-spoke-vpn.c.cne-pod24.internal (10.20.19.2): Time to live exceeded
+Vr HL TOS  Len   ID Flg  off TTL Pro  cks      Src      Dst
+ 4  5  00 5400 7c18   0 0000  01  01 544d 192.168.19.6  10.20.11.130 
+
+Request timeout for icmp_seq 0
+92 bytes from gcp-spoke-vpn.c.cne-pod24.internal (10.20.19.2): Time to live exceeded
+Vr HL TOS  Len   ID Flg  off TTL Pro  cks      Src      Dst
+ 4  5  00 5400 b6da   0 0000  01  01 198b 192.168.19.6  10.20.11.130 
+
+Request timeout for icmp_seq 1
+92 bytes from gcp-spoke-vpn.c.cne-pod24.internal (10.20.19.2): Time to live exceeded
+Vr HL TOS  Len   ID Flg  off TTL Pro  cks      Src      Dst
+ 4  5  00 5400 fcc1   0 0000  01  01 d3a3 192.168.19.6  10.20.11.130 
+
+^C
+--- 10.20.11.130 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+shahzadali@shahzad-ali ~ %
+</code></pre>
+<p>Now change MCNS setting and assign gcp-spoke-vpn to Green domain.</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-35.png" /></p>
+<p>Now the new topology will look like following</p>
+<p><img alt="" src="/blog/images/lab6-placehoslder/image-43.png" /></p>
+<p>Now connectivity is established and ping will start working as you can see in the following output as well.</p>
+<pre><code>Request timeout for icmp_seq 7
+92 bytes from gcp-spoke-vpn.c.cne-pod24.internal (10.20.19.2): Time to live exceeded
+Vr HL TOS  Len   ID Flg  off TTL Pro  cks      Src      Dst
+ 4  5  00 5400 2b8e   0 0000  01  01 a4d7 192.168.19.6  10.20.11.130 
+
+Request timeout for icmp_seq 8
+Request timeout for icmp_seq 9
+Request timeout for icmp_seq 10
+64 bytes from 10.20.11.130: icmp_seq=11 ttl=60 time=70.931 ms
+64 bytes from 10.20.11.130: icmp_seq=12 ttl=60 time=63.498 ms
+64 bytes from 10.20.11.130: icmp_seq=13 ttl=60 time=62.943 ms
+64 bytes from 10.20.11.130: icmp_seq=14 ttl=60 time=69.129 ms
+64 bytes from 10.20.11.130: icmp_seq=15 ttl=60 time=62.002 ms
+64 bytes from 10.20.11.130: icmp_seq=16 ttl=60 time=68.655 ms
+^C
+--- 10.20.11.130 ping statistics ---
+17 packets transmitted, 6 packets received, 64.7% packet loss
+round-trip min/avg/max/stddev = 62.002/66.193/70.931/3.477 ms
+shahzadali@shahzad-ali ~ %
+</code></pre>
+<h2>Conclusion</h2>
+<ul>
+<li>Aviatrix User VPN is a powerful solution</li>
+<li>MCNS provides additional security beyond the profile based user-vpn</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

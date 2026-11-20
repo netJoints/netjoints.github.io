@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI agents are often discussed in abstract terms, which can make them feel experimental or hard to operationalize. In reality, many teams already run systems that behave like agents: automated runtimes that take actions on behalf of engineers based on intent and context. This post walks through a pro">
+  <title>A Practical GCP Use Case for AI Agents and Just‑in‑Time Access · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/a-practical-gcp-use-case-for-ai-agents-and-just-in-time-access/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Practical GCP Use Case for AI Agents and Just‑in‑Time Access">
+  <meta property="og:description" content="AI agents are often discussed in abstract terms, which can make them feel experimental or hard to operationalize. In reality, many teams already run systems that behave like agents: automated runtimes that take actions on behalf of engineers based on intent and context. This post walks through a pro">
+  <meta property="og:url" content="https://netjoints.com/blog/a-practical-gcp-use-case-for-ai-agents-and-just-in-time-access/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2026-03-16">March 16, 2026</time>
+      </div>
+
+      <h1 class="blog-title">A Practical GCP Use Case for AI Agents and Just‑in‑Time Access</h1>
+
+      
+
+      <div class="blog-content">
+        <p>AI agents are often discussed in abstract terms, which can make them feel experimental or hard to operationalize. In reality, many teams already run systems that behave like agents: automated runtimes that take actions on behalf of engineers based on intent and context.</p>
+<p>This post walks through a <strong>production‑oriented</strong> use case for agents running on <strong>Google Cloud Platform (GCP)</strong>, focused on <strong>secure, read‑only access to customer environments</strong> using <strong>just‑in‑time (JIT) permissions</strong>. All customer-specific names and identifiers have been anonymized.</p>
+<h2>The Problem We’re Solving</h2>
+<p>SRE teams frequently need <strong>temporary, scoped access</strong> to customer environments to:</p>
+<ul>
+<li>Inspect logs and metrics</li>
+<li>Validate configuration</li>
+<li>Investigate incidents</li>
+<li>Answer operational questions quickly</li>
+</ul>
+<p>The challenge is balancing speed with safety:</p>
+<ul>
+<li>Avoid long-lived credentials</li>
+<li>Avoid standing privileges</li>
+<li>Maintain strong auditability</li>
+<li>Keep the workflow scalable across many customer projects</li>
+</ul>
+<h2>High-Level Architecture</h2>
+<p>The setup is intentionally simple and operationally friendly:</p>
+<ul>
+<li><strong>One GCP project per SRE</strong> (isolation boundary)</li>
+<li><strong>One VM per SRE project</strong></li>
+<li><strong>One service account per VM</strong> (execution identity)</li>
+<li>An <strong>AI agent runtime</strong> runs on the VM</li>
+<li>The agent can be instructed to inspect <strong>other GCP projects</strong> (customer environments)</li>
+<li>The agent uses <strong>Britive</strong> to request <strong>read-only JIT access</strong> to the target project</li>
+</ul>
+<p>The key principle: <strong>the agent’s identity is the VM service account</strong>, and permissions are granted <strong>temporarily</strong>.</p>
+<hr />
+<h2>Simple Architecture Diagram</h2>
+<h3>Mermaid (best for blogs/docs that render Mermaid)</h3>
+<pre><code>flowchart LR
+  subgraph SRE_Project[Per‑SRE GCP Project]
+    VM[&quot;VM (per engineer)&quot;]
+    SA[&quot;(VM Service Account\nagent@user-project...)&quot;]
+    Agent[&quot;Local AI Agent\n(automation runtime)&quot;]
+    VM --&gt; Agent
+    VM --- SA
+  end
+
+  subgraph Britive[Brtv: JIT Access Broker]
+    OIDC[&quot;OIDC Federation\n(trust GCP-issued JWT)&quot;]
+    API[Britive API / pybritive]
+    Prof[&quot;Profile Catalog\n(RO per customer project)&quot;]
+    OIDC --&gt; API
+    Prof --&gt; API
+  end
+
+  subgraph CustProj[&quot;Customer GCP Project (anonymized)&quot;]
+    IAM[IAM Policy / Roles]
+
+    Logs[Logs / Metrics / Read APIs]
+  end
+
+  Agent -- 1) Get signed JWT from\nGCP metadata server --&gt; OIDC
+  Agent -- 2) Checkout RO Profile\n(via API/CLI) --&gt; API
+  API -- 3) Apply ephemeral RO roles\n(to VM service account) --&gt; IAM
+  SA -- 4) Read-only access --&gt; Logs
+</code></pre>
+<p><img alt="" src="/blog/images/a-practical-gcp-use-case-for-ai-agents-and-just-in-time-access/Mermaid-preview-scaled.png" /></p>
+<h2>How Just‑in‑Time Access Works in This Pattern</h2>
+<p>Think of Britive as a broker that controls <em>when</em> and <em>how</em> access is granted:</p>
+<ol>
+<li>The agent determines <strong>which customer GCP project</strong> it needs to inspect.</li>
+<li>The agent authenticates to Britive using a <strong>keyless, federated identity</strong> (OIDC).</li>
+<li>The agent checks out a <strong>Britive Profile</strong> that corresponds to the target customer project.</li>
+<li>Britive applies <strong>ephemeral, read-only permissions</strong>.</li>
+<li>The agent uses those permissions to perform read-only inspection (logs/metrics/APIs).</li>
+<li>When time expires or access is checked in, permissions are removed.</li>
+</ol>
+<p>This aligns with the “zero standing privileges” posture described in Britive collateral and access broker overview materials.</p>
+<h2>Authentication Without Static Credentials (OIDC + GCP Identity)</h2>
+<p>A key requirement here is <strong>no static secrets</strong> on the VM.</p>
+<p>A common approach is to use <strong>OIDC federation</strong> where the workload presents a signed identity token (JWT) and Britive validates it. Your internal GCP PoC prerequisite checklist explicitly frames using <strong>Workload Identity Federation (WIF)</strong> to enable “secure, keyless authentication,” and calls out creating a <strong>Workload Identity Pool and Provider (OIDC)</strong> in GCP as part of the setup. <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></p>
+<hr />
+<h2>Identity Mapping: Who Is “Calling” Britive?</h2>
+<p>In this use case, there are two identities that matter:</p>
+<ul>
+<li><strong>Human identity</strong> (the SRE) — who instructed the agent</li>
+<li><strong>Workload identity</strong> (the VM service account) — who actually executes actions</li>
+</ul>
+<p>The requirement is clear: <strong>permissions must land on the VM service account</strong>, not the human’s corporate account.</p>
+<p>Operationally, the cleanest mental model for this blog is:</p>
+<ul>
+<li>The agent authenticates as a <strong>non-human identity (NHI)</strong>.</li>
+<li>Britive policy determines <em>which profiles that identity can check out</em>.</li>
+<li>Access is granted to the <strong>service account principal</strong> that represents that agent runtime.</li>
+</ul>
+<p>Britive positioning materials explicitly discuss supporting JIT and ephemeral authorization for non-human identities. <a href="https://britive-my.sharepoint.com/personal/nuri_rosen_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B6B79F81D-2C67-46B5-8871-8FA3FFF813EC%7D&amp;file=Britive%20-%20Enterprise%20Cloud-Native%20PAM%20Presentation%20-%202025.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive -…ion – 2025 | PowerPoint]</a>, <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a></p>
+<hr />
+<h2>Profile Strategy (Scalable Design)</h2>
+<p>To keep configuration scalable:</p>
+<ul>
+<li><strong>One Britive Profile per customer GCP project</strong> (or per customer “environment” boundary)</li>
+<li>Profiles are <strong>read-only</strong> and reusable by multiple agent identities</li>
+<li>You avoid “profile explosion” (one per customer × per engineer), which becomes unmanageable at scale</li>
+</ul>
+<p>This approach matches the idea that Profiles represent <em>resource access shape</em>, while policies/identities determine <em>who can check them out</em>.</p>
+<hr />
+<h1>Step-by-Step Reference Architecture (GCP + Britive + Agent Runtime)</h1>
+<p>Below is a <strong>reference architecture checklist</strong> you can include near the end of the blog. Where I reference specific steps, I anchor them to your existing PoC prerequisite guidance for GCP onboarding via WIF.<br />
+Anything beyond that is clearly labeled as “suggested implementation guidance.” <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></p>
+<hr />
+<h2>1) Establish the Per‑SRE Execution Boundary (GCP)</h2>
+<p><strong>Goal:</strong> each engineer’s automation runs in an isolated, auditable environment.</p>
+<ul>
+<li>Create <strong>one GCP project per SRE</strong></li>
+<li>Deploy a <strong>VM</strong> in that project</li>
+<li>Attach a <strong>dedicated service account</strong> to the VM</li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Use org policy / folder structure to standardize naming and auditing.</li>
+<li>Ensure VM metadata server access is enabled (default) so workloads can retrieve identity tokens.</li>
+</ul>
+<hr />
+<h2>2) Define the Customer Access Boundary (GCP)</h2>
+<p><strong>Goal:</strong> customer environments are separate projects, and access is always least-privilege.</p>
+<ul>
+<li>Each customer environment lives in a <strong>separate GCP project</strong></li>
+<li>Read-only access is represented via <strong>predefined IAM roles</strong> (or custom RO roles)</li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Prefer resource-level roles where possible (e.g., log viewer / monitoring viewer).</li>
+<li>Keep RO scope explicitly documented per Profile (good for audit and reviewers).</li>
+</ul>
+<hr />
+<h2>3) Prepare GCP for Federated Access (Workload Identity Federation)</h2>
+<p>Your internal PoC prerequisites for WIF explicitly call out the GCP-side setup steps needed to enable keyless integration, including:</p>
+<ul>
+<li><strong>Enable required APIs</strong> (Cloud Resource Manager, IAM) <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Create a custom IAM role</strong> for the integration use case <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Create a service account for Britive</strong> and assign the custom role <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Create a Workload Identity Pool and Provider (OIDC)</strong> <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Grant permission to impersonate workload identities</strong> (so federated identities can assume the service account) <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Keep the pool/provider configuration restricted to expected issuers/audiences.</li>
+<li>Separate “integration SA” from “agent SA” principals to reduce blast radius.</li>
+</ul>
+<hr />
+<h2>4) Configure Britive to Trust the Federated Identity (OIDC)</h2>
+<p><strong>Goal:</strong> the VM workload authenticates to Britive without stored secrets.</p>
+<ul>
+<li>Configure Britive for an OIDC federated flow where the workload presents a signed token.</li>
+<li>Map the federated identity to an allowed principal for Profile checkout.</li>
+</ul>
+<p><strong>Related pattern note:</strong> In Britive’s OIDC design discussions (e.g., Kubernetes), the model includes using OIDC claims (like groups) to enable JIT access flows via checkout. <a href="https://britive.sharepoint.com/sites/Product/_layouts/15/Doc.aspx?sourcedoc=%7B288AA63A-299C-4982-BA56-7B388EFB8A20%7D&amp;file=Britive%20OIDC%20Design%20for%20Kubernetes.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive OI…Kubernetes | Word]</a></p>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Use claims that are stable and auditable (issuer, subject, audience).</li>
+<li>Prefer mapping directly to the workload/service identity rather than to a human.</li>
+</ul>
+<hr />
+<h2>5) Model Access as “Profiles per Customer Project” (Read-Only)</h2>
+<p><strong>Goal:</strong> avoid one-off permissions and keep the model scalable.</p>
+<ul>
+<li>Create <strong>one Profile per customer project</strong> (read-only scope)</li>
+<li>Tie the Profile to:</li>
+<li>The target project</li>
+<li>The RO roles required for logs/metrics/config inspection</li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Use consistent naming (<code>gcp-ro-&lt;customer-project&gt;</code>).</li>
+<li>Keep profile permissions minimal, add only what the agent truly needs.</li>
+</ul>
+<hr />
+<h2>6) Allow the Agent to Checkout Profiles via API/CLI</h2>
+<p><strong>Goal:</strong> agent can request access programmatically in a controlled manner.</p>
+<ul>
+<li>Agent calls Britive API (or CLI wrapper like <code>pybritive</code>) to checkout the Profile.</li>
+<li>Access is granted to the <strong>VM service account principal</strong> for a short period.</li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Add guardrails: max duration, rate limits, allowlist of projects, and audit logging.</li>
+<li>Keep “no approval required” only for RO profiles; require approvals for elevated profiles.</li>
+</ul>
+<hr />
+<h2>7) Handle IAM Propagation and Execute Read-Only Actions</h2>
+<p><strong>Goal:</strong> make the runtime reliable.</p>
+<ul>
+<li>After checkout, allow for a short IAM propagation delay.</li>
+<li>Perform read-only calls (logs/metrics/list/get operations).</li>
+<li>When finished, check in access or let it expire.</li>
+</ul>
+<p><strong>Suggested guidance (implementation):</strong></p>
+<ul>
+<li>Implement a simple retry/backoff loop until RO access becomes effective.</li>
+<li>Record correlation IDs (request → profile → target project) for audit traceability.</li>
+</ul>
+<hr />
+<h2>8) Audit, Monitoring, and Operational Controls</h2>
+<p><strong>Goal:</strong> keep auditors and security teams happy.</p>
+<ul>
+<li>Log:</li>
+<li>Which agent identity checked out which profile</li>
+<li>For which target project</li>
+<li>When access started/ended</li>
+<li>Alert on anomalous behavior (unexpected targets, high frequency checkouts)</li>
+</ul>
+<p>Britive’s platform overview emphasizes visibility/audit and just-in-time ephemeral permissions as part of the “no proxy / no agent / outbound-only” operational model. <a href="https://britive.sharepoint.com/sites/SalesMarketing/_layouts/15/Doc.aspx?sourcedoc=%7BB49A304B-5381-41E8-94F4-53525A3998DB%7D&amp;file=Britive%20Access%20Broker_shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive Ac…er_shahzad | PowerPoint]</a></p>
+<hr />
+<h1>Conference Talk Outline (30–40 minutes)</h1>
+<p>Here’s a ready-to-use talk outline you can drop into a CFP, speaker notes, or a deck.</p>
+<h2>Title Options</h2>
+<ul>
+<li><strong>“From Chat to Cloud: Secure Just‑in‑Time Access for AI Agents on GCP”</strong></li>
+<li><strong>“Operational AI Agents: Keyless Identity + Read‑Only JIT in Customer Projects”</strong></li>
+<li><strong>“Non‑Human Identities Done Right: AI Agents with Zero Standing Privileges”</strong> <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a></li>
+</ul>
+<h2>Abstract (2–3 sentences)</h2>
+<p>AI agents are starting to perform real operational work — but most teams struggle to grant them access safely. This session presents a practical GCP architecture where a VM-hosted agent uses federated identity (OIDC/WIF) to request read-only, just‑in‑time access to customer projects with strong auditability and no static credentials. <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a>, <a href="https://britive-my.sharepoint.com/personal/nuri_rosen_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B6B79F81D-2C67-46B5-8871-8FA3FFF813EC%7D&amp;file=Britive%20-%20Enterprise%20Cloud-Native%20PAM%20Presentation%20-%202025.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive -…ion – 2025 | PowerPoint]</a></p>
+<h2>Agenda / Flow</h2>
+<ol>
+<li><strong>Why this matters (5 min)</strong>
+   * The rise of non-human identities and automation at scale <a href="https://britive-my.sharepoint.com/personal/shahzad_ali_britive_com/_layouts/15/Doc.aspx?sourcedoc=%7B7542AA83-423A-4306-9C63-CCC1C11A1B4A%7D&amp;file=2025_JAN_Britive%20CPAM%20Overview%20Shahzad.pptx&amp;action=edit&amp;mobileredirect=true&amp;DefaultItemOpen=1">[2025_JAN_B…ew Shahzad | PowerPoint]</a>
+   * Common failure modes: standing access, shared keys, poor audit trails</li>
+<li><strong>The use case (5 min)</strong>
+   * Per‑engineer VM and service account boundary
+   * Agent needs to inspect many customer projects safely</li>
+<li><strong>Architecture walkthrough (10 min)</strong>
+   * Diagram and end-to-end request flow
+   * Where identity lives (service account), where policy lives (broker)</li>
+<li><strong>Keyless auth with OIDC/WIF (8 min)</strong>
+   * What federation solves (no static secrets)
+   * GCP prerequisites: APIs, custom role, service account, WIF pool/provider <a href="https://britive.sharepoint.com/sites/Sales2/_layouts/15/Doc.aspx?sourcedoc=%7BEFA52582-5D26-4D99-95A5-05CAC9F431FB%7D&amp;file=Britive-GCP-WIF-POC-Prereqs.docx&amp;action=default&amp;mobileredirect=true&amp;DefaultItemOpen=1">[Britive-GC…OC-Prereqs | Word]</a></li>
+<li><strong>Access modeling with Profiles (7 min)</strong>
+   * “Profile per customer project” strategy (scales cleanly)
+   * Read-only vs elevated (approval gates)</li>
+<li><strong>Operational lessons learned (3–5 min)</strong>
+   * Propagation delays, retries
+   * Observability, audit, anomaly detection</li>
+<li><strong>Q&amp;A (time permitting)</strong></li>
+</ol>
+<h2>Demo Ideas (Optional)</h2>
+<ul>
+<li>Checkout RO profile → tail logs from a target project → check-in/expire</li>
+<li>Show audit trail mapping agent → project → profile → timeframe</li>
+</ul>
+<h2>Key Takeaways Slide</h2>
+<ul>
+<li>AI agents are just automation runtimes — treat them like NHIs</li>
+<li>Federation &gt; static secrets</li>
+<li>Profiles model access; policies control who can check them out</li>
+<li>JIT + RO is a safe “first step” for production adoption</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

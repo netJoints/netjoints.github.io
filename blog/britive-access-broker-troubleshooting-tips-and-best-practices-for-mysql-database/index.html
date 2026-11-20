@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Best Practices To ensure secure, reliable, and efficient use of Britive Access Broker, please follow the best practices outlined below. These guidelines are designed to support both development environments and help maintain system integrity. 1. Script Management and Collaboration Engage the Britive">
+  <title>Britive Access Broker Best Practices and Troubleshooting Tips MySQL Database · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/britive-access-broker-troubleshooting-tips-and-best-practices-for-mysql-database/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Britive Access Broker Best Practices and Troubleshooting Tips MySQL Database">
+  <meta property="og:description" content="Best Practices To ensure secure, reliable, and efficient use of Britive Access Broker, please follow the best practices outlined below. These guidelines are designed to support both development environments and help maintain system integrity. 1. Script Management and Collaboration Engage the Britive">
+  <meta property="og:url" content="https://netjoints.com/blog/britive-access-broker-troubleshooting-tips-and-best-practices-for-mysql-database/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-06-23">June 23, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Britive Access Broker Best Practices and Troubleshooting Tips MySQL Database</h1>
+
+      
+
+      <div class="blog-content">
+        <h1></h1>
+<h2>Best Practices</h2>
+<p>To ensure secure, reliable, and efficient use of Britive Access Broker, please follow the best practices outlined below. These guidelines are designed to support both development environments and help maintain system integrity.</p>
+<h4>1. <strong>Script Management and Collaboration</strong></h4>
+<ul>
+<li><strong>Engage the Britive Team</strong>: For any modifications to existing scripts or the creation of new ones, consult with the Britive Support or Customer Success teams. Their expertise ensures alignment with platform capabilities and security standards.</li>
+</ul>
+<hr />
+<h4><strong>2. Database Credentials Handling</strong></h4>
+<ul>
+<li><strong>Testing Environments</strong>: While hardcoding the database service account root password may be acceptable for testing, this approach is <strong>not recommended</strong> for production or pre-production environments.</li>
+<li><strong>Production Environments</strong>: Use secure methods such as:</li>
+<li>Secrets Manager or Vault for dynamic credential retrieval.</li>
+<li>Environment variables for local development or staging.</li>
+</ul>
+<hr />
+<h4><strong>3. Access Broker Availability</strong></h4>
+<ul>
+<li><strong>Pre-Execution Check</strong>: Always verify that the Access Broker service is active and running before executing any scripts.</li>
+</ul>
+<hr />
+<h4><strong>4. Configuration Management</strong></h4>
+<ul>
+<li><strong>YAML File Updates</strong>: If changes are made to the Access Broker YAML configuration file:</li>
+<li>Ensure all profiles are checked in before restarting the Access Broker.</li>
+<li>Failure to do so may result in the broker entering an inconsistent state and losing track of checked-out profiles.</li>
+</ul>
+<hr />
+<h4><strong>5. Database User Management</strong></h4>
+<ul>
+<li><strong>Preferred Method – DROP vs DELETE</strong>:</li>
+<li>Avoid using <code>DELETE</code> for MySQL DB users, as it can lead to inconsistent states and require manual cleanup.</li>
+<li>Use the <code>DROP USER</code> command instead, which ensures proper removal and avoids residual issues that prevent re-creation of the user.</li>
+</ul>
+<hr />
+<h4><strong>6. Documentation and Knowledge Sharing</strong></h4>
+<ul>
+<li><strong>Internal Wiki/Confluence</strong>:</li>
+<li>Document final scripts with clear instructions and screenshots.</li>
+<li>Include the locations of:<ul>
+<li>Log directories</li>
+<li>Configuration files</li>
+<li>Script files</li>
+</ul>
+</li>
+<li>This helps team members perform basic troubleshooting and understand the system layout.</li>
+</ul>
+<hr />
+<h4><strong>7. High Availability Consideration</strong></h4>
+<ul>
+<li><strong>Demo Environments</strong>: Consider deploying an additional Access Broker instance even in demo environments. This provides redundancy—if one broker fails, the second can take over seamlessly.</li>
+</ul>
+<h2>Basic Troubleshooting Tips</h2>
+<h4>In case user is deleted from the DB use following commands to flush or cleanup the user</h4>
+<pre><code>SELECT * FROM mysql.db WHERE user = 'shahzadali';
+SELECT * FROM mysql.tables_priv WHERE user = 'shahzadlai';
+SELECT * FROM mysql.columns_priv WHERE user = 'shahzadali';
+SELECT * FROM mysql.procs_priv WHERE user = 'shahzadali';
+7:01
+DELETE FROM mysql.db WHERE user = 'shahzadali';
+7:02
+</code></pre>
+<h4>Restart Broker Service</h4>
+<pre><code>/opt/britive-broker/config$ sudo journalctl -u britive-broker
+-- Logs begin at Tue 2025-04-29 11:07:54 UTC, end at Tue 2025-04-29 19:02:45 UTC. --
+Apr 29 18:16:25 ip-10-100-12-167 systemd[1]: Started Britive Agent service.
+Apr 29 18:28:28 ip-10-100-12-167 systemd[1]: Stopping Britive Agent service...
+Apr 29 18:28:30 ip-10-100-12-167 systemd[1]: britive-broker.service: Succeeded.
+Apr 29 18:28:30 ip-10-100-12-167 systemd[1]: Stopped Britive Agent service.
+Apr 29 18:28:30 ip-10-100-12-167 systemd[1]: Started Britive Agent service.
+</code></pre>
+<h4>Log location</h4>
+<pre><code>/var/log/britive-broker.log
+</code></pre>
+<h4>SQL Commands</h4>
+<pre><code>mysql &gt; create user 'shahzadali'@'%' identified by 'Abc234!' ;
+DROP USER 'shahzadali'@'%';
+</code></pre>
+<p>Britive-Readonly-MySQL-Checkout.sh</p>
+<pre><code>#!/bin/bash
+
+MYSQL_USER=${user}
+MYSQL_USER=&quot;${MYSQL_USER%%@*}&quot;
+MYSQL_USER=&quot;${MYSQL_USER//[^a-zA-Z0-9]/}&quot;
+MYSQL_HOST=${host}
+MYSQL_URL=${dburl}
+SECRET=${secret}
+
+finish () {
+  exit &quot;$1&quot;
+}
+
+password=$(tr -dc 'A-Za-z0-9' &lt; /dev/urandom | head -c 16)
+
+db_user=&quot;root&quot;
+db_password=&quot;P@ssw0rd123!&quot;
+
+tmp_conf=$(tr -dc A-Za-z0-9 &lt;/dev/urandom | head -c 13)
+
+cat &lt;&lt;EOF &gt; &quot;$tmp_conf&quot;.cnf
+[client]
+user = &quot;$db_user&quot;
+password = &quot;$db_password&quot;
+host = &quot;access-broker-poc.shahzadalirds.us-east-1.rds.amazonaws.com&quot;
+EOF
+
+mysql \
+  --defaults-extra-file=&quot;$tmp_conf&quot;.cnf \
+  -e &quot;DROP USER IF EXISTS '${MYSQL_USER}'@'${MYSQL_HOST}';&quot; || finish 1
+
+mysql \
+  --defaults-extra-file=&quot;$tmp_conf&quot;.cnf \
+  -e &quot;CREATE USER '${MYSQL_USER}'@'${MYSQL_HOST}' IDENTIFIED BY '${password}';&quot; || finish 1
+
+mysql \
+  --defaults-extra-file=&quot;$tmp_conf&quot;.cnf \
+  -e &quot;GRANT SELECT, EXECUTE, SHOW VIEW ON systemdb.* TO '${MYSQL_USER}'@'${MYSQL_HOST}';&quot; || finish 1
+
+rm -f &quot;$tmp_conf&quot;.cnf
+
+echo &quot;$MYSQL_USER&quot;
+echo &quot;$password&quot;
+echo &quot;mysql -h$MYSQL_URL -u$MYSQL_USER -p\&quot;$password\&quot;&quot;
+
+finish 0
+</code></pre>
+<p>Britive-Readonly-MySQL-Checkin.sh</p>
+<pre><code>#!/bin/bash
+
+MYSQL_USER=${user}
+MYSQL_USER=&quot;${MYSQL_USER%%@*}&quot;
+MYSQL_USER=&quot;${MYSQL_USER//[^a-zA-Z0-9]/}&quot;
+MYSQL_HOST=${host}
+MYSQL_URL=${dburl}
+SECRET=${secret}
+
+finish () {
+  exit &quot;$1&quot;
+}
+
+db_user=&quot;root&quot;
+db_password=&quot;P@ssw0rd123!&quot;
+
+tmp_conf=$(tr -dc A-Za-z0-9 &lt;/dev/urandom | head -c 13)
+
+cat &lt;&lt;EOF &gt; &quot;$tmp_conf&quot;.cnf
+[client]
+user = &quot;$db_user&quot;
+password = &quot;$db_password&quot;
+host = &quot;access-broker-poc.shahzadalirds.us-east-1.rds.amazonaws.com&quot;
+EOF
+
+mysql \
+  --defaults-extra-file=&quot;$tmp_conf&quot;.cnf \
+  -e &quot;DROP USER IF EXISTS '${MYSQL_USER}'@'${MYSQL_HOST}';&quot; || finish 1
+
+rm -f &quot;$tmp_conf&quot;.cnf
+
+finish 0
+</code></pre>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

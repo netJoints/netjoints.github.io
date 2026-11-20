@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI governance and compliance mapping is becoming critical as organizations scale their AI deployments. Let me help you understand how to ingest AWS data natively without proxies. Once we understand the AWS, we can extend the same logic to other clouds, SaaS and hybrid AI apps. AWS Native Data Ingest">
+  <title>AI Governance and Compliance · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/ai-governance-and-compliance/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Governance and Compliance">
+  <meta property="og:description" content="AI governance and compliance mapping is becoming critical as organizations scale their AI deployments. Let me help you understand how to ingest AWS data natively without proxies. Once we understand the AWS, we can extend the same logic to other clouds, SaaS and hybrid AI apps. AWS Native Data Ingest">
+  <meta property="og:url" content="https://netjoints.com/blog/ai-governance-and-compliance/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-12-17">December 17, 2025</time>
+      </div>
+
+      <h1 class="blog-title">AI Governance and Compliance</h1>
+
+      
+
+      <div class="blog-content">
+        <p>AI governance and compliance mapping is becoming critical as organizations scale their AI deployments. Let me help you understand how to ingest AWS data natively without proxies. Once we understand the AWS, we can extend the same logic to other clouds, SaaS and hybrid AI apps.</p>
+<h2>AWS Native Data Ingestion Approaches</h2>
+<p>AWS provide various <strong>AI/ML Service Logs</strong>. These logs are dispersed.</p>
+<ul>
+<li><strong>CloudTrail</strong> – Your primary source for API activity</li>
+<li>Captures all AWS API calls including SageMaker, Bedrock, Comprehend, Rekognition</li>
+<li>Shows who created models, accessed data, deployed endpoints</li>
+<li>Can stream to S3, CloudWatch Logs, or EventBridge</li>
+<li>
+<p>Enable data event logging for S3 to track training data access</p>
+</li>
+<li>
+<p><strong>CloudWatch Logs</strong> – For runtime and inference logs</p>
+</li>
+<li>SageMaker endpoints log all inference requests/responses</li>
+<li>Bedrock logs prompt/response data (if logging enabled)</li>
+<li>Can export to S3 or stream via Kinesis Data Firehose</li>
+<li>
+<p>Set up log subscriptions with filters for specific events</p>
+</li>
+<li>
+<p><strong>AWS EventBridge</strong> – Real-time event ingestion</p>
+</li>
+<li>Subscribe to SageMaker, Bedrock, and other AI service events</li>
+<li>Push events directly to your API endpoint, Lambda, or SQS</li>
+<li>
+<p>Filter events at source to reduce noise</p>
+</li>
+<li>
+<p><strong>S3 Event Notifications</strong> – For data lineage</p>
+</li>
+<li>Track when training data, models, or artifacts are added/modified</li>
+<li>
+<p>Send notifications to SQS, SNS, or Lambda</p>
+</li>
+<li>
+<p>CloudTrail → S3 bucket → EventBridge rule → Your ingestion API</p>
+</li>
+<li>CloudWatch Logs → Kinesis Firehose → Your data store</li>
+<li>S3 (model artifacts) → Event notifications → Processing pipeline</li>
+</ul>
+<p><img alt="" src="/blog/images/ai-governance-and-compliance/Screenshot-2025-12-17-at-5.40.31-PM.png" /></p>
+<p><strong>For Bedrock specifically:</strong></p>
+<ul>
+<li>Enable model invocation logging in Bedrock console</li>
+<li>Logs go to CloudWatch Logs or S3</li>
+<li>Captures prompts, responses, tokens, metadata</li>
+<li>Use CloudWatch Logs Insights for querying or stream to your system</li>
+</ul>
+<p><strong>Key AWS APIs to use:</strong></p>
+<ul>
+<li><code>cloudtrail:LookupEvents</code> – Query CloudTrail programmatically</li>
+<li><code>logs:FilterLogEvents</code> – Query CloudWatch Logs</li>
+<li><code>logs:CreateLogGroup/PutSubscriptionFilter</code> – Set up log streaming</li>
+<li><code>s3:GetObject</code> – Read log files from S3</li>
+<li><code>events:PutRule</code> – Create EventBridge rules</li>
+</ul>
+<p><strong>For compliance mapping, you’ll want to capture:</strong></p>
+<ul>
+<li>Model training data sources and access patterns</li>
+<li>Inference request/response logs with PII detection</li>
+<li>Model versioning and deployment history</li>
+<li>Access control changes (IAM policies)</li>
+<li>Data encryption status (KMS key usage)</li>
+<li>Model endpoint configurations</li>
+<li>Cross-account access patterns</li>
+</ul>
+<p><strong>Implementation tips:</strong></p>
+<ol>
+<li>Start with CloudTrail + CloudWatch Logs – covers 80% of use cases</li>
+<li>Use IAM roles with least privilege (read-only access to logs)</li>
+<li>Consider AWS Organizations if targeting enterprise customers (multi-account visibility)</li>
+<li>Build incremental ingestion – don’t reprocess old logs repeatedly</li>
+<li>Use AWS SDK (boto3 for Python) for programmatic access</li>
+</ol>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

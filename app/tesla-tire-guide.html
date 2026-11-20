@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tesla Model 3 Tire Shopping Agent</title>
+<link rel="canonical" href="https://netjoints.com/app/tesla-tire-guide.html">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; }
+
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 20px 30px;
+    display: flex; align-items: center; gap: 15px;
+    border-bottom: 2px solid #e31937;
+  }
+  header .logo { font-size: 28px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+  header .logo span { color: #e31937; }
+  header p { color: #aaa; font-size: 13px; margin-top: 2px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+
+  /* Tire size selector */
+  .size-selector {
+    background: linear-gradient(135deg, #1e1e2e, #252540);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .size-selector h2 { font-size: 16px; color: #aaa; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .size-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .size-btn {
+    background: #0f0f1a;
+    border: 2px solid #333;
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .size-btn:hover { border-color: #e31937; color: #fff; }
+  .size-btn.active { background: #e31937; border-color: #e31937; color: #fff; }
+  .size-info { margin-top: 12px; padding: 10px 14px; background: #0f0f1a; border-radius: 8px; font-size: 13px; color: #aaa; border-left: 3px solid #e31937; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; background: #1a1a2e; padding: 5px; border-radius: 12px; }
+  .tab {
+    flex: 1; padding: 10px; text-align: center; background: transparent;
+    border: none; color: #888; cursor: pointer; border-radius: 9px;
+    font-size: 14px; font-weight: 600; transition: all 0.2s;
+  }
+  .tab.active { background: #e31937; color: #fff; }
+  .tab:hover:not(.active) { background: #2a2a3e; color: #ccc; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Tire cards */
+  .tire-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .tire-card {
+    background: linear-gradient(135deg, #1e1e2e, #252540);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .tire-card:hover { transform: translateY(-3px); border-color: #555; }
+  .tire-card.best { border-color: #e31937; }
+  .badge {
+    position: absolute; top: -10px; right: 16px;
+    background: #e31937; color: #fff; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge.ev { background: #00b4d8; }
+  .badge.value { background: #f77f00; }
+  .tire-brand { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .tire-name { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .tire-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .stat { background: #0f0f1a; border-radius: 8px; padding: 8px 10px; }
+  .stat-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-value { font-size: 15px; font-weight: 700; color: #e31937; }
+  .stat-value.green { color: #06d6a0; }
+  .stat-value.blue { color: #00b4d8; }
+  .rating-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .rating-label { font-size: 12px; color: #888; width: 90px; flex-shrink: 0; }
+  .bar-bg { flex: 1; height: 6px; background: #1a1a2e; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #e31937, #ff6b6b); }
+  .bar-fill.green { background: linear-gradient(90deg, #06d6a0, #7ae582); }
+  .tire-note { font-size: 12px; color: #888; border-top: 1px solid #2a2a3a; padding-top: 10px; margin-top: 10px; line-height: 1.5; }
+  .ev-tag { display: inline-block; background: #00b4d820; color: #00b4d8; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-top: 6px; border: 1px solid #00b4d840; }
+
+  /* Shop comparison */
+  .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media(max-width: 700px) { .shop-grid { grid-template-columns: 1fr; } }
+  .shop-card {
+    background: #1e1e2e; border: 1px solid #333; border-radius: 16px; padding: 20px;
+    transition: transform 0.2s;
+  }
+  .shop-card:hover { transform: translateY(-3px); }
+  .shop-card.winner { border-color: #f77f00; }
+  .shop-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .shop-subtitle { font-size: 12px; color: #888; margin-bottom: 14px; }
+  .perk { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+  .perk-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .perk-text { color: #ccc; line-height: 1.4; }
+  .perk-text strong { color: #fff; }
+  .shop-score { margin-top: 14px; padding-top: 14px; border-top: 1px solid #2a2a3a; }
+  .score-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .score-label { font-size: 12px; color: #888; }
+  .score-val { font-size: 12px; font-weight: 700; }
+  .score-val.a { color: #06d6a0; }
+  .score-val.b { color: #00b4d8; }
+  .score-val.c { color: #f77f00; }
+  .score-val.d { color: #888; }
+  .overall { margin-top: 10px; text-align: center; }
+  .overall span { font-size: 28px; font-weight: 800; }
+  .overall p { font-size: 11px; color: #888; }
+
+  /* EV tips */
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .tip-card { background: #1e1e2e; border: 1px solid #333; border-radius: 14px; padding: 18px; }
+  .tip-icon { font-size: 28px; margin-bottom: 10px; }
+  .tip-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .tip-body { font-size: 13px; color: #aaa; line-height: 1.6; }
+  .tip-body strong { color: #e31937; }
+
+  /* AI chat */
+  .chat-box {
+    background: #1e1e2e; border: 1px solid #333; border-radius: 16px; overflow: hidden;
+  }
+  .chat-messages { height: 340px; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; }
+  .msg.ai { background: #252540; color: #e0e0e0; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.user { background: #e31937; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .msg-label { font-size: 10px; color: #666; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .chat-input-row { display: flex; gap: 10px; padding: 14px 20px; border-top: 1px solid #2a2a3a; background: #16162a; }
+  .chat-input {
+    flex: 1; background: #0f0f1a; border: 1px solid #333; color: #fff;
+    padding: 10px 14px; border-radius: 10px; font-size: 14px; outline: none;
+  }
+  .chat-input:focus { border-color: #e31937; }
+  .chat-input::placeholder { color: #555; }
+  .send-btn {
+    background: #e31937; color: #fff; border: none; border-radius: 10px;
+    padding: 10px 20px; font-weight: 700; cursor: pointer; font-size: 14px;
+    transition: background 0.2s;
+  }
+  .send-btn:hover { background: #c01030; }
+  .send-btn:disabled { background: #444; cursor: not-allowed; }
+  .quick-questions { padding: 10px 20px; display: flex; flex-wrap: wrap; gap: 6px; background: #16162a; border-top: 1px solid #1a1a2a; }
+  .qq { background: #0f0f1a; border: 1px solid #333; color: #aaa; font-size: 12px; padding: 5px 10px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+  .qq:hover { border-color: #e31937; color: #fff; }
+
+  .loading { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+  .dot { width: 6px; height: 6px; background: #666; border-radius: 50%; animation: bounce 1.2s infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+  .section-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #2a2a3a; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Tesla <span>Model 3</span> Tire Agent 🚗</div>
+    <p>Expert tire recommendations • Shop comparisons • AI advisor</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Tire Size Selector -->
+  <div class="size-selector">
+    <h2>Step 1 — Select Your Trim / Wheel Size</h2>
+    <div class="size-buttons">
+      <button class="size-btn active" onclick="selectSize('18', this)">18" Standard RWD<br><small>235/45R18</small></button>
+      <button class="size-btn" onclick="selectSize('19', this)">19" Long Range AWD<br><small>235/40R19</small></button>
+      <button class="size-btn" onclick="selectSize('20', this)">20" Performance<br><small>235/35R20</small></button>
+    </div>
+    <div class="size-info" id="sizeInfo">
+      ✅ <strong>235/45R18</strong> — Most common Model 3 size. Best selection, most affordable, and widest availability at Walmart, Costco & America's Tire. Ideal for tread life priority.
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tires', this)">🏆 Top Tires</button>
+    <button class="tab" onclick="switchTab('shops', this)">🏪 Shop Comparison</button>
+    <button class="tab" onclick="switchTab('tips', this)">⚡ EV Tips</button>
+    <button class="tab" onclick="switchTab('ai', this)">🤖 AI Advisor</button>
+  </div>
+
+  <!-- TAB: Top Tires -->
+  <div class="tab-content active" id="tab-tires">
+    <div class="section-title">Best Long-Life Tires for Tesla Model 3</div>
+    <div class="tire-grid" id="tireGrid"></div>
+  </div>
+
+  <!-- TAB: Shop Comparison -->
+  <div class="tab-content" id="tab-shops">
+    <div class="section-title">Shop-by-Shop Perk Comparison</div>
+    <div class="shop-grid">
+
+      <div class="shop-card winner">
+        <div class="badge value">Best Value</div>
+        <div class="shop-name">🏪 Costco Tire</div>
+        <div class="shop-subtitle">Membership required · Best total package</div>
+        <div class="perk"><span class="perk-icon">🔄</span><div class="perk-text"><strong>Free lifetime rotation</strong> — included with tire purchase, every 5–8K miles</div></div>
+        <div class="perk"><span class="perk-icon">⚖️</span><div class="perk-text"><strong>Free lifetime balancing</strong> — rebalanced every visit, recommended every 12K miles</div></div>
+        <div class="perk"><span class="perk-icon">🔧</span><div class="perk-text"><strong>Free flat repair</strong> — per USTMA standards; don't drive on a flat first!</div></div>
+        <div class="perk"><span class="perk-icon">🛡️</span><div class="perk-text"><strong>5-year road hazard warranty</strong> — covers tread damage & tire failure</div></div>
+        <div class="perk"><span class="perk-icon">💨</span><div class="perk-text"><strong>Free nitrogen inflation</strong> — better pressure stability than air</div></div>
+        <div class="perk"><span class="perk-icon">⚠️</span><div class="perk-text" style="color:#f77f00;">Wait times can be 2+ hrs on weekends. Book online at CostcoTireAppointments.com</div></div>
+        <div class="shop-score">
+          <div class="score-row"><span class="score-label">Perks / Lifetime Value</span><span class="score-val a">A+</span></div>
+          <div class="score-row"><span class="score-label">Tire Price</span><span class="score-val b">B+</span></div>
+          <div class="score-row"><span class="score-label">Speed of Service</span><span class="score-val c">C</span></div>
+          <div class="score-row"><span class="score-label">EV Expertise</span><span class="score-val b">B</span></div>
+          <div class="overall"><span style="color:#f77f00;">A</span><p>Overall for long tread life goal</p></div>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="badge" style="background:#e31937;">EV Friendly</div>
+        <div class="shop-name">🔴 America's Tire</div>
+        <div class="shop-subtitle">aka Discount Tire · No membership needed</div>
+        <div class="perk"><span class="perk-icon">🔄</span><div class="perk-text"><strong>Free lifetime rotation</strong> — for tires bought from them; even non-members</div></div>
+        <div class="perk"><span class="perk-icon">⚖️</span><div class="perk-text"><strong>Free lifetime balancing</strong> — included with purchase (balancing separate for non-AT tires)</div></div>
+        <div class="perk"><span class="perk-icon">🔧</span><div class="perk-text"><strong>Free flat repair</strong> — even for tires NOT bought there (goodwill policy)</div></div>
+        <div class="perk"><span class="perk-icon">🚀</span><div class="perk-text"><strong>Road Force balancing</strong> — the gold standard; Costco doesn't offer this</div></div>
+        <div class="perk"><span class="perk-icon">🛡️</span><div class="perk-text"><strong>Road hazard protection</strong> — optional add-on per tire</div></div>
+        <div class="perk"><span class="perk-icon">✅</span><div class="perk-text" style="color:#06d6a0;">Tesla-familiar staff; used by many Model 3/Y owners. Fast turnaround.</div></div>
+        <div class="shop-score">
+          <div class="score-row"><span class="score-label">Perks / Lifetime Value</span><span class="score-val a">A</span></div>
+          <div class="score-row"><span class="score-label">Tire Price</span><span class="score-val a">A</span></div>
+          <div class="score-row"><span class="score-label">Speed of Service</span><span class="score-val a">A</span></div>
+          <div class="score-row"><span class="score-label">EV Expertise</span><span class="score-val a">A</span></div>
+          <div class="overall"><span style="color:#06d6a0;">A+</span><p>Overall — top pick for Tesla owners</p></div>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-name">🔵 Walmart Auto Care</div>
+        <div class="shop-subtitle">Walmart+ benefits · Budget-friendly</div>
+        <div class="perk"><span class="perk-icon">🔄</span><div class="perk-text"><strong>Free rotation</strong> — for tires purchased at Walmart</div></div>
+        <div class="perk"><span class="perk-icon">⚖️</span><div class="perk-text"><strong>Balancing</strong> — included at purchase; not always free for return visits</div></div>
+        <div class="perk"><span class="perk-icon">🔧</span><div class="perk-text"><strong>Free flat repair</strong> — Walmart+ members get this free ($15 value), any brand tire</div></div>
+        <div class="perk"><span class="perk-icon">💰</span><div class="perk-text"><strong>Lowest install prices</strong> — often $15–20/tire install fee vs others</div></div>
+        <div class="perk"><span class="perk-icon">⚠️</span><div class="perk-text" style="color:#f77f00;">Smaller tire selection; fewer EV-specific options. Less Tesla experience.</div></div>
+        <div class="shop-score">
+          <div class="score-row"><span class="score-label">Perks / Lifetime Value</span><span class="score-val c">C+</span></div>
+          <div class="score-row"><span class="score-label">Tire Price</span><span class="score-val a">A+</span></div>
+          <div class="score-row"><span class="score-label">Speed of Service</span><span class="score-val b">B</span></div>
+          <div class="score-row"><span class="score-label">EV Expertise</span><span class="score-val d">C-</span></div>
+          <div class="overall"><span style="color:#00b4d8;">B-</span><p>Best for budget-first buyers</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; padding:16px 20px; background:#1e1e2e; border:1px solid #333; border-radius:14px; font-size:13px; color:#aaa; line-height:1.7;">
+      <strong style="color:#fff;">💡 Expert Recommendation:</strong> Buy at <strong style="color:#f77f00;">America's Tire</strong> for the best combination of tire selection, EV expertise, Road Force balancing, and free lifetime perks — no membership required. If you're already a Costco member and want the nitrogen fill + 5-year road hazard warranty, Costco is a close second. Use <strong style="color:#fff;">Walmart</strong> only if price is the absolute priority.
+    </div>
+  </div>
+
+  <!-- TAB: EV Tips -->
+  <div class="tab-content" id="tab-tips">
+    <div class="section-title">EV-Specific Tire Tips for Tesla Model 3</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">⚡</div>
+        <div class="tip-title">Tires Wear Faster on EVs</div>
+        <div class="tip-body">EVs are significantly heavier due to battery packs, and instant torque puts more stress on tires during acceleration. Expect <strong>20–30% faster wear</strong> than equivalent ICE cars. Rotate every <strong>5,000–6,000 miles</strong> (not 7,500).</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔇</div>
+        <div class="tip-title">Look for Foam-Lined or "Elect" Tires</div>
+        <div class="tip-body">Tesla's cabin is near-silent, so road noise from tires is very noticeable. Look for tires with <strong>acoustic foam lining</strong> or labelled <strong>"Elect" / "EV"</strong> (e.g., Michelin e.Primacy, Pirelli P Zero Elect). These reduce cabin noise significantly.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📏</div>
+        <div class="tip-title">Know Your Exact Size</div>
+        <div class="tip-body">Standard RWD Model 3: <strong>235/45R18</strong> · Long Range AWD: <strong>235/40R19</strong> · Performance: <strong>235/35R20 front / 275/30R20 rear</strong>. Check your door jamb sticker if unsure. Performance models use a staggered fitment — fronts and rears are different sizes.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔄</div>
+        <div class="tip-title">Rotation Is Critical — Do It Often</div>
+        <div class="tip-body">Front tires on RWD models wear fastest (steering + braking load). On AWD, wear is more balanced but still rotate at <strong>5K–6K miles</strong>. This is why free rotation perks at America's Tire and Costco are worth real money over 4 years.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📡</div>
+        <div class="tip-title">TPMS Sensors — Don't Overlook Them</div>
+        <div class="tip-body">Tesla uses tire pressure monitoring sensors. When replacing tires, ask the shop about <strong>TPMS service packs</strong> — valve stems and sensor seals. Costco charges extra for these. America's Tire handles them well. Improperly serviced sensors can trigger dashboard warnings.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🪨</div>
+        <div class="tip-title">No Spare Tire — Plan Ahead</div>
+        <div class="tip-body">Model 3 has no spare. Get a <strong>road hazard warranty</strong> on every tire. America's Tire and Costco both offer this. Consider keeping a <strong>portable air compressor</strong> in the trunk for slow leaks. A free flat repair policy is especially valuable for your situation.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌡️</div>
+        <div class="tip-title">Low Rolling Resistance Protects Range</div>
+        <div class="tip-body">Tires with <strong>low rolling resistance (LRR)</strong> ratings preserve your EV range. Non-LRR tires can reduce range by 3–7%. Brands like Michelin, Bridgestone and Hankook publish LRR ratings. Prioritize tires with <strong>AA or A fuel economy ratings</strong>.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💰</div>
+        <div class="tip-title">True Cost of Ownership Math</div>
+        <div class="tip-body">Rotation + balancing + flat repair = ~$57/visit at retail. If you do this <strong>twice a year for 5 years</strong>, that's <strong>$570 saved</strong> with free lifetime perks from Costco or America's Tire — often more than the price difference between shops.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: AI Advisor -->
+  <div class="tab-content" id="tab-ai">
+    <div class="section-title">AI Tire Expert — Ask Anything</div>
+    <div class="chat-box">
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg ai">
+          <div class="msg-label">🤖 Tire Expert</div>
+          Hi! I'm your Tesla Model 3 tire expert. I know the best tires for your 18", 19" and 20" wheel sizes, and I can compare Costco, America's Tire and Walmart on price, perks and EV fit. What would you like to know?
+        </div>
+      </div>
+      <div class="quick-questions">
+        <span class="qq" onclick="sendQuick(this)">Which tire gives the best tread life?</span>
+        <span class="qq" onclick="sendQuick(this)">Costco vs America's Tire — which is better?</span>
+        <span class="qq" onclick="sendQuick(this)">What's Road Force balancing?</span>
+        <span class="qq" onclick="sendQuick(this)">Do I need special EV tires?</span>
+        <span class="qq" onclick="sendQuick(this)">How often should I rotate Model 3 tires?</span>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" placeholder="Ask about tires, shops, warranties..." onkeydown="if(event.key==='Enter') sendMessage()" />
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()">Ask ➤</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// === Tire Data ===
+const tireData = {
+  '18': [
+    {
+      brand: 'Michelin', name: 'Pilot Sport All Season 4', badge: 'Top Pick', badgeClass: '',
+      mileage: '45,000 mi', price: '$185–$220', ev: true,
+      ratings: { 'Tread Life': 88, 'Wet Grip': 92, 'Noise': 85, 'Range Impact': 80 },
+      note: 'The go-to for Model 3 owners wanting the best all-around. 3 Tesla owners in forums report 40K+ miles on these. Quiet, grippy in rain. Available at all 3 shops.',
+      available: ['Costco', "America's Tire", 'Walmart']
+    },
+    {
+      brand: 'Hankook', name: 'iON AS', badge: 'EV Optimized', badgeClass: 'ev',
+      mileage: '50,000 mi', price: '$140–$175', ev: true,
+      ratings: { 'Tread Life': 92, 'Wet Grip': 84, 'Noise': 90, 'Range Impact': 92 },
+      note: 'Tesla OEM supplier (Highland). Foam-lined for quiet ride. Best LRR for range. One of the quietest tires available for the Model 3. Strong forum recommendation.',
+      available: ["America's Tire"]
+    },
+    {
+      brand: 'Goodyear', name: 'ElectricDrive GT', badge: 'EV Optimized', badgeClass: 'ev',
+      mileage: '40,000 mi', price: '$150–$185', ev: true,
+      ratings: { 'Tread Life': 82, 'Wet Grip': 86, 'Noise': 86, 'Range Impact': 85 },
+      note: 'Purpose-built for EVs with SoundComfort technology. Available at Walmart Auto — one of the best EV-specific options there. XL load rating handles Model 3 weight.',
+      available: ['Walmart', "America's Tire"]
+    },
+    {
+      brand: 'Bridgestone', name: 'Turanza QuietTrack', badge: 'Best Value', badgeClass: 'value',
+      mileage: '80,000 mi', price: '$145–$180', ev: false,
+      ratings: { 'Tread Life': 98, 'Wet Grip': 80, 'Noise': 88, 'Range Impact': 78 },
+      note: 'Highest mileage warranty of any option here. 80K miles is exceptional. Best choice if you drive 15K+ miles/year and want to maximize cost-per-mile. Great at Costco (often on sale).',
+      available: ['Costco', "America's Tire"]
+    },
+    {
+      brand: 'Continental', name: 'PureContact LS', badge: null,
+      mileage: '70,000 mi', price: '$130–$165', ev: false,
+      ratings: { 'Tread Life': 94, 'Wet Grip': 82, 'Noise': 82, 'Range Impact': 80 },
+      note: 'Outstanding tread life warranty at 70K miles. Budget-friendly while maintaining quality. Good availability across all three shops.',
+      available: ['Costco', "America's Tire", 'Walmart']
+    }
+  ],
+  '19': [
+    {
+      brand: 'Michelin', name: 'Pilot Sport All Season 4', badge: 'Top Pick', badgeClass: '',
+      mileage: '45,000 mi', price: '$210–$260', ev: true,
+      ratings: { 'Tread Life': 88, 'Wet Grip': 93, 'Noise': 84, 'Range Impact': 80 },
+      note: 'Confirmed fit for 235/40R19. Multiple Model 3 LR owners report 5%+ range loss vs OEM Primacy, but massive grip improvement. Worth it for most drivers.',
+      available: ['Costco', "America's Tire"]
+    },
+    {
+      brand: 'Hankook', name: 'Ventus S1 AS+', badge: 'EV Optimized', badgeClass: 'ev',
+      mileage: '50,000 mi', price: '$165–$200', ev: true,
+      ratings: { 'Tread Life': 90, 'Wet Grip': 86, 'Noise': 88, 'Range Impact': 88 },
+      note: 'Tesla OEM for some 2024 Highlands. Very quiet, excellent range retention. Recommended by Tesla enthusiast forums as the best bang-for-buck on 19" setups.',
+      available: ["America's Tire"]
+    },
+    {
+      brand: 'Continental', name: 'PureContact LS', badge: 'Best Value', badgeClass: 'value',
+      mileage: '70,000 mi', price: '$155–$190', ev: false,
+      ratings: { 'Tread Life': 94, 'Wet Grip': 82, 'Noise': 83, 'Range Impact': 79 },
+      note: '70K mile warranty is exceptional for a 19" tire. If maximizing tread life is your #1 goal, this is the answer for 19" wheels.',
+      available: ['Costco', "America's Tire", 'Walmart']
+    }
+  ],
+  '20': [
+    {
+      brand: 'Pirelli', name: 'P Zero All Season Elect', badge: 'Top Pick', badgeClass: '',
+      mileage: '40,000 mi', price: '$260–$320', ev: true,
+      ratings: { 'Tread Life': 82, 'Wet Grip': 92, 'Noise': 86, 'Range Impact': 84 },
+      note: 'OEM on Model 3 Performance. "Elect" designation means EV-tuned. Performance-class tire with decent tread life for 20s. Get the "Elect" version specifically.',
+      available: ["America's Tire"]
+    },
+    {
+      brand: 'Michelin', name: 'Pilot Sport All Season 4', badge: null,
+      mileage: '40,000 mi', price: '$240–$290', ev: true,
+      ratings: { 'Tread Life': 84, 'Wet Grip': 93, 'Noise': 82, 'Range Impact': 79 },
+      note: 'Best grip on 20" setup. 20" tires inherently have shorter tread life due to lower aspect ratio. These last as long as possible for the size.',
+      available: ['Costco', "America's Tire"]
+    }
+  ]
+};
+
+// === Size selector ===
+const sizeInfo = {
+  '18': '✅ <strong>235/45R18</strong> — Most common Model 3 size. Best selection, most affordable, and widest availability at Walmart, Costco & America\'s Tire. Ideal for tread life priority.',
+  '19': '✅ <strong>235/40R19</strong> — Long Range AWD trims. Good selection at America\'s Tire and Costco. Slightly pricier than 18". Note: Performance trims may have staggered sizing (front/rear different).',
+  '20': '✅ <strong>235/35R20 (front) / 275/30R20 (rear)</strong> — Performance trim only. Staggered fitment means front and rear tires are DIFFERENT sizes — cannot rotate front-to-rear. Higher cost, shorter life.'
+};
+
+let currentSize = '18';
+
+function selectSize(size, btn) {
+  currentSize = size;
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('sizeInfo').innerHTML = sizeInfo[size];
+  renderTires();
+}
+
+function renderTires() {
+  const tires = tireData[currentSize];
+  const grid = document.getElementById('tireGrid');
+  grid.innerHTML = tires.map((t, i) => `
+    <div class="tire-card ${i === 0 ? 'best' : ''}">
+      ${t.badge ? `<div class="badge ${t.badgeClass}">${t.badge}</div>` : ''}
+      <div class="tire-brand">${t.brand}</div>
+      <div class="tire-name">${t.name}</div>
+      <div class="tire-stats">
+        <div class="stat"><div class="stat-label">Tread Warranty</div><div class="stat-value">${t.mileage}</div></div>
+        <div class="stat"><div class="stat-label">Price/tire</div><div class="stat-value green">${t.price}</div></div>
+      </div>
+      ${Object.entries(t.ratings).map(([label, val]) => `
+        <div class="rating-bar">
+          <div class="rating-label">${label}</div>
+          <div class="bar-bg"><div class="bar-fill ${label === 'Tread Life' || label === 'Range Impact' ? 'green' : ''}" style="width:${val}%"></div></div>
+          <span style="font-size:12px;color:#888;width:30px;text-align:right">${val}</span>
+        </div>
+      `).join('')}
+      <div class="tire-note">${t.note}${t.ev ? '<br><span class="ev-tag">⚡ EV-Optimized</span>' : ''}</div>
+      <div style="margin-top:10px;font-size:12px;color:#666;">Available at: ${t.available.join(' · ')}</div>
+    </div>
+  `).join('');
+}
+
+renderTires();
+
+// === Tabs ===
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// === AI Chat ===
+const SYSTEM_PROMPT = `You are an expert tire advisor specializing in Tesla Model 3 tires. The user wants maximum tread life and shops at Walmart, Costco, and America's Tire (Discount Tire).
+
+Key facts to use:
+- Tesla Model 3 sizes: 235/45R18 (Standard), 235/40R19 (Long Range), 235/35R20 / 275/30R20 (Performance staggered)
+- EVs wear tires 20-30% faster due to heavy batteries and instant torque
+- Rotate Model 3 tires every 5,000-6,000 miles (not 7,500)
+- No spare tire on Model 3 — road hazard warranty is essential
+- Top long-life tires: Bridgestone Turanza QuietTrack (80K mi warranty), Continental PureContact LS (70K), Michelin Pilot Sport All Season 4 (45K), Hankook iON AS (50K, EV-optimized)
+- Costco perks: free lifetime rotation, balancing, flat repair, nitrogen, 5-year road hazard warranty. Requires Costco membership. Slow service, no Road Force balancing.
+- America's Tire perks: free lifetime rotation + balancing for purchased tires, free flat repair (even non-AT tires), Road Force balancing (best in class), no membership needed, Tesla-familiar staff. Best overall for EV owners.
+- Walmart perks: budget prices, free rotation for Walmart tires, free flat repair for Walmart+ members ($15 value), limited EV-tire selection, less Tesla experience.
+- TPMS sensors must be serviced during tire replacement — ask shops about service packs
+- Look for foam-lined / "Elect" labeled tires for quieter ride on silent EV
+- Road Force balancing at America's Tire is superior to standard balancing
+
+Be concise, practical, and always tie advice back to the user's priority of long tread life and their shop preferences. Recommend specific tires and shops.`;
+
+let chatHistory = [];
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  appendMessage('user', text);
+  await callAI(text);
+}
+
+function sendQuick(el) {
+  const text = el.textContent;
+  appendMessage('user', text);
+  callAI(text);
+}
+
+function appendMessage(role, text) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  if (role === 'ai') div.innerHTML = `<div class="msg-label">🤖 Tire Expert</div>${text}`;
+  else div.innerHTML = `<div class="msg-label" style="text-align:right;color:#ffaaaa">You</div>${text}`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  if (role === 'user') chatHistory.push({ role: 'user', content: text });
+}
+
+function showLoading() {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.id = 'loading-msg';
+  div.innerHTML = `<div class="msg-label">🤖 Tire Expert</div><div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function removeLoading() {
+  const el = document.getElementById('loading-msg');
+  if (el) el.remove();
+}
+
+async function callAI(userText) {
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  showLoading();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
+    removeLoading();
+    appendMessage('ai', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    removeLoading();
+    appendMessage('ai', 'Connection error. Please check your internet and try again.');
+  }
+  sendBtn.disabled = false;
+}
+</script>
+</body>
+</html>

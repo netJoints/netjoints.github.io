@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In the previous blog post, we performed the initial OCI on-boarding and Transit VPC setup. Here we will build Multi-Cloud transit network connecting OCI and GCP together. The GCP multi-cloud transit network is already built using the Aviatrix Controller. This is the common cloud architecture that Av">
+  <title>Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/oci-multicloud-transit/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP">
+  <meta property="og:description" content="In the previous blog post, we performed the initial OCI on-boarding and Transit VPC setup. Here we will build Multi-Cloud transit network connecting OCI and GCP together. The GCP multi-cloud transit network is already built using the Aviatrix Controller. This is the common cloud architecture that Av">
+  <meta property="og:url" content="https://netjoints.com/blog/oci-multicloud-transit/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2019-10-16">October 16, 2019</time>
+      </div>
+
+      <h1 class="blog-title">Aviatrix Multi-Cloud Oracle Cloud (OCI) Transit Network Setup with GCP</h1>
+
+      
+
+      <div class="blog-content">
+        <p>In the <a href="https://netjoints.wordpress.com/2019/10/16/aviatrix-oracle-cloud-oci-on-boarding-process/">previous blog post</a>, we performed the initial OCI on-boarding and Transit VPC setup. Here we will build Multi-Cloud transit network connecting OCI and GCP together. The GCP multi-cloud transit network is already built using the Aviatrix Controller. This is the common cloud architecture that Aviatrix provide across all major Clouds such as AWS, Azure, GCP and OCI. This common cloud architecture provide consistent operational tools and visibility into different Cloud Networks.</p>
+<h3>Business Requirement to Consume Services from GCP and OCI</h3>
+<p>A customer has already deployed production workload in GCP to utilize GCP’s ML/AI/Analytics services. A new business requirement emerged to consume database service offered in Oracle (OCI) Cloud.</p>
+<p>From the network architecture point of view, this business requirement can easily be fulfilled by building an Aviatrix based transit architecture in OCI; the same transit network architecture that was built in GCP. Eventually these two Cloud architectures will be connected together using Aviatrix encrypted peering.</p>
+<p><img alt="Multi-Cloud Common Architecture in GCP and OCI " src="/blog/images/oci-multicloud-transit/image-28.png" /></p>
+<p>Multi-Cloud Common Architecture in GCP and OCI</p>
+<h3>Aviatrix Transit Gateway in OCI Transit VCN</h3>
+<p>As first step, we logged into the controller and launched the workflow to deploy the Aviatrix Transit VCN Gateway (OCI calls VPC as VCN: Virtual Cloud Network). The VCNs were build in the <a href="https://netjoints.wordpress.com/2019/10/16/aviatrix-oracle-cloud-oci-on-boarding-process/">previous blog</a>.</p>
+<p>Notice the ease of deploying it in the region of your choice with the instance size that your business require. Also notice that Public Subnet was automatically created by Aviatrix and one does not need to worry about creating it from scratch.</p>
+<p><img alt="Launch Aviatrix Gateway (AVX-Transit-GW) in OCI VCN" src="/blog/images/oci-multicloud-transit/screen-shot-2019-10-16-at-9.36.19-pm-1.png" /></p>
+<p>Launch Aviatrix Gateway (AVX-Transit-GW) in OCI VCN</p>
+<p>Once you hit create button, the Aviatrix Controller will communicate with the OCI and will deploy the Aviatrix Gateway. Following output shows the process of creating this transit gateway.</p>
+<h4>Aviatrix Controller Deploying Transit Gateway in OCI</h4>
+<p>[21:42:57] Starting to create OCI GW OCI-Transit-GW-Ashburn.<br />
+[21:42:58] Connected to Oracle OCI.<br />
+[21:42:58] Deploying virtual machine…<br />
+[21:44:32] Deploy virtual machine done.<br />
+[21:44:32] Configure virtual machine.<br />
+[21:44:33] License check is complete.<br />
+[21:44:33] Added GW info to Database.<br />
+[21:44:35] OCI-Transit-GW-Ashburn AVX SQS Queue created. <br />
+[21:44:35] Create message queue done.<br />
+[21:44:35] Initializing GW…..<br />
+[21:45:06] Copy configuration to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy new software to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy /etc/cloudx/cloudx_code_file.json.enc to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy /etc/cloudx/cloudx_code_key_file.txt to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy scripts to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy sdk to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Copy libraries to GW OCI-Transit-GW-Ashburn done.<br />
+[21:45:06] Installing software ….<br />
+[21:45:06] Issuing certificates….<br />
+[21:45:06] Issue certificates done<br />
+[21:45:15] GW software started.<br />
+[21:45:29] Software Installation done.</p>
+<p>You can now login to OCI console and notice the Aviatrix Transit GW instance deployed in the Finance Compartment or Department.</p>
+<p><img alt="Aviatrix Transit Gateway Deployed in OCI" src="/blog/images/oci-multicloud-transit/screen-shot-2019-10-16-at-9.48.28-pm-1.png" /></p>
+<p>Aviatrix Transit Gateway Deployed in OCI</p>
+<p>Following output shows the instance detail and other information directly gathered from the OCI console.</p>
+<p>Instance Information <br />
+<strong>Availability Domain:</strong> RGRl:US-ASHBURN-AD-2 <br />
+<strong>Image:</strong> <a href="https://console.us-phoenix-1.oraclecloud.com/a/compute/images/ocid1.image.oc1..aaaaaaaavzvczf3r7uljpp7qv7fycifekheg2lvkxdyattcsja2rbeliqilq">Published Image: aviatrix_gateway_0415_1017_20190820</a> <br />
+<strong>Fault Domain:</strong> FAULT-DOMAIN-2 <br />
+<strong>OCID:</strong> …dsmska <a href="void(0);">ShowCopy</a> <br />
+<strong>Region:</strong> iad <br />
+<strong>Launched:</strong> Thu, 17 Oct 2019 04:43:00 UTC <br />
+<strong>Shape:</strong> VM.Standard2.2 <br />
+<strong>Compartment:</strong> shahzadali (root)/Finance-Compartment <br />
+<strong>Virtual Cloud Network:</strong> <a href="https://console.us-phoenix-1.oraclecloud.com/networking/vcns/ocid1.vcn.oc1.iad.aaaaaaaa22xocg2ng7atz7lxzehr2rxubvghkotxmja4qnyf2wdfuk3yoaca">OCI-Transit-VCN-Ashburn</a> <br />
+<strong>Launch Mode:</strong> NATIVE <br />
+<strong>Maintenance Reboot:</strong> – <br />
+Primary VNIC Information <br />
+<strong>Private IP Address:</strong> 10.111.0.2 <br />
+<strong>Internal FQDN:</strong> av-gw-oci-transit-gw-ashburn…<a href="void(0);">ShowCopy</a> <br />
+<strong>Public IP Address:</strong> 150.136.206.183 <br />
+<strong>Subnet:</strong> <a href="https://console.us-phoenix-1.oraclecloud.com/networking/vcns/ocid1.vcn.oc1.iad.aaaaaaaa22xocg2ng7atz7lxzehr2rxubvghkotxmja4qnyf2wdfuk3yoaca/subnets?jt=listing">OCI-Transit-VCN-Ashburn-public-subnet</a> <br />
+<strong>Network Security Groups:</strong> <a href="https://console.us-phoenix-1.oraclecloud.com/networking/vcns/ocid1.vcn.oc1.iad.aaaaaaaa22xocg2ng7atz7lxzehr2rxubvghkotxmja4qnyf2wdfuk3yoaca/network-security-groups/ocid1.networksecuritygroup.oc1.iad.aaaaaaaahskxirnrmhzzxvu2f7dy6p2fkj42r6btz6mmbpdqtny4cr3433pa">aviatrix-security-group</a> This instance’s traffic is controlled by its firewall rules in addition to the associated <a href="https://console.us-phoenix-1.oraclecloud.com/networking/vcns/ocid1.vcn.oc1.iad.aaaaaaaa22xocg2ng7atz7lxzehr2rxubvghkotxmja4qnyf2wdfuk3yoaca/subnets?jt=listing">Subnet’s</a> security lists and the VNIC’s network security groups. Launch Options <br />
+<strong>NIC Attachment Type:</strong> VFIO <br />
+<strong>Firmware:</strong> UEFI_64 <br />
+<strong>Remote Data Volume:</strong> PARAVIRTUALIZED <br />
+<strong>Boot Volume Type:</strong> PARAVIRTUALIZED</p>
+<p><img alt="Aviatrix Transit Gateway Instance Details in OCI" src="/blog/images/oci-multicloud-transit/image-15.png" /></p>
+<p>Aviatrix Transit Gateway Instance Details in OCI</p>
+<p>Important point we would like to highlight that in order to get all that information, one does not really need to login to OCI console. All this information is also available from the Aviatrix Controller UI itself. This is great operational benefit because now operators don’t need to worry about learning different clouds and their constructs.</p>
+<h3>Aviatrix Spoke VCN Deployment in OCI</h3>
+<p>At this point the OCI Transit GW is deployed. The next step is to create an OCI VCN and then deploy Spoke GW inside the Spoke-VCN.</p>
+<p>Once again Aviatrix Controller is used to deploy these constructs. Following screen shot shows the VCN (shown as VPC) creation in the region of your choice with the CIDR that you planned for this VCN.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-16.png" /></p>
+<h3>Aviatrix Spoke Gateway Deployment in OCI</h3>
+<p>After the Spoke-VCN was created, simplified controller UI is used to deploy the Aviatrix Spoke GW as shown in the screen shot below.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-17.png" /></p>
+<p>Following output from Aviatrix Controller shows the process of deploying the Aviatrix Spoke GW inside the Spoke-VCN</p>
+<p>[21:58:12] Starting to create OCI GW OCI-Spoke-GW1-Ashburn.<br />
+ [21:58:12] Connected to Oracle OCI.<br />
+ [21:58:12] Deploying virtual machine…<br />
+ [21:59:46] Deploy virtual machine done.<br />
+ [21:59:46] Configure virtual machine.<br />
+ [21:59:47] License check is complete.<br />
+ [21:59:47] Added GW info to Database.<br />
+ [21:59:49] OCI-Spoke-GW1-Ashburn AVX SQS Queue created. <br />
+ [21:59:49] Create message queue done.<br />
+ [21:59:49] Initializing GW…..<br />
+ [22:00:20] Copy configuration to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy new software to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy /etc/cloudx/cloudx_code_file.json.enc to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy /etc/cloudx/cloudx_code_key_file.txt to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy scripts to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy sdk to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Copy libraries to GW OCI-Spoke-GW1-Ashburn done.<br />
+ [22:00:20] Installing software ….<br />
+ [22:00:21] Issuing certificates….<br />
+ [22:00:21] Issue certificates done<br />
+ [22:00:28] GW software started.<br />
+ [22:00:42] Software Installation done.</p>
+<h3>Enable Aviatrix ActiveMesh For Aviatrix OCI Transit and Spoke Gateways</h3>
+<p>It is best practice to enable <a href="https://docs.aviatrix.com/HowTos/activemesh_faq.html">Aviatrix ActiveMesh</a> on the Transit and Spoke Gateway. ActiveMesh greatly enhances the availability and performance of the Network inside the Cloud.</p>
+<p>Go to Gateway section in the Aviatrix Controller (AVX-CTRL) to enable it.</p>
+<p>AVX-CTRL –&gt; Gateway –&gt; Enable ActiveMesh Mode <a href="https://docs.aviatrix.com/HowTos/gateway.html#activemesh-mode">Info</a></p>
+<h3>Attach AVX-Spoke GW to AVX-Transit GW</h3>
+<p>At this point the Aviatrix Transit and Spoke GWs are deployed in this respective VCNs. Here we will attach the Spoke GW to Transit GW. This step will build an encrypted tunnel between these two gateway. It is extremly simple and one click operations without operators worrying about knowing the source/dest IP, IPSec protocols or IKE details. All of this is automatically done by the Aviatrix Controller with just a single click.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-18.png" /></p>
+<h3>OCI Transit VCN and Transit GW Routing Tables</h3>
+<p>One of the great advantages of using Aviatrix is that one does not need to login to OCI, AWS or GCP Cloud Consoles to gather this information. The Aviatrix Controller will also provide the relevant information that greatly improves the day2 operations.</p>
+<p>Following screen shots show the routing tables from VCNs and inside the Aviatrix Transit and Spoke Gateways.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-20.png" /></p>
+<p>OCI Transit Gatewyay showing state is up and connected to OCI-Spoke GW. Notice the ActiveMesh HA mode which shows that all the Transit and Spoke GWs are running in Active/Active mode with ECMP enabled between them.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-25.png" /></p>
+<p>The OCI Transit VPC Route Table is Empty because all routing is done by the Transit-GW</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-21.png" /></p>
+<p>This outout show the Transit Gateway routing table. Notice that the Spoke routes are automatically added and pointing towards the OCI-Spoke-GW tunnel.</p>
+<h3>OCI Spoke VCN and Spoke GW Routing Tables</h3>
+<p>Here we can see the routing table details from the Spoke VCN and Spoke GW point of view.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-19.png" /></p>
+<p>Spoke Gateway tunnel us up. It also shows the CIDRs it is advertising to Transit/Hub GW for end-to-end routing purposes.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-22.png" /></p>
+<p>This is the Spoke-VCN private routing table. Aviatrx controller created two routing tables inside the VCN. One is private (wihtout the default route) and second is default route table (shown in the next screen shot with the default route in there). Aviatrix controller also added RFC1918 routes pointing towards the OCI-Spoke-GW1.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-23.png" /></p>
+<p>This is the default routing table that has 0.0.0.0/0 route in it to route traffic towards Internet. This route is needed to build the tunnle between Transit and Spoke GWs</p>
+<p><img alt="Spoke GW routing table" src="/blog/images/oci-multicloud-transit/image-24-1.png" /></p>
+<p>Spoke GW routing table</p>
+<p>At this point the OCI setup is complete. In the next step we will peer OCI and GCP transit networks to establish connectivity between multiple clouds.</p>
+<h3>Transit Peering Between OCI and GCP Transit Gateways</h3>
+<p>Aviatrix provides a common cloud architecture and operaions cabalities that allows operators and architects to build multi-cloud archtecture without worrrying about the underlying constructs.</p>
+<p>In order to achieve the initial business objective, now we will peer OCI and GCO together. This will allow applications in either side of the cloud to have true multi-cloud connectivity.</p>
+<p>Login to Aviatrix controller and under “Transit Peering” select the Transit Gateways in both Clouds respectively and then connect.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-26.png" /></p>
+<p>Following output shows that both Clouds are connected in true multi-cloud fashion within a minute.</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-27.png" /></p>
+<p>After about a minutes the transit peering comes UP</p>
+<h3>Multi-Cloud Connectivty Testing</h3>
+<p>We have deployed following topology for the multi-cloud connectivity. We will perform a ping test from source Test-VM in GCP towards Test-VM in OCI behind Spoke-VCN-GW</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-28.png" /></p>
+<ul>
+<li>gcp-vm – 10.76.1.2</li>
+<li>gcp-spoke</li>
+<li>gcp-transit-gw</li>
+<li>oci-transit-gw</li>
+<li>oci-spoke</li>
+<li>oci-vm – 10.112.128.2</li>
+</ul>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-29.png" /></p>
+<p>Traceroute from GCP Test VM to OCI-Test VM</p>
+<p><img alt="" src="/blog/images/oci-multicloud-transit/image-30.png" /></p>
+<p>Ping from GCP Test VM to OCI-Test VM</p>
+<h2>Conclusion</h2>
+<p>Aviatrix allows a common network topology across multiple clouds. This makes the enterprise network and security deployments seamless. There are no surprises and IT admins/operators does not need to know the underlying artifacts of various clouds.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

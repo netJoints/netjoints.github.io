@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This blog covers how AWS and AViatrix coming teogher reduce AWS NAT Gateway Cost with Improved Security. NAT Gateway Use-Cases in the Cloud NAT (Network Address Translation) Gateway in public cloud provides outbound Internet connectivity (also known as Egress connectivity) in a private subnet from w">
+  <title>Save AWS NAT Gateway Cost and Improve Security · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Save AWS NAT Gateway Cost and Improve Security">
+  <meta property="og:description" content="This blog covers how AWS and AViatrix coming teogher reduce AWS NAT Gateway Cost with Improved Security. NAT Gateway Use-Cases in the Cloud NAT (Network Address Translation) Gateway in public cloud provides outbound Internet connectivity (also known as Egress connectivity) in a private subnet from w">
+  <meta property="og:url" content="https://netjoints.com/blog/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">aws</span>
+        <time datetime="2023-05-08">May 8, 2023</time>
+      </div>
+
+      <h1 class="blog-title">Save AWS NAT Gateway Cost and Improve Security</h1>
+
+      
+
+      <div class="blog-content">
+        <p>This blog covers how AWS and AViatrix coming teogher reduce AWS NAT Gateway Cost with Improved Security.</p>
+<h2>NAT Gateway Use-Cases in the Cloud</h2>
+<p>NAT (Network Address Translation) Gateway in public cloud provides outbound Internet connectivity (also known as Egress connectivity) in a private subnet from within the VPCs (Virtual Private Cloud). NAT Gateway enables users, services, applications and application developers to download software updates, and security patches, connect to code repositories (such as GitHub), access SaaS services, or communicate with any resources on the public Internet.</p>
+<p>Most commonly when app team migrate to cloud or deploy new app, they spin up NAT GW service immediately to get this public activated.</p>
+<p>Following diagram depicts a typical NAT gateway deployment in AWS.</p>
+<p><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/AWS-NATGW_1-727x1024.png" /></p>
+<h2>AWS NAT Gateway Challenges</h2>
+<p>Although AWS NAT Gateway is a convenient service, it has some design and operational challenges enterprises should know about. These challenges are mainly in the areas of expensive cost, limited visibility and non exisitence security. Lets go over these challenges one by one.</p>
+<h3>Challenge1: Cost</h3>
+<p>The AWS NAT gateway could be very costly for enterprises requiring a lot of data due to its pricing structure.</p>
+<p>Cloud model is a consumption based model where customer pay for data processing charges. And based on the amount of traffic the processes through these services your cloud could be astronomical. it is import to consider how CSP changes for service and data processing changers.</p>
+<p>AWS NAT Gatewat pricing structure comprised of the follow comopnenets</p>
+<ul>
+<li>NAT Gwtwats per hour chanrg</li>
+<li>NAT Gatewye per GB change</li>
+</ul>
+<p>The pricing structure of AWS NAT gateway includes charges of $0.045 per hour per NAT Gateway, plus $0.045 per GB processed. <a href="https://aws.amazon.com/vpc/pricing/">https://aws.amazon.com/vpc/pricing/</a></p>
+<p>Example:</p>
+<p>Lets say you have a travel web site with 100 VPC sending three TB each per hour. It means you will say 0.045 . Company will be paying $4 mil per year (ARR) just for the NAT serrivceFor example a customer sending</p>
+<p>Besides that, enterprises must be aware of other associated AWS NAT Gateway costs.</p>
+<p>For the scope of this blog, we are only looking at the data processing cost.</p>
+<p>In summary cost of using AWS NAT GW could be significant if you are using high data processing.</p>
+<table>
+<thead>
+<tr>
+<th>Other AWS NAT Gateway and Associated Cost</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Processing Cost</td>
+<td>NAT Gateway is charged based on the date the service processes. This cost increases as the volume of data processed increases. AWS charges per gigabyte (GB) of data processing.</td>
+</tr>
+<tr>
+<td>Log Analysis Cost</td>
+<td>NAT Gateway logs can be analyzed by 3rd party or AWS native service. In either case, there is a cost associated with it.</td>
+</tr>
+<tr>
+<td>Log Storage Cost:</td>
+<td>NAT GW log storage is critical for compliance and governance as Internet Egress traffic is involved. The retention time for the storage could span from months to multiple years. S3 buckets could be costly.</td>
+</tr>
+<tr>
+<td>Monitoring Cost:</td>
+<td>NAT Gateway is charged based on the date the service processes. This cost increases as the volume of data processed increases. AWS charges per gigabyte (GB) of data processing.</td>
+</tr>
+<tr>
+<td>Additional Security Services Cost:</td>
+<td>AWS NAT GW only provides IP port/protocol-based traffic filtering. For Internet egress traffic, enterprises must deploy additional services such as L4/L7 firewalls, anomaly detection, URL filtering, threat detection, prevention, and micro-segmentation to enhance security posture.   These services could be very costly and lead to a very complex design.</td>
+</tr>
+</tbody>
+</table>
+<p>Overall, the cost of using AWS NAT Gateway can be significant, especially for customers with high data processing volumes.</p>
+<h3>Challenge2: Visibility</h3>
+<p>AWS NAT gateway visibility is limited and provided by the logs and flows which might not be adequate in an enterprise scenario. Moreover these additional logs and storage cost could increase AWS bill.</p>
+<p>AWS NAT gateway does not provide any visibility. There could be ways to leverage logs and flow logs that require additional not a good picture travelrsing the NAT gateway.</p>
+<h3>Challenge3: Security</h3>
+<p>AWS NAT gateway service mean to provide NAT service and is not meant to be a security service. how ever as enterprise use case are becoming more sophisticated they are looking for more itgheter control to secure traffic coming in and out of their application environment.</p>
+<p>One example is policy based FQDN based rules applied.</p>
+<p>For instances is not designed rules are based on IP port and protocol. Customer cannot creat a centralized L7 FQDN based NAT rules for secure egress connectivity. There is no option for the rules to be applied and block traffic dynamically without modifying the underlying IP addresses. AWS NAT gateway does not block malicious IP addresses by default. And customers reply on service like AWS GuardDuty for threat detection. AWS GurdDuty will incur additional cost just to alter about a malicious bad actor on the internet.</p>
+<p>In additional customer who deploy NAT GW, in majrooty cases, they end up deploying threat detection such as GuardDUty to provide additional security and mimiize complaicne risk.</p>
+<h2>AWS + Aviatrix Joint NAT Gateway Solution</h2>
+<p>Aviatrix is leading provider of secure cloud networking software is partnering with AWS to offer NAT Gateway solution as part of their secure egress offering. Aviatrix Secure Egress has built in advance NAT functionality that securely allow access to Internet for business critical applications and workflows.</p>
+<p>The Aviatrix NAT Gateways deployed on AWS as EC2 instances provide a highly scalable, visibible secure, and cost-effective solution for customers looking for NAT functionality for their application inside AWS. There is no change of architecture needed and it gets deployed in minutes without changing the architecture. It is no disruptive.</p>
+<p>Following picture depicts the deployed Aviatrix Secure solution with NAT capabilities.</p>
+<p><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/AWSAviatrix-NATGW_1-755x1024.png" /></p>
+<p>With this joint solution, customers can now leverage their instances to perform advanced Network Address Translation (NAT) for their private cloud resources, while also taking advantage of Aviatrix’s embedded security and built-in visibility capabilities, such as</p>
+<ul>
+<li>Distributed Cloud Firewall</li>
+<li>URL filtering</li>
+<li>Threat detection/prevention</li>
+<li>Zero-Trust Centralized Security Policy</li>
+<li>Anomaly detection</li>
+<li>Enhance visibility and troubleshooting options</li>
+<li>Etc.</li>
+</ul>
+<p>Since Aviatrix does not charge for data processing, many of Aviatrix customer are benefiting from cost saving or re-invest in new AWS cloud services.</p>
+<table>
+<thead>
+<tr>
+<th>AWS + Aviatrix Solution Joint Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Processing Cost</td>
+<td>Joint solution does not charge for data processing cost</td>
+</tr>
+<tr>
+<td>Log Analysis Cost</td>
+<td>There is no separate cost for log analysis</td>
+</tr>
+<tr>
+<td>Log Storage Cost</td>
+<td>There is no separate cost for log analysis</td>
+</tr>
+<tr>
+<td>Monitoring Cost</td>
+<td>There is no separate cost for log analysis</td>
+</tr>
+<tr>
+<td>Additional Visibility</td>
+<td>Aviatrix provides built in visibility via netflow, syslog, etc. without any additional cost</td>
+</tr>
+<tr>
+<td>Additonal Security</td>
+<td>Security is embedded without additional cost</td>
+</tr>
+</tbody>
+</table>
+<h2>Aviatrix Cost Savings Examples</h2>
+<p>According to a recent study, NAT Gateway can be a significant cost driver for AWS customers, accounting for up to 20% of their overall AWS costs. With the Aviatrix NAT Gateway solution, customers can save up to 75% on their NAT Gateway costs, making it a desirable option for businesses of all sizes.</p>
+<h2>Aviatrix NAT Gateway Visibility Example</h2>
+<p><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-1024x475.png" /><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-1-1024x533.png" /><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-2-1024x618.png" /><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-3-1024x939.png" /><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-4-1024x996.png" /><img alt="" src="/blog/images/aws-and-aviatrix-partner-to-reduce-aws-nat-gateway-data-processing-cost/image-5-1024x943.png" /></p>
+<h2>Aviatrix NAT Gateway Security Examples</h2>
+<p>Threat Detection. Same GW can also be firewall</p>
+<h2>Customer Testimonials</h2>
+<h2>Conclusion</h2>
+<p>The joint NAT Gateway solution from Aviatrix and AWS offers a low-cost, low-risk, highly available solution for businesses to enhance their cloud network security while reducing IT spending. It provides enahced NAT gateways that can be easily deployed in under an hour without architectural changes. The solution provides deep application-level visibility into internet egress traffic, allowing businesses to control data transfer charges. Based on the customer survey, Aviatrix Secure Egress saves up to 70% versus an AWS NAT gateway. With centralized management, threat prevention, and URL filtering, businesses can improve their network security and lower their TCO.</p>
+<h2>How to Get Started</h2>
+<p><strong>Option1</strong></p>
+<p>Aviaris released a self service tool for customers to see it in action and also migrate their AWS NAT Gateway to Aviatix + AWS NAT Gateway.</p>
+<h3></h3>
+<p>Following Terraform code is available for customers to integrate the NAT Gateway upgrade via their CI/CD or DevOps toolset.</p>
+<p><strong>Option2</strong><br />
+Guide</p>
+<p><strong>Option3</strong></p>
+<p>The Aviatrix NAT Gateway solution is now available to all AWS customers. For more information on this solution, please visit <a href="https://aviatrix.com">www.aviatrix.com</a> or send email to <a href="mailto:info@aviatrix.com?subject=More%20info.%20about%20AWS%20%2B%20Aviatrix%20NAT%20Gateway&amp;body=Hi%2C%20%0A%0AI%20want%20to%20know%20more%20about%20the%20AWS%20%2B%20Aviatrix%20NAT%20Gateway%20joint%20solution.%20%0A%0AThanks%2C">info@aviatrix.com</a></p>
+<p>TCO Calculator tool</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

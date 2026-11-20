@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blackbox NaaS vs. Aviatrix Enterprise NaaS (Shahzad) Some vendors provide a NaaS service that forces enterprise business-critical traffic and data to be transported to their servers, devices, or instances first. Such a foreign NaaS could pose serious security, governance, and audit challenges for en">
+  <title>Private NaaS vs Generic SaaS NaaS · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/private-naas-vs-generic-saas-naas/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Private NaaS vs Generic SaaS NaaS">
+  <meta property="og:description" content="Blackbox NaaS vs. Aviatrix Enterprise NaaS (Shahzad) Some vendors provide a NaaS service that forces enterprise business-critical traffic and data to be transported to their servers, devices, or instances first. Such a foreign NaaS could pose serious security, governance, and audit challenges for en">
+  <meta property="og:url" content="https://netjoints.com/blog/private-naas-vs-generic-saas-naas/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2023-02-02">February 2, 2023</time>
+      </div>
+
+      <h1 class="blog-title">Private NaaS vs Generic SaaS NaaS</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Blackbox NaaS vs. Aviatrix Enterprise NaaS (Shahzad)</h2>
+<p>Some vendors provide a NaaS service that forces enterprise business-critical traffic and data to be transported to their servers, devices, or instances first. Such a foreign NaaS could pose serious security, governance, and audit challenges for enterprises. Due it its limited visibility and control, this type of NaaS could be termed Blackbox NaaS.</p>
+<p>The following table will help readers understand the difference between Aviatrix enterprise NaaS vs. Blackbox NaaS offering.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>Aviatrix Private Naa</strong>S for Enterprises</td>
+<td><strong>Generic BlackBox NaaS</strong></td>
+</tr>
+<tr>
+<td><strong>Ownership</strong></td>
+<td>Enterprise owns the networking infrastructure</td>
+<td>3rd party owns the networking infrastructure</td>
+</tr>
+<tr>
+<td><strong>Visibilit</strong>y</td>
+<td>Full visibility</td>
+<td>Limited visibility</td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td>Full control</td>
+<td>Limited control</td>
+</tr>
+<tr>
+<td><strong>Data Sovereignt</strong>y</td>
+<td>Dedicated infra</td>
+<td>Shared infra</td>
+</tr>
+<tr>
+<td><strong>Data Compliance</strong></td>
+<td>All data stays within the enterprise network</td>
+<td>All data must be shipped to 3rd party vendor servers/services</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Controller and governed by enterprise</td>
+<td>Depends upon the 3rd party vendor</td>
+</tr>
+<tr>
+<td><strong>Competitive Edge</strong></td>
+<td>Unlimited catering enterprise requirement</td>
+<td>On-size-fit-all model for tenants</td>
+</tr>
+<tr>
+<td><strong>Traffic Patterns</strong></td>
+<td>Stays within the enterprise private network</td>
+<td>All data must be shipped to public NaaS for E/W, N/S, Ingress and Egress</td>
+</tr>
+<tr>
+<td><strong>Cost Control</strong></td>
+<td>Various design options for traffic engineering and cost control</td>
+<td>Rigid design dictated by the vendor causes no room for cost-controlled design</td>
+</tr>
+<tr>
+<td><strong>Flexible Design options</strong></td>
+<td>Various design options based on enterprise applications and business needs</td>
+<td>No design flexibility. Take it or leave it to approach</td>
+</tr>
+</tbody>
+</table>
+<p>With the rise of the public cloud, SaaS (Software as a Service) became a popular approach for software to be consumed by organizations over the public Internet. Some examples are Microsoft Teams, Google Meet, Gmail, and Microsoft Outlook applications delivered over the public internet and managed by the respective vendors.</p>
+<h1>Use-Cases / Business Critical Application (Shahzad)</h1>
+<p><IMO let’s remove this section since we will be covering all this in the private NaaS design section></p>
+<p>Use cases from a Business-critical application point of view.</p>
+<ul>
+<li>Latency factors</li>
+<li>High Throughput</li>
+<li>Security / Compliance / Governance</li>
+<li>Visibility / Troubleshooting</li>
+<li>Edge / Retail Branches</li>
+<li>Cost optimization/cost factor</li>
+<li>Manageability</li>
+</ul>
+<p>The ownership of the network is critical for business-critical apps. This is possible only when you have your own NaaS.</p>
+<h2>Greenfield Scenario</h2>
+<p>Enterprises building NaaS should consider the following best practice design that not only provides the enterprise network backbone and connects applications VPC/VNET/Private-Endpoints/etc. but also extends the cloud operating model to on-prem branches/sites and data centers.</p>
+<p>This best practice design should also enhance the design we discussed in the previous section. This previous design should gradually evolve to the design discussed in this scenario to take the full benefit of cost, visibility, performance, and control.</p>
+<h1>Enterprise NaaS using Aviatrix MCNS (Multicloud Network Software) Platform</h1>
+<p>Gartner defines the MCNS category to guide enterprises building public cloud networks and connecting cloud networks to private and hybrid connections/sites. Aviatrix MCNS platform builds enterprise NaaS without compromising security, control, operational visibility, and ownership. Aviatrix MCNS follows the Multicloud network architecture (MCNA) design principles pioneered by Aviatrix. Readers will notice that the following MCNA architectural layers are common in all three designs we will discuss here.</p>
+<ul>
+<li><strong>Network Backbone / Core Layer</strong><br />
+  The cloud backbone is the critical architecture component in any cloud network design. The network backbone becomes the core of the architecture. It is the foundation that must be designed carefully so that the rest of the architecture is highly available, high-performance, and resilient, providing visibility and control.</li>
+</ul>
+<p>The network backbone is the first to be thought through for any cloud network design. Aviatrix builds enterprise cloud network backbone in both brownfields as well as green field scenarios.</p>
+<ul>
+<li><strong>Application Layer</strong><br />
+  This layer mainly connects the applications deployed in VPC/VNET back to the network backbone. This connectivity is agnostic to the type of application being deployed in the VPC/VNET. Applications can be deployed using EC2/VMs/K8S/PaaS/SaaS/Private-Endpoint or even as SaaS.</li>
+<li><strong>Edge / Access Layer</strong>This layer connects hybrid connections (DC, Branches, SD-WAN, etc.) to the backbone. Internet, MPLS, or other private circuits are commonly used to provide transport to this layer.</li>
+<li><strong>Operations Layer</strong>This layer provides consistent control, operational visibility, observability, and day2 operations to the entire network design, including the backbone, application, and access/edge layer. Consistent management and automation are also part of this layer.</li>
+<li><strong>Security Layer</strong><br />
+  This layer covers overall security, governance, and audibility to the entire network design, including the backbone, application, and access/edge layer. It applies to traffic patterns such as E/W, N/S, Internet Ingress, Internet Egress, etc. It provides end-to-end encryption, service chaining, service insertion (for example, for NGFW), network segmentation, micro-segmentation, distributed firewalling, ML-based anomaly detection, threat prevention, etc. These security controls are directly embedded into the data-plane fabric.</li>
+</ul>
+<p>The following diagram shows these architectural layers, as we discussed above.</p>
+<p><img alt="" src="/blog/images/private-naas-vs-generic-saas-naas/image-1024x531.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

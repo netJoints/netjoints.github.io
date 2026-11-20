@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction This document is the lab guide for GCP Test Flight Project. Anyone with basic GCP knowledge is the audience. It is GCO focused with connection to AWS as optional component of the cloud. Topology Following is the starting topology. Some components are pre-built to save time. Once you fin">
+  <title>LAB1 – Google Cloud and Aviatrix Testing/POC LAB Guide · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/google-cloud-and-aviatrix-testing-poc-lab-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAB1 – Google Cloud and Aviatrix Testing/POC LAB Guide">
+  <meta property="og:description" content="Introduction This document is the lab guide for GCP Test Flight Project. Anyone with basic GCP knowledge is the audience. It is GCO focused with connection to AWS as optional component of the cloud. Topology Following is the starting topology. Some components are pre-built to save time. Once you fin">
+  <meta property="og:url" content="https://netjoints.com/blog/google-cloud-and-aviatrix-testing-poc-lab-guide/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-28">November 28, 2020</time>
+      </div>
+
+      <h1 class="blog-title">LAB1 – Google Cloud and Aviatrix Testing/POC LAB Guide</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Introduction</h2>
+<p>This document is the lab guide for GCP Test Flight Project. Anyone with basic GCP knowledge is the audience. It is GCO focused with connection to AWS as optional component of the cloud.</p>
+<h2>Topology</h2>
+<p>Following is the starting topology. Some components are pre-built to save time.</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/image-3-1024x775.png" /></p>
+<p>Once you finish all lab steps, following is what it will look like</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/image-4.png" /></p>
+<h2>Main Use-Cases Covered</h2>
+<ul>
+<li>Cloud and Multi-Cloud Transit (Hub and Spoke) connectivity</li>
+<li>Multi-Cloud Network Segmentation (MCNS)</li>
+<li>Egress FQDN</li>
+<li>User-VPN</li>
+<li>Multi-Cloud Transit with AWS</li>
+<li>Policy Based Remote User SAML/SSL VPN</li>
+<li>Hybrid / On-Premise Connectivity (S2C)</li>
+<li>Traffic Engineering with SD and BGP advance knobs</li>
+<li>Day2 Operations, troubleshooting and monitoring (Aviatrix CoPilot)</li>
+</ul>
+<h2>Warning / Pre-Requisite / Notes</h2>
+<ul>
+<li>Do not change the password of any device or server in the lab pod</li>
+<li>Do not change controller password</li>
+<li>In most of the places:</li>
+<li>The Aviatrix Controller is referred to as “Controller”</li>
+<li>The Aviatrix Gateway is referred to as “Gateway”</li>
+</ul>
+<h2>LAB1 – Verify Connectivity</h2>
+<p>Make sure the lab is in good standing. Verify the following tasks by logging into the Aviatrix Controller UI. Make sure you log in to your own pod. Pod name is displayed on top.</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.17.17-PM.png" /></p>
+<p>Make sure you have resources deployed and matches to following</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.17.57-PM-1024x471.png" /></p>
+<p>The GCP Project is already on-boarded to save time in the Aviatrix Controller under Accounts Access Account</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.18.42-PM-1024x394.png" /></p>
+<p>Now change the email address to your corporate email address under Accounts –&gt; Account Users –&gt; admin (do not change the Controller password)</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.20.16-PM-1024x507.png" /></p>
+<p>Aviatrix gateway are pre-deployed to save time. Make sure all gateways are up and running.</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.21.38-PM.png" /></p>
+<p>Check the transit gateway under Multi-Cloud Transit –&gt; List –&gt; Transit</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.23.18-PM.png" /></p>
+<p>Check the spoke gateway under Multi-Cloud Transit –&gt; List –&gt; Spoke</p>
+<p><img alt="" src="/blog/images/google-cloud-and-aviatrix-testing-poc-lab-guide/Screen-Shot-2020-12-31-at-12.25.03-PM.png" /></p>
+<h3>Verify GCP VM SSH Connectivity</h3>
+<p>GCP VMs only requires a password. Password is Password123!<br />
+There is no .pem file needed to login to them. Login to vm_gcp_public_ip_spoke1. This IP address is provided in the LAB POD file</p>
+<pre><code>shahzadali@shahzad-ali Pem Files % ssh ubuntu@35.224.13.215
+ubuntu@35.224.13.215's password:
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.15.0-1087-gcp x86_64)
+ 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+ 
+11 packages can be updated.
+0 updates are security updates.
+ 
+New release '18.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+ 
+ 
+Last login: Sat Nov 28 16:42:18 2020 from 172.124.233.126
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+ 
+ubuntu@vm-gcp-test-spoke-1:~$
+
+ubuntu@vm-gcp-spoke-1:~$ ifconfig
+
+ens4 
+Link encap:Ethernet HWaddr 42:01:0a:14:0b:82
+inet addr:10.20.11.130 Bcast:10.20.11.130 Mask:255.255.255.255
+inet6 addr: fe80::4001:aff:fe14:b82/64 Scope:Link
+UP BROADCAST RUNNING MULTICAST MTU:1460 Metric:1
+RX packets:1025064 errors:0 dropped:0 overruns:0 frame:0
+TX packets:663466 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:511233248 (511.2 MB) TX bytes:81897766 (81.8 MB)
+
+lo 
+Link encap:Local Loopback
+inet addr:127.0.0.1 Mask:255.0.0.0
+inet6 addr: ::1/128 Scope:Host
+UP LOOPBACK RUNNING MTU:65536 Metric:1
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:0 (0.0 B) TX bytes:0 (0.0 B)
+ubuntu@vm-gcp-spoke-1:~$
+</code></pre>
+<p>Now Ping from vm_gcp_private_ip_spoke1 to other test machines (as listed below) and check the connectivity</p>
+<ul>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – should not work</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – should not work</li>
+<li>vm_aws_private_ip_spoke1 (10.101.0.84) – <strong>should work</strong></li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – should not work</li>
+</ul>
+<p>Can you guess why it worked or did not work?</p>
+<h3>Verify AWS EC2 SSH Connectivity</h3>
+<p>ssh into AWS VM in Spoke1using its public ip address and .pem file (the address is provided in the lab pod file you received). If you get the following error, then please fix your .pem file permission first.</p>
+<pre><code>shahzadali@shahzad-ali Pem Files % ssh ubuntu@35.163.104.122 - instance_priv_key.pem
+ubuntu@35.163.104.122: Permission denied (publickey).
+ 
+shahzadali@shahzad-ali Pem Files % chmod 400 instance_priv_key.pem
+</code></pre>
+<p>ssh using the user-name and .pem file again and ping the second AWS instance</p>
+<pre><code>shahzadali@shahzad-ali Desktop % ssh ubuntu@34.217.68.104 -i instance_priv_key_gcp_pod24.pem
+Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-1072-aws x86_64)
+Documentation: https://help.ubuntu.com
+Management: https://landscape.canonical.com
+Support: https://ubuntu.com/advantage
+Get cloud support with Ubuntu Advantage Cloud Guest:
+http://www.ubuntu.com/business/services/cloud
+79 packages can be updated.
+0 updates are security updates.
+New release '18.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+*** System restart required ***
+Last login: Thu Dec 31 20:36:52 2020 from 172.124.233.126
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &quot;.
+See &quot;man sudo_root&quot; for details.
+ubuntu@ip-10-101-0-84:~$
+</code></pre>
+<p>Ping from vm_aws_private_ip_spoke1 to …</p>
+<ul>
+<li>vm_gcp_private_ip_spoke1 (10.20.11.130) – <strong>should work</strong></li>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – should not work</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – should not work</li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – should not work</li>
+</ul>
+<h3>Verify On-Prem Router SSH Connectivity</h3>
+<p>ssh into the on-prem dc-router-1 (we are using Cisco CSR to simulate it). User is admin and Password is “Password123”</p>
+<pre><code>shahzadali@shahzad-ali Desktop % ssh admin@54.219.225.218
+Password: 
+
+dc-router-1#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       192.168.20.162  YES DHCP   up                    up      
+Loopback0              10.20.11.254    YES TFTP   up                    up      
+Tunnel1                169.254.100.2   YES TFTP   up                    up      
+Tunnel42               172.16.0.1      YES TFTP   up                    up      
+VirtualPortGroup0      192.168.35.101  YES TFTP   up                    up      
+dc-router-1#
+</code></pre>
+<p>From dc-router-1 ping gcp and aws instances private ip addresses</p>
+<ul>
+<li>vm_gcp_private_ip_spoke1 (10.20.11.130) – should no work</li>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – should not work</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – should not work</li>
+<li>vm_aws_private_ip_spoke1 (10.101.0.84) – should not work</li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – should not work</li>
+</ul>
+<p>ssh into the on-prem dc-router-1 (we are using Cisco CSR to simulate it). User is admin and Password is “Password123”</p>
+<pre><code>shahzadali@shahzad-ali Desktop % ssh admin@54.193.196.247
+The authenticity of host '54.193.196.247 (54.193.196.247)' can't be established.
+RSA key fingerprint is SHA256:fi8bbpJc8LCE32dn9RL1EIDzznl+mgQ5V5u5vR/hxFo.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '54.193.196.247' (RSA) to the list of known hosts.
+Password: 
+dc-router-2#
+</code></pre>
+<pre><code>dc-router-2#show ip int brief 
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       192.168.10.120  YES DHCP   up                    up      
+Tunnel1                169.254.101.2   YES TFTP   up                    up      
+Tunnel42               172.16.0.2      YES TFTP   up                    up      
+VirtualPortGroup0      192.168.35.101  YES TFTP   up                    up      
+dc-router-2#
+</code></pre>
+<p>From dc-router-2 ping gcp and aws instances private ip addresses</p>
+<ul>
+<li>vm_gcp_private_ip_spoke1 (10.20.11.130) – should no work</li>
+<li>vm_gcp_private_ip_spoke2 (10.20.12.130) – should not work</li>
+<li>vm_gcp_private_ip_spoke3 (10.42.0.130) – should not work</li>
+<li>vm_aws_private_ip_spoke1 (10.101.0.84) – should not work</li>
+<li>vm_aws_private_ip_spoke2 (10.42.0.84) – should not work</li>
+</ul>
+<p>This completes the verification lab1. We will now move to other use-cases.</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

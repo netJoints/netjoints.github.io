@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I wanted to share some resources that detail the implementation and design aspects of Britive K8S support. Britive uses unified PyBritive CLI that serves end users, admins, and developers alike. You can access it here:  https://britive.github.io/python-cli This CLI offers numerous options and comman">
+  <title>Cloud PAM Kubernetes JIT RBAC Implementation · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/cloud-pam-kubernetes-jit-rbac-implementation/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cloud PAM Kubernetes JIT RBAC Implementation">
+  <meta property="og:description" content="I wanted to share some resources that detail the implementation and design aspects of Britive K8S support. Britive uses unified PyBritive CLI that serves end users, admins, and developers alike. You can access it here:  https://britive.github.io/python-cli This CLI offers numerous options and comman">
+  <meta property="og:url" content="https://netjoints.com/blog/cloud-pam-kubernetes-jit-rbac-implementation/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2026-01-06">January 6, 2026</time>
+      </div>
+
+      <h1 class="blog-title">Cloud PAM Kubernetes JIT RBAC Implementation</h1>
+
+      
+
+      <div class="blog-content">
+        <p>I wanted to share some resources that detail the implementation and design aspects of Britive K8S support.</p>
+<p>Britive uses unified PyBritive CLI that serves end users, admins, and developers alike. You can access it here:</p>
+<p><a href="https://britive.github.io/python-cli">https://britive.github.io/python-cli</a></p>
+<p>This CLI offers numerous options and commands, including but not limited to:</p>
+<p>– api: Exposes the Britive Python SDK methods to the CLI.<br />
+– aws: Groups together AWS-specific sub-commands.<br />
+– cache: Manages local cache settings.<br />
+– checkin: Checks in a profile.<br />
+– checkout: Checks out a profile.<br />
+– login: Performs an interactive login to obtain temporary credentials.<br />
+– logout: Logs out of an interactive login session.<br />
+– ls: Lists resources available for the currently authenticated identity.<br />
+– request: Provides functionality related to requesting approval.<br />
+– secret: Views or downloads a secret.<br />
+– ssh: Facilitates connecting to private cloud servers.</p>
+<p>Some of the standout features include the ability to run any API command directly from the CLI and manage local cache settings or kubeconfig with the</p>
+<p>***<code>pybritive cache kubeconfig***</code> command.</p>
+<p>Additionally, for an in-depth understanding of the engineering behind our K8S implementation, you can refer to Britive’s technical documentation:</p>
+<p><a href="https://docs.britive.com/docs/kubernetes-onboarding-guide">https://docs.britive.com/docs/kubernetes-onboarding-guide</a></p>
+<p>Britive approach is platform independent so any flavor of Kuberenest implementation can be achieved with Britive solution. Weather you use Tanzu, EKS, GKE, AKS, its all standard based approach by connecting to Kubernetes API server. No need for any proxy or side-car or any code required.</p>
+<p><a href="https://docs.britive.com/docs/kubernetes-onboarding-guide">https://docs.britive.com/docs/kubernetes-onboarding-guide</a></p>
+<p><img alt="" src="/blog/images/cloud-pam-kubernetes-jit-rbac-implementation/image.png" /><img alt="" src="/blog/images/cloud-pam-kubernetes-jit-rbac-implementation/image-1.png" /><img alt="" src="/blog/images/cloud-pam-kubernetes-jit-rbac-implementation/image-2.png" /></p>
+<p><strong>Private Kubernetes Implementations and Unique/Corner Use-Cases</strong></p>
+<p>If the organization finds group-based management restrictive or requires more detailed control over roles and permissions, Kubernetes Access Broker recipes allows for dynamic and granular role management. It provides flexibility to create custom role bindings on demand, catering to unique access requirements that cannot be addressed by the native implementation. Kubernetes Access Broker is particularly useful for scenarios where granular, role-based access control (RBAC) is needed, or when existing group-based management does not meet specific requirements.</p>
+<p><strong>Misc. References</strong></p>
+<p>Since we natively support any flavor of K8S, thats the reason you will not see each and every flavor listed on our website. Because it follows the same references architecture without any proporitery config or changes.</p>
+<p>Some other reference are good too</p>
+<p><a href="https://www.britive.com/resource/blog/rbac-jit-access-kubernetes">https://www.britive.com/resource/blog/rbac-jit-access-kubernetes</a><br />
+<a href="https://www.britive.com/resource/blog/automate-jit-access-to-gke-clusters">https://www.britive.com/resource/blog/automate-jit-access-to-gke-clusters</a><br />
+<a href="https://www.britive.com/resource/blog/automate-just-in-time-access-to-azure-aks-clusters">https://www.britive.com/resource/blog/automate-just-in-time-access-to-azure-aks-clusters</a><br />
+<a href="https://docs.britive.com/apidocs">https://docs.britive.com/apidocs</a></p>
+<h2>Summary</h2>
+<ul>
+<li>Use Britive native K8S connector integration when role-binding already exist. In this case, Britive will provide temp token for JIT access to Kubernetes cluster/namespace.</li>
+<li>Use Access Broker based integration option when role-biding does not exist or deeper/granular control is required.</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

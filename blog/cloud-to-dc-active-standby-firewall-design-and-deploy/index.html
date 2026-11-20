@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Problem Statement As enterprises moving their applications into the cloud, they are following the best practice to deploy their virtual NGFW in the Cloud using Aviatrix’s active/active, centralized, uncompromised, cost optimized an dpolicy-based Firewall Service Insertion (FireNet) solution as shown">
+  <title>Cloud to On Premise Data Center Active/Standby Firewall Design and Deployment · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/cloud-to-dc-active-standby-firewall-design-and-deploy/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cloud to On Premise Data Center Active/Standby Firewall Design and Deployment">
+  <meta property="og:description" content="Problem Statement As enterprises moving their applications into the cloud, they are following the best practice to deploy their virtual NGFW in the Cloud using Aviatrix’s active/active, centralized, uncompromised, cost optimized an dpolicy-based Firewall Service Insertion (FireNet) solution as shown">
+  <meta property="og:url" content="https://netjoints.com/blog/cloud-to-dc-active-standby-firewall-design-and-deploy/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-10-29">October 29, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Cloud to On Premise Data Center Active/Standby Firewall Design and Deployment</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>Problem Statement</h2>
+<ul>
+<li>As enterprises moving their applications into the cloud, they are following the best practice to deploy their virtual NGFW in the Cloud using Aviatrix’s active/active, centralized, uncompromised, cost optimized an dpolicy-based Firewall Service Insertion (FireNet) solution as shown in the following diagram</li>
+</ul>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image.png" /></p>
+<ul>
+<li>Some enterprises want to keep using their on-premise physical NGFW until they deploy virtual NGFW in the cloud.</li>
+<li>If these on-premise firewalls are deployed in an active/active fashion they plug right into Aviatrix active/active transit architecture in the cloud to provide the full benefit and throughput</li>
+<li>However, often times these on-premise firewalls are deployed in active/standby fashion where it is important that sessions are symmetric otherwise firewall could drop the traffic</li>
+<li>Enterprises want to provide active/active ECMP functionality in the Cloud while still making active/standby connection to the on-premise physical firewall to make sure traffic is not asymmetric when it passes through those Firewalls.</li>
+</ul>
+<h2>Solution</h2>
+<ul>
+<li>With Aviatrix release 6.2, Aviatrix transit gateways provide best of the both worlds by providing Active/Active traffic distribution towards the North (Cloud) side, while providing Active/Standby (optionally) towards the South (on-premise) side to satisfy Firewall’s Active/Standby needs.</li>
+<li>This is done at the Aviatrix Transit layer by providing dual routing capabilities at the Aviatrix Transit Gateway. This built-in, single click dual routing makes the Transit GW to act as ECMP router on the North side and Active/Standby on the South.</li>
+</ul>
+<h3>Enterprise Active/Standby Firewall Design</h3>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-2.png" /></p>
+<h3>Design Notes</h3>
+<ul>
+<li>Active Aviatrix Transit GW builds one tunnels towards the DC-FW1</li>
+<li>Standby Aviatrix Transit GW (HA) will build another tunnel towards the DC-FW1</li>
+<li>The IPSec tunnels build from Aviatrix Transit GW are Route Based IPSec tunnels (VTI)</li>
+<li>At any time, only one Aviatrix Transit GW can be in an Active Mode</li>
+<li>Both tunnels are technically up but only one path is selected based on the MED (Metric) value</li>
+<li><strong>It is the on-premise firewall team’s responsibility to properly configure the firewall to be in the Active/Standby mode</strong></li>
+<li>It is on-premise firewall team’s responsibility to properly configure the BGP attributes (if needed) so that the route received from the Aviatrix Transit GW active tunnel are preferred over the secondary tunnel</li>
+<li>BGP local attribute such a weight can be used on the firewall to influence the active path selection</li>
+</ul>
+<h2>Traffic Flow From Cloud to On-Premise Firewall</h2>
+<h3>Traffic Flow#1</h3>
+<ul>
+<li>Traffic from Cloud EC2/VM leaves the Spoke VPC and enter into Primary Transit GW</li>
+<li>The primary transit GW is also the active one</li>
+<li>The secondary transit GW is on the standby</li>
+<li>From here there are two paths to reach to On-premise firewall</li>
+<li>Since the MED value from the Primary (active) Transit GW is lower than the one received from the HA pair, it will prefer the Primary Transit GW path and will directly go towards the DC-FW1</li>
+</ul>
+<h3>Traffic Flow#2</h3>
+<ul>
+<li>Another scenario is that the traffic from Cloud EC2/VM leaves the Spoke VPC and enters into Secondary Transit GW (HA)</li>
+<li>The secondary transit GW is on the standby</li>
+<li>The primary transit GW is the active one</li>
+<li>From here again there are two paths to reach to on-premise firewall</li>
+<li>Since the MED value from the primary (active) transit GW is lower than the one received from the secondary transit GW (standby), the traffic will be routed towards the primary transit GW via the HA-Link between Active and HA Transit GW pair</li>
+</ul>
+<h2>Deployment Details</h2>
+<ul>
+<li>Create site to cloud tunnel using the Multi-Cloud Transit workflow</li>
+<li>Do not enable “Remote Gateway HA” option</li>
+<li>It means this feature requires only one IP address on the on-premise firewall</li>
+</ul>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-15.png" /></p>
+<ul>
+<li>Build all 4 tunnels from the firewall towards the Aviatrix designated primary and secondary gateways</li>
+<li>Once the tunnels are UP we need to enable active-standby feature underMulticloud Transit -&gt; Advanced Config</li>
+</ul>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-16.png" /></p>
+<h2>Testing and validation when both firewalls are up</h2>
+<ul>
+<li>Controller also gives visibility into the Active GW</li>
+<li>Controller also allows to switch the Active GW to Standby and vice versa for Troubleshooting and verification purposes</li>
+</ul>
+<p>Following picture shows that the Active/Standby feature is enabled and also shows the active aviatrix gateway name</p>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-21.png" /></p>
+<h3>Transit Gateway Routing Tables when “transit-A-GW” is Active</h3>
+<ul>
+<li>In the following table “transit-A-gw” is active</li>
+<li>Table shows that the on-premise route 192.168.222.0/24 is learned both from Active and Standby Transit GWs.</li>
+<li>Since 192.168.222.0/24 is learned via DC-FW-1 with lower MED value, it means that route will be preferred over the other</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D34F649-0</td>
+<td>13.52.246.73</td>
+<td>DC-FW1</td>
+<td>up</td>
+<td>100</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A0029-0</td>
+<td>10.10.0.41</td>
+<td>aws-transit-A-gw-uswest-hagw</td>
+<td>up</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>transit-A-gw route table when transit-A-gw is active</strong></p>
+<ul>
+<li>Next table shows the route from standby transit GW’s (aws-transit-A-gw-uswest-hagw) perspective</li>
+<li>The standby can reach 192.168.222.0/24 via the active transit GW with the lower MED, hence that route will be preferred</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A002C-0</td>
+<td>10.10.0.44</td>
+<td>aws-transit-A-gw-uswest</td>
+<td>up</td>
+<td>200</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D34F649-0</td>
+<td>13.52.246.73</td>
+<td>DC-FW1</td>
+<td>up</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p><strong>transit-A-gw-ha route table when transit-A-gw is active</strong></p>
+<h3>Transit Gateway Routing Tables when “transit-A-gw-ha” is Active</h3>
+<p>We switched the Active/Standby via the controller</p>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-11.png" /></p>
+<ul>
+<li>Now aws-transit-A-gw-uswest-hagw is active.</li>
+<li>We will look at the GW route table again. Now notice that “aws-transit-A-gw-uswest-hagw” is preferred over the other based on the lower MED value</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A0029-0</td>
+<td>10.10.0.41</td>
+<td>aws-transit-A-gw-uswest-hagw</td>
+<td>up</td>
+<td>200</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D34F649-0</td>
+<td>13.52.246.73</td>
+<td>DC-FW-1</td>
+<td>up</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p><strong>aws-transit-A-gw-uswest route table when aws-transit-A-gw-uswest-hagw is active</strong></p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D34F649-0</td>
+<td>13.52.246.73</td>
+<td>DC-FW-1</td>
+<td>up</td>
+<td>100</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A002C-0</td>
+<td>10.10.0.44</td>
+<td>aws-transit-A-gw-uswest</td>
+<td>up</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>aws-transit-A-gw-uswest-hagw route table when aws-transit-A-gw-uswest-hagw is active</strong></p>
+<h2>Testing and validation when active firewall is down</h2>
+<ul>
+<li>Now we will shut down the Active DC-FW-1</li>
+<li>This will stop sending the 192.168.222.0 route from DC-FW-1</li>
+<li>The standby firewall DC-FW-2 will become active now and start sending 192.168.222.0 to the Aviatrix transit gateways</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A0029-0</td>
+<td>10.10.0.41</td>
+<td>aws-transit-A-gw-uswest-hagw</td>
+<td>up</td>
+<td>200</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D3975AD-0</td>
+<td>13.57.117.173</td>
+<td>DC-FW-2</td>
+<td>up</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p><strong>aws-transit-A-gw-uswest route table while aws-transit-A-gw-uswest-hagw is active</strong></p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>via</th>
+<th>Dev</th>
+<th>Nexthop IP</th>
+<th>Nexthop Gateway</th>
+<th>Status</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0D3975AD-0</td>
+<td>13.57.117.173</td>
+<td>DC-FW-2</td>
+<td>up</td>
+<td>100</td>
+</tr>
+<tr>
+<td>192.168.222.0/24</td>
+<td></td>
+<td>tun-0A0A002C-0</td>
+<td>10.10.0.44</td>
+<td>aws-transit-A-gw-uswest</td>
+<td>up</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>aws-transit-A-gw-uswest-hagw route table while aws-transit-A-gw-uswest-hagw is active</strong></p>
+<h2>Additional Configuration</h2>
+<p>Following diagram shows the second tunnel towards the DC-FW2</p>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-19.png" /></p>
+<p>Aviatrix Transit GW Global Routing Table shows the on-prem subnet received at both GWs and best route installed via the Active one only</p>
+<p><img alt="" src="/blog/images/cloud-to-dc-active-standby-firewall-design-and-deploy/image-20-1024x443.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction (0:00 – 0:30) “Hello everyone, and welcome to this demonstration of Britive’s dynamic credential management in CI/CD pipelines. CI/CD pipelines are the non human identities present in your enterprise. Today, I’ll be showing you how Britive eliminates the need for static credentials in y">
+  <title>Britive Dynamic Secrets in CI/CD Pipelines – Demo Script · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/britive-dynamic-secrets-in-ci-cd-pipelines-demo-script/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Britive Dynamic Secrets in CI/CD Pipelines – Demo Script">
+  <meta property="og:description" content="Introduction (0:00 – 0:30) “Hello everyone, and welcome to this demonstration of Britive’s dynamic credential management in CI/CD pipelines. CI/CD pipelines are the non human identities present in your enterprise. Today, I’ll be showing you how Britive eliminates the need for static credentials in y">
+  <meta property="og:url" content="https://netjoints.com/blog/britive-dynamic-secrets-in-ci-cd-pipelines-demo-script/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-11-17">November 17, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Britive Dynamic Secrets in CI/CD Pipelines – Demo Script</h1>
+
+      
+
+      <div class="blog-content">
+        <h1><strong>Introduction (0:00 – 0:30)</strong></h1>
+<p>“Hello everyone, and welcome to this demonstration of Britive’s dynamic credential management in CI/CD pipelines. CI/CD pipelines are the non human identities present in your enterprise.</p>
+<p>Today, I’ll be showing you how Britive eliminates the need for static credentials in your deployment workflows by providing just-in-time, ephemeral access to cloud resources. This approach significantly reduces your security risk by ensuring credentials are never hardcoded or stored in your pipeline configurations.</p>
+<p>Let’s dive in.”</p>
+<hr />
+<h2><strong>Chapter 1: Use Case Overview (0:30 – 2:00)</strong></h2>
+<h3><strong>Step 1 – Describe the Use Case</strong></h3>
+<p>“First, let me set the context for what we’re solving today.</p>
+<p>In traditional CI/CD pipelines, teams often store static credentials—such as AWS access keys, tokens or service account information in their CI/CD tools. These credentials have standing lifespans, and have broad permissions to deploy or access infrastructure.</p>
+<p>This creates serious security challenges:</p>
+<ul>
+<li><strong>Increased</strong> <strong>Vulnerability</strong>, theft and unauthorized access</li>
+<li><strong>Over-privileged access</strong> often persists beyond what’s necessary</li>
+<li><strong>Compliance gaps</strong> when credentials aren’t properly managed</li>
+</ul>
+<p>With Britive, we replace this static model with dynamic, just-in-time credential provisioning. This is how it works:</p>
+<p>When a CI/CD job needs to update a data store, such as AWS S3 bucket, instead of using stored credentials, the GitHub Actions requests short-lived tokens from Britive. Britive checkout a granular profile and give GitHubs Actions the precisely scoped permissions. The GitHub Actions job executes with those ephemeral credentials, and then Britive automatically checks the profile back in when the job completes.</p>
+<p>This ensures zero standing privileges, full auditability, and time-bound access for every deployment.”</p>
+<hr />
+<h2><strong>Chapter 2: Profile Configuration (2:00 – 3:00)</strong></h2>
+<h3><strong>Step 2 – Show the Profiles in the Britive UI</strong></h3>
+<p>“Now, let me show you the Britive profiles that enable this workflow.</p>
+<p>I’m logged into the Britive console, and I’ll navigate to the Profiles section.</p>
+<p>Here you can see the profile we’ve configured for our GitHub Actions CI/CD pipeline deployment: [<strong>S3 Full Access</strong>].</p>
+<p>This profile is associated with our AWS environment and includes:</p>
+<ul>
+<li>The specific IAM role or permissions required for GitHub to access specific S3 bucket.</li>
+<li>It is time-bound access using Britive policy</li>
+<li>Approval can also be added if required for production deployments</li>
+</ul>
+<p>This profile is designed with the principle of least privilege—it has only the permissions necessary to execute our CI/CD GitHub Actions, nothing more.  </p>
+<p>Here is the policy attached to this profile. Notice we have many constraints we can add as part of this policy. In the member area you can see that the GitHub Actions is there. Meaning it can checkout this profile to get JIT access to S3 Bucket.</p>
+<hr />
+<h2><strong>Chapter 3: Job Initiation (3:00 – 4:00)</strong></h2>
+<h3><strong>Step 3 – Show the Job Initiation</strong></h3>
+<p>“Now let’s look at how this job gets triggered.</p>
+<p>In our case, this GitHub Actions job, that is part of the CI/CD pipeline, is triggered by changing a file.</p>
+<p>Here in our [<strong>GitHub Actions</strong>], you can see the pipeline configuration.</p>
+<p>Let me highlight the key section where Britive integration occurs.</p>
+<p>Instead of referencing a stored credential or secret, you’ll see we make a Federated call to Britive to request a profile checkout. This is where the magic happens—rather than using a static AWS access key stored in our CI/CD system, we’re dynamically requesting temporary credentials from Britive at runtime.</p>
+<p>The job passes:</p>
+<ul>
+<li>The Britive profile identifier</li>
+<li>A justification or ticket reference</li>
+<li>The requesting identity</li>
+</ul>
+<p>Let’s run this job and watch the process in action.”</p>
+<hr />
+<h2><strong>Chapter 4: Job Execution (4:00 – 5:00)</strong></h2>
+<h3><strong>Step 4 – Run the Job</strong></h3>
+<p>“I’m now going to trigger the deployment job.</p>
+<p>[<strong>Screen: Click ‘Run’ or ‘Build Now’</strong>]</p>
+<p>The job has started. You can see it’s now in the queue and beginning execution.</p>
+<p>[<strong>Screen: Show job console output starting to stream</strong>]</p>
+<p>As the job initializes, you’ll see the standard setup steps—checking out code from our repository, initializing the environment, and preparing the Terraform workspace.</p>
+<p>Now watch for the Britive integration step…</p>
+<p>[<strong>Wait for the relevant log output</strong>]</p>
+<p>And there it is. The job is now contacting Britive to request temporary credentials for the profile we configured earlier. This happens in real-time, with no pre-stored secrets involved.</p>
+<p>While this executes, let’s switch over to the Britive console to see what’s happening on the backend.”</p>
+<hr />
+<h2><strong>Chapter 5: Checked Out Profile (5:00 – 6:00)</strong></h2>
+<h3><strong>Step 5 – Show the Checked Out Profile in Britive</strong></h3>
+<p>“Let me switch to the Britive UI.</p>
+<p>[<strong>Screen: Navigate to Britive &gt; Sessions or Active Checkouts</strong>]</p>
+<p>Here in the Britive console, you can see the active session that was just created.</p>
+<p>[<strong>Screen: Highlight the active checkout</strong>]</p>
+<p>Notice the following details:</p>
+<ul>
+<li><strong>User/Service Identity</strong>: This shows which service account or identity checked out the profile</li>
+<li><strong>Profile Name</strong>: The specific profile being used</li>
+<li><strong>Checkout Time</strong>: When the credentials were issued</li>
+<li><strong>Expiration Time</strong>: When these credentials will automatically expire</li>
+<li><strong>Justification</strong>: The ticket or reason associated with this access</li>
+</ul>
+<p>This gives us complete visibility into who has access to what, when, and why—critical for compliance and security auditing.</p>
+<p>The temporary credentials are now being used by our Terraform job. Let’s go back to the pipeline to see the deployment in progress.”</p>
+<hr />
+<h2><strong>Chapter 6: Credential Usage in Job (6:00 – 7:00)</strong></h2>
+<h3><strong>Step 6 – Show the Stage Where Britive Was Contacted for Credentials</strong></h3>
+<p>“Back in our CI/CD pipeline, let me show you the specific stage where Britive credentials were requested and used.</p>
+<p>[<strong>Screen: Return to CI/CD tool console output</strong>]</p>
+<p>I’ll expand the logs for the Terraform execution stage.</p>
+<p>[<strong>Screen: Show relevant log section</strong>]</p>
+<p>Here you can see:</p>
+<ol>
+<li>The initial API call to Britive</li>
+<li>The successful credential retrieval—notice that the actual secrets are never logged, only confirmation of successful authentication</li>
+<li>The Terraform initialization using those dynamic credentials</li>
+<li>The Terraform plan and apply stages executing with proper AWS authentication</li>
+</ol>
+<p>[<strong>Scroll through logs</strong>]</p>
+<p>The beauty of this approach is that at no point are static credentials exposed in logs, environment variables, or configuration files. Everything is ephemeral and sourced just-in-time from Britive.</p>
+<p>The deployment is now completing… and as it finishes, Britive will automatically revoke the credentials.”</p>
+<hr />
+<h2><strong>Chapter 7: Profile Check-In (7:00 – 8:00)</strong></h2>
+<h3><strong>Step 7 – Show That the Profile Has Been Checked Back In</strong></h3>
+<p>“Now let’s confirm that the credentials have been properly revoked.</p>
+<p>[<strong>Screen: Return to Britive UI</strong>]</p>
+<p>I’m refreshing the active sessions view in Britive.</p>
+<p>[<strong>Screen: Show sessions/audit page</strong>]</p>
+<p>Notice that the profile checkout we saw earlier is no longer active. The credentials have been automatically checked back in and revoked.</p>
+<p>[<strong>Screen: Navigate to Audit Logs if available</strong>]</p>
+<p>If we look at the audit trail, you can see the complete lifecycle:</p>
+<ul>
+<li>Checkout requested at [<strong>time</strong>]</li>
+<li>Credentials issued</li>
+<li>Credentials used for [<strong>duration</strong>]</li>
+<li>Profile checked back in at [<strong>time</strong>]</li>
+</ul>
+<p>This automatic check-in ensures that credentials exist only for the duration of the job. There’s no risk of credential reuse or unauthorized access after the deployment completes.</p>
+<p>[<strong>Screen: Return to CI/CD tool</strong>]</p>
+<p>And back in our pipeline, we can confirm the job completed successfully with infrastructure deployed as intended.”</p>
+<hr />
+<h2><strong>Conclusion (8:00 – 9:00)</strong></h2>
+<p>“Let’s recap what we’ve demonstrated today.</p>
+<p>We showed how Britive enables secure CI/CD pipelines by:</p>
+<ol>
+<li><strong>Eliminating static credentials</strong> – No more long-lived secrets stored in your CI/CD tools</li>
+<li><strong>Providing just-in-time access</strong> – Credentials are dynamically generated only when needed</li>
+<li><strong>Enforcing least privilege</strong> – Profiles are scoped to specific permissions required for each task</li>
+<li><strong>Maintaining complete auditability</strong> – Every access request, usage, and revocation is logged</li>
+<li><strong>Automating credential lifecycle</strong> – Check-in happens automatically, reducing risk of credential sprawl</li>
+</ol>
+<p>This approach significantly strengthens your security posture while maintaining the speed and automation that DevOps teams require.</p>
+<p>The result? Faster deployments, reduced risk, and simplified compliance—all without slowing down your teams.</p>
+<p>Thank you for watching. If you’d like to learn more about implementing Britive in your CI/CD pipelines, please visit our documentation at [<strong>URL</strong>] or contact us at [<strong>contact info</strong>].</p>
+<p>See you in the next video.”</p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

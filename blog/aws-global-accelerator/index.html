@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AWS Global Accelerator gives your application static anycast IP addresses and routes users onto the AWS global network as early as possible.">
+  <title>AWS Global Accelerator · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aws-global-accelerator/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS Global Accelerator">
+  <meta property="og:description" content="AWS Global Accelerator gives your application static anycast IP addresses and routes users onto the AWS global network as early as possible.">
+  <meta property="og:url" content="https://netjoints.com/blog/aws-global-accelerator/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-08-19">August 19, 2024</time>
+      </div>
+
+      <h1 class="blog-title">AWS Global Accelerator</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>What it is</h2>
+<p><strong>AWS Global Accelerator</strong> is a networking service that improves the availability and performance of internet-facing applications. It provides two <strong>static anycast IP addresses</strong> that act as a fixed entry point to your application, regardless of where the endpoints are.</p>
+<h2>How it works</h2>
+<ol>
+<li>Users connect to the nearest <strong>AWS edge location</strong> through the anycast IPs.</li>
+<li>From there, traffic travels over the <strong>AWS global backbone</strong> instead of the public internet for most of the path.</li>
+<li>Global Accelerator sends the traffic to the <strong>best healthy endpoint</strong> using health checks and routing policy.</li>
+</ol>
+<h2>Building blocks</h2>
+<ul>
+<li><strong>Accelerator</strong>: the resource with the two static IPs and a DNS name.</li>
+<li><strong>Listener</strong>: TCP or UDP ports (or port ranges) it accepts.</li>
+<li><strong>Endpoint group</strong>: one per Region, with a <strong>traffic dial</strong> to shift traffic between Regions.</li>
+<li><strong>Endpoints</strong>: Application Load Balancers, Network Load Balancers, EC2 instances or Elastic IPs.</li>
+<li>A <strong>custom routing</strong> variation maps users to specific EC2 instances and ports, useful for gaming or VoIP sessions.</li>
+</ul>
+<h2>Typical uses</h2>
+<ul>
+<li><strong>Multi-Region failover</strong> without waiting for DNS TTLs to expire, because the IPs never change.</li>
+<li><strong>Static IPs</strong> that customers can allow-list in their firewalls.</li>
+<li><strong>Lower latency and jitter</strong> for global users, and for non-HTTP traffic (TCP and UDP).</li>
+<li><strong>Blue/green and canary shifts</strong> using traffic dials.</li>
+</ul>
+<h2>Global Accelerator vs CloudFront</h2>
+<p>CloudFront <strong>caches content</strong> and is best for HTTP(S) delivery. Global Accelerator <strong>does not cache</strong>; it accelerates and fails over arbitrary TCP and UDP traffic and gives static IPs. They are often used together.</p>
+<h2>Watch-outs</h2>
+<ul>
+<li>Billing has a fixed hourly charge per accelerator plus a data transfer premium (<strong>DT-Premium</strong>) by direction and Region pair.</li>
+<li>Client IP preservation depends on the endpoint type and configuration.</li>
+<li>It is an <strong>entry-point</strong> service. It does not connect your VPCs to each other.</li>
+</ul>
+<p><em>Quotas, limits and pricing change often. Confirm current values in the AWS documentation before designing around them.</em></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

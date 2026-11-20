@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Setup Total Duration: ~5 minutesNumber of Scenes: 7Target Scene Length: 60-80 seconds each Scene 1: Introduction to Britive Access Broker (70 seconds) Visual Focus: Britive UI – Access Broker Configuration Screen Script: “Welcome to this demonstration of Britive Access Broker for secure on-premise d">
+  <title>PostgreSQL Just in Time CLI Access | Demo Script · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/postgresql-just-in-time-cli-access-demo-script/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PostgreSQL Just in Time CLI Access | Demo Script">
+  <meta property="og:description" content="Setup Total Duration: ~5 minutesNumber of Scenes: 7Target Scene Length: 60-80 seconds each Scene 1: Introduction to Britive Access Broker (70 seconds) Visual Focus: Britive UI – Access Broker Configuration Screen Script: “Welcome to this demonstration of Britive Access Broker for secure on-premise d">
+  <meta property="og:url" content="https://netjoints.com/blog/postgresql-just-in-time-cli-access-demo-script/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-11-18">November 18, 2025</time>
+      </div>
+
+      <h1 class="blog-title">PostgreSQL Just in Time CLI Access | Demo Script</h1>
+
+      
+
+      <div class="blog-content">
+        <h1>Setup</h1>
+<p><strong>Total Duration:</strong> ~5 minutes<br />
+<strong>Number of Scenes:</strong> 7<br />
+<strong>Target Scene Length:</strong> 60-80 seconds each</p>
+<hr />
+<h2>Scene 1: Introduction to Britive Access Broker (70 seconds)</h2>
+<p><strong>Visual Focus:</strong> Britive UI – Access Broker Configuration Screen</p>
+<h3>Script:</h3>
+<p>“Welcome to this demonstration of Britive Access Broker for secure on-premise database access.</p>
+<p>The Britive Access Broker extends the Cloud JIT ZSP model to your on-premise resources such as data bases, windows servers and linux machines. It executes the Britive ephemeral authorization checkout and checkin routines and eliminates the need to expose your internal systems directly to the internet.</p>
+<p>The Britive Access Broker only provide the control plane. It is not a proxy or agent, so it is not in the data path.</p>
+<p>Let’s navigate to the Access Broker configuration page. Here you can see our broker pools – multiple brokers can be grouped together for high availability and load balancing.</p>
+<p>Notice the health status indicators showing all brokers are operational. The Access Broker architecture is designed for horizontal scalability – you can add more brokers to handle increased load or to support different network segments.</p>
+<p>Each broker establishes an outbound-only connection to Britive, meaning no inbound firewall rules are required in your network.”</p>
+<h3>Key Talking Points:</h3>
+<ul>
+<li>Access Broker acts as a secure gateway</li>
+<li>No inbound connections required</li>
+<li>Pooling for high availability</li>
+<li>Horizontal scalability</li>
+<li>Health monitoring</li>
+</ul>
+<hr />
+<h2>Scene 2: Access Broker Architecture Overview (75 seconds)</h2>
+<p><strong>Visual Focus:</strong> Architecture Diagram (slide or whiteboard)</p>
+<h3>Script:</h3>
+<p>“Let’s examine the Access Broker architecture to understand how secure access flows work.</p>
+<p>At the top, we have the Britive cloud platform where users request access through self-service portals or CLI tools.</p>
+<p>In the middle layer, the Access Broker pool runs in your DMZ or management network. These brokers establish outbound HTTPS connections to Britive – no inbound firewall rules needed.</p>
+<p>The brokers communicate with your on-premise PostgreSQL databases using standard database protocols within your secure network perimeter.</p>
+<p>Here’s the flow: When a DB Admin checks out Britive authorization profile using the CLI or UI, Britive authorizes the request. The Britive Access Broker then executes its configuration to provide short lived credentials for the target system. Britive securely delivers them to the user through an encrypted channel.</p>
+<p>All access is logged and audited, providing complete visibility without compromising security.”</p>
+<h3>Key Components to Highlight:</h3>
+<ul>
+<li>User/CLI layer</li>
+<li>Britive Cloud Platform</li>
+<li>Access Broker Pool (DMZ/Management Network)</li>
+<li>Target PostgreSQL Database</li>
+<li>Outbound-only connection flow</li>
+<li>Audit logging</li>
+</ul>
+<hr />
+<h2>Scene 3: Viewing the PostgreSQL Profile (65 seconds)</h2>
+<p><strong>Visual Focus:</strong> Britive UI – Profile Configuration Page</p>
+<h3>Script:</h3>
+<p>“Now let’s look at a configured profile for PostgreSQL access.</p>
+<p>Profiles in Britive define what access users can request and for how long. This profile is called ‘PostgreSQL-Production-ReadOnly’ and provides temporary read-only access to our production database.</p>
+<p>Notice the key configurations: The environment is set to ‘Production-OnPrem’, which tells Britive this resource is behind our Access Broker.</p>
+<p>The access duration is set to 4 hours maximum – after checkout, credentials automatically expire, enforcing just-in-time access principles.</p>
+<p>We can see the associated Access Broker pool name here – this ensures requests are routed through the correct broker infrastructure.</p>
+<p>The permissions tab shows we’re granting SELECT privileges on specific schemas. Users can discover and request this access through self-service, with approvals flowing automatically based on policy.”</p>
+<h3>Key Configurations to Show:</h3>
+<ul>
+<li>Profile name and description</li>
+<li>Environment (on-premise designation)</li>
+<li>Access Broker pool assignment</li>
+<li>Duration settings</li>
+<li>Permission details</li>
+<li>Approval workflow</li>
+</ul>
+<hr />
+<h2></h2>
+<h2>Scene 4: Installing and Configuring the Britive CLI (70 seconds)</h2>
+<p><strong>Visual Focus:</strong> Terminal/Command Line</p>
+<h3>Script:</h3>
+<p>“Let’s switch to the command line interface. For this demo, I’m using the Britive CLI tool which developers and operators prefer for programmatic access.</p>
+<p>First, let me verify the CLI is installed:</p>
+<p>britive –version</p>
+<p>Good, we’re running the latest version. Now I’ll configure my credentials using an API token I’ve generated from the Britive console:</p>
+<pre><code>britive configure
+</code></pre>
+<p>The CLI prompts for my Britive tenant URL and API token. These credentials are securely stored locally. Let me verify I’m authenticated:</p>
+<p>britive whoami</p>
+<p>Perfect – I’m logged in as <a href="mailto:john.smith@company.com">john.smith@company.com</a> with appropriate roles assigned.</p>
+<p>Now I can see what profiles are available to me:</p>
+<p>britive list profiles</p>
+<p>Here’s our PostgreSQL-Production-ReadOnly profile we reviewed earlier. Time to check out access.”</p>
+<pre><code>britive --version
+britive configure
+britive whoami
+britive list profiles
+</code></pre>
+<h2>Scene 5: Checking Out Database Credentials (75 seconds)</h2>
+<p><strong>Visual Focus:</strong> Terminal/Command Line</p>
+<h3>Script:</h3>
+<p>“Now I’ll request temporary access to the PostgreSQL database using the CLI.</p>
+<p>Let me check out credentials from our profile:</p>
+<p>britive checkout –profile-id postgresql-prod-readonly –duration 2h</p>
+<p>The CLI sends my request to Britive, which validates my identity and checks my authorization against policies. The Access Broker then securely retrieves credentials from the target PostgreSQL system.</p>
+<p>Notice the response – I’ve been granted a session with temporary credentials. Here are the key details:</p>
+<p>The hostname and port of our PostgreSQL server, a dynamically generated username specific to this session, a secure temporary password, and the database name I’ll connect to.</p>
+<p>The session expires in 2 hours as requested. This is just-in-time access in action – credentials are created when needed and automatically revoked when expired.</p>
+<p>Let me save these credentials to environment variables for easy connection:</p>
+<h2>Scene 6: Connecting to PostgreSQL and Running Commands (80 seconds)</h2>
+<p><strong>Visual Focus:</strong> Terminal/Command Line – Database Session</p>
+<h3>Script:</h3>
+<p>“Now let’s use our temporary credentials to connect to the PostgreSQL database.</p>
+<p>I’ll use the standard psql client:</p>
+<p>psql</p>
+<p>And we’re connected! Notice the prompt shows I’m connected as the temporary user to the production database.</p>
+<p>Let me verify my connection details:</p>
+<p>\conninfo<br />
+\dn</p>
+<p>I can see the schemas I have access to. Let’s query some data from the sales schema:</p>
+<pre><code>SELECT COUNT(*) FROM sales.orders WHERE order_date &gt;= CURRENT_DATE - INTERVAL '30 days';
+</code></pre>
+<p>Great – I can see we’ve had over 5,000 orders in the last 30 days.</p>
+<p>Let me try to view a specific table structure:</p>
+<p>\d sales.customers</p>
+<p>This shows the customer table definition. Remember, these are read-only credentials, so any attempt to modify data would be denied.</p>
+<p>Let me exit the database:</p>
+<p>\q</p>
+<p>My work is complete.”</p>
+<pre><code>psql
+\conninfo
+\dn
+SELECT COUNT(*) FROM sales.orders WHERE order_date &gt;= CURRENT_DATE - INTERVAL '30 days';
+\d sales.customers
+SELECT customer_name, account_status FROM sales.customers LIMIT 5;
+\q
+</code></pre>
+<h2>Scene 7: Cleanup and Session Management (60 seconds)</h2>
+<p><strong>Visual Focus:</strong> Terminal and Britive UI – Session Dashboard</p>
+<h3>Script:</h3>
+<p>“Before we wrap up, let’s look at session management and cleanup.</p>
+<p>Back in the terminal, I can view my active sessions:</p>
+<p>Here’s my PostgreSQL session showing time remaining until automatic expiration.</p>
+<p>If I’m finished early, I can explicitly return the credentials:</p>
+<p>The session is immediately terminated, and the temporary credentials are revoked in the target system.</p>
+<p>Now let’s view this from the Britive console. Switching to the Sessions dashboard, we can see all active and historical sessions across the organization.</p>
+<p>Security teams have complete visibility – who accessed what, when, for how long, and through which Access Broker. Every database command is logged for compliance auditing.</p>
+<p>This is the power of Britive Access Broker: secure, auditable, just-in-time access to on-premise resources without compromising your network security perimeter.</p>
+<p>Thank you for watching this demonstration.”</p>
+<h3>Final UI View:</h3>
+<ul>
+<li>Sessions dashboard with audit trail</li>
+<li>Access logs showing database activities</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

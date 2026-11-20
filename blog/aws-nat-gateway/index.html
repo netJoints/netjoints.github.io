@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A NAT gateway lets instances in private subnets reach the internet, and other networks, without being reachable from the outside. Here is how it works and what to watch for.">
+  <title>AWS NAT Gateway · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aws-nat-gateway/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS NAT Gateway">
+  <meta property="og:description" content="A NAT gateway lets instances in private subnets reach the internet, and other networks, without being reachable from the outside. Here is how it works and what to watch for.">
+  <meta property="og:url" content="https://netjoints.com/blog/aws-nat-gateway/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-08-16">August 16, 2024</time>
+      </div>
+
+      <h1 class="blog-title">AWS NAT Gateway</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>What it is</h2>
+<p>An <strong>AWS NAT gateway</strong> is a managed network address translation service. Instances in a <strong>private subnet</strong> use it to initiate outbound connections (software updates, API calls, SaaS) while staying unreachable for inbound connections started from the internet.</p>
+<h2>How it works</h2>
+<ul>
+<li>A <strong>public NAT gateway</strong> sits in a <strong>public subnet</strong> and has an <strong>Elastic IP</strong>. The private subnet&rsquo;s route table sends <code>0.0.0.0/0</code> to the NAT gateway, and the public subnet routes to the <strong>internet gateway</strong>.</li>
+<li>A <strong>private NAT gateway</strong> has no Elastic IP and is used to reach other VPCs or on-premises networks (for example to translate overlapping CIDRs) over a Transit Gateway or virtual private gateway.</li>
+<li>It is <strong>zonal</strong>. For resilience, deploy <strong>one NAT gateway per Availability Zone</strong> and route each AZ&rsquo;s private subnet to its local gateway.</li>
+<li>It scales automatically with traffic, up to a per-gateway bandwidth limit.</li>
+</ul>
+<h2>Design considerations</h2>
+<ul>
+<li><strong>Cost has two parts</strong>: an hourly charge per gateway and a <strong>per-GB data processing charge</strong> on all traffic that passes through it. Heavy outbound traffic (container image pulls, backups, S3 or DynamoDB access over the internet path) can make this a surprisingly large line item.</li>
+<li><strong>Use gateway endpoints</strong> for S3 and DynamoDB and <strong>interface endpoints</strong> where appropriate, so that traffic avoids the NAT gateway entirely.</li>
+<li><strong>Cross-AZ traffic</strong> to a NAT gateway in another AZ adds data transfer charges and a failure dependency.</li>
+<li>The NAT gateway does <strong>not filter</strong>. It cannot restrict destinations by name (FQDN) or inspect traffic. Security groups and network ACLs apply to the instances and subnets, not to NAT gateway decisions.</li>
+</ul>
+<h2>Watch-outs</h2>
+<ul>
+<li>A single NAT gateway is a single-AZ failure point.</li>
+<li>Source ports are limited per destination IP and port, so very high connection counts to one destination can lead to <code>ErrorPortAllocation</code>. Spread across more destinations or add gateways.</li>
+<li>Flow logs and CloudWatch metrics are your main visibility. Plan for them early.</li>
+</ul>
+<p><em>Quotas, limits and pricing change often. Confirm current values in the AWS documentation before designing around them.</em></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

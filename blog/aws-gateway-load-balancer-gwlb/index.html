@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Gateway Load Balancer makes it practical to insert third-party firewalls and inspection appliances into AWS traffic paths and scale them horizontally.">
+  <title>AWS Gateway Load Balancer (GWLB) · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aws-gateway-load-balancer-gwlb/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS Gateway Load Balancer (GWLB)">
+  <meta property="og:description" content="The Gateway Load Balancer makes it practical to insert third-party firewalls and inspection appliances into AWS traffic paths and scale them horizontally.">
+  <meta property="og:url" content="https://netjoints.com/blog/aws-gateway-load-balancer-gwlb/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-08-19">August 19, 2024</time>
+      </div>
+
+      <h1 class="blog-title">AWS Gateway Load Balancer (GWLB)</h1>
+
+      
+
+      <div class="blog-content">
+        <h2>What it is</h2>
+<p>The <strong>AWS Gateway Load Balancer (GWLB)</strong> is a layer 3 load balancer that sits transparently in the traffic path. It distributes traffic to a fleet of <strong>virtual appliances</strong> (next-generation firewalls, IPS, DPI tools) and scales that fleet up and down.</p>
+<h2>How it works</h2>
+<ul>
+<li>The GWLB lives in an <strong>appliance VPC</strong> (or security VPC). Appliances register as targets.</li>
+<li>Traffic is delivered to the appliances using <strong>GENEVE encapsulation on UDP port 6081</strong>, which preserves the original packet.</li>
+<li>Application VPCs consume the service through <strong>Gateway Load Balancer endpoints (GWLBe)</strong>, built on <strong>AWS PrivateLink</strong>. You then steer traffic to the GWLBe with <strong>route table entries</strong>.</li>
+<li><strong>Flow stickiness</strong> keeps both directions of a flow on the same appliance, which stateful inspection needs.</li>
+</ul>
+<h2>Common patterns</h2>
+<ul>
+<li><strong>Centralized egress inspection</strong>: private subnets route outbound traffic to a GWLBe, then to the firewall fleet, then to a NAT gateway and out.</li>
+<li><strong>Ingress inspection</strong>: place a GWLBe between the internet gateway and the load balancer or public subnets using an <strong>edge route table</strong>.</li>
+<li><strong>East-west inspection</strong> between VPCs, often together with a <strong>Transit Gateway</strong> in <strong>appliance mode</strong>.</li>
+</ul>
+<h2>Design considerations</h2>
+<ul>
+<li>Use <strong>appliance mode</strong> on Transit Gateway attachments so that return traffic stays in the same Availability Zone.</li>
+<li>Keep <strong>cross-zone load balancing</strong> and AZ placement in mind to avoid asymmetry and extra data transfer charges.</li>
+<li>Plan <strong>health checks</strong> and appliance bootstrap time, and use auto scaling.</li>
+<li>GWLB charges include an hourly rate and <strong>Load Balancer Capacity Units (LCUs)</strong>; the endpoints also have hourly and data processing charges.</li>
+</ul>
+<h2>Watch-outs</h2>
+<ul>
+<li>Routing mistakes are the most common failure. Draw the packet path in both directions.</li>
+<li>Centralized inspection concentrates risk and cost. Size appliances for peak throughput and review per-GB charges.</li>
+<li>Throughput is bounded by appliance licensing and instance sizes, not by the GWLB itself.</li>
+</ul>
+<p><em>Quotas, limits and pricing change often. Confirm current values in the AWS documentation before designing around them.</em></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

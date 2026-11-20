@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="As network architects, we know that there are pros and cons in designing any network in the world. Nothing is perfect. As trusted advisors, it is our responsibility to provide merit-based options and solutions to our clients and the enterprises we represent. This document provides some networking li">
+  <title>AWS Networking Limitations and Constraints · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aws-networking-limitations/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS Networking Limitations and Constraints">
+  <meta property="og:description" content="As network architects, we know that there are pros and cons in designing any network in the world. Nothing is perfect. As trusted advisors, it is our responsibility to provide merit-based options and solutions to our clients and the enterprises we represent. This document provides some networking li">
+  <meta property="og:url" content="https://netjoints.com/blog/aws-networking-limitations/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2024-10-15">October 15, 2024</time>
+      </div>
+
+      <h1 class="blog-title">AWS Networking Limitations and Constraints</h1>
+
+      
+
+      <div class="blog-content">
+        <p>As network architects, we know that there are pros and cons in designing any network in the world. Nothing is perfect. As trusted advisors, it is our responsibility to provide merit-based options and solutions to our clients and the enterprises we represent.</p>
+<p>This document provides some networking limitations shared by our customers. Credit goes to CSP to well document these design and quota limitations.</p>
+<p>Aviatrix is one of the networking and security competency holder ISV and AWS partners. Aviatrix provides the solution to some of these limitations. Customers should consider them and make informed decisions based on merit, pain points, and requirements. In the end the technical solution should meet business objectives and provide value to customers and shareholders.</p>
+<h2>(1) 100 Route Limitation</h2>
+<p>Public cloud providers, such as AWS, often come with inherent routing and connectivity limitations that can be a pain point for many organizations. A notable limitation is found in AWS Transit Gateway (TGW) and AWS Direct Connect configurations.</p>
+<p><strong>According to AWS documentation:</strong></p>
+<p>“If you advertise more than 100 routes each for IPv4 and IPv6 over the BGP session, the BGP session will go into an idle state with the BGP session DOWN.”</p>
+<p>Source: <a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/limits.html">AWS Direct Connect Quotas</a></p>
+<p>This means that any organization needing to advertise more than 100 routes will inadvertently experience network disruptions, rendering the BGP session inactive.</p>
+<h3>Aviatrix Advantages</h3>
+<p>Aviatrix addresses this challenge. Unlike AWS TGW, Aviatrix supports a significantly higher number of routes per BGP session. This solves the route limitation problem, ensuring uninterrupted network connectivity.</p>
+<p><a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/limits.html">https://docs.aws.amazon.com/directconnect/latest/UserGuide/limits.html</a></p>
+<h2>(2) AWS Direct Connect MACsec Limitation</h2>
+<h3>MACsec Limitations</h3>
+<p><strong>Layer 2 Encryption:</strong> MACsec operates at the data link layer (Layer 2), offering protection only for traffic on a single Ethernet link. This restricts its application across broader network architectures, particularly those involving multi-hop WAN or cloud environments.  </p>
+<p>Reference: <a href="https://www.juniper.net/documentation/us/en/software/junos/security-services/topics/topic-map/understanding_media_access_control_security_qfx_ex.html">Juniper Networks</a> and <a href="https://aviatrix.com/blog/secure-your-connection-to-the-cloud-macsec-vs-ipsec/">MACSec vs IPSec Side By Side</a>  </p>
+<p><strong>Scalability Issues:</strong> MACsec does not scale well for larger networks due to the necessity of configuring and managing keys for every direct Ethernet connection. This makes it cumbersome for expansive, dynamic networking situations typical of cloud deployments.  </p>
+<p>Reference: <a href="https://standards.ieee.org/standard/802_1AE-2018.html">IEEE 802.1AE – Media Access Control Security</a>  </p>
+<p><strong>Lack of Flexibility:</strong> MACsec does not offer inherent support for logical segmentation, such as Virtual Private Clouds (VPCs) or VPN tunnels. In contrast, VPN technologies like IPSec can segment network traffic efficiently, providing greater control and flexibility.  </p>
+<p><strong>Physical Link Restrictions:</strong> Since MACsec only secures physical links, its use is limited to single-hop connections. This poses significant drawbacks for cloud connectivity, where data often traverses multiple hops over various network paths.</p>
+<h2>Why IPSec is the Better Choice</h2>
+<p><strong>Comprehensive Layer 3 Encryption:</strong> IPSec operates at the network layer (Layer 3), ensuring that IP packets are encrypted end-to-end across multiple network hops. This feature makes it indispensable for cloud environments, which require consistent data protection over extended paths.  </p>
+<p>Reference: <a href="https://datatracker.ietf.org/doc/html/rfc4301">RFC 4301 – Security Architecture for the Internet Protocol</a>  </p>
+<p><strong>Advanced Key Management:</strong> IPSec includes advanced mechanisms for key management such as Internet Key Exchange (IKE). This allows for dynamic, automated, and scalable key management, reducing the burden on network administrators.  </p>
+<p>Reference: <a href="https://www.cisco.com/c/en/us/products/security/vpn-endpoint-security-clients/what-is-vpn.html">Cisco – IPsec Fundamentals</a>  </p>
+<p><strong>Support for Multi-Cloud and Site-to-Site VPNs:</strong> IPSec is designed to work seamlessly across multiple cloud environments and site-to-site connections. This flexibility is essential for modern enterprises with complex networking needs.  </p>
+<p><strong>Policy-Based Security:</strong> With IPSec, organizations can enforce security policies natively, allowing for precise control over data routing and encryption. This ensures compliance with internal and external regulations.</p>
+<h3>(3) IPSec 1.25 Gbps Encryption Limitation</h3>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

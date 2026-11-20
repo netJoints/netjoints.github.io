@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Understanding IAM Conditions in Google Kubernetes Engine (GKE) Think of IAM Conditions in GKE like access control lists (ACLs) or firewall rules in Cisco networking but for cloud resources. They allow you to define very specific rules about who can do what, where, and when in your Google Cloud envir">
+  <title>Understanding IAM Conditions in Google Kubernetes Engine (GKE) · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/understanding-iam-conditions-in-google-kubernetes-engine-gke/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Understanding IAM Conditions in Google Kubernetes Engine (GKE)">
+  <meta property="og:description" content="Understanding IAM Conditions in Google Kubernetes Engine (GKE) Think of IAM Conditions in GKE like access control lists (ACLs) or firewall rules in Cisco networking but for cloud resources. They allow you to define very specific rules about who can do what, where, and when in your Google Cloud envir">
+  <meta property="og:url" content="https://netjoints.com/blog/understanding-iam-conditions-in-google-kubernetes-engine-gke/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-09-03">September 3, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Understanding IAM Conditions in Google Kubernetes Engine (GKE)</h1>
+
+      
+
+      <div class="blog-content">
+        <h3><strong>Understanding IAM Conditions in Google Kubernetes Engine (GKE)</strong></h3>
+<p>Think of IAM Conditions in GKE like <strong>access control lists (ACLs)</strong> or <strong>firewall rules</strong> in Cisco networking but for cloud resources. They allow you to define <strong>very specific rules</strong> about <em>who</em> can do <em>what</em>, <em>where</em>, and <em>when</em> in your Google Cloud environment.</p>
+<hr />
+<h3><strong>What Are IAM Conditions?</strong></h3>
+<p>IAM (Identity and Access Management) Conditions are part of Google Cloud’s security model. They let you <strong>grant roles to users or service accounts only if certain conditions are met</strong>. Similar to how you might allow traffic through a router only if it matches a specific IP, protocol, or time window.</p>
+<hr />
+<h3><strong>Key Concepts for GKE (Google Kubernetes Engine):</strong></h3>
+<h4><strong>Conditional Role Bindings</strong></h4>
+<ul>
+<li>You assign roles (like “Cluster Admin”) to users or service accounts.</li>
+<li>But the role is only active <strong>if the condition is true</strong> — like saying “allow access only if the request comes from a specific IP range.”</li>
+</ul>
+<h4><strong>Attribute-Based Access Control (ABAC)</strong></h4>
+<p>Conditions can be based on:</p>
+<ul>
+<li><strong>Resource attributes</strong>: e.g., only allow access to clusters named <code>prod-*</code> or located in <code>us-central1</code>.</li>
+<li><strong>Request attributes</strong>: e.g., allow actions only during business hours or only for <code>create</code> operations.</li>
+<li><strong>Principal attributes</strong>: e.g., allow access only if the request comes from a known IP or a specific service account.</li>
+</ul>
+<hr />
+<h3><strong>Real-World Use Cases in GKE:</strong></h3>
+<ol>
+<li><strong>Restrict access to specific clusters</strong><br />
+   Like limiting access to only production clusters, not dev or test.</li>
+<li><strong>Control load balancer creation</strong><br />
+   Prevent external load balancers from being created — only allow internal ones.</li>
+<li><strong>Enforce compliance policies</strong><br />
+   Ensure sensitive actions (like deleting clusters) can only happen under strict conditions.</li>
+</ol>
+<p><img alt="" src="https://netjoints.github.io/_posts/understanding-iam-conditions-in-google-kubernetes-engine-gke/GCP-GKE-IAM-Conditions.png" /></p>
+<hr />
+<h3><strong>How IAM Conditions Work with Kubernetes RBAC</strong></h3>
+<ul>
+<li><strong>IAM</strong> controls access to <strong>Google Cloud resources</strong> (like the GKE cluster itself).</li>
+<li><strong>Kubernetes RBAC</strong> controls access <strong>inside the cluster</strong> (like pods, services, etc.).</li>
+<li>Together, they provide <strong>end-to-end security</strong> — like combining perimeter firewall rules with internal ACLs.</li>
+</ul>
+<hr />
+<h3><strong>How to Implement IAM Conditions</strong></h3>
+<ul>
+<li>Conditions are written using <strong>CEL (Common Expression Language)</strong> — similar to writing firewall match conditions.</li>
+<li>You can configure them via:</li>
+<li><strong>Google Cloud Console</strong></li>
+<li><strong>gcloud CLI</strong></li>
+<li><strong>IAM API</strong></li>
+</ul>
+<h2>Cisco Analogy Diagram</h2>
+<p><img alt="" src="https://netjoints.github.io/_posts/understanding-iam-conditions-in-google-kubernetes-engine-gke/GKE-to-Cisco-Mapping.png" /></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Microsoft Azure is getting lot of Cloud business in the Enterprise market. Understanding the Multi-Cloud Network (MCN) architecture is a must for Network/Cloud architects and Transit Networking is one of the Cloud Core element of MCN architecture. Aviatrix offer two distinct design patterns to build">
+  <title>Azure Transit Network Design Patterns · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/azure-transit-network-design-patterns/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Azure Transit Network Design Patterns">
+  <meta property="og:description" content="Microsoft Azure is getting lot of Cloud business in the Enterprise market. Understanding the Multi-Cloud Network (MCN) architecture is a must for Network/Cloud architects and Transit Networking is one of the Cloud Core element of MCN architecture. Aviatrix offer two distinct design patterns to build">
+  <meta property="og:url" content="https://netjoints.com/blog/azure-transit-network-design-patterns/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">multi-cloud</span>
+        <time datetime="2019-12-14">December 14, 2019</time>
+      </div>
+
+      <h1 class="blog-title">Azure Transit Network Design Patterns</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Microsoft Azure is getting lot of Cloud business in the Enterprise market. Understanding the Multi-Cloud Network (MCN) architecture is a must for Network/Cloud architects and Transit Networking is one of the Cloud Core element of MCN architecture.</p>
+<p>Aviatrix offer two distinct design patterns to build global transit in Azure and for cross-cloud connectivity. Both of them have their pros and cons that will be discussed later.</p>
+<p><img alt="" src="/blog/images/azure-transit-network-design-patterns/image-30.png" /></p>
+<p>Azure Transit Network Design Patterns</p>
+<p>The general recommendation and best practice from Aviatrix is to deploy “Aviatrix Transit with VNet GWs” design pattren.</p>
+<blockquote>
+<p><a href="https://netjoints.wordpress.com/2019/12/11/aviatrix-controller-deployment-in-azure/">Refer to my blog post to deploy Aviatrix Controller from the Azure Market Place.</a></p>
+</blockquote>
+<h2>Aviatrix Transit with VNet GWs</h2>
+<p>In this pattern, a transit network in Azure is built with a Transit gateway (aka hub gateway) in the centralized VNet (aka Transit VNet) and spoke gateways in the spoke VNets.</p>
+<p>In this model Aviatrix Controller</p>
+<ul>
+<li>Deploys the Aviatrix Azure Transit GW in the transit VNet</li>
+<li>Deploys the Aviatrix Azure Spoke GW in the spoke VNets</li>
+<li>Orchestrates vNET route creation and propagation</li>
+<li>Connects spoke VNet to Transit/Hub GW and</li>
+<li>Controls and steers the traffic accordion to the desired state</li>
+<li>Provides life-cycle of management of the deployment</li>
+</ul>
+<p><img alt="Aviatrix Transit with VNet GWs" src="/blog/images/azure-transit-network-design-patterns/image-24.png" /></p>
+<blockquote>
+<p>Aviatrix recommendation is to use “Aviatrix Transit with VNet GW” design pattern</p>
+</blockquote>
+<h3>Aviatrix Transit with VNet GWs – Details</h3>
+<ul>
+<li>This model Provides encrypted connection between Spoke and Transit VNets</li>
+<li>This is extremely important and in majority of the cases first requirement for enterprises</li>
+<li>It can leverage Aviatrix ActiveMesh between Transit and Spoke VNets.</li>
+<li>ActiveMesh provides huge advantages by building multiple Active/Active encrypted links between Hub and Spoke VNets.</li>
+<li>It provides higher availability of service in case one or even two links go down.</li>
+<li>ActiveMesh links actively participate in packer forwarding that results in increased throughput as compare to single encrypted link</li>
+<li>Enterprises can leverage Advanced troubleshooting and visibility options provided by Aviatrix</li>
+<li>For example Aviatrix GW allows enterprises to take tcpdump or packet capture of the traffic passing through</li>
+<li>It allows enterprises to deploy consistent enterprise network architecture across multiple regions and multiple-clouds</li>
+</ul>
+<h2>Aviatrix Transit with VNet Peering</h2>
+<p>Aviatrix also offers building transit networks by natively peering the spoke VNets with the Aviatrix Transit GW. This model does not require any GWs in the spoke VNet.</p>
+<p>In this model Aviatrix controller</p>
+<ul>
+<li>Deploys the Aviatrix Azure Transit GW in the transit VNet</li>
+<li>Orchestrates vNET route creation and propagation</li>
+<li>Connects spoke VNet to Transit/Hub GW and</li>
+<li>Controls and steers the traffic accordion to the desired state</li>
+<li>Provides life-cycle of management of the deployment</li>
+</ul>
+<p><img alt="" src="/blog/images/azure-transit-network-design-patterns/image-25.png" /></p>
+<blockquote>
+<p>Aviatrix recommendation is to use “Aviatrix Transit with VNet GW” design pattern</p>
+</blockquote>
+<h3>Aviatrix Transit with VNet Peering – Details</h3>
+<ul>
+<li>This model does not provide encryption between spoke and transit VNets</li>
+<li>Less visibility into the traffic and overall operations</li>
+<li>There is no option to take tcpdump or packet capture at the spoke VNet as compare to the other other model</li>
+<li>Ops team depends on the Azure tools and options to troubleshoot rather than using Aviatrix’s rich set of troubleshooting and visibility tools</li>
+<li>No gateways in the spoke VNets means no IPSec tunnel charges between spoke and transit VNets</li>
+<li>The Aviatrix ActiveMesh behavior is different in this model as compare to the previous one. Since we do not have Aviatrix Spoke GW in the spoke VNet, the behavior is more like Primary/Backup links</li>
+<li>If spoke VNet has multiple route tables, the Aviatrix controller will configure both primary and backup Transit GWs as the default gateway for different route tables. By doing so, we can achieve load balancing for Spoke VNet outbound traffic</li>
+<li>If Spoke VNet has only one route table, this route table will point to the private IP of the primary Transit GW until that GW fails. In case of primary Transit GW failure, the controller will automatically update the Spoke VNet’s route table to point to the private IP of the backup Transit GW</li>
+<li>The throughput between Transit and Spoke VNet is what Azure native VNet peering provides (At the time of writing this article, Azure did not publish those numbers)</li>
+<li>Aviatrix has done performance testing using different Azure VM sizes. Refer to following results as a reference</li>
+</ul>
+<p><img alt="" src="/blog/images/azure-transit-network-design-patterns/azure-vnet-throughput.png" /></p>
+<p>Azure Throughput</p>
+<h2>Conclusion</h2>
+<p>Transit Network is an integral part of Multi-Cloud Network (MCN) architecture. It fits right into the Cloud Core pillar of MCN architecture. Aviatrix offer two different Azure Transit Network design patterns to cater various enterprise needs in this space.</p>
+<p><a href="https://netjoints.wordpress.com/2019/12/19/azure-transit-network-with-vnet-peering-deployment/">In my next blog, I will discusses the Azure Transit Network deployment with native VNet peering in more details.</a></p>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">azure</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

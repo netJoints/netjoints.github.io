@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cloud Armor – A service that sits before a native Load Balancer to protect against DDoS attacks. In GKE, the target for Cloud Armor service is GKE Ingress LB Load Balancer Options There are different load balancer options in GCP based on specific requirement Load Balancer Traffic Type Global/Regiona">
+  <title>GCP Networking Concepts and Best Practices · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/gcp-native-networking-concepts-cheat-sheet/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GCP Networking Concepts and Best Practices">
+  <meta property="og:description" content="Cloud Armor – A service that sits before a native Load Balancer to protect against DDoS attacks. In GKE, the target for Cloud Armor service is GKE Ingress LB Load Balancer Options There are different load balancer options in GCP based on specific requirement Load Balancer Traffic Type Global/Regiona">
+  <meta property="og:url" content="https://netjoints.com/blog/gcp-native-networking-concepts-cheat-sheet/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-11-01">November 1, 2020</time>
+      </div>
+
+      <h1 class="blog-title">GCP Networking Concepts and Best Practices</h1>
+
+      
+
+      <div class="blog-content">
+        <ul>
+<li>
+<p>Cloud Armor – A service that sits before a native Load Balancer to protect against DDoS attacks. In GKE, the target for Cloud Armor service is GKE Ingress LB</p>
+</li>
+<li>
+<p>Load Balancer Options</p>
+</li>
+<li>There are different load balancer options in GCP based on specific requirement</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Load Balancer</th>
+<th>Traffic Type</th>
+<th>Global/Regional</th>
+<th>External/ Internal</th>
+<th>External Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP(s)</td>
+<td>HTTP or HTTPS</td>
+<td>Global IPv4/v6</td>
+<td>External</td>
+<td>HTTP on 80 or 8080 HTTPS on 443</td>
+</tr>
+<tr>
+<td>SSL Proxy</td>
+<td>TCP with SSL offload</td>
+<td>Global IPv4/v6</td>
+<td>External</td>
+<td>25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5333</td>
+</tr>
+<tr>
+<td>TCP Proxy</td>
+<td>TCP without SSL offload Client IP not preserved</td>
+<td>Global IPv4/v6</td>
+<td>External</td>
+<td>25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5333</td>
+</tr>
+<tr>
+<td>NLB (Network)</td>
+<td>TCP/UDP without SSL offload Client IP preserved</td>
+<td>Regional IPv4</td>
+<td>External</td>
+<td>Any</td>
+</tr>
+<tr>
+<td>HTTP(s)</td>
+<td>HTTP or HTTPS</td>
+<td>Regional IPv4</td>
+<td>Internal</td>
+<td>HTTP on 80 or 8080 HTTPS on 443</td>
+</tr>
+<tr>
+<td>TCP/UDP</td>
+<td>TCP or UDP</td>
+<td>Regional IPv4</td>
+<td>Internal</td>
+<td>Any</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>As a network and security admin, it is important to know about at least following <a href="https://cloud.google.com/compute/docs/access/iam">roles and their permission details</a></li>
+<li><code>roles/compute.admin</code></li>
+<li><code>roles/compute.loadBalancerAdmin</code></li>
+<li><code>roles/compute.networkAdmin</code></li>
+<li>Permissions to create, modify, and delete networking resources, except for firewall rules and SSL certificates.</li>
+<li>The network admin role allows read-only access to firewall rules, SSL certificates, and instances (to view their ephemeral IP addresses).</li>
+<li>The network admin role does not allow a user to create, start, stop, or delete instances.</li>
+<li>For example, if your company has a security team that manages firewalls and SSL certificates and a networking team that manages the rest of the networking resources, then grant this role to the networking team’s group.</li>
+<li><code>roles/compute.securityAdmin</code></li>
+<li>Permissions to create, modify, and delete firewall rules and SSL certificates, and also to configure <a href="https://cloud.google.com/security/shielded-cloud/shielded-vm">Shielded VMBETA</a> settings.</li>
+<li>For example, if your company has a security team that manages firewalls and SSL certificates and a networking team that manages the rest of the networking resources, then grant this role to the security team’s group.</li>
+<li><code>roles/compute.xpnAdmin</code></li>
+<li>Permissions to administer <a href="https://cloud.google.com/vpc/docs/shared-vpc">shared VPC</a> host projects, specifically enabling the host projects and associating shared VPC service projects to the host project’s network.</li>
+<li>At the organization level, this role can only be granted by an organization admin.</li>
+<li>
+<p>Google Cloud recommends that the Shared VPC Admin be the owner of the shared VPC host project. The Shared VPC Admin is responsible for granting the Compute Network User role (<code>roles/compute.networkUser</code>) to service owners, and the shared VPC host project owner controls the project itself. Managing the project is easier if a single principal (individual or group) can fulfill both roles.</p>
+</li>
+<li>
+<p>GCP does not log the deny request for the firewall log, unless a rule is hit. Best practice is to create a deny all firewall rule with priority 65500 to deny all traffic and then enable logs</p>
+</li>
+<li>
+<p>Shared VPC is the place where one terminate the Cloud Interconnect private connection and enable the VLAN</p>
+</li>
+<li>Best practice is to disable the auto subnet creation</li>
+<li>Auto subnet creation can cause overlapping IP between VPCs</li>
+<li>The best practice is to create multiple VPCs in GCP. Having just one or few global VPCs will not allow you to segment the traffic and workload in future</li>
+<li>It is also a good idea to stay away from GCP Shared VPC concept. Shared VPC concept is not to create network boundary of hub-spoke architecture. Shared VPC is just an administrative concept so that Network and Sec. admin can assing subnet and firewall rules to Service or Client VPCs</li>
+</ul>
+<h2>On-Premise to GCP Connectivity (Hybrid) Options</h2>
+<p><a href="https://cloud.google.com/network-connectivity/docs/interconnect/concepts/partner-overview#connectivity-type">Following table shows the options</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>Dedicated</strong></td>
+<td><strong>Shared</strong></td>
+</tr>
+<tr>
+<td><strong>Layer3</strong></td>
+<td>Direct Peering</td>
+<td>Career Peering</td>
+</tr>
+<tr>
+<td><strong>Layer2</strong></td>
+<td>Dedicated Interconnect</td>
+<td>Partner Interconnect</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>For layer 2 connections, traffic just passes through the service provider’s network.</li>
+<li>Service Provider Network acts as L2 only.</li>
+<li>It means for layer 2 connections, you must configure and establish a BGP session between your Cloud Routers and on-premises routers.</li>
+<li>For layer 3 connections, your service provider establishes a BGP session between GCP Cloud Routers and their edge routers.</li>
+<li>You don’t need to configure BGP on your on-premises router.</li>
+<li>Google and your service provider automatically set the correct configurations.</li>
+</ul>
+<h2>GKE Cluster IP Address Scheme</h2>
+<p>3 different types of IP ranges are required</p>
+<ul>
+<li>Node</li>
+<li>Primary CIDR is assigned to the node</li>
+<li>Pod</li>
+<li>Secondary or Alias IP is assgined to the Pods</li>
+<li>default network size is /24. This cannot be smaller than this.</li>
+<li>Pod IPs are assigned on per Node basis</li>
+<li>Pod IPs are always the dobule the requirement because these PODs are created and destryoed all the time. Or when you update or do antyhing then first the new POD is deployed and then old is deleted</li>
+<li>Services:</li>
+<li>Secondary or Alias IP is used by the Services as well</li>
+</ul>
+<h3>Example:</h3>
+<p>If a GKE cluster is of 2 nodes then it means at minimum you would need two /24 networks for Pod IP assignment.</p>
+<h2>Auto-scaling and VPC Dependencies</h2>
+<p>Unmanaged Instance Group only resides in a single zone, VPC network and subnet. It is not a good idea to use the unmanaged Instance Group (UIG). UIG cannot do autoscaling as well.</p>
+<p>Autoscaling only works with zonal and regional managed instance groups (MIGs). It means autoscaling cannot cross region boundaries. So it means if you use a single VPC with autoscaling, you are limited to only one region. So in essence your VPC is not really global from application perspective. So why should you restrict your design to single VPC? Using single VPC is not a good idea for many reasons, and this is just one of them.</p>
+<p><a href="https://cloud.google.com/compute/docs/autoscaler" title="https://cloud.google.com/compute/docs/autoscaler">https://cloud.google.com/compute/docs/autoscaler</a></p>
+<p><a href="https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-unmanaged-instances">https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-unmanaged-instances</a></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

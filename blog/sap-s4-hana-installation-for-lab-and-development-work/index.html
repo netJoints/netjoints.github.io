@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to the following SAP website https://cal.sap.com/catalog#/applianceTemplates Logon using SAP Universal-ID After you login, you will see additional options in the left hand navigation bar TIP: Sometimes the login does not work, so what you should do is to log in to SAP PartnerEdge or Universal">
+  <title>SAP S4/HANA Installation For LAB and Development Work · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/sap-s4-hana-installation-for-lab-and-development-work/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SAP S4/HANA Installation For LAB and Development Work">
+  <meta property="og:description" content="Log in to the following SAP website https://cal.sap.com/catalog#/applianceTemplates Logon using SAP Universal-ID After you login, you will see additional options in the left hand navigation bar TIP: Sometimes the login does not work, so what you should do is to log in to SAP PartnerEdge or Universal">
+  <meta property="og:url" content="https://netjoints.com/blog/sap-s4-hana-installation-for-lab-and-development-work/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2023-01-03">January 3, 2023</time>
+      </div>
+
+      <h1 class="blog-title">SAP S4/HANA Installation For LAB and Development Work</h1>
+
+      
+
+      <div class="blog-content">
+        <p>Log in to the following SAP website</p>
+<p><a href="https://cal.sap.com/catalog#/applianceTemplates">https://cal.sap.com/catalog#/applianceTemplates</a></p>
+<p>Logon using SAP Universal-ID</p>
+<p>After you login, you will see additional options in the left hand navigation bar</p>
+<p><strong>TIP:</strong> Sometimes the login does not work, so what you should do is to log in to SAP PartnerEdge or Universal ID website and then click the Login button on the SAP Appliance website</p>
+<p>Click on the create appliance option</p>
+<p>After this, you will see a screen to deploy the SAP S4/HANA. I will deploy it in GCP, but the process is same and simple for AWS and Azure as well.</p>
+<p>For GCP, you need to create a GCP Project, and GCP VPC. Then download the GCP Project jason file so that SAP portal can connect to GCP and create the necessary SAP S4/HANA VMs.</p>
+<p>After you click create, the deployment will begin. It will take at least 90 min to build it all.</p>
+<p>Following is created as part of the SAP automation</p>
+<p>So basically following VMs are required for S4/HANA setup</p>
+<ul>
+<li>HANA DB layer – SAP S4/HANA</li>
+<li>HANA Application layer – SAP Netweaver</li>
+<li>SAP BusinessObjects Platform</li>
+<li>Jumpbox – Windows RDP</li>
+</ul>
+<h2><strong>First time login into RDP</strong></h2>
+<p>Following is what you see</p>
+<h2><strong>What’s in your appliance?</strong></h2>
+<p>This trial edition is provided as virtual appliance by the SAP Cloud Appliance Library and consists of four instances, which can be deployed on a cloud-computing platform</p>
+<ul>
+<li>The frontend instance on Microsoft Windows Server 2016, as described above, including the following pre-installed components:</li>
+<li>Google Chrome as the pre-installed default browser</li>
+<li>SAP Logon / SAP GUI / SAP Business Client with preconfigured connections to the SAP S/4HANA system</li>
+<li>An automated script to install Eclipse and the respective add-ons for the SAP HANA Studio &amp; ABAP development tools with preconfigured connections to the SAP HANA database</li>
+<li>SAP Lumira Discovery</li>
+<li>SAP Lumira Designer</li>
+<li>A backend instance on Linux with</li>
+<li>SAP S/4HANA 2021 FPS02</li>
+<li>SAP HANA 2.0</li>
+<li>A backend instance on Linux with</li>
+<li>SAP NetWeaver 7.50 application server JAVA with Adobe Document Services installed (for output management in SAP S/4HANA)</li>
+<li>A backend instance on Linux with</li>
+<li>SAP BusinessObjects BI Platform 4.3 installed (optional)</li>
+</ul>
+<h2><strong>SAP Cloud Connector</strong></h2>
+<p>First login you will see following screen</p>
+<h2><strong>Web Dispatcher UI Login</strong></h2>
+<p>First time login will show following</p>
+<h2><strong>Eval System Login Users</strong></h2>
+<p>This system has many users created as part of the automation</p>
+<h2><strong>More Information, Sample Scenarios and Support</strong></h2>
+<p>Please check out these sources for further information</p>
+<p>General documentation and FAQs for the SAP Cloud Appliance Library</p>
+<p>The Getting Started Guide that is linked from your personal system instance in the SAP CAL console (https://cal.sap.com -&gt; Workloads -&gt; Appliances)</p>
+<p><a href="https://blogs.sap.com/?p=727457">https://blogs.sap.com/?p=727457</a></p>
+<p><a href="https://blogs.sap.com/2019/04/23/sap-s4hana-fully-activated-appliance-demo-guides/">https://blogs.sap.com/2019/04/23/sap-s4hana-fully-activated-appliance-demo-guides/</a></p>
+<p><a href="https://blogs.sap.com/2018/12/12/sap-s4hana-fully-activated-appliance-create-your-sap-s4hana-1809-system-in-a-fraction-of-the-usual-setup-time/">https://blogs.sap.com/2018/12/12/sap-s4hana-fully-activated-appliance-create-your-sap-s4hana-1809-system-in-a-fraction-of-the-usual-setup-time/</a></p>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

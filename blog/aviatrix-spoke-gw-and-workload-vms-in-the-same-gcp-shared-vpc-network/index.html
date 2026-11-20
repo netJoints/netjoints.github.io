@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This pattern is more suited for small deployments, PoC or lab setup where the networking is kept very simple. The Aviatrix transit GW is deployed inside the host-project. The Aviatrix spokes are also deployed inside the host-project but the VPC network (or subnet) is shared with the service/tenant V">
+  <title>Aviatrix Spoke GW and Workload VMs in Same GCP Shared VPC Subnets · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aviatrix Spoke GW and Workload VMs in Same GCP Shared VPC Subnets">
+  <meta property="og:description" content="This pattern is more suited for small deployments, PoC or lab setup where the networking is kept very simple. The Aviatrix transit GW is deployed inside the host-project. The Aviatrix spokes are also deployed inside the host-project but the VPC network (or subnet) is shared with the service/tenant V">
+  <meta property="og:url" content="https://netjoints.com/blog/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2020-09-30">September 30, 2020</time>
+      </div>
+
+      <h1 class="blog-title">Aviatrix Spoke GW and Workload VMs in Same GCP Shared VPC Subnets</h1>
+
+      
+
+      <div class="blog-content">
+        <h3></h3>
+<p>This pattern is more suited for small deployments, PoC or lab setup where the networking is kept very simple. The Aviatrix transit GW is deployed inside the host-project. The Aviatrix spokes are also deployed inside the host-project but the VPC network (or subnet) is shared with the service/tenant VPC. This same shared VPC network (subnet) is then used by the workload VMs as well. Using same subnet for Aviatrix spoke GW and workload VMs might not be desirable for some organizations.</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-58.png" /></p>
+<pre><code>This article discusses the deployment aspects of first design pattern. 
+Second design pattern will be discussed in a different blog.
+</code></pre>
+<h3>Deployment Details</h3>
+<h4>Create VPC networks under Host Project</h4>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-1-1024x264.png" /></p>
+<p>Attach service project with Host Project under Shared VPC option</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-2.png" /></p>
+<p>While attaching the project, you need to select the respective subnet as well. Following screen shows the subnets shared with the service project</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-3.png" /></p>
+<p>You can also list all the “Shared VPC networks” and their attached “Service Projects” as shown in the following screen</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-4.png" /></p>
+<h4>Deploy Aviatrix Transit Gateway</h4>
+<p>Now deploy Aviatrix transit gateway in the host project’s “transit vpc network”</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-5.png" /></p>
+<p>Enable connected transit as shown in the following screen. This make all spoke vpc-networks to communicate with each other. By default it is disabled.</p>
+<pre><code>Also assign BGP AS Number to newly deployed Aviatrix Gateway. This step is the best practice and not mandatory. This becomes critical for traffic engineering or if one wants to connect to on-prem router/firewall for eBGP.
+</code></pre>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-9.png" /></p>
+<h4>Deploy Aviatrix Spoke Gateways</h4>
+<p>Deploy Aviatrix spoke gateways in the prod and dev shared vpc network. These networks were created inside the central IT host project but were shared to prod and dev service projects. For instance “gcp-spk-gw-host-project-vpcnet-prod” will be deployed as Aviatrix gateway inside the host project. It will consume the compute resources from the central IT host project. This way central IT will have complete control over the transit and spoke gateways and their networking aspects. The service/tenant projects will be deploying their VMs inside their own compute and will be responsible for paying for it but will not have any control over the networking aspects.</p>
+<p>Following screen shot shows the spoke gateway deployment. Notice that the Account Name / Project name selected in the drop down menu is “netjoints-host-project”</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-6.png" /></p>
+<p>Similarly the spoke gateway for dev service project was deployed. The following list shows the outcome of transit and spoke gateways</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-7.png" />
+<img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/spoke-gw-list-1.png" /></p>
+<h4>Attach Spoke Gateways to Transit Gateway</h4>
+<p>Now attach both spokes to the transit gateway to build the complete hub-spoke topology</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/image-10.png" /></p>
+<p>After the attachment, the spoke list will show the connected transit as follows</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/Screen-Shot-2020-09-15-at-9.55.48-AM.png" /></p>
+<h4>Testing and Verification</h4>
+<h3>CoPilot View</h3>
+<p>If you have Aviatrix CoPilot, then you can visualize the topology that was build on the run-time.</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/GCP_shared_AVTX_Design1.png" /></p>
+<h4>GCP View</h4>
+<p>GCP host project shows the Aviatrix transit and spoke gateways</p>
+<p><img alt="" src="/blog/images/aviatrix-spoke-gw-and-workload-vms-in-the-same-gcp-shared-vpc-network/Screen-Shot-2020-09-15-at-10.32.36-AM.png" /></p>
+<p>GCP Prod and Dev projects would show the Prod and Dev VMs that will be used for testing</p>
+<pre><code>shahzad_netjoints_com@service-project-prod-vm1:~$ ping 10.21.12.3
+PING 10.21.12.3 (10.21.12.3) 56(84) bytes of data.
+64 bytes from 10.21.12.3: icmp_seq=1 ttl=61 time=4.65 ms
+64 bytes from 10.21.12.3: icmp_seq=2 ttl=61 time=2.66 ms
+64 bytes from 10.21.12.3: icmp_seq=3 ttl=61 time=2.99 ms
+64 bytes from 10.21.12.3: icmp_seq=4 ttl=61 time=2.79 ms
+^C
+--- 10.21.12.3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 8ms
+rtt min/avg/max/mdev = 2.658/3.270/4.647/0.805 ms
+shahzad_netjoints_com@service-project-prod-vm1:~$
+</code></pre>
+<pre><code>shahzad_netjoints_com@service-project-prod-vm1:~$ traceroute 10.21.12.3  
+traceroute to 10.21.12.3 (10.21.12.3), 30 hops max, 60 byte packets  
+1 gcp-spk-gw-host-project-vpcnet-prod.us-east4-a.c.shahzad-host-project-11.internal (10.21.11.2) 1.648 ms 1.632 ms 1.612  
+ms  
+2 * * *  
+3 * * *  
+4 * * *  
+5 10.21.12.3 (10.21.12.3) 5.521 ms 5.499 ms 5.751 ms  
+shahzad_netjoints_com@service-project-prod-vm1:~$
+</code></pre>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

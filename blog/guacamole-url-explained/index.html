@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An Apache Guacamole RDP connection looks like following. This is also called Guacamole remote desktop session launch payload. It is used in a web-based remote access system. Here’s a breakdown of its components: 1. URL 2. Token 3. JSON Configuration Summary This payload is used to:">
+  <title>Guacamole URL Explained · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/guacamole-url-explained/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Guacamole URL Explained">
+  <meta property="og:description" content="An Apache Guacamole RDP connection looks like following. This is also called Guacamole remote desktop session launch payload. It is used in a web-based remote access system. Here’s a breakdown of its components: 1. URL 2. Token 3. JSON Configuration Summary This payload is used to:">
+  <meta property="og:url" content="https://netjoints.com/blog/guacamole-url-explained/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">Cybersecurity</span>
+        <time datetime="2025-08-25">August 25, 2025</time>
+      </div>
+
+      <h1 class="blog-title">Guacamole URL Explained</h1>
+
+      
+
+      <div class="blog-content">
+        <p>An Apache Guacamole RDP connection looks like following. This is also called <strong>Guacamole remote desktop session launch payload</strong>. It is used in a web-based remote access system.</p>
+<pre><code>{&quot;url&quot;:&quot;first-recording-alb-143338494.us-west-2.elb.amazonaws.com:8443/guacamole&quot;,&quot;token&quot;:&quot;bqIjbPhOic%2bq6UQTH7BHwro0pgg6jO8x7ProNMl1ooBZInow1RfzeFJivwqn5ujwlEkF7zSh2FcDLX3o%2fXHs9aHpBF1Zl2iKXfiwVu44zeTGjMnnoOJxMyeq6YLoJ7JynrPFJwIN0O6uUBjdu176GIW8NO1RLA8LIv508nkrjPXk%2f3eU4q5S5MPypCDT26saWCJFFx3TuZeIzJxg6%2bvUVNe5QsVgJ6YmkFWl3WK%2ftG%2bW0LvbQqS4rR66bKYjWl9sNh5xWbLg8WX9j49V%2fbEMDTnJ3tZtcZnu%2fqwhQ52p2RytU2MH8nk%2fEUWseqD0CKUAXejAz9Yo6VV1L2MNqCfv3h7aDwGSZI%2bttnQRi1KoQiP8Nq4mw39zuDqZBxfXKl2Ip7OdCTb95YZPV4k1RIdzxKHq94DdsCNUcHD97hPHSG8nkZtwuj8x6%2fD%2fkOUy7sULlcrZRbkdqUfvQggp8KjmuTC87xRoa70CcyM0nKPMCtHSwLHfOdBksW%2fOM1GWVUpfa8FE0bOd22YKKxfwcmWjP544D5wABCvt8HpqzYN5KanaC1mIRONLfP4Yqb3WIsso%2fE08mhKw16wO5PNAQkFbyJTTivTdNhvyf34G%2bfKYqiAgerz0XkxPFFXFIl%2bbBv2a&quot;,&quot;json&quot;:&quot;{\&quot;username\&quot;:\&quot;shahzad.ali-rec-1756137704000\&quot;,\&quot;connections\&quot;:{\&quot;ExampleWindowsRdpRecording\&quot;:{\&quot;protocol\&quot;:\&quot;rdp\&quot;,\&quot;parameters\&quot;:{\&quot;security\&quot;:\&quot;nla\&quot;,\&quot;username\&quot;:\&quot;shahzad.ali-rec\&quot;,\&quot;recording-name\&quot;:\&quot;${GUAC_DATE}-${GUAC_TIME}-shahzad.ali@mailinator.com-shahzad.ali-rec-ExampleWindowsRdpRecording\&quot;,\&quot;ignore-cert\&quot;:\&quot;true\&quot;,\&quot;port\&quot;:\&quot;3389\&quot;,\&quot;recording-path\&quot;:\&quot;/home/guacd/recordings\&quot;,\&quot;hostname\&quot;:\&quot;10.0.1.190\&quot;,\&quot;password\&quot;:\&quot;&lt;password&gt;&quot;}}},\&quot;expires\&quot;:1756137704000}&quot;}
+</code></pre>
+<p>Here’s a breakdown of its components:</p>
+<p>1. <strong>URL</strong></p>
+<p>“url”: “first-recording-alb-143338494.us-west-2.elb.amazonaws.com:8443/guacamole”</p>
+<p>2. <strong>Token</strong></p>
+<p>“token”: “bqIjbPhOic%2bq6UQTH7BHwro0pgg6jO8x7ProNMl1ooBZInow1RfzeFJivwqn5ujwl…”</p>
+<ul>
+<li>A long, URL-encoded token used for authentication or session validation.</li>
+<li>It likely contains encrypted or signed data to validate the user and session.</li>
+</ul>
+<p>3. <strong>JSON Configuration</strong></p>
+<pre><code>{
+  &quot;username&quot;: &quot;shahzad.ali-rec-1756137704000&quot;,
+  &quot;connections&quot;: {
+    &quot;ExampleWindowsRdpRecording&quot;: {
+      &quot;protocol&quot;: &quot;rdp&quot;,
+      &quot;parameters&quot;: {
+        &quot;security&quot;: &quot;nla&quot;,
+        &quot;username&quot;: &quot;shahzad.ali-rec&quot;,
+        &quot;recording-name&quot;: &quot;${GUAC_DATE}-${GUAC_TIME}-shahzad.ali@mailinator.com-shahzad.ali-rec-ExampleWindowsRdpRecording&quot;,
+        &quot;ignore-cert&quot;: &quot;true&quot;,
+        &quot;port&quot;: &quot;3389&quot;,
+        &quot;recording-path&quot;: &quot;/home/guacd/recordings&quot;,
+        &quot;hostname&quot;: &quot;10.0.1.190&quot;,
+        &quot;password&quot;: &quot;password&quot;
+      }
+    }
+  },
+  &quot;expires&quot;: 1756137704000
+}
+</code></pre>
+<ul>
+<li><strong>username</strong>: A unique session identifier with a timestamp.</li>
+<li><strong>connections</strong>: Defines an RDP connection named <code>ExampleWindowsRdpRecording</code>.</li>
+<li><strong>recording-name</strong>: Uses dynamic variables to name the session recording.</li>
+<li><strong>hostname</strong>: Internal IP of the Windows machine being accessed.</li>
+<li><strong>recording-path</strong>: Where session recordings are stored.</li>
+<li><strong>expires</strong>: Epoch timestamp indicating when the token/session expires.</li>
+</ul>
+<h2>Summary</h2>
+<p>This payload is used to:</p>
+<ul>
+<li>Launch a remote desktop session to a Windows machine (<code>10.0.1.190</code>) via RDP.</li>
+<li>Authenticate the user (<code>shahzad.ali-rec</code>) using a token.</li>
+<li>Record the session for auditing or playback.</li>
+<li>Automatically expire the session after a certain time.</li>
+</ul>
+      </div>
+
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

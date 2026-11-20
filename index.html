@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shahzad Ali — Leading Agentic Operations &amp; Management (AgenticOps) at Cisco Systems. Founder of the Aviatrix ACE Program. Multi-Cloud Networking Pioneer. CCIE × 2 · VCDX · AWS · Azure · GCP.">
+  <title>Shahzad Ali · NetJoints</title>
+  <link rel="canonical" href="https://netjoints.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <!-- site-nav:start home -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+  <!-- site-nav:end -->
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section id="hero" class="hero-left">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow slide-in" style="--d:0s">
+        <span class="eyebrow-bar"></span>
+        <span>Shahzad Ali · NetJoints</span>
+      </div>
+
+      <h1 class="hero-headline slide-in" style="--d:0.15s">I build and lead the AI, cloud and security products that turn strategy into <em>business results</em>.</h1>
+
+      <div class="hero-role slide-in" style="--d:0.3s">
+        <span class="role-dash">—</span>
+        <span id="typewriter"></span><span class="cursor-blink">|</span>
+      </div>
+
+      <p class="hero-tagline slide-in" style="--d:0.45s">
+        20+ years leading product, pre-sales and go-to-market teams across networking, cloud and security,
+        and building working agentic AI tools that raise team productivity, win customers and sharpen decisions.
+        Available for advisory, consulting and board roles.
+      </p>
+
+      <div class="hero-actions slide-in" style="--d:0.6s">
+        <a href="#work" class="btn btn-primary">See my work</a>
+        <a href="#engage" class="btn btn-ghost">Work with me</a>
+        <a href="/leadership/" class="btn btn-ghost">Leadership record</a>
+      </div>
+
+      <div class="hero-pills slide-in" style="--d:0.75s">
+        <div class="pill">7x ARR growth · $9M → $68M</div>
+        <div class="pill">Founded an industry certification</div>
+        <div class="pill">Agentic AI · Cloud · Cybersecurity</div>
+        <div class="pill">Published author</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ WORK ═══════════════════════ -->
+  <section id="work" class="section work-section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-title">Products and prototypes I've led and built</h2>
+        <p class="section-sub">Agentic AI tools that raise productivity, support sales, capture market insight and keep access safe. Each started as a real team or customer problem.</p>
+      </div>
+
+      <div class="work-group">
+        <div class="work-group-head" data-aos><h3>Product &amp; team leadership</h3><p>Operating models, prioritization and visibility for large product and technical teams.</p></div>
+        <div class="work-grid">
+        <a class="work-card" href="/customer-obsessed-roadmap-rice/" data-aos>
+          <div class="work-icon">🧭</div>
+          <h4>Customer-Obsessed Roadmap &amp; RICE Prioritization</h4>
+          <p>Started and guided a consolidated roadmap across related platforms: one evidence-based view of feature coverage, dependencies and customer value, so investments follow broad customer demand instead of the loudest request. AI drafts the evidence; product judgment makes the call.</p>
+          <div class="myapp-tags"><span>Roadmap</span><span>RICE</span><span>AI-assisted evidence</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <a class="work-card" href="/agenticops-prod-mgmt-website/" data-aos>
+          <div class="work-icon">📚</div>
+          <h4>Product Management Knowledge Hub</h4>
+          <p>An internal hub for any product-management team: one place for learning, runbooks, research and demos, so knowledge scales and a large group of product managers and technical product managers can be managed effectively.</p>
+          <div class="myapp-tags"><span>Team scaling</span><span>Enablement</span><span>Static hub</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <div class="work-card" data-aos>
+          <div class="work-icon">🎤</div>
+          <h4>Post-Conference Impact Analysis &amp; Feedback Capture</h4>
+          <p>A portal for measuring what public speaking actually delivers: capture session feedback and audience data, analyse reach and engagement, and turn every conference into evidence for the next investment decision.</p>
+          <div class="myapp-tags"><span>Marketing analytics</span><span>Feedback</span><span>Data analysis</span></div>
+          <span class="work-cta work-cta-muted">Case study on request</span>
+        </div>
+        </div>
+      </div>
+
+      <div class="work-group">
+        <div class="work-group-head" data-aos><h3>Productivity &amp; resource visibility</h3><p>Tools that save money and give leadership a live view of how the team spends time and budget.</p></div>
+        <div class="work-grid">
+        <a class="work-card" href="/hotel-finder/" data-aos>
+          <div class="work-icon">✈️</div>
+          <h4>Event Travel Planner</h4>
+          <p>Built with the team to coordinate travel for customer roadshows, demos and conferences. A shared calendar shows who is travelling where, hotels and flights can be matched to save on transport, and every booking follows a frugal-by-default policy, with visibility for top leadership.</p>
+          <div class="myapp-tags"><span>Calendar</span><span>Team view</span><span>Cost optimization</span><span>Serverless</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <a class="work-card" href="/agentic-ai-finops-app/" data-aos>
+          <div class="work-icon">💸</div>
+          <h4>Agentic AI FinOps Assistant</h4>
+          <p>A supervisor agent that routes cloud-cost questions to specialist compliance and FinOps agents, using short-lived, just-in-time credentials, so teams get explainable cost answers without standing privileged access. Built to help a sales-engineering team demonstrate a real enterprise solution.</p>
+          <div class="myapp-tags"><span>Multi-agent</span><span>FinOps</span><span>JIT access</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        </div>
+      </div>
+
+      <div class="work-group">
+        <div class="work-group-head" data-aos><h3>Sales, field enablement &amp; market insight</h3><p>Putting expert answers and market evidence in front of field teams, partners and customers faster.</p></div>
+        <div class="work-grid">
+        <a class="work-card" href="/agentic-ai-webex-bot/" data-aos>
+          <div class="work-icon">💬</div>
+          <h4>Field Enablement Answer Agent</h4>
+          <p>A human-supervised agent for collaboration spaces: it retrieves approved context, drafts an evidence-backed answer and keeps a person in control of every consequential reply. Faster, more consistent help for field and partner teams.</p>
+          <div class="myapp-tags"><span>RAG</span><span>Human-in-the-loop</span><span>Collaboration APIs</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <a class="work-card" href="/ai-rag-search/" data-aos>
+          <div class="work-icon">🔎</div>
+          <h4>Enterprise Knowledge Search (RAG)</h4>
+          <p>One search over portals, documents, code and trackers with explicit source scope, freshness and provenance, so answers can be trusted and traced. Fails closed when a source is unavailable.</p>
+          <div class="myapp-tags"><span>RAG</span><span>Provenance</span><span>Next.js</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <a class="work-card" href="/bedrock-agentcore-research-agent/" data-aos>
+          <div class="work-icon">📈</div>
+          <h4>Market &amp; Technical Research Agent</h4>
+          <p>An agent that gathers, compares and summarizes market and technical research on a cloud agent platform, turning a day of reading into a structured brief a product or sales team can act on.</p>
+          <div class="myapp-tags"><span>Research agent</span><span>AgentCore</span><span>Summarization</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <div class="work-card" data-aos>
+          <div class="work-icon">📣</div>
+          <h4>Content-to-Social Amplifier</h4>
+          <p>Finds the key moment in public videos and blog posts and drafts channel-ready social posts that link back to the original, without downloading or re-hosting anything. Turns existing content into steady market presence.</p>
+          <div class="myapp-tags"><span>Content marketing</span><span>Automation</span><span>LLM drafting</span></div>
+          <span class="work-cta work-cta-muted">Case study on request</span>
+        </div>
+        </div>
+      </div>
+
+      <div class="work-group">
+        <div class="work-group-head" data-aos><h3>Security, identity &amp; network operations</h3><p>Agent safety and operations tooling grounded in public data and documentation.</p></div>
+        <div class="work-grid">
+        <a class="work-card" href="/jit-pam-github-nhi/" data-aos>
+          <div class="work-icon">🔐</div>
+          <h4>Zero Standing Privilege for AI Agents</h4>
+          <p>Reference implementations that give agents and non-human identities only the access they need, only for as long as they need it: just-in-time access to GitHub, cloud storage, data platforms and clusters through MCP servers and a cloud PAM service.</p>
+          <div class="myapp-tags"><span>MCP</span><span>JIT / ZSP</span><span>Non-human identity</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <a class="work-card" href="/catc-to-meraki-migration-ai-assistant/" data-aos>
+          <div class="work-icon">🌐</div>
+          <h4>Network Migration Planning Assistant</h4>
+          <p>An AI assistant that turns public migration guides and API documentation into step-by-step plans, compliance checks and gap analyses for moving campus networks between management platforms, with Terraform and API comparisons.</p>
+          <div class="myapp-tags"><span>Network automation</span><span>Terraform</span><span>Public docs</span></div>
+          <span class="work-cta">Project overview <span class="arrow">→</span></span>
+        </a>
+        <div class="work-card" data-aos>
+          <div class="work-icon">🛡️</div>
+          <h4>Local-Only Data Redaction</h4>
+          <p>Removes personal and financial identifiers from PDFs, images, spreadsheets and CSVs entirely on your own machine, so sensitive documents never have to be uploaded to use AI tools safely.</p>
+          <div class="myapp-tags"><span>Privacy</span><span>Local-first</span><span>Data protection</span></div>
+          <span class="work-cta work-cta-muted">Case study on request</span>
+        </div>
+        </div>
+      </div>
+
+      <div class="myapp-more" data-aos>
+        <a href="/ai-projects-overview/" class="btn btn-outline">All AI project overviews →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ENGAGE ═══════════════════════ -->
+  <section id="engage" class="section engage-section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Work With Me</div>
+        <h2 class="section-title">Where I can help your company</h2>
+        <p class="section-sub">I run NetJoints as an independent practice alongside my leadership roles, working with startups and established teams that want senior product, go-to-market and AI judgment.</p>
+      </div>
+      <div class="engage-grid">
+        <div class="engage-card" data-aos>
+          <div class="work-icon">🧱</div>
+          <h4>Fractional product &amp; GTM leadership</h4>
+          <p>Senior product, pre-sales and marketing leadership for teams that need it now but not full time.</p>
+          <ul><li>Roadmap and positioning</li><li>Pre-sales and solutions-engineering build-out</li><li>Launch and enablement programs</li></ul>
+        </div>
+        <div class="engage-card" data-aos>
+          <div class="work-icon">🧠</div>
+          <h4>Advisory &amp; consulting</h4>
+          <p>Hands-on advice and working prototypes for agentic AI, cloud networking and identity security.</p>
+          <ul><li>Agentic AI and AgenticOps strategy</li><li>Cloud, network and identity-security architecture</li><li>Rapid prototypes that prove an idea</li></ul>
+        </div>
+        <div class="engage-card" data-aos>
+          <div class="work-icon">🏛️</div>
+          <h4>Board &amp; startup advisory</h4>
+          <p>Experience scaling a go-to-market organization, with a bias for evidence and customer outcomes.</p>
+          <ul><li>Go-to-market and category creation</li><li>Product and technical due diligence</li><li>Executive and investor readiness</li></ul>
+        </div>
+      </div>
+      <div class="myapp-more" data-aos>
+        <a href="https://www.linkedin.com/in/shahzadnet/" class="btn btn-primary" target="_blank" rel="noopener">Message me on LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXPERTISE ═══════════════════════ -->
+  <section id="expertise" class="expertise section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Core Competencies</div>
+        <h2 class="section-title">Where I Create Disproportionate Value</h2>
+      </div>
+      <div class="expertise-grid">
+
+        <div class="exp-card featured-card" data-aos>
+          <div class="featured-ribbon">Signature Achievement</div>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+          </div>
+          <h3>Multi-Cloud Network Architecture</h3>
+          <p>Recognized "Father of Multicloud Network Architecture (MCNA)." Founded the Aviatrix ACE Program — the industry's first multicloud certification — establishing how enterprises design and operate across AWS, Azure, and GCP.</p>
+          <div class="exp-tags">
+            <span>Aviatrix ACE Founder</span>
+            <span>MCNA Design</span>
+            <span>AWS · Azure · GCP</span>
+          </div>
+        </div>
+
+        <div class="exp-card" data-aos>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          </div>
+          <h3>Agentic Operations &amp; Management</h3>
+          <p>Leading Cisco's AgenticOps product team, embedding governed AI agents, LLMs/SLMs, and Model Context Protocol (MCP) frameworks into enterprise network operations — spanning Cisco Cloud Control, Cisco AI Canvas, and Cisco Secure Network Architecture.</p>
+          <div class="exp-tags">
+            <span>AgenticOps</span>
+            <span>MCP</span>
+            <span>AI Ready Network</span>
+          </div>
+        </div>
+
+        <div class="exp-card" data-aos>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+          </div>
+          <h3>Identity Security &amp; Cloud PAM</h3>
+          <p>Led cybersecurity pre-sales solutions architecture at Britive, driving cloud-native Privileged Access Management and just-in-time identity security adoption for enterprise cloud workloads and agentic AI systems.</p>
+          <div class="exp-tags">
+            <span>Cloud PAM</span>
+            <span>Zero Trust</span>
+            <span>JIT Access</span>
+          </div>
+        </div>
+
+        <div class="exp-card" data-aos>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/></svg>
+          </div>
+          <h3>Pre-Sales Solutions Architecture</h3>
+          <p>Translating deeply complex cloud and security architectures into winning enterprise proposals. 20+ years closing strategic enterprise deals through unmatched technical credibility.</p>
+          <div class="exp-tags">
+            <span>POC Engineering</span>
+            <span>RFP Leadership</span>
+            <span>Enterprise Sales</span>
+          </div>
+        </div>
+
+        <div class="exp-card" data-aos>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3"/></svg>
+          </div>
+          <h3>Product Engineering Leadership</h3>
+          <p>Pragmatic Product Management certified. Aligning product roadmaps to technical feasibility and market demand across enterprise networking and security platforms.</p>
+          <div class="exp-tags">
+            <span>Product Strategy</span>
+            <span>Roadmap Planning</span>
+            <span>GTM Strategy</span>
+          </div>
+        </div>
+
+        <div class="exp-card" data-aos>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+          </div>
+          <h3>Education &amp; Thought Leadership</h3>
+          <p>Published author (VMware Press). Udemy instructor. Podcast host. YouTube educator. Guest lecturer at graduate institutions. Founder of the netJoints learning platform.</p>
+          <div class="exp-tags">
+            <span>Published Author</span>
+            <span>Udemy</span>
+            <span>YouTube</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-left">
+          <div class="avatar-frame" data-aos>
+            <!-- Replace with: <img src="images/photo.jpg" alt="Shahzad Ali"> -->
+            <img class="avatar-photo" src="images/photo.jpg" alt="Shahzad Ali" width="240" height="240" decoding="async">
+            <div class="avatar-ring"></div>
+            <div class="avatar-badge">
+              <span class="badge-num">20+</span>
+              <span class="badge-text">Years</span>
+            </div>
+          </div>
+          <div class="quick-stats" data-aos>
+            <div class="qs">
+              <span class="qs-val">2× CCIE</span>
+              <span class="qs-label">+ VCDX Elite Certifications</span>
+            </div>
+            <div class="qs">
+              <span class="qs-val">ACE</span>
+              <span class="qs-label">Founded Industry's First Multicloud Cert</span>
+            </div>
+            <div class="qs">
+              <span class="qs-val">AWS·Azure·GCP</span>
+              <span class="qs-label">All Three Hyperscaler Certified</span>
+            </div>
+          </div>
+          <!-- Cert strip -->
+          <div class="cert-strip" data-aos>
+            <span class="cs-tag">CCIE RS</span>
+            <span class="cs-tag">CCIE Collaboration</span>
+            <span class="cs-tag">VCDX</span>
+            <span class="cs-tag">AWS ANS</span>
+            <span class="cs-tag">Azure SAE</span>
+            <span class="cs-tag">GCP PCN</span>
+            <span class="cs-tag">Aviatrix MCN</span>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="section-label" data-aos>About Shahzad Ali</div>
+          <h2 class="section-title" data-aos>Startup Grit.<br>Enterprise Scale.</h2>
+
+          <div class="about-bio" data-aos>
+            <p>
+              I'm Shahzad Ali — a leader who builds and runs highly effective teams across
+              <strong>security, cloud, and Agentic AI</strong>. Currently leading Agentic Operations
+              &amp; Management (AgenticOps) product strategy at <strong>Cisco Systems</strong>, embedding
+              governed, policy-bound AI agents directly into enterprise network operations.
+            </p>
+            <p>
+              I move comfortably between a scrappy startup — hands-on, shipping, always learning — and a
+              global enterprise, where I've led solutions architecture, pre-sales, and product teams that
+              win business at scale. Most recently I led cybersecurity pre-sales solutions architecture at
+              <strong>Britive</strong>, and before that spent five years as VP Solutions Architecture at
+              <strong>Aviatrix</strong>, where I drove 7x ARR growth ($9M → $68M), founded the
+              <strong>Aviatrix Certified Engineer (ACE) Program</strong> — the industry's first multicloud
+              networking certification — and was recognized as the <strong>"Father of Multicloud Network
+              Architecture (MCNA)."</strong>
+            </p>
+            <p>
+              Thirteen years at <strong>Cisco Systems</strong> and leading VMware's Networking and Security
+              Solutions Architecture team built the technical foundation — dual CCIE, VCDX, and
+              certifications across AWS, Azure, and GCP. AI Product Management (Duke), AI Business Strategy
+              and Product Management (UC Berkeley Extension). Published author via VMware Press. I blend
+              <strong>product management, pre-sales solutions architecture, and solutions engineering</strong>
+              to turn complex technology into won deals and adopted platforms.
+            </p>
+          </div>
+
+          <div class="differentiators" data-aos>
+            <div class="diff">
+              <span class="diff-arrow">→</span>
+              <span>Builds and leads high-performing solutions architecture, pre-sales, and engineering teams — from scrappy startups to global enterprises</span>
+            </div>
+            <div class="diff">
+              <span class="diff-arrow">→</span>
+              <span>Hands-on expert in cloud security, identity/PAM, and Agentic AI governance — always learning, still building</span>
+            </div>
+            <div class="diff">
+              <span class="diff-arrow">→</span>
+              <span>Bridges product management, pre-sales solutions architecture, and solutions engineering to win and grow enterprise revenue</span>
+            </div>
+            <div class="diff">
+              <span class="diff-arrow">→</span>
+              <span>Founded the Aviatrix ACE Program — industry's first multicloud networking certification · CCIE (RS + Collaboration) · VCDX</span>
+            </div>
+          </div>
+
+          <div class="about-ctas" data-aos>
+            <a href="https://www.linkedin.com/in/shahzadnet/" class="btn btn-primary" target="_blank" rel="noopener">LinkedIn Profile</a>
+            <a href="https://www.amazon.com/s?k=shahzad+ali+vmware+nsx" class="btn btn-outline" target="_blank" rel="noopener">View Book →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXPERIENCE TIMELINE ═══════════════════════ -->
+  <section id="experience" class="experience section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Career Track Record</div>
+        <h2 class="section-title">20+ Years Shaping Enterprise Technology</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item" data-aos>
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-meta">
+              <span class="tl-date">Current</span>
+              <span class="tl-badge">Current Role</span>
+            </div>
+            <h3>Lead, Agentic Operations &amp; Management (AgenticOps)</h3>
+            <div class="tl-company">Cisco Systems · Agentic AI Identity Security</div>
+            <p>Leading the team embedding purpose-built, cross-domain AI agents, LLMs, SLMs, and Model Context Protocol (MCP) frameworks directly into Cisco's management and operations stack — delivering trusted, policy-bound, fully governed AI digital teammates for the enterprise.</p>
+            <ul class="tl-wins">
+              <li>Driving AI Ready Network, AgenticOps, and Agentic Security adoption</li>
+              <li>Spans Cisco Cloud Control, Cisco AI Canvas, and Cisco Secure Network Architecture</li>
+              <li>Building and leading a team of Agentic AI product managers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos>
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-meta">
+              <span class="tl-date">Previous</span>
+              <span class="tl-badge">Lead Pre-Sales Solutions Architect</span>
+            </div>
+            <h3>Lead Cybersecurity Pre-Sales Solutions Architects</h3>
+            <div class="tl-company">Britive Security · Agentic AI Identity Security</div>
+            <p>Led solutions engineering, technical marketing, and go-to-market strategy for Britive's AI-powered SaaS security platform across AWS, Azure, OCI, and GCP.</p>
+            <ul class="tl-wins">
+              <li>Built Agentic AI applications demonstrating LLM integration with networking and security, including Britive and Snowflake MCP</li>
+              <li>Designed Zero-Trust architecture demos aligned with NIST Framework, with CI/CD pipeline integrations</li>
+              <li>Created technical collateral — videos, workshops, demo labs, white papers — accelerating platform adoption</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos>
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-meta">
+              <span class="tl-date">Earlier</span>
+              <span class="tl-badge">VP Solutions Architecture</span>
+            </div>
+            <h3>VP Solutions Architecture, Technical Marketing Leadership</h3>
+            <div class="tl-company">Aviatrix Systems · Multi-Cloud Networking Platform</div>
+            <p>Led technical marketing and solutions architecture teams, driving 7x ARR growth from $9M to $68M in 4 years. Founded and grew the Aviatrix Certified Engineer (ACE) Program — the industry's first multicloud networking certification.</p>
+            <ul class="tl-wins">
+              <li>Founded ACE Program — industry's first multicloud networking certification · recognized "Father of Multicloud Network Architecture (MCNA)"</li>
+              <li>Secured enterprise accounts including NASA, Guidewire, Thales, Nike, and Toyota</li>
+              <li>Increased new customer acquisition 33% YoY and renewal/expansion revenue 75% through technical enablement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos>
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-meta">
+              <span class="tl-date">Earlier</span>
+              <span class="tl-badge">Senior Leadership</span>
+            </div>
+            <h3>Director, Principal Solutions Architect · NSX Security</h3>
+            <div class="tl-company">VMware Inc. · NSX &amp; Network Virtualization</div>
+            <p>Led the Networking and Security Solutions Architecture team at VMware. Instrumental in scaling the NSX business division. Published "Building VMware NSX Powered Clouds and Data Centers" through VMware Press.</p>
+            <ul class="tl-wins">
+              <li>Engaged C-level and technical decision-makers at SAP, BART, UC Davis, and NTT Docomo</li>
+              <li>Published author — VMware Press technical book series</li>
+              <li>Expanded NSX business through technical evangelism and use-case development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos>
+          <div class="tl-marker">
+            <div class="tl-dot tl-dot-last"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-meta">
+              <span class="tl-date">Foundation</span>
+              <span class="tl-badge">Engineering Foundation</span>
+            </div>
+            <h3>Technical Marketing &amp; Product Management Leadership</h3>
+            <div class="tl-company">Cisco Systems · Data Center, Security, Networking, Cloud</div>
+            <p>Progressive leadership across Technical Marketing Engineering, Product Management, and Solutions Architecture: Senior Technical Product Manager (ACI Virtual Network Services), Senior TME (Private Cloud &amp; Data Center Automation), TME (Data Center Virtualization / Cisco UCS), Technical Leader (Unified Collaboration), and Network Support Engineer (Routing &amp; Switching). Earned dual CCIE certifications (Routing &amp; Switching, Collaboration).</p>
+            <ul class="tl-wins">
+              <li>Earned CCIE Routing &amp; Switching and CCIE Collaboration certifications</li>
+              <li>Enterprise networking and solutions engineering across global accounts</li>
+              <li>Guest lecturer at graduate-level academic institutions</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ IMPACT STATS ═══════════════════════ -->
+  <section id="impact" class="impact-section section">
+    <div class="container">
+      <div class="impact-grid">
+        <div class="impact-left">
+          <div class="section-label">By the Numbers</div>
+          <h2 class="section-title">A Career Built on Milestones</h2>
+          <p>Two decades of certifications, publications, and industry firsts.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card" data-aos>
+            <div class="stat-top">
+              <div class="stat-num" data-target="20">0</div>
+              <div class="stat-suf">+ Years</div>
+            </div>
+            <div class="stat-label">Enterprise Technology</div>
+          </div>
+          <div class="stat-card" data-aos>
+            <div class="stat-top">
+              <div class="stat-num" data-target="7">0</div>
+              <div class="stat-suf">+ Certs</div>
+            </div>
+            <div class="stat-label">Elite Cloud Certifications</div>
+          </div>
+          <div class="stat-card" data-aos>
+            <div class="stat-top">
+              <div class="stat-num" data-target="1">0</div>
+              <div class="stat-suf">st</div>
+            </div>
+            <div class="stat-label">Multicloud Certification Founded</div>
+          </div>
+          <div class="stat-card" data-aos>
+            <div class="stat-top">
+              <div class="stat-num" data-target="4">0</div>
+              <div class="stat-suf"> Co.</div>
+            </div>
+            <div class="stat-label">Cisco · VMware · Aviatrix · Britive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTENT HUB ═══════════════════════ -->
+  <section id="content" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Beyond the Resume</div>
+        <h2 class="section-title">Teaching, Writing &amp; Building in Public</h2>
+        <p class="section-sub">20+ years of knowledge packaged into courses, code, conversations, and a published book.</p>
+      </div>
+
+      <div class="ch-grid-v1">
+
+        <a href="https://youtube.com/netJoints" class="ch-card-v1 ch-featured-v1" target="_blank" rel="noopener" data-aos>
+          <div class="ch-accent ch-yt"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-yt-bg">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">YouTube</div>
+              <div class="ch-desc-v1">Deep-dive tutorials on multi-cloud networking, identity security, and enterprise architecture watched by thousands of engineers worldwide.</div>
+              <div class="ch-link-v1">youtube.com/netJoints →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="ch-card-v1" data-aos>
+          <div class="ch-accent ch-blog"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-blog-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">Blog</div>
+              <div class="ch-desc-v1">Agentic AI security, cloud PAM, Kubernetes RBAC, and enterprise architecture. Latest thinking on the cloud frontier.</div>
+              <div class="ch-link-v1">netjoints.com/blog →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://anchor.fm/netjoints" class="ch-card-v1" target="_blank" rel="noopener" data-aos>
+          <div class="ch-accent ch-pod"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-pod-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">Podcast</div>
+              <div class="ch-desc-v1">Conversations with industry leaders on cloud networking, cybersecurity, and the future of enterprise infrastructure.</div>
+              <div class="ch-link-v1">anchor.fm/netjoints →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://github.com/netJoints" class="ch-card-v1" target="_blank" rel="noopener" data-aos>
+          <div class="ch-accent ch-gh"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-gh-bg">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">GitHub</div>
+              <div class="ch-desc-v1">Open-source projects, lab configurations, and architecture reference implementations for cloud networking and security.</div>
+              <div class="ch-link-v1">github.com/netJoints →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.udemy.com/user/netjoints/" class="ch-card-v1" target="_blank" rel="noopener" data-aos>
+          <div class="ch-accent ch-udemy"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-udemy-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">Udemy</div>
+              <div class="ch-desc-v1">Professional certification prep and hands-on cloud networking courses. Learn multi-cloud architecture from the source.</div>
+              <div class="ch-link-v1">udemy.com/user/netjoints →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.amazon.com/s?k=shahzad+ali+vmware+nsx" class="ch-card-v1 ch-book-v1" target="_blank" rel="noopener" data-aos>
+          <div class="ch-accent ch-book"></div>
+          <div class="ch-body-v1">
+            <div class="ch-ico-wrap ch-book-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+            </div>
+            <div>
+              <div class="ch-platform">Published Book</div>
+              <div class="ch-desc-v1"><strong style="color:var(--text-0)">Building VMware NSX Powered Clouds and Data Centers for SMB</strong> — VMware Press · Available on Amazon</div>
+              <div class="ch-link-v1">View on Amazon →</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PROTOTYPES & PERSONAL BUILDS ═══════════════════════ -->
+  <section id="myapp" class="section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Built to Test Ideas</div>
+        <h2 class="section-title">Prototypes &amp; personal builds</h2>
+        <p class="section-sub">Smaller apps built to test an idea quickly, scratch a personal itch, or prototype for a client. They are how I keep my hands in the technology.</p>
+      </div>
+      <div class="myapp-grid">
+        <div class="myapp-card myapp-soon" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">🚗</div><span class="myapp-badge wip">Personal</span></div>
+          <h3>Car Deal Finders</h3>
+          <p>A family of deal trackers for certified pre-owned and new cars. They pull real inventory, score each listing against MSRP and invoice, and surface the best deals.</p>
+          <div class="myapp-tags"><span>Cloud Run</span><span>Firestore</span><span>Deal scoring</span></div>
+        </div>
+        <a class="myapp-card" href="https://netjoints-travel.web.app" target="_blank" rel="noopener" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">✈️</div><span class="myapp-badge live"><span class="pulse"></span>Live</span></div>
+          <h3>Santa Inez Travel</h3>
+          <p>An AI-assisted trip planner for the Santa Ynez Valley, with itineraries, flight search and curated stays.</p>
+          <div class="myapp-tags"><span>Flask</span><span>Flight API</span></div>
+        </a>
+        <a class="myapp-card" href="app/tesla-tire-guide.html" target="_blank" rel="noopener" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">🛞</div><span class="myapp-badge live"><span class="pulse"></span>Live</span></div>
+          <h3>Tesla Tire Guide</h3>
+          <p>A tire-shopping guide for the Model 3: decode sizes, compare options and avoid the dealership markup.</p>
+          <div class="myapp-tags"><span>Static app</span></div>
+        </a>
+        <a class="myapp-card" href="/vibe-studio/" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">🎬</div><span class="myapp-badge live"><span class="pulse"></span>Live</span></div>
+          <h3>Vibe Studio</h3>
+          <p>Video editing software for people who just want to get the job done.</p>
+          <div class="myapp-tags"><span>Open source</span></div>
+        </a>
+        <a class="myapp-card" href="/receipt-finder/" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">🧾</div><span class="myapp-badge live"><span class="pulse"></span>Live</span></div>
+          <h3>Receipt Finder</h3>
+          <p>Finds receipts across folders, shrinks them and files them under predictable names, all locally.</p>
+          <div class="myapp-tags"><span>Python</span><span>Local-first</span></div>
+        </a>
+        <a class="myapp-card" href="https://github.com/netJoints/math-motors" target="_blank" rel="noopener" data-aos>
+          <div class="myapp-top"><div class="myapp-icon">🧮</div><span class="myapp-badge live"><span class="pulse"></span>Live</span></div>
+          <h3>Math Motors</h3>
+          <p>A PEMDAS car-dealership game that teaches kids order of operations.</p>
+          <div class="myapp-tags"><span>Game</span><span>Open source</span></div>
+        </a>
+      </div>
+
+      <div class="myapp-more" data-aos>
+        <a href="app/index.html" class="btn btn-outline">View All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ TECH ECOSYSTEM ═══════════════════════ -->
+  <section id="tech" class="tech-section section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <div class="section-label">Technology Ecosystem</div>
+        <h2 class="section-title">Deep, Hands-On Technical Expertise</h2>
+        <p class="section-sub">Not just strategy — built with these technologies in production.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-cat" data-aos>
+          <h4 class="tech-cat-title">Cloud &amp; Multi-Cloud Networking</h4>
+          <div class="tech-tags">
+            <span class="tag t1">Aviatrix MCNA</span>
+            <span class="tag t1">AWS</span>
+            <span class="tag t1">Google Cloud</span>
+            <span class="tag t1">Azure</span>
+            <span class="tag t2">SD-WAN</span>
+            <span class="tag t2">Transit Gateway</span>
+            <span class="tag t2">Cloud WAN</span>
+            <span class="tag t3">ExpressRoute</span>
+            <span class="tag t3">Direct Connect</span>
+          </div>
+        </div>
+        <div class="tech-cat" data-aos>
+          <h4 class="tech-cat-title">Identity Security &amp; Cloud PAM</h4>
+          <div class="tech-tags">
+            <span class="tag t1">Britive Cloud PAM</span>
+            <span class="tag t1">Zero Trust</span>
+            <span class="tag t1">JIT Access</span>
+            <span class="tag t2">Kubernetes RBAC</span>
+            <span class="tag t2">IAM / CIAM</span>
+            <span class="tag t2">SAML / OIDC</span>
+            <span class="tag t3">HashiCorp Vault</span>
+            <span class="tag t3">Service Mesh</span>
+          </div>
+        </div>
+        <div class="tech-cat" data-aos>
+          <h4 class="tech-cat-title">AI &amp; Emerging Technology</h4>
+          <div class="tech-tags">
+            <span class="tag t1">Agentic AI Security</span>
+            <span class="tag t1">LLM Governance</span>
+            <span class="tag t2">AI Access Control</span>
+            <span class="tag t2">Claude / OpenAI</span>
+            <span class="tag t2">LangChain</span>
+            <span class="tag t3">RAG Systems</span>
+            <span class="tag t3">AI Observability</span>
+          </div>
+        </div>
+        <div class="tech-cat" data-aos>
+          <h4 class="tech-cat-title">Infrastructure &amp; Certifications</h4>
+          <div class="tech-tags">
+            <span class="tag t1">VMware NSX</span>
+            <span class="tag t1">Cisco (CCIE RS · Voice)</span>
+            <span class="tag t1">VCDX</span>
+            <span class="tag t2">Kubernetes</span>
+            <span class="tag t2">Terraform</span>
+            <span class="tag t2">Docker</span>
+            <span class="tag t3">Ansible</span>
+            <span class="tag t3">GitOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="contact-grid" style="grid-template-columns:1fr;max-width:720px;margin:0 auto">
+
+        <div class="contact-left">
+          <div class="section-label">Let's Connect</div>
+          <h2 class="section-title">Ready to Build Something Extraordinary?</h2>
+          <p class="contact-desc">
+            Whether you need enterprise cloud architecture leadership, a multicloud networking expert,
+            or want to explore agentic AI security for your organization — the best way to reach me is a message on LinkedIn.
+          </p>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/shahzadnet/" class="clink" target="_blank" rel="noopener">
+              <div class="clink-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <div class="clink-label">LinkedIn</div>
+                <div class="clink-val">linkedin.com/in/shahzadnet</div>
+              </div>
+            </a>
+            <a href="https://netjoints.com" class="clink" target="_blank" rel="noopener">
+              <div class="clink-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253"/></svg>
+              </div>
+              <div>
+                <div class="clink-label">Website &amp; Blog</div>
+                <div class="clink-val">netjoints.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <!-- site-footer:start -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- site-footer:end -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>

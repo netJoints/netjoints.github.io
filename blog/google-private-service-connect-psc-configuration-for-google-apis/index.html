@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction Enterprises are demanding to connect to various public cloud services without using the public IP address. They are asking to provide connectivity using the private IP for the following services Every CSP has its offering to cater to this need. Azure Private Link is an example. Google P">
+  <title>Google Private Service Connect (PSC) Configuration for Google APIs · NetJoints</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <link rel="canonical" href="https://netjoints.com/blog/google-private-service-connect-psc-configuration-for-google-apis/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Google Private Service Connect (PSC) Configuration for Google APIs">
+  <meta property="og:description" content="Introduction Enterprises are demanding to connect to various public cloud services without using the public IP address. They are asking to provide connectivity using the private IP for the following services Every CSP has its offering to cater to this need. Azure Private Link is an example. Google P">
+  <meta property="og:url" content="https://netjoints.com/blog/google-private-service-connect-psc-configuration-for-google-apis/">
+  
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="NetJoints home">
+        <span class="logo-bracket">[</span>NJ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a></li>
+        <li><a href="/leadership/">Leadership</a></li>
+        <li class="nav-dd">
+          <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-controls="navDdCard">Tech Alliances <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-card" id="navDdCard">
+            <p class="nav-dd-title">Tech Alliances</p>
+            <a class="nav-dd-item" href="/aws/"><strong>AWS</strong><span>Amazon Web Services</span></a>
+            <a class="nav-dd-item" href="/azure/"><strong>Azure</strong><span>Microsoft Azure</span></a>
+            <span class="nav-dd-item nav-dd-soon"><strong>Wiz</strong><span>Coming soon</span></span>
+          </div>
+        </li>
+        <li><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site">Search</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+      <a href="/about/">About</a>
+      <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+      <a href="/leadership/">Leadership</a>
+      <p class="mobile-menu-label">Tech Alliances</p>
+      <a class="mobile-menu-sub" href="/aws/">AWS</a>
+      <a class="mobile-menu-sub" href="/azure/">Azure</a>
+      <span class="mobile-menu-sub mobile-menu-soon">Wiz · Coming soon</span>
+      <a href="#" id="navSearchMobile">Search</a>
+    </div>
+  </nav>
+  <script src="/js/site-search.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+
+  <!-- ═══════════════════════ ARTICLE ═══════════════════════ -->
+  <article class="section blog-article">
+    <div class="container blog-article-container">
+      <a href="../index.html" class="blog-back">&larr; All posts</a>
+
+      <div class="blog-meta">
+        <span class="section-label">cloud-networking</span>
+        <time datetime="2023-01-03">January 3, 2023</time>
+      </div>
+
+      <h1 class="blog-title">Google Private Service Connect (PSC) Configuration for Google APIs</h1>
+
+      
+
+      <div class="blog-content">
+        <h2><strong>Introduction</strong></h2>
+<p>Enterprises are demanding to connect to various public cloud services without using the public IP address. They are asking to provide connectivity using the private IP for the following services</p>
+<ul>
+<li>Services published by CSP on public URL</li>
+<li>GCP calls it Target: All Google APIs</li>
+<li>Services/Apps published by enterprises themselves</li>
+<li>GCP calls it Target: Published Service</li>
+</ul>
+<p>Every CSP has its offering to cater to this need. Azure Private Link is an example. Google PSC is similar to Azure Private link conceptually speaking.</p>
+<h3><strong>Provider and Consumer</strong></h3>
+<p><strong>Provider:</strong> Google Storage APIs</p>
+<p><strong>Consumer:</strong> Spoke1 VPC</p>
+<h3><strong>DNS Private Zone</strong></h3>
+<ul>
+<li>When you create a Private Service Connect (PSC) endpoint, DNS records are automatically created for commonly used APIs (for Storage, Compute etc.) and services that are available using Private Service Connect.</li>
+<li>If you want to use a service, but a DNS record for that service isn’t present in the p.googleapis.com zone, follow the instructions in <a href="https://cloud.google.com/vpc/docs/configure-private-service-connect-apis#configure-dns-default">Creating DNS records using default DNS names</a> to add DNS records for those services.</li>
+</ul>
+<p>In our example, we will be using Storage API to connect to the Google Cloud Storage bucket using the private RFC1918 IP address (192.168.3.1)</p>
+<ul>
+<li>The automatically-created DNS records point to your PSC endpoint IP address (192.168.3.1), and are in this format: SERVICE_NAME-ENDPOINT.p.googleapis.com.</li>
+<li>For example, if your endpoint name is xyz, DNS records are created for</li>
+<li>Storage API: storage-xyz.p.googleapis.com</li>
+<li>Compute API: compute-xyz.p.googleapis.com, and other supported APIs.</li>
+</ul>
+<p>You do not see those DNS records created in your DNS Private Zone, but they are there in the background for you to consume.</p>
+<h2><strong>PSC Limitations</strong></h2>
+<ul>
+<li>Private Service Connect endpoints are not accessible from peered VPC networks.</li>
+</ul>
+<h1><strong>Deployment Details</strong></h1>
+<p>Now let’s take a look at the step by step deployment details</p>
+<h2><strong>Step1: Create a dedicated subnet for PSC</strong></h2>
+<p>Virtual machine (VM) instances without an external IP address assigned must use a subnet with <a href="https://cloud.google.com/vpc/docs/configure-private-service-connect-apis#enable-private-google-access">Private Google Access enabled</a> to access Google APIs and services using a Private Service Connect endpoint.</p>
+<p>If the VM has more than one interface, connect the interface that is configured with a default route (usually nic0). In our example, we will use a test VM with only one interface.</p>
+<p>We did not specify this subnet anywhere else during our configuration but it seems like this is used behind the scene to connect Consumer (10.20.111.0/24) to Provider (192.168.3.1)</p>
+<h2><strong>Step2: Create PSC Endpoint</strong></h2>
+<p>You should create a static PSC IP address. In our example, it is 192.168.3.1. It was populated in the above screen after creation.</p>
+<p>It will show up as the following screen</p>
+<p>Also notice that the above step will automatically create a DNS record to connect to the PSC as shown below.</p>
+<p>The Service Directory is also created automatically using the namespace defined at the time of creation. The following screenshot shows the “Service Directory” details.</p>
+<h2><strong>Testing PSC Configuration</strong></h2>
+<p>We will be using a VM without public IP address for this testing. The public URL to access the storage is bucket is following</p>
+<p><a href="https://storage.googleapis.com/shahzad-psc-bucket/gcp-psc-test-shahzad.html">https://storage.googleapis.com/shahzad-psc-bucket/gcp-psc-test-shahzad.html</a></p>
+<p>For this test, we will modify the URL so that we can hit the private IP address to access the storage service</p>
+<p><a href="https://pscapi-storage.p.googleapis.com/shahzad-psc-bucket/gcp-psc-test-shahzad.html">https://pscapi-storage.p.googleapis.com/shahzad-psc-bucket/gcp-psc-test-shahzad.html</a></p>
+<p>Notice pscapi is the end-point name I assigned to this service</p>
+<p><strong>shahzad_aviatrix_com@shahzad-spoke1-uscentral1-psc-test-vm</strong>:<strong>~</strong>$ curl https://storage-pscapi.p.googleapis.com/shahzad-psc-bucket/gcp-psc-test-shahzad.html</p>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<p>This is Shahzad Private Service Connect Service Test</p>
+
+<p>I am using GCP Cloud Storage to test this functionality</p>
+
+</body>
+
+</html>
+
+<p><strong>shahzad_aviatrix_com@shahzad-spoke1-uscentral1-psc-test-vm</strong>:<strong>~</strong>$</p>
+<p>nslookup also returns the private IP address of the service.</p>
+<p>shahzad_aviatrix_com@shahzad-spoke1-uscentral1-test-vm1:~$ nslookup storage-pscapi.p.googleapis.com</p>
+<p>Server:         169.254.169.254</p>
+<p>Address:        169.254.169.254#53</p>
+<p>Non-authoritative answer:</p>
+<p>Name:   storage-pscapi.p.googleapis.com</p>
+<p>Address: 192.168.3.1</p>
+<p>shahzad_aviatrix_com@shahzad-spoke1-uscentral1-test-vm1:~$</p>
+<h2><strong>Reference</strong></h2>
+<p><a href="https://cloud.google.com/vpc/docs/configure-private-service-connect-apis">https://cloud.google.com/vpc/docs/configure-private-service-connect-apis</a></p>
+      </div>
+
+      
+      <div class="blog-tags">
+        <span class="tag-pill">gcp</span>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">[NJ]</div>
+        <p class="footer-tagline">Shahzad Ali · Multi-Cloud Networking · Identity Security · Agentic AI</p>
+        <nav class="footer-links" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://youtube.com/netJoints" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://github.com/netJoints?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://anchor.fm/netjoints" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://www.udemy.com/user/netjoints/" target="_blank" rel="noopener">Udemy</a>
+          <a href="/about/">About</a>
+          <a href="https://www.amazon.com/Building-VMware-Powered-Centers-Businesses/dp/0998610445" target="_blank" rel="noopener">My Book</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/projects/">Projects</a>
+        </nav>
+        <nav class="footer-links footer-links-secondary" aria-label="Connect">
+          <a href="https://www.linkedin.com/in/shahzadnet/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/#contact">Contact</a>
+          <a href="/#myapp">Side Projects</a>
+          <a href="/app/">All Apps</a>
+          <a href="/blog/rss.xml">RSS Feed</a>
+          <a href="/sitemap/">Sitemap</a>
+          <a href="/sitemap.xml">sitemap.xml</a>
+        </nav>
+        <p class="footer-copy">© 2026 Shahzad Ali · NetJoints · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
